@@ -1,0 +1,124 @@
+﻿<h2>Member Withdrawal Requests</h2>
+
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/MemberWithdrawalController.js"></script>
+
+<section class="wrapper" style="margin-top:30px !important">
+    <div ng-app="app" ng-controller="MemberWithdraw" ng-cloak>
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class=""></i> Withdrawals - Member Panel
+                    </header>
+                    <div class="panel-body">
+                        <div ng-show="isExists">
+                            <table style="width:50%;min-width:300px;margin:0 auto">
+                                <tr style="line-height:30px">
+                                    <td><label>Withdrawal Wallet Type :</label></td>
+                                    <td>
+                                        <select name="wallet" ng-model="wallet" required class="form-control">
+                                            <option value="1">Cash Wallet</option>
+                                            <option value="3">Return Wallet</option>
+                                        </select>
+                                    </td>
+                                    <td/>
+                                </tr>
+                                <tr style="line-height:30px" ng-show="wallet=='1'">
+                                    <td style="padding-top:18px"><label>Cash Wallet balance ($) :</label></td>
+                                    <td style="color:green"><h3>{{cashwalletBalance | currency}}</h3></td>
+                                    <td/>
+                                </tr>
+                                <tr style="line-height:30px" ng-show="wallet=='3'">
+                                    <td style="padding-top:18px"><label>Return Wallet balance ($) :</label></td>
+                                    <td style="color:green"><h3>{{fixedwalletBalance | currency}}</h3></td>
+                                    <td></td>
+                                </tr>
+                               
+                                <tr style="line-height:30px">
+                                    <td style="padding-top:8px"><label>Amount to Withdraw ($):</label></td>
+                                    <td><input type="number" ng-model="amount" class="form-control" ng-min="1" /></td>
+                                    <td><i class="fa fa-info-circle"></i>&nbsp; Minimum withdrawal is 10$</td>
+                                </tr>
+                                <tr>
+                                    <td><label>My Transaction Password:</label></td>
+                                    <td><input type="password" ng-model="trnpassword" class="form-control" ng-change="IsTrnPasswordOK()" /></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="line-height:30px;margin:5px">
+                                    <td></td>
+                                    <td>
+                                        <br />
+                                        <span ng-if="isExistsAcNo && trnpasswordIsOk"><button class="btn btn-success" ng-hide="amount==null || amount<10 || amountisValid()" ng-click="Transaction()" style="margin:0 auto;">Request Withdrawal</button></span>
+                                       
+                                         <span ng-if="!isExistsAcNo">
+                                            <h4>Bitcoin Withdrawal Account No. not present. Proceed here to enter.</h4>
+                                            <button class="btn btn-info" ng-click="TakeMeToAccountPage()">Proceed</button>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr style="margin-top:10px;margin-bottom:10px"/>
+                        <div style="margin-bottom:10px;min-height:40px">
+                            <div class="col-md-2" style="vertical-align:middle;padding-top:8px">Search :&nbsp;<i class="fa fa-search"></i></div>
+                            <div class="col-md-4"><input type="text" class="form-control" ng-model="searchText" ng-change="filterChanged({{transfers|filter:searchText}})" placeholder="Input search text here" /></div><div class="col-md-6"></div>
+                        </div>
+                        <table class="table table-bordered table-striped" style="margin-top:30px">
+                            <thead>
+                                <tr>
+                                    <th>Request Date</th>
+                                    <th>Wallet Type</th>
+                                    <th>My BitCoin A/c</th>
+                                    <th>Requested Amount</th>
+                                    <th>Payable Amount</th>
+                                    <th>Administration Charge</th>
+                                    <th>Approved Date</th>
+                                    <th>Action</th>
+                                    <th>Status</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="trf in transfers | orderBy:'-Id'| filter:searchText |myLimitTo:maxSize:startindex">
+                                    <td>{{trf.sDate}}</td>
+                                    <td>{{trf.WalletName}}</td>
+                                    <td>{{trf.BitCoinAccount}}</td>
+                                    <td>{{trf.Amount | currency}}</td>
+                                    <td>{{trf.Payable | currency}}</td>
+                                    <td>{{trf.AdministrativeChg | currency}}</td>
+                                    <td>{{trf.sApproved_Date}}</td>
+                                    <td><span ng-hide="trf.Status=='Approved' || trf.Status=='Cancelled by Member' || trf.Status=='Cancelled by Admin'|| trf.Status=='Paid'"><button class="btn btn-danger" ng-click="cancelOrder(trf.Id)">Cancel Request</button></span></td>
+                                    <td ng-if="trf.Status=='Paid'" style="color:green">{{trf.Status}}</td>
+                                    <td ng-if="trf.Status!='Paid' && trf.Status!='Under Process'" style="color:red">{{trf.Status}}</td>
+                                    <td>{{trf.Comment}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" style="text-align:right;padding-right:5px"><b>Totals:</b></td>
+                                    <td><b>{{total_Amount | currency}}</b></td>
+                                    <td><b>{{total_Payable | currency}}</b></td>
+                                    <td><b>{{total_AdministrativeChg | currency}}</b></td>
+                                    <td colspan="5"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="10" class="text-center" style="padding-top:20px">
+                                        <div class="pull-left" style="padding-left:50px">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(transfers|filter:searchText).length}}</span></div>
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
+                                        <div class="pull-right">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+

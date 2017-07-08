@@ -1,0 +1,110 @@
+﻿<script src="~/js/flot-chart/jquery.min.js"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/ManageNewsController.js"></script>
+<link href="~/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" />
+<script src="~/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script src="~/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+<section class="wrapper" style="background-color:rgba(211, 211, 211, 0.5)">
+    <div ng-app="app" ng-controller="ManageNews" ng-cloak>
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class="fa fa-newspaper-o" style="color:green"></i> Manage News <span style="float:right;margin-right:20px"><i class="fa fa-plus-square" title="Add new News Item" ng-click="addNew()"></i></span>
+                    </header>
+                    <div class="panel-body">
+
+                        <div id="List" ng-hide="isAdding || isEditing">
+                            <table style="width:100%" class="table table-hover table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>News Date</th>
+                                        <th>News Title</th>
+                                        <th>News Author</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="newsitem in allReports">
+                                        <td>{{newsitem.UpdatedDate | date}}</td>
+                                        <td>{{newsitem.NewsItemTitle}}</td>
+                                        <td>{{newsitem.NewsAuthor}}</td>
+                                        <td><i class="fa fa-pencil-square-o" ng-click="edit(newsitem)" title="Edit News Item"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-times-circle-o" ng-click="delete(newsitem.Id)" title="Delete News Item"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="NewsAddEdit" ng-show="isAdding || isEditing">
+                            <table style="width:90%">
+                                <tr>
+                                    <td style="width:200px;text-align:right;padding-right:10px"><label>Author</label></td>
+                                    <td><input type="text" class="form-control" ng-model="objNewsModel.NewsAuthor" placeholder="Enter Author Name..BtcPro Management (default)" /></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:right;padding-right:10px"><label>News Title</label></td>
+                                    <td><input type="text" class="form-control" ng-model="objNewsModel.NewsItemTitle" /></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:right;padding-right:10px"><label>News Report</label></td>
+                                    <td>
+                                        <form action="#" class="form-horizontal ">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <textarea div="wysihtml5" class="form-control" ng-model="objNewsModel.NewsItemBody" rows="9"></textarea>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td style="text-align:right;padding-right:10px"><label>Image</label></td>
+                                    <td>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #dcd4d4 !important;min-height: 50px; margin-bottom: 10px;padding-top: 12px;">
+                                            <input type="file" id="documentA" name="file" onchange="angular.element(this).scope().uploadLibraryDocumentA(this.files)" /><span style="float:right;margin-top:-25px" ng-required="true"></span>@*<img src="/Content/progress.gif" />*@
+                                        </div>
+                                        <label style="font-size:xx-small">(bmp/jpg/jpeg/png 1MB allowed)</label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="col-md-12" style="text-align:center">
+                                <button class="btn btn-primary" ng-if="isAdding" ng-click="isAdding=true;insert()">Save</button>
+                                <button class="btn btn-primary" ng-if="isEditing" ng-click="isEditing=false;update()">Update</button>
+                            </div>
+                        </div>
+
+                        <div ng-show="isIframe">
+                            <div class="panel-heading" style="margin-top:25px;width:100%;height:50px;background-color:rgba(35, 183, 229, 0.37)">
+                                <div class="pull-left">
+                                    <label style="padding:5px;padding-top:0px;font-weight: bolder;font-size: medium;">Attachment File Name : {{documentNAME}} </label>
+                                </div>
+                                <div class="pull-right">
+                                    <a><i class="fa fa-2x fa-times" ng-click="isIframe=false"></i></a>
+                                </div>
+                            </div>
+                            <div class="panel-body col-sm-12" style="background-color:white; min-height:750px;position:relative">
+                                <div>
+                                    <image ng-if="documentFILETYPE=='IMAGE'" src="{{fullFilePath}}" style="max-height:100%;max-width:100%" />
+                                    <div ng-if="documentFILETYPE=='PDF' || documentFILETYPE=='WORD' || documentFILETYPE=='EXCEL' || documentFILETYPE=='POWERPOINT' || documentFILETYPE=='TEXT' || documentFILETYPE=='HTML'">
+                                        <div ng-bind-html="TrustedviewerFullFilePath"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $('#wysihtml5').wysihtml5();
+    })
+</script>
+
+
+
+

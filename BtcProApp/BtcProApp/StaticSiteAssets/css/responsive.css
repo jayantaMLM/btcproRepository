@@ -1,0 +1,218 @@
+/*
+* ----------------------------------------------------------------------------------------
+Author       : Mohamed Alaa 
+Template Name: lapcome – Personal Responsive Template 
+Version      : 1.0
+* ----------------------------------------------------------------------------------------
+*/
+
+
+/* Medium Layout: 1280px. */
+@media only screen and (min-width: 1200px) {
+    .sub-container h1 {
+        font-size: 9em;
+        font-weight: 900;
+        margin: 0;
+        padding: 20px 0;
+        padding-top: 4px;
+    }
+    .sub-container h4 {
+        margin-top: 0px;
+    }
+    .sub-container h2 {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        margin-top: 0;
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {}
+
+
+/* Tablet Layout: 768px. */
+
+@media only screen and (min-width: 767px) and (max-width: 991px) {}
+
+
+/* Mobile Layout: 767px. */
+
+@media only screen and (max-width: 767px) {
+    .row{
+        padding: 0;
+    }
+/*
+    #particles-js {
+        margin-top: 90px;
+    }
+*/
+    #particles-js {
+        width: 100%;
+        height: 80%;        
+    }
+    .home-page {
+        height: auto;
+        
+    }
+    .sub-container h1 {
+        font-size: 4em;
+    }
+    .sub-container h3{
+        font-size: 18px;
+        margin-top: 5px;
+    }
+    /* Navbar */
+    .navbar-nav {
+        background: #333;
+        margin-top: 0;
+    }
+    .nav > li {
+        text-align: center;
+        float: none;
+    }
+    .navbar-default .navbar-nav > li > a {
+        color: #fff;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    .navbar-default .navbar-nav  li:last-of-type{
+        padding-right: 0px;
+    }
+    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+        color: #0ff;
+        border-bottom: none;
+        border-bottom: 1px solid #ffffff;
+    }   
+    .about, .portfoliopage, .contact, .service, .tranding {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .about .container .sub-p, .about .container .sub-text{
+        line-height: 25px;
+    }
+    
+    /* Service*/
+    .service .row > div{
+        margin-bottom: 20px;
+    }
+    .packages{
+        margin: 0;
+        min-height: auto;
+    }
+    .packages .content-pt {
+        padding: 10px 10px 50px;
+        color: #373737;    }
+    .filtr-item img{
+        width: 100%;
+    }
+    .t-thumb h4 {
+        margin: 0 0 10px;
+    }
+    .t-thumb p {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+    .appbanner {
+        padding-top: 0;
+        position: relative;
+    }
+    .api-pt, .api-pt1{
+        margin-bottom: 20px;
+    }
+    .appbanner:before{
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    .appbanner .applink {
+        height: auto;
+        padding: 0;
+        margin-top: 20px;
+    }
+    .appbanner .applink p{
+        margin-bottom: 10px;
+    }
+    .appbanner h2 {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 10px;
+    }
+    .panel-group .panel-title a {
+        font-size: 16px;
+    }
+    .tranding p {
+        margin-bottom: 30px;
+    }
+    .tranding:before {
+        height: 84%;
+    }
+    .tranding {
+        background-size: cover;
+    }
+    footer{
+        text-align: center;
+    }
+    footer img{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    footer h3{
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Wide Mobile Layout: Form 767 To 480px. */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    /** Service **/
+    .service .row .sub-text {
+        padding: 0 40px;
+    }
+    
+}
+
+
+/* Wide Mobile Layout: 480px. */
+
+@media  (max-width: 480px) {
+    .sub-container h2 {
+        font-size: 20px;
+        letter-spacing: 0;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        line-height: 26px;
+    }
+    .appbanner img {
+        width: 40%;
+    }
+}
+
+
+/* Mobile Layout: 320px. */
+
+@media (max-width: 320px) {
+    
+    .box .box-content {
+        padding: 79px 0;
+    }
+   .contact h2:before {
+       padding-left: 218px;
+       margin-top: 29px;
+    }
+}
+
+
+
+
+
+
+
+
+
+

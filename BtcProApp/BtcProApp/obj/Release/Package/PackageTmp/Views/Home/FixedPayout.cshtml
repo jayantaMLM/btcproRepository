@@ -1,0 +1,55 @@
+﻿
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/FixedPayoutController.js"></script>
+
+<section class="wrapper" style="background-color:rgba(211, 211, 211, 0.5)">
+    <div ng-app="app" ng-controller="FixedPayout" ng-cloak>
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class="fa fa-cogs" style="color:green"></i> Daily Payout - Fixed Return Wallet
+                    </header>
+                    <div class="panel-body" style="text-align:center">
+                        <div class="col-md-4"></div>
+                      
+                        <div class="col-md-4"><button class="btn btn-info" ng-show="!processed && !processing" ng-click="process()">Start Process</button><span ng-show="processing && !processed"><img src="~/Content/progress.gif" /></span><h2 ng-show="!processing && processed">{{processcount}} records processed!!!</h2></div>
+                        <div class="col-md-4"></div>
+                      </div>
+
+                    <label>Search </label>&nbsp;&nbsp;<span><input type="text" ng-model="searchtxt"/></span>
+
+                    <table style="width:100%;margin:0 auto" class="table table-bordered table-striped">
+                        <tr>
+                            <th style="width:15%">Due Date</th>
+                            <th style="width:15%">User Id</th>
+                            <th style="width:25%">Package</th>
+                            <th style="width:5%">Investment Amount</th>
+                            <th style="width:25%">Investment Return</th>
+                            <th style="width:15%;">Status</th>
+                        </tr>
+                        <tr ng-repeat="rec in pendingrecs | filter:searchtxt">
+                            <td>{{rec.sDueDate}}</td>
+                            <td>{{rec.Username}}</td>
+                            <td>{{rec.PackageName}}</td>
+                            <td>{{rec.InvestmentAmount | currency}}</td>
+                            <td>{{rec.FixedIncomeWallet | currency}}</td>
+                            <td>{{rec.Status}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="vertical-align:middle"><label>Total:</label></td>
+                            <td><h3 style="color:green">{{totalpayout | currency}}</h3> </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+

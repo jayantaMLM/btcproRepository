@@ -1,0 +1,281 @@
+﻿<!--Core CSS -->
+<link href="~/bs3/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+<link href="~/css/bootstrap-reset.css" rel="stylesheet">
+<link href="~/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="~/js/jvector-map/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+<link href="~/css/clndr.css" rel="stylesheet">
+<!--clock css-->
+<link href="~/js/css3clock/css/style.css" rel="stylesheet">
+<!--Morris Chart CSS -->
+<link rel="stylesheet" href="~/js/morris-chart/morris.css">
+<!-- Custom styles for this template -->
+<link href="~/css/style.css" rel="stylesheet">
+<link href="~/css/style-responsive.css" rel="stylesheet" />
+
+<script src="~/Scripts/angular/angular.min.js"></script>
+<script src="~/app/scripts/DashboardController.js"></script>
+
+<style>
+    .max-lines {
+        display: block; /* or inline-block */
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 5.4em;
+        line-height: 1.8em;
+    }
+</style>
+<section class="wrapper">
+    <div ng-app="app" ng-controller="Dashboard" ng-cloak>
+
+        <div class="row">
+            <div class="col-md-3" ng-click="CashWallet();">
+                <div class="mini-stat clearfix" style="background-color:#ef7755;color:white;cursor:pointer">
+                    <span class="mini-stat-icon orange"><i class="fa fa-money"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.CashWalletBalance | currency}}</span>
+                        <p>Cash Wallet Balance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" ng-click="ReserveWallet();">
+                <div class="mini-stat clearfix" style="background-color:#1ea59d;color:white;cursor:pointer">
+                    <span class="mini-stat-icon tar"><i class="fa fa-money"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.ReserveWalletBalance | currency}}</span>
+                        <p style="margin-right:-5px !important">Reserve Wallet Balance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" ng-click="ReturnWallet();">
+                <div class="mini-stat clearfix" style="background-color:#957fbe;color:white;cursor:pointer">
+                    <span class="mini-stat-icon pink"><i class="fa fa-money"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.ReturnWalletBalance | currency}}</span>
+                        <p>Return Wallet Balance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mini-stat clearfix" style="background-color:#98b960;color:white;cursor:not-allowed">
+                    <span class="mini-stat-icon green"><i class="fa fa-money"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.FrozenWalletBalance | currency}}</span>
+                        <p>Frozen Wallet Balance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="hidden-lg col-md-3" style="cursor:pointer" ng-click="TeamMembers();">
+                <div class="mini-stat clearfix">
+                    <div class="col-md-12" style="margin-left:-20px !important">
+                        <span class="mini-stat-icon orange"><i class="fa fa-gavel"></i></span>
+                    </div>
+                    <div class="mini-stat-info">
+                        <div class="col-md-12" style="margin-left:-20px !important">
+                            <span>{{data.TotalTeamMembers}}</span>
+                        </div>
+                        <div class="col-md-12" style="margin-left:-20px !important;margin-right:-5px !important">
+                            <p style="margin-right:-35px !important">Total Team Members</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-md hidden-sm hidden-xs col-md-3" style="cursor:pointer" ng-click="TeamMembers();">
+                <div class="mini-stat clearfix">
+                    <span class="mini-stat-icon orange"><i class="fa fa-gavel"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.TotalTeamMembers}}</span>
+                        <p style="margin-right:-35px !important">Total Team Members</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="cursor:pointer">
+                <div class="mini-stat clearfix">
+                    <span class="mini-stat-icon tar"><i class="fa fa-tag"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.TotalTeamBusiness | currency}}</span>
+                        <p>Total Team Business</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="cursor:pointer" ng-click="MyPurchase();">
+                <div class="mini-stat clearfix">
+                    <span class="mini-stat-icon pink"><i class="fa fa-money"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.InitialInvestment | currency}}</span>
+                        <p>My Initial Investment</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="cursor:pointer" ng-click="MyRepurchase();">
+                <div class="mini-stat clearfix">
+                    <span class="mini-stat-icon green"><i class="fa fa-eye"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.TotalRepurchase | currency}}</span>
+                        <p style="margin-right:-20px !important">Due Withdrawal Requests</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <!--earning graph start-->
+                <section class="panel">
+                    <header class="panel-heading">
+                        <span>BTC Pro News</span> <span style="float:right"><a style="text-decoration:underline;cursor:pointer" ng-click="listClick()" ng-hide="list">Back to list</a></span>
+                    </header>
+                    <div class="panel-body">
+                        <div ng-show="list">
+                            <div class="row" ng-repeat="report in allReports" style="border-bottom:1px solid #e7e5e5;margin-top:5px">
+                                <div class="col-md-3">
+                                    <img src="https://www.btcpro.co/BtcLibrary/Images/{{report.ImageFileName}}" style="padding-top:10px;padding-left:10px;width:100%;height:100%" />
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 style="color:#0d69df"><a style="cursor:pointer" ng-click="showreport(report)"><b>{{report.NewsItemTitle}}</b></a></h4>
+                                    <p style="padding-top:2px;text-align:justify;padding-right:13px" class="max-lines">{{report.NewsItemBody}}</p>
+                                    <div class="col-md-4">
+                                        <span style="font-size:small;margin-left:-15px"><a style="cursor:pointer" ng-click="showreport(report)">Read more...</a><span style="font-size:medium">></span></span>
+                                    </div>
+                                    <div class="col-md-8" style="text-align:right;padding-top:5px">
+                                        <b>BTC Pro Management</b> {{report.CreatedDate | date}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="!list">
+                            <div class="col-md-9" style="padding-top:10px">
+                                <h4 style="color:#0d69df"><b>{{selectedreport.NewsItemTitle}}</b></h4><br />
+                                <p>{{selectedreport.CreatedDate | date}}</p>
+                                <p style="padding-top:2px;text-align:justify">{{selectedreport.NewsItemBody}}</p>
+                                <div class="col-md-12" style="text-align:left;padding-top:5px;margin-left:-15px">
+                                    <b>BTC Pro Management</b>
+                                </div>
+                            </div>
+                            <div class="col-md-3" style="padding-top:90px">
+                                <img src="https://www.btcpro.co/BtcLibrary/Images/{{selectedreport.ImageFileName}}" style="padding-top:10px;padding-left:10px;width:100%;height:100%" />
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--earning graph end-->
+            </div>
+            <div class="col-md-3">
+                <!--widget graph start-->
+                <div>
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="top-stats-panel">
+                                <h4 class="widget-h">Team Package Sales</h4>
+                                <div class="bar-stats">
+                                    <ul class="progress-stat-bar clearfix">
+                                        <li data-percent="{{data.plutopkg}}%">
+                                            <span class="progress-stat-percent pink"></span>
+                                        </li>
+                                        <li data-percent="{{data.JupiterPurchasePc}}%">
+                                            <span class="progress-stat-percent"></span>
+                                        </li>
+                                        <li data-percent="{{data.EarthPurchasePc}}%">
+                                            <span class="progress-stat-percent yellow-b"></span>
+                                        </li>
+                                        <li data-percent="{{data.MercuryPurchasePc}}%">
+                                            <span class="progress-stat-percent blue"></span>
+                                        </li>
+                                    </ul>
+                                    <ul class="bar-legend">
+                                        <li>
+                                            <span class="bar-legend-pointer pink"></span> Pluto
+                                        </li>
+                                        <li>
+                                            <span class="bar-legend-pointer green"></span> Jupiter
+                                        </li>
+                                        <li>
+                                            <span class="bar-legend-pointer yellow-b"></span> Earth
+                                        </li>
+                                        <li>
+                                            <span class="bar-legend-pointer blue"></span> Mercury
+                                        </li>
+                                    </ul>
+                                    <div class="daily-sales-info">
+                                        @*<span class="sales-count">{{data.TotalPkgPurchaseCount}}</span>*@
+                                        <span class="sales-label">Products Sold</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!--widget graph end-->
+                <!--widget graph start-->
+                <section class="panel">
+                    <div class="panel-body">
+                        <ul class="clearfix prospective-spark-bar">
+                            <li class="pull-left spark-bar-label">
+                                <span class="bar-label-value"> $18887</span>
+                                <span>Prospective Earnings</span>
+                            </li>
+                            <li class="pull-right">
+                                <div class="sparkline" data-type="bar" data-resize="true" data-height="40" data-width="90%" data-bar-color="#f6b0ae" data-bar-width="5" data-data="[300,200,500,700,654,987,457,300,876,454,788,300,200,500,700,654,987,457,300,876,454,788]"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!--widget graph end-->
+                <!--widget weather start-->
+                <!--widget weather end-->
+                @*</div>*@
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!--Core js-->
+<script src="~/js/jquery.js"></script>
+<script src="~/js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="~/bs3/js/bootstrap.min.js"></script>
+<script src="~/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="~/js/jquery.scrollTo.min.js"></script>
+<script src="~/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+<script src="~/js/jquery.nicescroll.js"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="~/js/skycons/skycons.js"></script>
+<script src="~/js/jquery.scrollTo/jquery.scrollTo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="~/js/calendar/clndr.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script src="~/js/calendar/moment-2.2.1.js"></script>
+<script src="~/js/evnt.calendar.init.js"></script>
+<script src="~/js/jvector-map/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="~/js/jvector-map/jquery-jvectormap-us-lcc-en.js"></script>
+<script src="~/js/gauge/gauge.js"></script>
+<!--clock init-->
+<script src="~/js/css3clock/js/css3clock.js"></script>
+<!--Easy Pie Chart-->
+<script src="~/js/easypiechart/jquery.easypiechart.js"></script>
+<!--Sparkline Chart-->
+<script src="~/js/sparkline/jquery.sparkline.js"></script>
+<!--Morris Chart-->
+<script src="~/js/morris-chart/morris.js"></script>
+<script src="~/js/morris-chart/raphael-min.js"></script>
+<!--jQuery Flot Chart-->
+<script src="~/js/flot-chart/jquery.flot.js"></script>
+<script src="~/js/flot-chart/jquery.flot.tooltip.min.js"></script>
+<script src="~/js/flot-chart/jquery.flot.resize.js"></script>
+<script src="~/js/flot-chart/jquery.flot.pie.resize.js"></script>
+<script src="~/js/flot-chart/jquery.flot.animator.min.js"></script>
+<script src="~/js/flot-chart/jquery.flot.growraf.js"></script>
+<script src="~/js/dashboard.js"></script>
+<script src="~/js/jquery.customSelect.min.js"></script>
+<!--common script init for all pages-->
+@*<script src="~/js/scripts.js"></script>*@
+<!--script for this page-->

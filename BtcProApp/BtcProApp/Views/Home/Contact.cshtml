@@ -1,0 +1,244 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/TreeReportController.js"></script>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .tree ul {
+        padding-top: 20px;
+        position: relative;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+    }
+
+    .tree li {
+        float: left;
+        text-align: center;
+        list-style-type: none;
+        position: relative;
+        padding: 20px 5px 0 5px;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+    }
+
+        /*We will use ::before and ::after to draw the connectors*/
+
+        .tree li::before, .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            border-top: 1px solid #ccc;
+            width: 50%;
+            height: 20px;
+        }
+
+        .tree li::after {
+            right: auto;
+            left: 50%;
+            border-left: 1px solid #ccc;
+        }
+
+        /*We need to remove left-right connectors from elements without any siblings*/
+        .tree li:only-child::after, .tree li:only-child::before {
+            display: none;
+        }
+
+        /*Remove space from the top of single children*/
+        .tree li:only-child {
+            padding-top: 0;
+        }
+
+        /*Remove left connector from first child and right connector from last child*/
+        .tree li:first-child::before, .tree li:last-child::after {
+            border: 0 none;
+        }
+        /*Adding back the vertical connector to the last nodes*/
+        .tree li:last-child::before {
+            border-right: 1px solid #ccc;
+            border-radius: 0 5px 0 0;
+            -webkit-border-radius: 0 5px 0 0;
+            -moz-border-radius: 0 5px 0 0;
+        }
+
+        .tree li:first-child::after {
+            border-radius: 5px 0 0 0;
+            -webkit-border-radius: 5px 0 0 0;
+            -moz-border-radius: 5px 0 0 0;
+        }
+
+    /*Time to add downward connectors from parents*/
+    .tree ul ul::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        border-left: 1px solid #ccc;
+        width: 0;
+        height: 20px;
+    }
+
+    .tree li a {
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        text-decoration: none;
+        color: #666;
+        font-family: arial, verdana, tahoma;
+        font-size: 11px;
+        display: inline-block;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+    }
+
+        /*Time for some hover effects*/
+        /*We will apply the hover effect the the lineage of the element also*/
+        .tree li a:hover, .tree li a:hover + ul li a {
+            background: #c8e4f8;
+            color: #000;
+            border: 1px solid #94a0b4;
+        }
+            /*Connector styles on hover*/
+            .tree li a:hover + ul li::after,
+            .tree li a:hover + ul li::before,
+            .tree li a:hover + ul::before,
+            .tree li a:hover + ul ul::before {
+                border-color: #94a0b4;
+            }
+</style>
+
+<style type="text/css">
+    .high-light {
+        color: darkred;
+        /*padding-top:5px;
+        padding-bottom:5px;*/
+    }
+
+    .line-bold {
+        font-weight: 800;
+        color: darkblue;
+        background-color: #e6eaea;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    ul.tree, ul.tree ul {
+        list-style-type: none;
+        background: url('../../Content/vline.png') repeat-y;
+        margin: 0;
+        padding: 0;
+    }
+
+        ul.tree ul {
+            margin-left: 5px;
+        }
+
+        ul.tree li {
+            margin: 0;
+            padding: 0 12px;
+            line-height: 16px;
+            background: url('../../Content/tline.png') no-repeat;
+            color: #369;
+            font-weight: bold;
+        }
+
+            ul.tree li:last-child {
+                background: #fff url('../../Content/tline.png') no-repeat;
+                background-color: white;
+            }
+</style>
+
+<section>
+    <div class="row">
+        <div ng-app="app" ng-cloak>
+            <div ng-controller="Test" style="margin-top: 100px;margin-left: 50px;">
+
+                <input type="text" ng-model="searchname" /><button ng-click="search()">Fetch</button><span>  Levels:<input ng-model="level"/></span>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>User name</th>
+                            <th>Referrer</th>
+                            <th>Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="row in treedata">
+                            <td>{{row.Username}}</td>
+                            <td>{{row.Referrerusername}}</td>
+                            <td>{{row.Level}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <div class="tree panel" style="min-height:750px;text-align:center" ng-bind-html="trustedHtml"></div>
+                <br />
+
+                @*<div style="">
+                    <script type="text/ng-template" id="tree_item_renderer.html">
+                        <div ng-show="data.show" style="padding-top:5px;width:100%">
+                            <div style="margin-top:-5px;margin-left:-5px;width:inherit;cursor:default;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-weight:400;font-size:16px" ng-class="{'high-light':data.ishighlighted,'line-bold':data.level==0}" ng-mouseenter="data.ishighlighted=true" ng-mouseleave="data.ishighlighted=false">
+                                <div ng-if="data.haschildren" style="display:inline-block;width:5px">
+                                    <div ng-if="data.isexpanded" style="margin-left:10px;margin-top:3px;"><a style="cursor:pointer" ng-click="data.isexpanded=!data.isexpanded;preshowhideChildren(data,false)"><i class="fa fa-minus"></i></a></div>
+                                    <div ng-if="!data.isexpanded" style="margin-left:10px;margin-top:3px;"><a style="cursor:pointer" ng-click="data.isexpanded=!data.isexpanded;preshowhideChildren(data,true)"><i class="fa fa-plus"></i></a></div>
+                                </div>
+                                <div ng-if="!data.haschildren" style="display:inline-block;">
+                                    &nbsp;
+                                </div>
+                                <div style="display:inline-block;margin-left:5px">{{data.description}}</div>
+                                <div style="display:inline-block;position:absolute;left:800px;padding-top:3px"> {{data.shortname}} </div>
+                            </div>
+                        </div>
+                        <hr style="left:5px;padding:0px;margin:0px;outline-color:black" ng-show="data.show" />
+                        <ul class="tree">
+                            <li ng-repeat="data in data.nodes" ng-include="'tree_item_renderer.html'"></li>
+                        </ul>
+                    </script>
+                    <div style="position:relative;margin-top:200px">
+                        <div class="panel panel-header" style="width:100%;line-height:25px;z-index:80;padding:5px;color:white;background-color:rgb(23, 129, 188)">
+                            <label style="margin-left:38px">Permission</label>
+                            <label style="margin-left:572px">Description</label>
+                        </div>
+                        <div class="panel panel-body" style="margin-top:-20px;padding:10px;width:100%">
+                            <div><input type="text" style="width:400px" ng-model="searchtext" placeholder="Type your search text here" /></div>
+                            <div style="margin-top:10px;width:100%">
+                                <ul class="tree">
+                                    <li ng-repeat="data in tree | filter:searchtext" ng-include="'tree_item_renderer.html'"></li>
+                                </ul>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>*@
+
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@*<script>
+        var module = angular.module('app', []);
+        module.controller('Test', function ($scope) {
+            $scope.message = "Test message";
+
+            $scope.hello = function () {
+                alert("hello");
+            }
+        });
+    </script>*@

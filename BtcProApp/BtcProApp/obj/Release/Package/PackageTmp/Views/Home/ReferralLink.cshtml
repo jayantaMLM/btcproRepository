@@ -1,0 +1,25 @@
+﻿<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/ReferralLink.js"></script>
+
+<section class="wrapper" style="background-color:rgba(211, 211, 211, 0.5)">
+    <div ng-app="app" ng-controller="ReferralLink" ng-cloak>
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class="fa fa-sitemap" style="color:green"></i> Referral Link and Working Leg
+                    </header>
+                    <div class="panel-body">
+                        <div><h4><span>My referral link:</span><span style="color:green;display:inline-block">&nbsp;&nbsp;&nbsp;&nbsp;{{path}}</span><span style="color:green">/{{user}}</span></h4></div>
+                        <br />
+                        <br />
+                        <h4>My working leg:&nbsp;&nbsp;&nbsp;<input type="radio" name="Position" value="L" ng-model="position" ng-click="setPosition()" />&nbsp;Left Leg &nbsp;&nbsp;&nbsp;<input type="radio" name="Position" value="R" ng-model="position" ng-click="setPosition()" />&nbsp;Right Leg</h4>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

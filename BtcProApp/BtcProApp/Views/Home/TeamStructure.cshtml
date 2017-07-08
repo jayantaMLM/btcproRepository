@@ -1,0 +1,516 @@
+﻿@{
+            ViewBag.Title = "MyTeam";
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+<script src="example.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+@*<script src="~/Scripts/angular.min.js"></script>*@
+<script src="~/app/scripts/TeamStructureController.js"></script>
+@*<script>
+    alert("Hi");
+</script>*@
+<style>
+    * {
+        /*margin: 0;
+        padding: 0;*/
+        font-family: sans-serif,Arial;
+        font-size: 10pt;
+    }
+
+    ul, .list-unstyled {
+        padding-left: 0px !important;
+    }
+
+    .tree {
+        white-space: nowrap;
+        min-width: 800px;
+        min-height: 500px;
+    }
+    .tree .imgclass{
+        width:20px;
+        height:20px;
+    }
+        .tree ul {
+            padding-top: 20px;
+            position: relative;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+
+        .tree li {
+            float: left;
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 5px 0 5px;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+
+            /*We will use ::before and ::after to draw the connectors*/
+
+            .tree li::before, .tree li::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 50%;
+                border-top: 1px solid #ccc;
+                width: 50%;
+                height: 20px;
+            }
+
+            .tree li::after {
+                right: auto;
+                left: 50%;
+                border-left: 1px solid #ccc;
+            }
+
+            /*We need to remove left-right connectors from elements without any siblings*/
+            .tree li:only-child::after, .tree li:only-child::before {
+                display: none;
+            }
+
+            /*Remove space from the top of single children*/
+            .tree li:only-child {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                /*background-color:aliceblue;*/
+            }
+
+            /*Remove left connector from first child and right connector from last child*/
+            .tree li:first-child::before, .tree li:last-child::after {
+                border: 0 none;
+            }
+            /*Adding back the vertical connector to the last nodes*/
+            .tree li:last-child::before {
+                border-right: 1px solid #ccc;
+                border-radius: 0 5px 0 0;
+                -webkit-border-radius: 0 5px 0 0;
+                -moz-border-radius: 0 5px 0 0;
+            }
+
+            .tree li:first-child::after {
+                border-radius: 5px 0 0 0;
+                -webkit-border-radius: 5px 0 0 0;
+                -moz-border-radius: 5px 0 0 0;
+            }
+
+        /*Time to add downward connectors from parents*/
+        .tree ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 1px solid #ccc;
+            width: 0;
+            height: 20px;
+        }
+
+        .tree li div {
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: #666;
+            font-family: arial, verdana, tahoma;
+            font-size: 11px;
+            display: inline-block;
+            min-width: 80px;
+            min-height: 30px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+
+        .tree li a {
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+            text-decoration: none;
+            color: black;
+            background-color: white;
+            cursor: pointer;
+            font-family: arial, verdana, tahoma;
+            font-size: 11px;
+            display: inline-block;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+
+            /*Time for some hover effects*/
+            /*We will apply the hover effect the the lineage of the element also*/
+            .tree li a:hover, .tree li a:hover + ul li a {
+                background: #c8e4f8;
+                color: #000;
+                border: 1px solid #94a0b4;
+            }
+                /*Connector styles on hover*/
+                .tree li a:hover + ul li::after,
+                .tree li a:hover + ul li::before,
+                .tree li a:hover + ul::before,
+                .tree li a:hover + ul ul::before {
+                    border-color: #94a0b4;
+                }
+</style>
+
+<style type="text/css">
+    .high-light {
+        color: darkred;
+        /*padding-top:5px;
+                padding-bottom:5px;*/
+    }
+
+    .line-bold {
+        font-weight: 800;
+        color: darkblue;
+        background-color: #e6eaea;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    ul.tree, ul.tree ul {
+        list-style-type: none;
+        background: url('../../Content/vline.png') repeat-y;
+        margin: 0;
+        padding: 0;
+    }
+
+        ul.tree ul {
+            margin-left: 5px;
+        }
+
+        ul.tree li {
+            margin: 0;
+            padding: 0 12px;
+            line-height: 16px;
+            background: url('../../Content/tline.png') no-repeat;
+            color: #369;
+            font-weight: bold;
+        }
+
+            ul.tree li:last-child {
+                background: #fff url('../../Content/tline.png') no-repeat;
+                background-color: white;
+            }
+</style>
+
+<section class="wrapper" style="background-color:rgba(211, 211, 211, 0.5)" >
+    <div ng-app="app" ng-controller="TeamTree" ng-cloak>
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class="fa fa-rotate-180 fa-code-fork" style="color:green"></i> My TEAM Structure <span><img src="~/Content/loader.gif" ng-show="loading==true" /></span>
+                    </header>
+                    <div class="panel-body">
+                        <input type="text" ng-model="searchname" /><button ng-click="search()">Search</button>
+                        @*<div>
+                            <h4>Dynamic</h4>
+                            <div class="form-group">
+                                <label>Popup Text:</label>
+                                <input type="text" ng-model="dynamicPopover.content" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Popup Title:</label>
+                                <input type="text" ng-model="dynamicPopover.title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Popup Template:</label>
+                                <input type="text" ng-model="dynamicPopover.templateUrl" class="form-control">
+                            </div>
+                            <button uib-popover="{{dynamicPopover.content}}" popover-title="{{dynamicPopover.title}}" type="button" class="btn btn-default">Dynamic Popover</button>
+                            <button uib-popover-template="dynamicPopover.templateUrl" popover-title="{{dynamicPopover.title}}" type="button" class="btn btn-default">Popover With Template</button>
+                            <script type="text/ng-template" id="myPopoverTemplate.html">
+                                <div>{{dynamicPopover.content}}</div>
+                                <div class="form-group">
+                                    <label>Popup Title:</label>
+                                    <input type="text" ng-model="dynamicPopover.title" class="form-control">
+                                </div>
+                            </script>
+                            <hr />
+                            <h4>Positional</h4>
+                            <div class="form-group">
+                                <label>Popover placement</label>
+                                <select class="form-control" ng-model="placement.selected" ng-options="o as o for o in placement.options"></select>
+                            </div>
+                            <button popover-placement="{{placement.selected}}" uib-popover="On the {{placement.selected}}" type="button" class="btn btn-default">Popover {{placement.selected}}</button>
+                            <hr />
+                            <h4>Triggers</h4>
+                            <p>
+                                <button uib-popover="I appeared on mouse enter!" popover-trigger="'mouseenter'" type="button" class="btn btn-default">Mouseenter</button>
+                            </p>
+                            <input type="text" value="Click me!" uib-popover="I appeared on focus! Click away and I'll vanish..." popover-trigger="'focus'" class="form-control">
+                            <hr />
+                            <h4>Other</h4>
+                            <button popover-animation="true" uib-popover="I fade in and out!" type="button" class="btn btn-default">fading</button>
+                            <button uib-popover="I have a title!" popover-title="The title." type="button" class="btn btn-default">title</button>
+                            <button uib-popover="I am activated manually" popover-is-open="popoverIsOpen" ng-click="popoverIsOpen = !popoverIsOpen" type="button" class="btn btn-default">Toggle popover</button>
+                            <button uib-popover-html="htmlPopover" class="btn btn-default">HTML Popover</button>
+                            <button uib-popover-html="'<b>HTML</b>, <i>inline</i>'" class="btn btn-default">HTML Popover (inline)</button>
+                        </div>*@
+                        <div>
+                            <div class="tree panel" style="min-height:750px;text-align:center;margin-top:15px;width:1000px;margin:0 auto" ng-bind-html="trustedHtml"></div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif,Arial;
+            font-size: 10pt;
+        }
+
+        ul, .list-unstyled {
+            padding-left: 0px !important;
+        }
+
+        .tree {
+            white-space: nowrap;
+            min-width: 800px;
+            min-height: 500px;
+        }
+
+            .tree ul {
+                padding-top: 20px;
+                position: relative;
+                transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+            }
+
+            .tree li {
+                float: left;
+                text-align: center;
+                list-style-type: none;
+                position: relative;
+                padding: 20px 5px 0 5px;
+                transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+            }
+                /*We will use ::before and ::after to draw the connectors*/
+                .tree li::before, .tree li::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 50%;
+                    border-top: 1px solid #ccc;
+                    width: 50%;
+                    height: 20px;
+                }
+
+                .tree li::after {
+                    right: auto;
+                    left: 50%;
+                    border-left: 1px solid #ccc;
+                }
+                /*We need to remove left-right connectors from elements without any siblings*/
+                .tree li:only-child::after, .tree li:only-child::before {
+                    display: none;
+                }
+                /*Remove space from the top of single children*/
+                .tree li:only-child {
+                    padding-top: 0;
+                }
+                /*Remove left connector from first child and right connector from last child*/
+                .tree li:first-child::before, .tree li:last-child::after {
+                    border: 0 none;
+                }
+                /*Adding back the vertical connector to the last nodes*/
+                .tree li:last-child::before {
+                    border-right: 1px solid #ccc;
+                    border-radius: 0 5px 0 0;
+                    -webkit-border-radius: 0 5px 0 0;
+                    -moz-border-radius: 0 5px 0 0;
+                }
+
+                .tree li:first-child::after {
+                    border-radius: 5px 0 0 0;
+                    -webkit-border-radius: 5px 0 0 0;
+                    -moz-border-radius: 5px 0 0 0;
+                }
+            /*Time to add downward connectors from parents*/
+            .tree ul ul::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                border-left: 1px solid #ccc;
+                width: 0;
+                height: 20px;
+            }
+
+            .tree li div {
+                border: 1px solid #ccc;
+                padding: 5px 10px;
+                text-decoration: none;
+                color: #666;
+                font-family: arial, verdana, tahoma;
+                font-size: 11px;
+                display: inline-block;
+                min-width: 80px;
+                min-height: 30px;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+            }
+
+                .tree li div .male {
+                    background-color: lightblue;
+                    display: inline-block;
+                    width: 90px;
+                    padding: 10px;
+                    border-radius: 5px;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                }
+
+                .tree li div .female {
+                    background-color: lightpink;
+                    display: inline-block;
+                    width: 90px;
+                    padding: 10px;
+                    border-radius: 5px;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                }
+
+                .tree li div .spacer {
+                    background-color: lightblue;
+                    display: inline-block;
+                    width: 10px;
+                }
+                /*Time for some hover effects*/
+                /*We will apply the hover effect the the lineage of the element also*/
+                .tree li div:hover, .tree li div:hover + ul li div {
+                    background: #c8e4f8;
+                    color: #000;
+                    border: 1px solid #94a0b4;
+                }
+                    /*Connector styles on hover*/
+                    .tree li div:hover + ul li::after,
+                    .tree li div:hover + ul li::before,
+                    .tree li div:hover + ul::before,
+                    .tree li div:hover + ul ul::before {
+                        border-color: #94a0b4;
+                    }
+    </style>
+
+    </head>
+    <body>
+
+        <form id="form1">
+
+            <div class="tree" id="FamilyTreeDiv" style="width:100%;min-height:500px;border:1px solid red">
+                <div style="margin:0 auto;border:1px solid blue;min-height:400px">
+                    <ul style="margin:0 auto;">
+
+                        <li>
+                            <div>
+                                <span class="male">
+                                    Joe Mighty
+                                </span>
+                            </div>
+
+
+                            <ul>
+
+                                <li>
+
+                                    <div><span class="male">Sam Snow</span></div>
+
+
+                                    <ul>
+
+                                        <li>
+                                            <div><span class="male">Ralf Snow</span></div>
+                                        </li>
+
+
+                                        <li>
+                                            <div><span class="female">Brie Snow</span></div>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+
+
+                                <li>
+
+                                    <div><span class="male">Jim Snow</span></div>
+
+
+                                    <ul>
+
+                                        <li>
+                                            <div><span class="male">Ralf Snow</span></div>
+
+
+                                            <ul>
+
+                                                <li>
+                                                    <div>
+                                                        <span class="female">
+                                                            Magna Snow
+                                                        </span>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+
+
+                                        <li>
+                                            <div>
+                                                <span class="female">
+                                                    Brie Snow
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+
+
+                                <li>
+                                    <div>
+                                        <span class="male">
+                                            John Snow
+                                        </span>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </form>*@
+
+@*</body>*@

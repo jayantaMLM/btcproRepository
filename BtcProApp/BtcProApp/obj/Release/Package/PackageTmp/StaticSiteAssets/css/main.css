@@ -1,0 +1,154 @@
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  color: white;
+  background: #3B74EC;
+  background: -webkit-linear-gradient(-45deg, #3B74EC 0%, #B65AFC 100%); }
+  .hero .overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed; }
+  .hero .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-height: 100%; }
+    @media screen and (max-width: 720px) {
+      .hero .content {
+        margin: 50px 0; } }
+    @media screen and (max-width: 720px) {
+      .hero .content {
+        width: 100%; } }
+    .hero .content .heading {
+      font-family: "Share Tech Mono";
+      font-weight: 900;
+      /*text-transform: uppercase;*/
+      letter-spacing: .7em;
+      font-size: 4rem;
+      padding: 0 0 0 .7em; }
+      @media screen and (max-width: 720px) {
+        .hero .content .heading {
+          font-size: 3rem; } }
+    .hero .content .count-box {
+      display: inline-block;
+      padding: 50px;
+      font-family: "Share Tech Mono"; }
+      @media screen and (max-width: 720px) {
+        .hero .content .count-box {
+          box-sizing: border-box;
+          padding: 50px 0;
+          width: 25%; } }
+      .hero .content .count-box .countdown-num {
+        font-size: 42px;
+        margin: 0; }
+      .hero .content .count-box h4 {
+        margin: 0;
+        margin-top: 20px;
+        letter-spacing: .15em; }
+        .hero .content .count-box h4:first-letter {
+          text-transform: uppercase; }
+    .hero .content .description {
+      font-family: "Space Mono";
+      line-height: 42px;
+      font-size: 24px;
+      letter-spacing: .15rem;
+      padding: 0 20px;
+      width: 700px;
+      margin: auto; }
+      @media screen and (max-width: 980px) {
+        .hero .content .description {
+          padding: 0; } }
+      @media screen and (max-width: 720px) {
+        .hero .content .description {
+          width: 90%;
+          padding: 0; } }
+    .hero .content .links {
+      max-width: 600px;
+      margin: 50px auto 0;
+      text-align: center; }
+      @media screen and (max-width: 720px) {
+        .hero .content .links {
+          margin: 50px auto; } }
+      .hero .content .links a {
+        cursor: pointer;
+        width: 170px;
+        display: inline-block;
+        padding: 15px 0;
+        margin: 0 15px;
+        border: 1px solid #fff;
+        color: #fff;
+        text-decoration: none;
+        font-family: "Space Mono";
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: .1rem;
+        position: relative;
+        background: #fff;
+        color: #000;
+        transition: background .4s, color .4s; }
+        @media screen and (max-width: 720px) {
+          .hero .content .links a {
+            display: block;
+            margin: 20px auto;
+            width: 80%; } }
+        .hero .content .links a:hover {
+          background: rgba(255, 255, 255, 0);
+          color: #fff; }
+
+
+
+#particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color:-webkit-linear-gradient(-45deg, #3B74EC 0%, #B65AFC 100%); 
+      background: -webkit-linear-gradient(-45deg, #3B74EC 0%, #B65AFC 100%); 
+      /*background: -webkit-linear-gradient(-45deg, #1a1862 0%,  #01040d 100%);*/
+    
+      /*color:-webkit-linear-gradient(-45deg, #3B74EC 0%, #B65AFC 100%); 
+      background-image: url(".\\mountain1.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;*/
+      /*background-position: 50% 50%;*/
+    }
+    /* ---- stats.js ---- */
+    
+    .count-particles {
+      background: #000022;
+      position: absolute;
+      top: 48px;
+      left: 0;
+      width: 80px;
+      color: #13E8E9;
+      font-size: .8em;
+      text-align: left;
+      text-indent: 4px;
+      line-height: 14px;
+      padding-bottom: 2px;
+      font-family: Helvetica, Arial, sans-serif;
+      font-weight: bold;
+    }
+    
+    .js-count-particles {
+      font-size: 1.1em;
+    }
+    
+    #stats,
+    .count-particles {
+      -webkit-user-select: none;
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+    
+    #stats {
+      border-radius: 3px 3px 0 0;
+      overflow: hidden;
+    }
+    
+    .count-particles {
+      border-radius: 0 0 3px 3px;
+    }

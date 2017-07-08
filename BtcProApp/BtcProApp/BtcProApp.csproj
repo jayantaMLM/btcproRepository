@@ -1,0 +1,2213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FA418EC7-A7E7-462E-BB55-070A027FF0F8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BtcProApp</RootNamespace>
+    <AssemblyName>BtcProApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ipnsController.cs" />
+    <Compile Include="Controllers\KYCDocumentsController.cs" />
+    <Compile Include="Controllers\LibraryController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\NewsReportsController.cs" />
+    <Compile Include="Controllers\RegistersController.cs" />
+    <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\WithdrawalRequestsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705021838042_Register.cs" />
+    <Compile Include="Migrations\201705021838042_Register.Designer.cs">
+      <DependentUpon>201705021838042_Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705061411365_Tables_03.cs" />
+    <Compile Include="Migrations\201705061411365_Tables_03.Designer.cs">
+      <DependentUpon>201705061411365_Tables_03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705061711420_Register-Joined.cs" />
+    <Compile Include="Migrations\201705061711420_Register-Joined.Designer.cs">
+      <DependentUpon>201705061711420_Register-Joined.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705061830119_ReferrerId-Register.cs" />
+    <Compile Include="Migrations\201705061830119_ReferrerId-Register.Designer.cs">
+      <DependentUpon>201705061830119_ReferrerId-Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705070929424_Assorted_Changes1.cs" />
+    <Compile Include="Migrations\201705070929424_Assorted_Changes1.Designer.cs">
+      <DependentUpon>201705070929424_Assorted_Changes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705071226254_Assorted_Changes2.cs" />
+    <Compile Include="Migrations\201705071226254_Assorted_Changes2.Designer.cs">
+      <DependentUpon>201705071226254_Assorted_Changes2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705071308246_Assorted_Changes3.cs" />
+    <Compile Include="Migrations\201705071308246_Assorted_Changes3.Designer.cs">
+      <DependentUpon>201705071308246_Assorted_Changes3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705071456156_Assorted_Changes4.cs" />
+    <Compile Include="Migrations\201705071456156_Assorted_Changes4.Designer.cs">
+      <DependentUpon>201705071456156_Assorted_Changes4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705071504493_Assorted_Changes5.cs" />
+    <Compile Include="Migrations\201705071504493_Assorted_Changes5.Designer.cs">
+      <DependentUpon>201705071504493_Assorted_Changes5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705071535547_temp.cs" />
+    <Compile Include="Migrations\201705071535547_temp.Designer.cs">
+      <DependentUpon>201705071535547_temp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705071638090_Misc1.cs" />
+    <Compile Include="Migrations\201705071638090_Misc1.Designer.cs">
+      <DependentUpon>201705071638090_Misc1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705071647383_Misc2.cs" />
+    <Compile Include="Migrations\201705071647383_Misc2.Designer.cs">
+      <DependentUpon>201705071647383_Misc2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705081616531_WeeklyIncomes.cs" />
+    <Compile Include="Migrations\201705081616531_WeeklyIncomes.Designer.cs">
+      <DependentUpon>201705081616531_WeeklyIncomes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705081618191_WeeklyIncomes1.cs" />
+    <Compile Include="Migrations\201705081618191_WeeklyIncomes1.Designer.cs">
+      <DependentUpon>201705081618191_WeeklyIncomes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705081722473_WeeklyIncomes2.cs" />
+    <Compile Include="Migrations\201705081722473_WeeklyIncomes2.Designer.cs">
+      <DependentUpon>201705081722473_WeeklyIncomes2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705081841032_WeeklyIncomes3.cs" />
+    <Compile Include="Migrations\201705081841032_WeeklyIncomes3.Designer.cs">
+      <DependentUpon>201705081841032_WeeklyIncomes3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705081951180_Otherincome.cs" />
+    <Compile Include="Migrations\201705081951180_Otherincome.Designer.cs">
+      <DependentUpon>201705081951180_Otherincome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705090300567_Otherincomes.cs" />
+    <Compile Include="Migrations\201705090300567_Otherincomes.Designer.cs">
+      <DependentUpon>201705090300567_Otherincomes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705091616412_BinaryIncome_Update.cs" />
+    <Compile Include="Migrations\201705091616412_BinaryIncome_Update.Designer.cs">
+      <DependentUpon>201705091616412_BinaryIncome_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705091623439_BinaryIncome_Update1.cs" />
+    <Compile Include="Migrations\201705091623439_BinaryIncome_Update1.Designer.cs">
+      <DependentUpon>201705091623439_BinaryIncome_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705091649311_BinaryIncome_Update2.cs" />
+    <Compile Include="Migrations\201705091649311_BinaryIncome_Update2.Designer.cs">
+      <DependentUpon>201705091649311_BinaryIncome_Update2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705100457518_Ledger_Update.cs" />
+    <Compile Include="Migrations\201705100457518_Ledger_Update.Designer.cs">
+      <DependentUpon>201705100457518_Ledger_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705131302496_Wallets.cs" />
+    <Compile Include="Migrations\201705131302496_Wallets.Designer.cs">
+      <DependentUpon>201705131302496_Wallets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705180322223_NewTables.cs" />
+    <Compile Include="Migrations\201705180322223_NewTables.Designer.cs">
+      <DependentUpon>201705180322223_NewTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705231515333_TrxPassword_added.cs" />
+    <Compile Include="Migrations\201705231515333_TrxPassword_added.Designer.cs">
+      <DependentUpon>201705231515333_TrxPassword_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241002205_Ticket.cs" />
+    <Compile Include="Migrations\201705241002205_Ticket.Designer.cs">
+      <DependentUpon>201705241002205_Ticket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241146327_date.cs" />
+    <Compile Include="Migrations\201705241146327_date.Designer.cs">
+      <DependentUpon>201705241146327_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241148537_date1.cs" />
+    <Compile Include="Migrations\201705241148537_date1.Designer.cs">
+      <DependentUpon>201705241148537_date1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241155061_date2.cs" />
+    <Compile Include="Migrations\201705241155061_date2.Designer.cs">
+      <DependentUpon>201705241155061_date2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241420320_data4.cs" />
+    <Compile Include="Migrations\201705241420320_data4.Designer.cs">
+      <DependentUpon>201705241420320_data4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241423149_data5.cs" />
+    <Compile Include="Migrations\201705241423149_data5.Designer.cs">
+      <DependentUpon>201705241423149_data5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241427469_data6.cs" />
+    <Compile Include="Migrations\201705241427469_data6.Designer.cs">
+      <DependentUpon>201705241427469_data6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705301428136_CountryTable.cs" />
+    <Compile Include="Migrations\201705301428136_CountryTable.Designer.cs">
+      <DependentUpon>201705301428136_CountryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706041348032_ProcessFields.cs" />
+    <Compile Include="Migrations\201706041348032_ProcessFields.Designer.cs">
+      <DependentUpon>201706041348032_ProcessFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706050232397_WithdrawalRequests.cs" />
+    <Compile Include="Migrations\201706050232397_WithdrawalRequests.Designer.cs">
+      <DependentUpon>201706050232397_WithdrawalRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706050346228_Amount_edited.cs" />
+    <Compile Include="Migrations\201706050346228_Amount_edited.Designer.cs">
+      <DependentUpon>201706050346228_Amount_edited.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706050408150_update-date.cs" />
+    <Compile Include="Migrations\201706050408150_update-date.Designer.cs">
+      <DependentUpon>201706050408150_update-date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061721272_WalletAccount.cs" />
+    <Compile Include="Migrations\201706061721272_WalletAccount.Designer.cs">
+      <DependentUpon>201706061721272_WalletAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706070238035_WithdrawalRequest_BatchNo.cs" />
+    <Compile Include="Migrations\201706070238035_WithdrawalRequest_BatchNo.Designer.cs">
+      <DependentUpon>201706070238035_WithdrawalRequest_BatchNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706070805392_BinaryOpenings.cs" />
+    <Compile Include="Migrations\201706070805392_BinaryOpenings.Designer.cs">
+      <DependentUpon>201706070805392_BinaryOpenings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706070818571_BinaryOpenings_Update.cs" />
+    <Compile Include="Migrations\201706070818571_BinaryOpenings_Update.Designer.cs">
+      <DependentUpon>201706070818571_BinaryOpenings_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706070826515_BinaryOpenings_Update1.cs" />
+    <Compile Include="Migrations\201706070826515_BinaryOpenings_Update1.Designer.cs">
+      <DependentUpon>201706070826515_BinaryOpenings_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706090159288_WithdrawalRequest_newfield_ReferenceNo.cs" />
+    <Compile Include="Migrations\201706090159288_WithdrawalRequest_newfield_ReferenceNo.Designer.cs">
+      <DependentUpon>201706090159288_WithdrawalRequest_newfield_ReferenceNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706100524105_WithdrawalRequest_update_BitCoinAcfieldadded.cs" />
+    <Compile Include="Migrations\201706100524105_WithdrawalRequest_update_BitCoinAcfieldadded.Designer.cs">
+      <DependentUpon>201706100524105_WithdrawalRequest_update_BitCoinAcfieldadded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706131843528_Register_WorkingLeg.cs" />
+    <Compile Include="Migrations\201706131843528_Register_WorkingLeg.Designer.cs">
+      <DependentUpon>201706131843528_Register_WorkingLeg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706150126287_NewsReport.cs" />
+    <Compile Include="Migrations\201706150126287_NewsReport.Designer.cs">
+      <DependentUpon>201706150126287_NewsReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706181852212_ipn.cs" />
+    <Compile Include="Migrations\201706181852212_ipn.Designer.cs">
+      <DependentUpon>201706181852212_ipn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706182000360_ipn_update.cs" />
+    <Compile Include="Migrations\201706182000360_ipn_update.Designer.cs">
+      <DependentUpon>201706182000360_ipn_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706230205598_WithdrawalRequest_addfield_comment.cs" />
+    <Compile Include="Migrations\201706230205598_WithdrawalRequest_addfield_comment.Designer.cs">
+      <DependentUpon>201706230205598_WithdrawalRequest_addfield_comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706250538455_Ledger_field_comment.cs" />
+    <Compile Include="Migrations\201706250538455_Ledger_field_comment.Designer.cs">
+      <DependentUpon>201706250538455_Ledger_field_comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706260832115_Register_addfield_isblocked.cs" />
+    <Compile Include="Migrations\201706260832115_Register_addfield_isblocked.Designer.cs">
+      <DependentUpon>201706260832115_Register_addfield_isblocked.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706280325188_KYCTable_newFields.cs" />
+    <Compile Include="Migrations\201706280325188_KYCTable_newFields.Designer.cs">
+      <DependentUpon>201706280325188_KYCTable_newFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706280411572_KYCTable_addField_Date.cs" />
+    <Compile Include="Migrations\201706280411572_KYCTable_addField_Date.Designer.cs">
+      <DependentUpon>201706280411572_KYCTable_addField_Date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706291912137_CryptoCurrency_Table.cs" />
+    <Compile Include="Migrations\201706291912137_CryptoCurrency_Table.Designer.cs">
+      <DependentUpon>201706291912137_CryptoCurrency_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706300718367_Cryptocurrencies_update.cs" />
+    <Compile Include="Migrations\201706300718367_Cryptocurrencies_update.Designer.cs">
+      <DependentUpon>201706300718367_Cryptocurrencies_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BtcProDB.cs" />
+    <Compile Include="Models\CoinPayment.cs" />
+    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SessionExpire.cs" />
+    <Compile Include="Models\ViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="404.html" />
+    <Content Include="500.html" />
+    <Content Include="advanced_form.html" />
+    <Content Include="app\scripts\FixedPayoutController.js" />
+    <Content Include="app\scripts\AdminTransferController.js" />
+    <Content Include="app\scripts\BusinessReportController.js" />
+    <Content Include="app\scripts\CashIncomeWalletController.js" />
+    <Content Include="app\scripts\ContactusController.js" />
+    <Content Include="app\scripts\DashboardController.js" />
+    <Content Include="app\scripts\EditProfileController.js" />
+    <Content Include="app\scripts\FixedIncomeWalletController.js" />
+    <Content Include="app\scripts\GenerationStructureController.js" />
+    <Content Include="app\scripts\ManageNewsController.js" />
+    <Content Include="app\scripts\MemberAreaController.js" />
+    <Content Include="app\scripts\MemberBlockUnblockController.js" />
+    <Content Include="app\scripts\MemberTransferController.js" />
+    <Content Include="app\scripts\MemberWithdrawalController.js" />
+    <Content Include="app\scripts\MyIllustrationController.js" />
+    <Content Include="app\scripts\MyPurchaseController.js" />
+    <Content Include="app\scripts\PackageShopController.js" />
+    <Content Include="app\scripts\PasswordChangeController.js" />
+    <Content Include="app\scripts\PayoutByAdmin.js" />
+    <Content Include="app\scripts\ReferralLink.js" />
+    <Content Include="app\scripts\RegistrationController.js" />
+    <Content Include="app\scripts\ReserveIncomeWalletController.js" />
+    <Content Include="app\scripts\TeamMemberController.js" />
+    <Content Include="app\scripts\TeamStructureController.js" />
+    <Content Include="app\scripts\TicketController.js" />
+    <Content Include="app\scripts\TreeReportController.js" />
+    <Content Include="app\scripts\TeamStructureNewController.js" />
+    <Content Include="app\scripts\TrnPasswordChangeController.js" />
+    <Content Include="app\scripts\UploadBitCoinController.js" />
+    <Content Include="app\scripts\UploadKycController.js" />
+    <Content Include="basic_table.html" />
+    <Content Include="blank.html" />
+    <Content Include="boxed_page.html" />
+    <Content Include="bs3\css\bootstrap-theme.css" />
+    <Content Include="bs3\css\bootstrap-theme.min.css" />
+    <Content Include="bs3\css\bootstrap.css" />
+    <Content Include="bs3\css\bootstrap.min.css" />
+    <Content Include="bs3\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bs3\js\bootstrap.js" />
+    <Content Include="bs3\js\bootstrap.min.js" />
+    <Content Include="bucket-ico-fonts\bucket-ico-font.svg" />
+    <Content Include="buttons.html" />
+    <Content Include="c3_chart.html" />
+    <Content Include="calendar.html" />
+    <Content Include="chartjs.html" />
+    <Content Include="Content\angular-material.css" />
+    <Content Include="Content\angular-material.layout-attributes.css" />
+    <Content Include="Content\angular-material.layout-attributes.min.css" />
+    <Content Include="Content\angular-material.layouts.css" />
+    <Content Include="Content\angular-material.layouts.ie_fixes.css" />
+    <Content Include="Content\angular-material.layouts.min.css" />
+    <Content Include="Content\angular-material.min.css" />
+    <Content Include="Content\animated-bell-image-0001.gif" />
+    <Content Include="Content\avatar1.jpg" />
+    <Content Include="Content\bitcoin.png" />
+    <Content Include="Content\Bitcoin2.png" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\btcpro.png" />
+    <Content Include="Content\BtcProIcon.ico" />
+    <Content Include="Content\BtcProIcon.png" />
+    <Content Include="Content\Certificate of Incorporation.jpg" />
+    <Content Include="Content\e-wallet.png" />
+    <Content Include="Content\Earth1.png" />
+    <Content Include="Content\hline.png" />
+    <Content Include="Content\ifsc_licence copy-1.jpg" />
+    <Content Include="Content\Jupiter1.png" />
+    <Content Include="Content\loader.gif" />
+    <Content Include="Content\Mercury1.png" />
+    <Content Include="Content\people.jpg" />
+    <Content Include="Content\pluto1.png" />
+    <Content Include="Content\progress.gif" />
+    <Content Include="Content\tline.png" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="Content\vline.png" />
+    <Content Include="css\blue-theme.css" />
+    <Content Include="css\bootstrap-reset.css" />
+    <Content Include="css\bootstrap-switch.css" />
+    <Content Include="css\bucket-ico-fonts.css" />
+    <Content Include="css\clndr.css" />
+    <Content Include="css\default-theme.css" />
+    <Content Include="css\green-theme.css" />
+    <Content Include="css\invoice-print.css" />
+    <Content Include="css\jquery.orgchart.css" />
+    <Content Include="css\jquery.steps.css" />
+    <Content Include="css\orange-theme.css" />
+    <Content Include="css\purple-theme.css" />
+    <Content Include="css\style-responsive.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\table-responsive.css" />
+    <Content Include="css\turquoise-theme.css" />
+    <Content Include="draggable_portlet.html" />
+    <Content Include="dropzone.html" />
+    <Content Include="dynamic_table.html" />
+    <Content Include="editable_table.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="file_upload.html" />
+    <Content Include="flot_chart.html" />
+    <Content Include="font-awesome\css\font-awesome.css" />
+    <Content Include="font-awesome\css\font-awesome.min.css" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="fontawesome.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="form_component.html" />
+    <Content Include="form_validation.html" />
+    <Content Include="form_wizard.html" />
+    <Content Include="gallery.html" />
+    <Content Include="general.html" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="google_map.html" />
+    <Content Include="grids.html" />
+    <Content Include="horizontal_menu.html" />
+    <Content Include="images\404.png" />
+    <Content Include="images\500.png" />
+    <Content Include="images\acc-expand.png" />
+    <Content Include="images\avatar-mini-2.jpg" />
+    <Content Include="images\avatar-mini-3.jpg" />
+    <Content Include="images\avatar-mini-4.jpg" />
+    <Content Include="images\avatar-mini.jpg" />
+    <Content Include="images\avatar1.jpg" />
+    <Content Include="images\avatar1_small.jpg" />
+    <Content Include="images\bucket-logo.png" />
+    <Content Include="images\chat-avatar2.jpg" />
+    <Content Include="images\chat-user-thumb-f.png" />
+    <Content Include="images\chat-user-thumb.png" />
+    <Content Include="images\crazy-price.jpg" />
+    <Content Include="images\customSelect-arrow.gif" />
+    <Content Include="images\details_close.png" />
+    <Content Include="images\details_open.png" />
+    <Content Include="images\flags\Afghanistan.png" />
+    <Content Include="images\flags\Albania.png" />
+    <Content Include="images\flags\Algeria.png" />
+    <Content Include="images\flags\American_Samoa.png" />
+    <Content Include="images\flags\Andorra.png" />
+    <Content Include="images\flags\Angola.png" />
+    <Content Include="images\flags\Anguilla.png" />
+    <Content Include="images\flags\Antigua_and_Barbuda.png" />
+    <Content Include="images\flags\Argentina.png" />
+    <Content Include="images\flags\Armenia.png" />
+    <Content Include="images\flags\Aruba.png" />
+    <Content Include="images\flags\Australia.png" />
+    <Content Include="images\flags\Austria.png" />
+    <Content Include="images\flags\Azerbaijan.png" />
+    <Content Include="images\flags\Bahamas.png" />
+    <Content Include="images\flags\Bahrain.png" />
+    <Content Include="images\flags\Bangladesh.png" />
+    <Content Include="images\flags\Barbados.png" />
+    <Content Include="images\flags\Belarus.png" />
+    <Content Include="images\flags\Belgium.png" />
+    <Content Include="images\flags\Belize.png" />
+    <Content Include="images\flags\Benin.png" />
+    <Content Include="images\flags\Bermuda.png" />
+    <Content Include="images\flags\Bhutan.png" />
+    <Content Include="images\flags\Bolivia.png" />
+    <Content Include="images\flags\Bosnia.png" />
+    <Content Include="images\flags\Botswana.png" />
+    <Content Include="images\flags\Brazil.png" />
+    <Content Include="images\flags\British_Virgin_Islands.png" />
+    <Content Include="images\flags\Brunei.png" />
+    <Content Include="images\flags\Bulgaria.png" />
+    <Content Include="images\flags\Burkina_Faso.png" />
+    <Content Include="images\flags\Burundi.png" />
+    <Content Include="images\flags\Cambodia.png" />
+    <Content Include="images\flags\Cameroon.png" />
+    <Content Include="images\flags\Canada.png" />
+    <Content Include="images\flags\Cape_Verde.png" />
+    <Content Include="images\flags\Cayman_Islands.png" />
+    <Content Include="images\flags\Central_African_Republic.png" />
+    <Content Include="images\flags\Chad.png" />
+    <Content Include="images\flags\Chile.png" />
+    <Content Include="images\flags\China.png" />
+    <Content Include="images\flags\Christmas_Island.png" />
+    <Content Include="images\flags\Colombia.png" />
+    <Content Include="images\flags\Comoros.png" />
+    <Content Include="images\flags\Cook_Islands.png" />
+    <Content Include="images\flags\Costa_Rica.png" />
+    <Content Include="images\flags\Croatia.png" />
+    <Content Include="images\flags\Cuba.png" />
+    <Content Include="images\flags\Cyprus.png" />
+    <Content Include="images\flags\Czech_Republic.png" />
+    <Content Include="images\flags\Côte_d%27Ivoire.png" />
+    <Content Include="images\flags\de.png" />
+    <Content Include="images\flags\Democratic_Republic_of_the_Congo.png" />
+    <Content Include="images\flags\Denmark.png" />
+    <Content Include="images\flags\Djibouti.png" />
+    <Content Include="images\flags\Dominica.png" />
+    <Content Include="images\flags\Dominican_Republic.png" />
+    <Content Include="images\flags\Ecuador.png" />
+    <Content Include="images\flags\Egypt.png" />
+    <Content Include="images\flags\El_Salvador.png" />
+    <Content Include="images\flags\Equatorial_Guinea.png" />
+    <Content Include="images\flags\Eritrea.png" />
+    <Content Include="images\flags\es.png" />
+    <Content Include="images\flags\Estonia.png" />
+    <Content Include="images\flags\Ethiopia.png" />
+    <Content Include="images\flags\Falkland_Islands.png" />
+    <Content Include="images\flags\Faroe_Islands.png" />
+    <Content Include="images\flags\Fiji.png" />
+    <Content Include="images\flags\Finland.png" />
+    <Content Include="images\flags\fr.png" />
+    <Content Include="images\flags\France.png" />
+    <Content Include="images\flags\French_Polynesia.png" />
+    <Content Include="images\flags\Gabon.png" />
+    <Content Include="images\flags\Gambia.png" />
+    <Content Include="images\flags\Georgia.png" />
+    <Content Include="images\flags\Germany.png" />
+    <Content Include="images\flags\Ghana.png" />
+    <Content Include="images\flags\Gibraltar.png" />
+    <Content Include="images\flags\Greece.png" />
+    <Content Include="images\flags\Greenland.png" />
+    <Content Include="images\flags\Grenada.png" />
+    <Content Include="images\flags\Guam.png" />
+    <Content Include="images\flags\Guatemala.png" />
+    <Content Include="images\flags\Guinea.png" />
+    <Content Include="images\flags\Guinea_Bissau.png" />
+    <Content Include="images\flags\Guyana.png" />
+    <Content Include="images\flags\Haiti.png" />
+    <Content Include="images\flags\Honduras.png" />
+    <Content Include="images\flags\Hong_Kong.png" />
+    <Content Include="images\flags\Hungary.png" />
+    <Content Include="images\flags\Iceland.png" />
+    <Content Include="images\flags\India.png" />
+    <Content Include="images\flags\Indonesia.png" />
+    <Content Include="images\flags\Iran.png" />
+    <Content Include="images\flags\Iraq.png" />
+    <Content Include="images\flags\Ireland.png" />
+    <Content Include="images\flags\Israel.png" />
+    <Content Include="images\flags\Italy.png" />
+    <Content Include="images\flags\Jamaica.png" />
+    <Content Include="images\flags\Japan.png" />
+    <Content Include="images\flags\Jordan.png" />
+    <Content Include="images\flags\Kazakhstan.png" />
+    <Content Include="images\flags\Kenya.png" />
+    <Content Include="images\flags\Kiribati.png" />
+    <Content Include="images\flags\Kuwait.png" />
+    <Content Include="images\flags\Kyrgyzstan.png" />
+    <Content Include="images\flags\Laos.png" />
+    <Content Include="images\flags\Latvia.png" />
+    <Content Include="images\flags\Lebanon.png" />
+    <Content Include="images\flags\Lesotho.png" />
+    <Content Include="images\flags\Liberia.png" />
+    <Content Include="images\flags\Libya.png" />
+    <Content Include="images\flags\Liechtenstein.png" />
+    <Content Include="images\flags\Lithuania.png" />
+    <Content Include="images\flags\Luxembourg.png" />
+    <Content Include="images\flags\Macao.png" />
+    <Content Include="images\flags\Macedonia.png" />
+    <Content Include="images\flags\Madagascar.png" />
+    <Content Include="images\flags\Malawi.png" />
+    <Content Include="images\flags\Malaysia.png" />
+    <Content Include="images\flags\Maldives.png" />
+    <Content Include="images\flags\Mali.png" />
+    <Content Include="images\flags\Malta.png" />
+    <Content Include="images\flags\Marshall_Islands.png" />
+    <Content Include="images\flags\Martinique.png" />
+    <Content Include="images\flags\Mauritania.png" />
+    <Content Include="images\flags\Mauritius.png" />
+    <Content Include="images\flags\Mexico.png" />
+    <Content Include="images\flags\Micronesia.png" />
+    <Content Include="images\flags\Moldova.png" />
+    <Content Include="images\flags\Monaco.png" />
+    <Content Include="images\flags\Mongolia.png" />
+    <Content Include="images\flags\Montserrat.png" />
+    <Content Include="images\flags\Morocco.png" />
+    <Content Include="images\flags\Mozambique.png" />
+    <Content Include="images\flags\Myanmar.png" />
+    <Content Include="images\flags\Namibia.png" />
+    <Content Include="images\flags\Nauru.png" />
+    <Content Include="images\flags\Nepal.png" />
+    <Content Include="images\flags\Netherlands.png" />
+    <Content Include="images\flags\Netherlands_Antilles.png" />
+    <Content Include="images\flags\New_Zealand.png" />
+    <Content Include="images\flags\Nicaragua.png" />
+    <Content Include="images\flags\Niger.png" />
+    <Content Include="images\flags\Nigeria.png" />
+    <Content Include="images\flags\Niue.png" />
+    <Content Include="images\flags\Norfolk_Island.png" />
+    <Content Include="images\flags\North_Korea.png" />
+    <Content Include="images\flags\Norway.png" />
+    <Content Include="images\flags\Oman.png" />
+    <Content Include="images\flags\Pakistan.png" />
+    <Content Include="images\flags\Palau.png" />
+    <Content Include="images\flags\Panama.png" />
+    <Content Include="images\flags\Papua_New_Guinea.png" />
+    <Content Include="images\flags\Paraguay.png" />
+    <Content Include="images\flags\Peru.png" />
+    <Content Include="images\flags\Philippines.png" />
+    <Content Include="images\flags\Pitcairn_Islands.png" />
+    <Content Include="images\flags\Poland.png" />
+    <Content Include="images\flags\Portugal.png" />
+    <Content Include="images\flags\Puerto_Rico.png" />
+    <Content Include="images\flags\Qatar.png" />
+    <Content Include="images\flags\Republic_of_the_Congo.png" />
+    <Content Include="images\flags\Romania.png" />
+    <Content Include="images\flags\ru.png" />
+    <Content Include="images\flags\Russian_Federation.png" />
+    <Content Include="images\flags\Rwanda.png" />
+    <Content Include="images\flags\Saint_Kitts_and_Nevis.png" />
+    <Content Include="images\flags\Saint_Lucia.png" />
+    <Content Include="images\flags\Saint_Pierre.png" />
+    <Content Include="images\flags\Saint_Vicent_and_the_Grenadines.png" />
+    <Content Include="images\flags\Samoa.png" />
+    <Content Include="images\flags\San_Marino.png" />
+    <Content Include="images\flags\Sao_Tomé_and_Príncipe.png" />
+    <Content Include="images\flags\Saudi_Arabia.png" />
+    <Content Include="images\flags\Senegal.png" />
+    <Content Include="images\flags\Serbia_and_Montenegro.png" />
+    <Content Include="images\flags\Seychelles.png" />
+    <Content Include="images\flags\Sierra_Leone.png" />
+    <Content Include="images\flags\Singapore.png" />
+    <Content Include="images\flags\Slovakia.png" />
+    <Content Include="images\flags\Slovenia.png" />
+    <Content Include="images\flags\Soloman_Islands.png" />
+    <Content Include="images\flags\Somalia.png" />
+    <Content Include="images\flags\South_Africa.png" />
+    <Content Include="images\flags\South_Georgia.png" />
+    <Content Include="images\flags\South_Korea.png" />
+    <Content Include="images\flags\Soviet_Union.png" />
+    <Content Include="images\flags\Spain.png" />
+    <Content Include="images\flags\Sri_Lanka.png" />
+    <Content Include="images\flags\Sudan.png" />
+    <Content Include="images\flags\Suriname.png" />
+    <Content Include="images\flags\Swaziland.png" />
+    <Content Include="images\flags\Sweden.png" />
+    <Content Include="images\flags\Switzerland.png" />
+    <Content Include="images\flags\Syria.png" />
+    <Content Include="images\flags\Taiwan.png" />
+    <Content Include="images\flags\Tajikistan.png" />
+    <Content Include="images\flags\Tanzania.png" />
+    <Content Include="images\flags\Thailand.png" />
+    <Content Include="images\flags\Tibet.png" />
+    <Content Include="images\flags\Timor-Leste.png" />
+    <Content Include="images\flags\Togo.png" />
+    <Content Include="images\flags\Tonga.png" />
+    <Content Include="images\flags\Trinidad_and_Tobago.png" />
+    <Content Include="images\flags\Tunisia.png" />
+    <Content Include="images\flags\Turkey.png" />
+    <Content Include="images\flags\Turkmenistan.png" />
+    <Content Include="images\flags\Turks_and_Caicos_Islands.png" />
+    <Content Include="images\flags\Tuvalu.png" />
+    <Content Include="images\flags\UAE.png" />
+    <Content Include="images\flags\Uganda.png" />
+    <Content Include="images\flags\Ukraine.png" />
+    <Content Include="images\flags\United_Kingdom.png" />
+    <Content Include="images\flags\United_States_of_America.png" />
+    <Content Include="images\flags\Uruguay.png" />
+    <Content Include="images\flags\us.png" />
+    <Content Include="images\flags\US_Virgin_Islands.png" />
+    <Content Include="images\flags\Uzbekistan.png" />
+    <Content Include="images\flags\Vanuatu.png" />
+    <Content Include="images\flags\Vatican_City.png" />
+    <Content Include="images\flags\Venezuela.png" />
+    <Content Include="images\flags\Vietnam.png" />
+    <Content Include="images\flags\Wallis_and_Futuna.png" />
+    <Content Include="images\flags\Yemen.png" />
+    <Content Include="images\flags\Zambia.png" />
+    <Content Include="images\flags\Zimbabwe.png" />
+    <Content Include="images\gallery\image1.jpg" />
+    <Content Include="images\gallery\image2.jpg" />
+    <Content Include="images\gallery\image3.jpg" />
+    <Content Include="images\gallery\image4.jpg" />
+    <Content Include="images\gallery\image5.jpg" />
+    <Content Include="images\input-spinner.gif" />
+    <Content Include="images\lock-screen.jpg" />
+    <Content Include="images\lock_thumb.jpg" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\nav-expand.png" />
+    <Content Include="images\plus-image.jpg" />
+    <Content Include="images\plus-inage.jpg" />
+    <Content Include="images\product_img.png" />
+    <Content Include="images\search-icon.png" />
+    <Content Include="images\sm-img-1.jpg" />
+    <Content Include="images\sm-img-2.jpg" />
+    <Content Include="images\sm-img-3.jpg" />
+    <Content Include="images\top-arrow.png" />
+    <Content Include="images\twitter_corner_black.png" />
+    <Content Include="images\twitter_corner_blue.png" />
+    <Content Include="images\weather_image.jpg" />
+    <Content Include="inline_editor.html" />
+    <Content Include="invoice.html" />
+    <Content Include="invoice_print.html" />
+    <Content Include="js\advanced-datatable\css\demo_page.css" />
+    <Content Include="js\advanced-datatable\css\demo_table.css" />
+    <Content Include="js\advanced-datatable\css\demo_table_jui.css" />
+    <Content Include="js\advanced-datatable\css\jquery.dataTables.css" />
+    <Content Include="js\advanced-datatable\css\jquery.dataTables_themeroller.css" />
+    <Content Include="js\advanced-datatable\images\back_disabled.png" />
+    <Content Include="js\advanced-datatable\images\back_enabled.png" />
+    <Content Include="js\advanced-datatable\images\back_enabled_hover.png" />
+    <Content Include="js\advanced-datatable\images\favicon.ico" />
+    <Content Include="js\advanced-datatable\images\forward_disabled.png" />
+    <Content Include="js\advanced-datatable\images\forward_enabled.png" />
+    <Content Include="js\advanced-datatable\images\forward_enabled_hover.png" />
+    <Content Include="js\advanced-datatable\images\sort_asc.png" />
+    <Content Include="js\advanced-datatable\images\sort_asc_disabled.png" />
+    <Content Include="js\advanced-datatable\images\sort_both.png" />
+    <Content Include="js\advanced-datatable\images\sort_desc.png" />
+    <Content Include="js\advanced-datatable\images\sort_desc_disabled.png" />
+    <Content Include="js\advanced-datatable\js\jquery.dataTables.js" />
+    <Content Include="js\advanced-datatable\js\jquery.dataTables.min.js" />
+    <Content Include="js\advanced-datatable\js\jquery.js" />
+    <Content Include="js\advanced-datatable\src\api\api.internal.js" />
+    <Content Include="js\advanced-datatable\src\api\api.methods.js" />
+    <Content Include="js\advanced-datatable\src\api\api.static.js" />
+    <Content Include="js\advanced-datatable\src\core\core.ajax.js" />
+    <Content Include="js\advanced-datatable\src\core\core.columns.js" />
+    <Content Include="js\advanced-datatable\src\core\core.constructor.js" />
+    <Content Include="js\advanced-datatable\src\core\core.data.js" />
+    <Content Include="js\advanced-datatable\src\core\core.draw.js" />
+    <Content Include="js\advanced-datatable\src\core\core.filter.js" />
+    <Content Include="js\advanced-datatable\src\core\core.info.js" />
+    <Content Include="js\advanced-datatable\src\core\core.init.js" />
+    <Content Include="js\advanced-datatable\src\core\core.length.js" />
+    <Content Include="js\advanced-datatable\src\core\core.page.js" />
+    <Content Include="js\advanced-datatable\src\core\core.processing.js" />
+    <Content Include="js\advanced-datatable\src\core\core.scrolling.js" />
+    <Content Include="js\advanced-datatable\src\core\core.sizing.js" />
+    <Content Include="js\advanced-datatable\src\core\core.sort.js" />
+    <Content Include="js\advanced-datatable\src\core\core.state.js" />
+    <Content Include="js\advanced-datatable\src\core\core.support.js" />
+    <Content Include="js\advanced-datatable\src\DataTables.js" />
+    <Content Include="js\advanced-datatable\src\ext\ext.classes.js" />
+    <Content Include="js\advanced-datatable\src\ext\ext.paging.js" />
+    <Content Include="js\advanced-datatable\src\ext\ext.sorting.js" />
+    <Content Include="js\advanced-datatable\src\ext\ext.types.js" />
+    <Content Include="js\advanced-datatable\src\model\model.column.js" />
+    <Content Include="js\advanced-datatable\src\model\model.defaults.columns.js" />
+    <Content Include="js\advanced-datatable\src\model\model.defaults.js" />
+    <Content Include="js\advanced-datatable\src\model\model.ext.js" />
+    <Content Include="js\advanced-datatable\src\model\model.row.js" />
+    <Content Include="js\advanced-datatable\src\model\model.search.js" />
+    <Content Include="js\advanced-datatable\src\model\model.settings.js" />
+    <Content Include="js\advanced-form.js" />
+    <Content Include="js\app.js" />
+    <Content Include="js\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="js\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="js\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="js\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="js\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="js\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="js\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="js\bootstrap-daterangepicker\date.js" />
+    <Content Include="js\bootstrap-daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="js\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="js\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="js\bootstrap-daterangepicker\examples.html" />
+    <Content Include="js\bootstrap-daterangepicker\moment.js" />
+    <Content Include="js\bootstrap-daterangepicker\moment.min.js" />
+    <Content Include="js\bootstrap-datetimepicker\css\datetimepicker.css" />
+    <Content Include="js\bootstrap-datetimepicker\js\bootstrap-datetimepicker.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.kr.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="js\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="js\bootstrap-fileupload\bootstrap-fileupload.css" />
+    <Content Include="js\bootstrap-fileupload\bootstrap-fileupload.js" />
+    <Content Include="js\bootstrap-inputmask\bootstrap-inputmask.js" />
+    <Content Include="js\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="js\bootstrap-switch.js" />
+    <Content Include="js\bootstrap-timepicker\css\timepicker.css" />
+    <Content Include="js\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="js\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="js\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ar-AR.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.bg-BG.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ca-CT.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.cs-CZ.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.da-DK.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.de-DE.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.el-GR.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.es-AR.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.es-ES.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.fr-FR.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.hr-HR.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.it-IT.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ja-JP.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ko-KR.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.lt-LT.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.mo-MD.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.nb-NB.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.nl-NL.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.pl-PL.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.pt-BR.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ru-RU.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.sk-SK.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.sv-SE.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.tr-TR.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ua-UA.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.zh-CN.js" />
+    <Content Include="js\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.zh-TW.js" />
+    <Content Include="js\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="js\bootstrap-wysihtml5\wysiwyg-color.css" />
+    <Content Include="js\c3-chart.init.js" />
+    <Content Include="js\c3-chart\c3.css" />
+    <Content Include="js\c3-chart\c3.js" />
+    <Content Include="js\c3-chart\c3.min.js" />
+    <Content Include="js\calendar\clndr.js" />
+    <Content Include="js\calendar\clndr.min.js" />
+    <Content Include="js\calendar\moment-2.2.1.js" />
+    <Content Include="js\chart-js\Chart.js" />
+    <Content Include="js\chart-js\Chart.min.js" />
+    <Content Include="js\chartjs.init.js" />
+    <Content Include="js\ckeditor\build-config.js" />
+    <Content Include="js\ckeditor\ckeditor.js" />
+    <Content Include="js\ckeditor\config.js" />
+    <Content Include="js\ckeditor\contents.css" />
+    <Content Include="js\ckeditor\lang\af.js" />
+    <Content Include="js\ckeditor\lang\ar.js" />
+    <Content Include="js\ckeditor\lang\bg.js" />
+    <Content Include="js\ckeditor\lang\bn.js" />
+    <Content Include="js\ckeditor\lang\bs.js" />
+    <Content Include="js\ckeditor\lang\ca.js" />
+    <Content Include="js\ckeditor\lang\cs.js" />
+    <Content Include="js\ckeditor\lang\cy.js" />
+    <Content Include="js\ckeditor\lang\da.js" />
+    <Content Include="js\ckeditor\lang\de.js" />
+    <Content Include="js\ckeditor\lang\el.js" />
+    <Content Include="js\ckeditor\lang\en-au.js" />
+    <Content Include="js\ckeditor\lang\en-ca.js" />
+    <Content Include="js\ckeditor\lang\en-gb.js" />
+    <Content Include="js\ckeditor\lang\en.js" />
+    <Content Include="js\ckeditor\lang\eo.js" />
+    <Content Include="js\ckeditor\lang\es.js" />
+    <Content Include="js\ckeditor\lang\et.js" />
+    <Content Include="js\ckeditor\lang\eu.js" />
+    <Content Include="js\ckeditor\lang\fa.js" />
+    <Content Include="js\ckeditor\lang\fi.js" />
+    <Content Include="js\ckeditor\lang\fo.js" />
+    <Content Include="js\ckeditor\lang\fr-ca.js" />
+    <Content Include="js\ckeditor\lang\fr.js" />
+    <Content Include="js\ckeditor\lang\gl.js" />
+    <Content Include="js\ckeditor\lang\gu.js" />
+    <Content Include="js\ckeditor\lang\he.js" />
+    <Content Include="js\ckeditor\lang\hi.js" />
+    <Content Include="js\ckeditor\lang\hr.js" />
+    <Content Include="js\ckeditor\lang\hu.js" />
+    <Content Include="js\ckeditor\lang\is.js" />
+    <Content Include="js\ckeditor\lang\it.js" />
+    <Content Include="js\ckeditor\lang\ja.js" />
+    <Content Include="js\ckeditor\lang\ka.js" />
+    <Content Include="js\ckeditor\lang\km.js" />
+    <Content Include="js\ckeditor\lang\ko.js" />
+    <Content Include="js\ckeditor\lang\ku.js" />
+    <Content Include="js\ckeditor\lang\lt.js" />
+    <Content Include="js\ckeditor\lang\lv.js" />
+    <Content Include="js\ckeditor\lang\mk.js" />
+    <Content Include="js\ckeditor\lang\mn.js" />
+    <Content Include="js\ckeditor\lang\ms.js" />
+    <Content Include="js\ckeditor\lang\nb.js" />
+    <Content Include="js\ckeditor\lang\nl.js" />
+    <Content Include="js\ckeditor\lang\no.js" />
+    <Content Include="js\ckeditor\lang\pl.js" />
+    <Content Include="js\ckeditor\lang\pt-br.js" />
+    <Content Include="js\ckeditor\lang\pt.js" />
+    <Content Include="js\ckeditor\lang\ro.js" />
+    <Content Include="js\ckeditor\lang\ru.js" />
+    <Content Include="js\ckeditor\lang\sk.js" />
+    <Content Include="js\ckeditor\lang\sl.js" />
+    <Content Include="js\ckeditor\lang\sr-latn.js" />
+    <Content Include="js\ckeditor\lang\sr.js" />
+    <Content Include="js\ckeditor\lang\sv.js" />
+    <Content Include="js\ckeditor\lang\th.js" />
+    <Content Include="js\ckeditor\lang\tr.js" />
+    <Content Include="js\ckeditor\lang\ug.js" />
+    <Content Include="js\ckeditor\lang\uk.js" />
+    <Content Include="js\ckeditor\lang\vi.js" />
+    <Content Include="js\ckeditor\lang\zh-cn.js" />
+    <Content Include="js\ckeditor\lang\zh.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="js\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="js\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="js\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="js\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="js\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="js\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="js\ckeditor\plugins\icons.png" />
+    <Content Include="js\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="js\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="js\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="js\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="js\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="js\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="js\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="js\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="js\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="js\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="js\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="js\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="js\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="js\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="js\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="js\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="js\ckeditor\samples\ajax.html" />
+    <Content Include="js\ckeditor\samples\api.html" />
+    <Content Include="js\ckeditor\samples\appendto.html" />
+    <Content Include="js\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="js\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="js\ckeditor\samples\assets\sample.css" />
+    <Content Include="js\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="js\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="js\ckeditor\samples\divreplace.html" />
+    <Content Include="js\ckeditor\samples\index.html" />
+    <Content Include="js\ckeditor\samples\inlineall.html" />
+    <Content Include="js\ckeditor\samples\inlinebycode.html" />
+    <Content Include="js\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="js\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="js\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="js\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="js\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="js\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="js\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="js\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="js\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="js\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="js\ckeditor\samples\readonly.html" />
+    <Content Include="js\ckeditor\samples\replacebyclass.html" />
+    <Content Include="js\ckeditor\samples\replacebycode.html" />
+    <Content Include="js\ckeditor\samples\sample.css" />
+    <Content Include="js\ckeditor\samples\sample.js" />
+    <Content Include="js\ckeditor\samples\tabindex.html" />
+    <Content Include="js\ckeditor\samples\uicolor.html" />
+    <Content Include="js\ckeditor\samples\uilanguages.html" />
+    <Content Include="js\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="js\ckeditor\skins\moono\dialog.css" />
+    <Content Include="js\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="js\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="js\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="js\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="js\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="js\ckeditor\skins\moono\editor.css" />
+    <Content Include="js\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="js\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="js\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="js\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="js\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="js\ckeditor\skins\moono\icons.png" />
+    <Content Include="js\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="js\ckeditor\skins\moono\images\close.png" />
+    <Content Include="js\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="js\ckeditor\styles.js" />
+    <Content Include="js\config.js" />
+    <Content Include="js\config.router.js" />
+    <Content Include="js\css3clock\css\style.css" />
+    <Content Include="js\css3clock\images\clockface.png" />
+    <Content Include="js\css3clock\images\hourhand.png" />
+    <Content Include="js\css3clock\images\minhand.png" />
+    <Content Include="js\css3clock\images\sechand.png" />
+    <Content Include="js\css3clock\js\css3clock.js" />
+    <Content Include="js\dashboard.js" />
+    <Content Include="js\data-tables\DT_bootstrap.css" />
+    <Content Include="js\data-tables\DT_bootstrap.js" />
+    <Content Include="js\data-tables\images\sort_asc.png" />
+    <Content Include="js\data-tables\images\sort_both.png" />
+    <Content Include="js\data-tables\images\sort_desc.png" />
+    <Content Include="js\data-tables\jquery.dataTables.js" />
+    <Content Include="js\draggable-portlet.js" />
+    <Content Include="js\dynamic_table_init.js" />
+    <Content Include="js\easypiechart\easypiechart.js" />
+    <Content Include="js\easypiechart\jquery.easypiechart.js" />
+    <Content Include="js\easypiechart\jquery.easypiechart.min.js" />
+    <Content Include="js\evnt.calendar.init.js" />
+    <Content Include="js\external-dragging-calendar.js" />
+    <Content Include="js\file-uploader\css\demo-ie8.css" />
+    <Content Include="js\file-uploader\css\demo.css" />
+    <Content Include="js\file-uploader\css\jquery.fileupload-noscript.css" />
+    <Content Include="js\file-uploader\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="js\file-uploader\css\jquery.fileupload-ui.css" />
+    <Content Include="js\file-uploader\css\jquery.fileupload.css" />
+    <Content Include="js\file-uploader\css\style.css" />
+    <Content Include="js\file-uploader\img\loading.gif" />
+    <Content Include="js\file-uploader\img\progressbar.gif" />
+    <Content Include="js\file-uploader\js\app.js" />
+    <Content Include="js\file-uploader\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="js\file-uploader\js\cors\jquery.xdr-transport.js" />
+    <Content Include="js\file-uploader\js\jquery.fileupload-angular.js" />
+    <Content Include="js\file-uploader\js\jquery.fileupload-audio.js" />
+    <Content Include="js\file-uploader\js\jquery.fileupload-image.js" />
+    <Content Include="js\file-uploader\js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="js\file-uploader\js\jquery.fileupload-process.js" />
+    <Content Include="js\file-uploader\js\jquery.fileupload-ui.js" />
+    <Content Include="js\file-uploader\js\jquery.fileupload-validate.js" />
+    <Content Include="js\file-uploader\js\jquery.fileupload-video.js" />
+    <Content Include="js\file-uploader\js\jquery.fileupload.js" />
+    <Content Include="js\file-uploader\js\jquery.iframe-transport.js" />
+    <Content Include="js\file-uploader\js\main.js" />
+    <Content Include="js\file-uploader\js\vendor\jquery.ui.widget.js" />
+    <Content Include="js\file-uploader\server\gae-go\static\favicon.ico" />
+    <Content Include="js\file-uploader\server\gae-go\static\robots.txt" />
+    <Content Include="js\file-uploader\server\gae-python\static\favicon.ico" />
+    <Content Include="js\file-uploader\server\gae-python\static\robots.txt" />
+    <Content Include="js\file-uploader\server\node\server.js" />
+    <Content Include="js\flot-chart\excanvas.js" />
+    <Content Include="js\flot-chart\excanvas.min.js" />
+    <Content Include="js\flot-chart\jquery.colorhelpers.js" />
+    <Content Include="js\flot-chart\jquery.colorhelpers.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.animator.js" />
+    <Content Include="js\flot-chart\jquery.flot.animator.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.canvas.js" />
+    <Content Include="js\flot-chart\jquery.flot.canvas.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.categories.js" />
+    <Content Include="js\flot-chart\jquery.flot.categories.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.crosshair.js" />
+    <Content Include="js\flot-chart\jquery.flot.crosshair.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.errorbars.js" />
+    <Content Include="js\flot-chart\jquery.flot.errorbars.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.fillbetween.js" />
+    <Content Include="js\flot-chart\jquery.flot.fillbetween.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.growraf.js" />
+    <Content Include="js\flot-chart\jquery.flot.image.js" />
+    <Content Include="js\flot-chart\jquery.flot.image.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.js" />
+    <Content Include="js\flot-chart\jquery.flot.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.navigate.js" />
+    <Content Include="js\flot-chart\jquery.flot.navigate.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.pie.js" />
+    <Content Include="js\flot-chart\jquery.flot.pie.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.pie.resize.js" />
+    <Content Include="js\flot-chart\jquery.flot.resize.js" />
+    <Content Include="js\flot-chart\jquery.flot.resize.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.selection.js" />
+    <Content Include="js\flot-chart\jquery.flot.selection.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.spline.js" />
+    <Content Include="js\flot-chart\jquery.flot.stack.js" />
+    <Content Include="js\flot-chart\jquery.flot.stack.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.symbol.js" />
+    <Content Include="js\flot-chart\jquery.flot.symbol.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.threshold.js" />
+    <Content Include="js\flot-chart\jquery.flot.threshold.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.time.js" />
+    <Content Include="js\flot-chart\jquery.flot.time.min.js" />
+    <Content Include="js\flot-chart\jquery.flot.tooltip.js" />
+    <Content Include="js\flot-chart\jquery.flot.tooltip.min.js" />
+    <Content Include="js\flot-chart\jquery.js" />
+    <Content Include="js\flot-chart\jquery.min.js" />
+    <Content Include="js\flot-chart\LICENSE.txt" />
+    <Content Include="js\flot.chart.init.js" />
+    <Content Include="js\fuelux\css\tree-style.css" />
+    <Content Include="js\fuelux\css\tree.css" />
+    <Content Include="js\fuelux\img\tree-icons.png" />
+    <Content Include="js\fuelux\js\spinner.js" />
+    <Content Include="js\fuelux\js\spinner.min.js" />
+    <Content Include="js\fuelux\js\tree.js" />
+    <Content Include="js\fuelux\js\tree.min.js" />
+    <Content Include="js\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="js\fullcalendar\fullcalendar.css" />
+    <Content Include="js\fullcalendar\fullcalendar.js" />
+    <Content Include="js\fullcalendar\fullcalendar.min.js" />
+    <Content Include="js\fullcalendar\fullcalendar.print.css" />
+    <Content Include="js\fullcalendar\gcal.js" />
+    <Content Include="js\gauge\gauge.js" />
+    <Content Include="js\gauge\gauge.min.js" />
+    <Content Include="js\google-map\data\points.js" />
+    <Content Include="js\google-map\libs.min.css" />
+    <Content Include="js\google-map\maplace.js" />
+    <Content Include="js\google-map\maplace.min.js" />
+    <Content Include="js\gritter.js" />
+    <Content Include="js\gritter\css\jquery.gritter.css" />
+    <Content Include="js\gritter\images\gritter-blue.png" />
+    <Content Include="js\gritter\images\gritter-brown.png" />
+    <Content Include="js\gritter\images\gritter-light.png" />
+    <Content Include="js\gritter\images\gritter-long.png" />
+    <Content Include="js\gritter\images\gritter-purple.png" />
+    <Content Include="js\gritter\images\gritter.png" />
+    <Content Include="js\gritter\images\ie-spacer.gif" />
+    <Content Include="js\gritter\js\jquery.gritter.js" />
+    <Content Include="js\gritter\js\jquery.gritter.min.js" />
+    <Content Include="js\hover-dropdown.js" />
+    <Content Include="js\icheck-init.js" />
+    <Content Include="js\iCheck\jquery.icheck.js" />
+    <Content Include="js\iCheck\jquery.icheck.min.js" />
+    <Content Include="js\iCheck\skins\all.css" />
+    <Content Include="js\iCheck\skins\flat\aero%402x.png" />
+    <Content Include="js\iCheck\skins\flat\aero.css" />
+    <Content Include="js\iCheck\skins\flat\aero.png" />
+    <Content Include="js\iCheck\skins\flat\blue%402x.png" />
+    <Content Include="js\iCheck\skins\flat\blue.css" />
+    <Content Include="js\iCheck\skins\flat\blue.png" />
+    <Content Include="js\iCheck\skins\flat\flat%402x.png" />
+    <Content Include="js\iCheck\skins\flat\flat.css" />
+    <Content Include="js\iCheck\skins\flat\flat.png" />
+    <Content Include="js\iCheck\skins\flat\green%402x.png" />
+    <Content Include="js\iCheck\skins\flat\green.css" />
+    <Content Include="js\iCheck\skins\flat\green.png" />
+    <Content Include="js\iCheck\skins\flat\grey%402x.png" />
+    <Content Include="js\iCheck\skins\flat\grey.css" />
+    <Content Include="js\iCheck\skins\flat\grey.png" />
+    <Content Include="js\iCheck\skins\flat\orange%402x.png" />
+    <Content Include="js\iCheck\skins\flat\orange.css" />
+    <Content Include="js\iCheck\skins\flat\orange.png" />
+    <Content Include="js\iCheck\skins\flat\pink%402x.png" />
+    <Content Include="js\iCheck\skins\flat\pink.css" />
+    <Content Include="js\iCheck\skins\flat\pink.png" />
+    <Content Include="js\iCheck\skins\flat\purple%402x.png" />
+    <Content Include="js\iCheck\skins\flat\purple.css" />
+    <Content Include="js\iCheck\skins\flat\purple.png" />
+    <Content Include="js\iCheck\skins\flat\red%402x.png" />
+    <Content Include="js\iCheck\skins\flat\red.css" />
+    <Content Include="js\iCheck\skins\flat\red.png" />
+    <Content Include="js\iCheck\skins\flat\yellow%402x.png" />
+    <Content Include="js\iCheck\skins\flat\yellow.css" />
+    <Content Include="js\iCheck\skins\flat\yellow.png" />
+    <Content Include="js\iCheck\skins\flat\_all.css" />
+    <Content Include="js\iCheck\skins\futurico\futurico%402x.png" />
+    <Content Include="js\iCheck\skins\futurico\futurico.css" />
+    <Content Include="js\iCheck\skins\futurico\futurico.png" />
+    <Content Include="js\iCheck\skins\line\aero.css" />
+    <Content Include="js\iCheck\skins\line\blue.css" />
+    <Content Include="js\iCheck\skins\line\green.css" />
+    <Content Include="js\iCheck\skins\line\grey.css" />
+    <Content Include="js\iCheck\skins\line\line%402x.png" />
+    <Content Include="js\iCheck\skins\line\line.css" />
+    <Content Include="js\iCheck\skins\line\line.png" />
+    <Content Include="js\iCheck\skins\line\orange.css" />
+    <Content Include="js\iCheck\skins\line\pink.css" />
+    <Content Include="js\iCheck\skins\line\purple.css" />
+    <Content Include="js\iCheck\skins\line\red.css" />
+    <Content Include="js\iCheck\skins\line\yellow.css" />
+    <Content Include="js\iCheck\skins\line\_all.css" />
+    <Content Include="js\iCheck\skins\minimal\aero%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\aero.css" />
+    <Content Include="js\iCheck\skins\minimal\aero.png" />
+    <Content Include="js\iCheck\skins\minimal\blue%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\blue.css" />
+    <Content Include="js\iCheck\skins\minimal\blue.png" />
+    <Content Include="js\iCheck\skins\minimal\green%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\green.css" />
+    <Content Include="js\iCheck\skins\minimal\green.png" />
+    <Content Include="js\iCheck\skins\minimal\grey%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\grey.css" />
+    <Content Include="js\iCheck\skins\minimal\grey.png" />
+    <Content Include="js\iCheck\skins\minimal\minimal%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\minimal.css" />
+    <Content Include="js\iCheck\skins\minimal\minimal.png" />
+    <Content Include="js\iCheck\skins\minimal\orange%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\orange.css" />
+    <Content Include="js\iCheck\skins\minimal\orange.png" />
+    <Content Include="js\iCheck\skins\minimal\pink%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\pink.css" />
+    <Content Include="js\iCheck\skins\minimal\pink.png" />
+    <Content Include="js\iCheck\skins\minimal\purple%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\purple.css" />
+    <Content Include="js\iCheck\skins\minimal\purple.png" />
+    <Content Include="js\iCheck\skins\minimal\red%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\red.css" />
+    <Content Include="js\iCheck\skins\minimal\red.png" />
+    <Content Include="js\iCheck\skins\minimal\yellow%402x.png" />
+    <Content Include="js\iCheck\skins\minimal\yellow.css" />
+    <Content Include="js\iCheck\skins\minimal\yellow.png" />
+    <Content Include="js\iCheck\skins\minimal\_all.css" />
+    <Content Include="js\iCheck\skins\polaris\polaris%402x.png" />
+    <Content Include="js\iCheck\skins\polaris\polaris.css" />
+    <Content Include="js\iCheck\skins\polaris\polaris.png" />
+    <Content Include="js\iCheck\skins\square\aero%402x.png" />
+    <Content Include="js\iCheck\skins\square\aero.css" />
+    <Content Include="js\iCheck\skins\square\aero.png" />
+    <Content Include="js\iCheck\skins\square\blue%402x.png" />
+    <Content Include="js\iCheck\skins\square\blue.css" />
+    <Content Include="js\iCheck\skins\square\blue.png" />
+    <Content Include="js\iCheck\skins\square\green%402x.png" />
+    <Content Include="js\iCheck\skins\square\green.css" />
+    <Content Include="js\iCheck\skins\square\green.png" />
+    <Content Include="js\iCheck\skins\square\grey%402x.png" />
+    <Content Include="js\iCheck\skins\square\grey.css" />
+    <Content Include="js\iCheck\skins\square\grey.png" />
+    <Content Include="js\iCheck\skins\square\orange%402x.png" />
+    <Content Include="js\iCheck\skins\square\orange.css" />
+    <Content Include="js\iCheck\skins\square\orange.png" />
+    <Content Include="js\iCheck\skins\square\pink%402x.png" />
+    <Content Include="js\iCheck\skins\square\pink.css" />
+    <Content Include="js\iCheck\skins\square\pink.png" />
+    <Content Include="js\iCheck\skins\square\purple%402x.png" />
+    <Content Include="js\iCheck\skins\square\purple.css" />
+    <Content Include="js\iCheck\skins\square\purple.png" />
+    <Content Include="js\iCheck\skins\square\red%402x.png" />
+    <Content Include="js\iCheck\skins\square\red.css" />
+    <Content Include="js\iCheck\skins\square\red.png" />
+    <Content Include="js\iCheck\skins\square\square%402x.png" />
+    <Content Include="js\iCheck\skins\square\square.css" />
+    <Content Include="js\iCheck\skins\square\square.png" />
+    <Content Include="js\iCheck\skins\square\yellow%402x.png" />
+    <Content Include="js\iCheck\skins\square\yellow.css" />
+    <Content Include="js\iCheck\skins\square\yellow.png" />
+    <Content Include="js\iCheck\skins\square\_all.css" />
+    <Content Include="js\iCheck\zepto.icheck.js" />
+    <Content Include="js\iCheck\zepto.icheck.min.js" />
+    <Content Include="js\ie8-responsive-file-warning.js" />
+    <Content Include="js\ion.rangeSlider-1.8.2\css\ion.rangeSlider.css" />
+    <Content Include="js\ion.rangeSlider-1.8.2\css\ion.rangeSlider.skinFlat.css" />
+    <Content Include="js\ion.rangeSlider-1.8.2\css\ion.rangeSlider.skinNice.css" />
+    <Content Include="js\ion.rangeSlider-1.8.2\css\ion.rangeSlider.skinSimple.css" />
+    <Content Include="js\ion.rangeSlider-1.8.2\css\normalize.min.css" />
+    <Content Include="js\ion.rangeSlider-1.8.2\img\sprite-skin-flat-red.png" />
+    <Content Include="js\ion.rangeSlider-1.8.2\img\sprite-skin-flat.png" />
+    <Content Include="js\ion.rangeSlider-1.8.2\img\sprite-skin-nice.png" />
+    <Content Include="js\ion.rangeSlider-1.8.2\img\sprite-skin-simple.png" />
+    <Content Include="js\ion.rangeSlider-1.8.2\js\ion-rangeSlider\ion.rangeSlider.js" />
+    <Content Include="js\ion.rangeSlider-1.8.2\js\ion-rangeSlider\ion.rangeSlider.min.js" />
+    <Content Include="js\ion.rangeSlider-1.8.2\js\vendor\jquery-1.10.2.min.js" />
+    <Content Include="js\jplayer\jplayer.init.js" />
+    <Content Include="js\jplayer\js\circle.player.js" />
+    <Content Include="js\jplayer\js\jplayer.playlist.min.js" />
+    <Content Include="js\jplayer\js\Jplayer.swf" />
+    <Content Include="js\jplayer\js\jquery.grab.js" />
+    <Content Include="js\jplayer\js\jquery.jplayer.inspector.js" />
+    <Content Include="js\jplayer\js\jquery.jplayer.min.js" />
+    <Content Include="js\jplayer\js\jquery.transform2d.js" />
+    <Content Include="js\jplayer\js\mod.csstransforms.min.js" />
+    <Content Include="js\jplayer\js\popcorn.jplayer.js" />
+    <Content Include="js\jplayer\js\popcorn.js" />
+    <Content Include="js\jplayer\js\popcorn.player.js" />
+    <Content Include="js\jplayer\js\popcorn.subtitle.js" />
+    <Content Include="js\jplayer\skin\blue.monday\jplayer.blue.monday.css" />
+    <Content Include="js\jplayer\skin\blue.monday\jplayer.blue.monday.jpg" />
+    <Content Include="js\jplayer\skin\blue.monday\jplayer.blue.monday.png" />
+    <Content Include="js\jplayer\skin\blue.monday\jplayer.blue.monday.seeking.gif" />
+    <Content Include="js\jplayer\skin\blue.monday\jplayer.blue.monday.video.play.png" />
+    <Content Include="js\jplayer\skin\circle.skin\bgr.jpg" />
+    <Content Include="js\jplayer\skin\circle.skin\buffer.png" />
+    <Content Include="js\jplayer\skin\circle.skin\circle.player.css" />
+    <Content Include="js\jplayer\skin\circle.skin\controls.jpg" />
+    <Content Include="js\jplayer\skin\circle.skin\progress.png" />
+    <Content Include="js\jplayer\skin\circle.skin\progress_sprite.jpg" />
+    <Content Include="js\jplayer\skin\pink.flag\jplayer.pink.flag.css" />
+    <Content Include="js\jplayer\skin\pink.flag\jplayer.pink.flag.jpg" />
+    <Content Include="js\jplayer\skin\pink.flag\jplayer.pink.flag.seeking.gif" />
+    <Content Include="js\jplayer\skin\pink.flag\jplayer.pink.flag.video.play.png" />
+    <Content Include="js\jquery-1.8.3.min.js" />
+    <Content Include="js\jquery-multi-select\css\multi-select.css" />
+    <Content Include="js\jquery-multi-select\img\switch.png" />
+    <Content Include="js\jquery-multi-select\img\switch_original.png" />
+    <Content Include="js\jquery-multi-select\js\jquery.multi-select.js" />
+    <Content Include="js\jquery-multi-select\js\jquery.quicksearch.js" />
+    <Content Include="js\jquery-placeholder\jquery.placeholder.js" />
+    <Content Include="js\jQuery-slimScroll-1.3.0\jquery.slimscroll.js" />
+    <Content Include="js\jQuery-slimScroll-1.3.0\jquery.slimscroll.min.js" />
+    <Content Include="js\jquery-steps\Gruntfile.js" />
+    <Content Include="js\jquery-steps\jquery.steps.js" />
+    <Content Include="js\jquery-steps\src\defaults.js" />
+    <Content Include="js\jquery-steps\src\enums.js" />
+    <Content Include="js\jquery-steps\src\helper.js" />
+    <Content Include="js\jquery-steps\src\model.js" />
+    <Content Include="js\jquery-steps\src\privates.js" />
+    <Content Include="js\jquery-steps\src\publics.js" />
+    <Content Include="js\jquery-steps\src\_banner.js" />
+    <Content Include="js\jquery-tags-input\jquery.tagsinput.css" />
+    <Content Include="js\jquery-tags-input\jquery.tagsinput.js" />
+    <Content Include="js\jquery-tags-input\jquery.tagsinput.min.js" />
+    <Content Include="js\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="js\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="js\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="js\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="js\jquery-ui\jquery-ui-1.10.1.custom.css" />
+    <Content Include="js\jquery-ui\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="js\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="js\jquery-ui\jquery-ui-1.10.2.custom.min.js" />
+    <Content Include="js\jquery-ui\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="js\jquery.customSelect.min.js" />
+    <Content Include="js\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="js\jquery.isotope.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.nicescroll.js" />
+    <Content Include="js\jquery.orgchart.js" />
+    <Content Include="js\jquery.scrollTo.min.js" />
+    <Content Include="js\jquery.scrollTo\jquery.scrollTo.js" />
+    <Content Include="js\jquery.scrollTo\jquery.scrollTo.min.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\jvector-map\jquery-jvectormap-1.1.1.css" />
+    <Content Include="js\jvector-map\jquery-jvectormap-1.1.1.min.js" />
+    <Content Include="js\jvector-map\jquery-jvectormap-1.2.2.css" />
+    <Content Include="js\jvector-map\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="js\jvector-map\jquery-jvectormap-au-mill-en.js" />
+    <Content Include="js\jvector-map\jquery-jvectormap-us-aea-en.js" />
+    <Content Include="js\jvector-map\jquery-jvectormap-us-lcc-en.js" />
+    <Content Include="js\jvector-map\jquery-jvectormap-us-merc-en.js" />
+    <Content Include="js\jvector-map\jquery-jvectormap-us-mill-en.js" />
+    <Content Include="js\jvector-map\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="js\jvector-map\jqvmap\data\jquery.vmap.sampledata.js" />
+    <Content Include="js\jvector-map\jqvmap\jquery.vmap.js" />
+    <Content Include="js\jvector-map\jqvmap\jquery.vmap.min.js" />
+    <Content Include="js\jvector-map\jqvmap\jquery.vmap.packed.js" />
+    <Content Include="js\jvector-map\jqvmap\jqvmap.css" />
+    <Content Include="js\jvector-map\jqvmap\maps\continents\jquery.vmap.africa.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\continents\jquery.vmap.asia.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\continents\jquery.vmap.australia.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\continents\jquery.vmap.europe.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\continents\jquery.vmap.north-america.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\continents\jquery.vmap.south-america.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\continents\readme.txt" />
+    <Content Include="js\jvector-map\jqvmap\maps\jquery.vmap.algeria.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\jquery.vmap.brazil.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\jquery.vmap.europe.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\jquery.vmap.france.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\jquery.vmap.germany.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\jquery.vmap.russia.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="js\jvector-map\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="js\mini-upload-form\assets\css\bucketmin.css" />
+    <Content Include="js\mini-upload-form\assets\css\style.css" />
+    <Content Include="js\mini-upload-form\assets\img\border-image.png" />
+    <Content Include="js\mini-upload-form\assets\img\icons.png" />
+    <Content Include="js\mini-upload-form\assets\js\jquery.fileupload.js" />
+    <Content Include="js\mini-upload-form\assets\js\jquery.iframe-transport.js" />
+    <Content Include="js\mini-upload-form\assets\js\jquery.knob.js" />
+    <Content Include="js\mini-upload-form\assets\js\jquery.ui.widget.js" />
+    <Content Include="js\mini-upload-form\assets\js\script.js" />
+    <Content Include="js\mini-upload-form\index.html" />
+    <Content Include="js\morris-chart\morris.css" />
+    <Content Include="js\morris-chart\morris.js" />
+    <Content Include="js\morris-chart\morris.min.js" />
+    <Content Include="js\morris-chart\raphael-min.js" />
+    <Content Include="js\morris.init.js" />
+    <Content Include="js\nestable.js" />
+    <Content Include="js\nestable\index.html" />
+    <Content Include="js\nestable\jquery.nestable.css" />
+    <Content Include="js\nestable\jquery.nestable.js" />
+    <Content Include="js\ng-pattern-restrict.min.js" />
+    <Content Include="js\scripts.js" />
+    <Content Include="js\select-init.js" />
+    <Content Include="js\select2\select2-bootstrap.css" />
+    <Content Include="js\select2\select2-spinner.gif" />
+    <Content Include="js\select2\select2.css" />
+    <Content Include="js\select2\select2.js" />
+    <Content Include="js\select2\select2.png" />
+    <Content Include="js\select2\select2x2.png" />
+    <Content Include="js\select2\select2_locale_ar.js" />
+    <Content Include="js\select2\select2_locale_bg.js" />
+    <Content Include="js\select2\select2_locale_ca.js" />
+    <Content Include="js\select2\select2_locale_cs.js" />
+    <Content Include="js\select2\select2_locale_da.js" />
+    <Content Include="js\select2\select2_locale_de.js" />
+    <Content Include="js\select2\select2_locale_el.js" />
+    <Content Include="js\select2\select2_locale_es.js" />
+    <Content Include="js\select2\select2_locale_et.js" />
+    <Content Include="js\select2\select2_locale_eu.js" />
+    <Content Include="js\select2\select2_locale_fa.js" />
+    <Content Include="js\select2\select2_locale_fi.js" />
+    <Content Include="js\select2\select2_locale_fr.js" />
+    <Content Include="js\select2\select2_locale_gl.js" />
+    <Content Include="js\select2\select2_locale_he.js" />
+    <Content Include="js\select2\select2_locale_hr.js" />
+    <Content Include="js\select2\select2_locale_hu.js" />
+    <Content Include="js\select2\select2_locale_id.js" />
+    <Content Include="js\select2\select2_locale_is.js" />
+    <Content Include="js\select2\select2_locale_it.js" />
+    <Content Include="js\select2\select2_locale_ja.js" />
+    <Content Include="js\select2\select2_locale_ka.js" />
+    <Content Include="js\select2\select2_locale_ko.js" />
+    <Content Include="js\select2\select2_locale_lt.js" />
+    <Content Include="js\select2\select2_locale_lv.js" />
+    <Content Include="js\select2\select2_locale_mk.js" />
+    <Content Include="js\select2\select2_locale_ms.js" />
+    <Content Include="js\select2\select2_locale_nl.js" />
+    <Content Include="js\select2\select2_locale_no.js" />
+    <Content Include="js\select2\select2_locale_pl.js" />
+    <Content Include="js\select2\select2_locale_pt-BR.js" />
+    <Content Include="js\select2\select2_locale_pt-PT.js" />
+    <Content Include="js\select2\select2_locale_ro.js" />
+    <Content Include="js\select2\select2_locale_rs.js" />
+    <Content Include="js\select2\select2_locale_ru.js" />
+    <Content Include="js\select2\select2_locale_sk.js" />
+    <Content Include="js\select2\select2_locale_sv.js" />
+    <Content Include="js\select2\select2_locale_th.js" />
+    <Content Include="js\select2\select2_locale_tr.js" />
+    <Content Include="js\select2\select2_locale_uk.js" />
+    <Content Include="js\select2\select2_locale_vi.js" />
+    <Content Include="js\select2\select2_locale_zh-CN.js" />
+    <Content Include="js\select2\select2_locale_zh-TW.js" />
+    <Content Include="js\skycons\index.html" />
+    <Content Include="js\skycons\skycons.js" />
+    <Content Include="js\sparkline\jquery.sparkline.js" />
+    <Content Include="js\table-editable.js" />
+    <Content Include="js\theme-switcher.js" />
+    <Content Include="js\toggle-init.js" />
+    <Content Include="js\tree.js" />
+    <Content Include="js\validation-init.js" />
+    <Content Include="language_switch.html" />
+    <Content Include="lock_screen.html" />
+    <Content Include="login.html" />
+    <Content Include="mail.html" />
+    <Content Include="mail_compose.html" />
+    <Content Include="mail_view.html" />
+    <Content Include="morris.html" />
+    <Content Include="nestable.html" />
+    <Content Include="nicescroll_test.html" />
+    <Content Include="pricing_table.html" />
+    <Content Include="profile.html" />
+    <Content Include="registration.html" />
+    <Content Include="responsive_table.html" />
+    <Content Include="Scripts\ai.0.15.0-build58334.js" />
+    <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-animate\angular-animate.js" />
+    <Content Include="Scripts\angular-animate\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria.js" />
+    <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-aria\angular-aria.js" />
+    <Content Include="Scripts\angular-aria\angular-aria.min.js" />
+    <Content Include="Scripts\angular-material\angular-material-mocks.js" />
+    <Content Include="Scripts\angular-material\angular-material.js" />
+    <Content Include="Scripts\angular-material\angular-material.min.js" />
+    <Content Include="Scripts\angular-messages.js" />
+    <Content Include="Scripts\angular-messages.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular\angular.js" />
+    <Content Include="Scripts\angular\angular.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bs3\css\bootstrap-theme.css.map" />
+    <Content Include="bs3\css\bootstrap.css.map" />
+    <Content Include="bs3\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bs3\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bs3\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="bucket-ico-fonts\bucket-ico-font.eot" />
+    <Content Include="bucket-ico-fonts\bucket-ico-font.ttf" />
+    <Content Include="bucket-ico-fonts\bucket-ico-font.woff" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="font-awesome\less\bordered-pulled.less" />
+    <Content Include="font-awesome\less\core.less" />
+    <Content Include="font-awesome\less\fixed-width.less" />
+    <Content Include="font-awesome\less\font-awesome.less" />
+    <Content Include="font-awesome\less\icons.less" />
+    <Content Include="font-awesome\less\larger.less" />
+    <Content Include="font-awesome\less\list.less" />
+    <Content Include="font-awesome\less\mixins.less" />
+    <Content Include="font-awesome\less\path.less" />
+    <Content Include="font-awesome\less\rotated-flipped.less" />
+    <Content Include="font-awesome\less\spinning.less" />
+    <Content Include="font-awesome\less\stacked.less" />
+    <Content Include="font-awesome\less\variables.less" />
+    <Content Include="font-awesome\scss\font-awesome.scss" />
+    <Content Include="font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="font-awesome\scss\_core.scss" />
+    <Content Include="font-awesome\scss\_fixed-width.scss" />
+    <Content Include="font-awesome\scss\_icons.scss" />
+    <Content Include="font-awesome\scss\_larger.scss" />
+    <Content Include="font-awesome\scss\_list.scss" />
+    <Content Include="font-awesome\scss\_mixins.scss" />
+    <Content Include="font-awesome\scss\_path.scss" />
+    <Content Include="font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="font-awesome\scss\_spinning.scss" />
+    <Content Include="font-awesome\scss\_stacked.scss" />
+    <Content Include="font-awesome\scss\_variables.scss" />
+    <Content Include="js\advanced-datatable\images\Sorting icons.psd" />
+    <Content Include="js\bootstrap-colorpicker\less\colorpicker.less" />
+    <Content Include="js\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="js\bootstrap-daterangepicker\README.md" />
+    <Content Include="js\bootstrap-datetimepicker\less\datetimepicker.less" />
+    <Content Include="js\bootstrap-timepicker\less\timepicker.less" />
+    <Content Include="js\ckeditor\CHANGES.md" />
+    <Content Include="js\ckeditor\LICENSE.md" />
+    <Content Include="js\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="js\ckeditor\plugins\scayt\README.md" />
+    <Content Include="js\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="js\ckeditor\plugins\wsc\README.md" />
+    <Content Include="js\ckeditor\README.md" />
+    <Content Include="js\ckeditor\samples\assets\posteddata.php" />
+    <Content Include="js\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="js\ckeditor\samples\sample_posteddata.php" />
+    <Content Include="js\ckeditor\skins\moono\readme.md" />
+    <Content Include="js\file-uploader\server\gae-go\app.yaml" />
+    <Content Include="js\file-uploader\server\gae-go\app\main.go" />
+    <Content Include="js\file-uploader\server\gae-python\app.yaml" />
+    <Content Include="js\file-uploader\server\gae-python\main.py" />
+    <Content Include="js\file-uploader\server\node\.gitignore" />
+    <Content Include="js\file-uploader\server\node\package.json" />
+    <Content Include="js\file-uploader\server\node\public\files\.gitignore" />
+    <Content Include="js\file-uploader\server\node\public\files\thumbnail\.gitignore" />
+    <Content Include="js\file-uploader\server\node\tmp\.gitignore" />
+    <Content Include="js\file-uploader\server\php\files\.gitignore" />
+    <Content Include="js\file-uploader\server\php\files\.htaccess" />
+    <Content Include="js\file-uploader\server\php\index.php" />
+    <Content Include="js\file-uploader\server\php\UploadHandler.php" />
+    <Content Include="js\flot-chart\API.md" />
+    <Content Include="js\flot-chart\build.log" />
+    <Content Include="js\flot-chart\CONTRIBUTING.md" />
+    <Content Include="js\flot-chart\FAQ.md" />
+    <Content Include="js\flot-chart\Makefile" />
+    <Content Include="js\flot-chart\NEWS.md" />
+    <Content Include="js\flot-chart\PLUGINS.md" />
+    <Content Include="js\flot-chart\README.md" />
+    <Content Include="js\fuelux\COPYING" />
+    <Content Include="js\fuelux\README.md" />
+    <Content Include="js\google-map\.gitignore" />
+    <Content Include="js\google-map\data\ajax.php" />
+    <Content Include="js\iCheck\README.md" />
+    <Content Include="js\ion.rangeSlider-1.8.2\PSD\sprite-skin.psd" />
+    <Content Include="js\jquery-multi-select\.gitignore" />
+    <Content Include="js\jquery-steps\steps.jquery.json" />
+    <Content Include="js\jquery-tags-input\README.md" />
+    <Content Include="js\jquery.scrollTo\.gitignore" />
+    <Content Include="js\jquery.scrollTo\component.json" />
+    <Content Include="js\jquery.scrollTo\README.md" />
+    <Content Include="js\mini-upload-form\upload.php" />
+    <Content Include="js\morris-chart\.gitignore" />
+    <Content Include="js\nestable\README.md" />
+    <Content Include="js\select2\bower.json" />
+    <Content Include="js\select2\component.json" />
+    <Content Include="js\select2\composer.json" />
+    <Content Include="js\select2\LICENSE" />
+    <Content Include="js\select2\package.json" />
+    <Content Include="js\select2\README.md" />
+    <Content Include="js\select2\release.sh" />
+    <Content Include="js\select2\select2.jquery.json" />
+    <Content Include="js\select2\select2_locale_en.js.template" />
+    <Content Include="js\skycons\.gitignore" />
+    <Content Include="js\skycons\README.md" />
+    <Content Include="Scripts\getorgchart - Copy.js" />
+    <Content Include="Scripts\getorgchart.css" />
+    <Content Include="Scripts\getorgchart.js" />
+    <Content Include="Scripts\graphics.png" />
+    <Content Include="Scripts\readme.txt" />
+    <Content Include="Scripts\ui-bootstrap-tpls-2.5.0.min.js" />
+    <Content Include="slider.html" />
+    <Content Include="StaticSiteAssets\bitcoin\app.css" />
+    <Content Include="StaticSiteAssets\bitcoin\index.html" />
+    <Content Include="StaticSiteAssets\bitcoin\main_a.js" />
+    <Content Include="StaticSiteAssets\bitcoin\main_d.js" />
+    <Content Include="StaticSiteAssets\bitcoin\overview.css" />
+    <Content Include="StaticSiteAssets\css\animate.css" />
+    <Content Include="StaticSiteAssets\css\bootstrap.css" />
+    <Content Include="StaticSiteAssets\css\crimson.css" />
+    <Content Include="StaticSiteAssets\css\font-awesome.css" />
+    <Content Include="StaticSiteAssets\css\magnific-popup.css" />
+    <Content Include="StaticSiteAssets\css\main.css" />
+    <Content Include="StaticSiteAssets\css\responsive.css" />
+    <Content Include="StaticSiteAssets\css\style-particles.css" />
+    <Content Include="StaticSiteAssets\css\style.css" />
+    <Content Include="StaticSiteAssets\fonts\fontawesome-webfont.svg" />
+    <Content Include="StaticSiteAssets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="StaticSiteAssets\fonts\index.html" />
+    <Content Include="StaticSiteAssets\images\8.jpg" />
+    <Content Include="StaticSiteAssets\images\about-img.jpg" />
+    <Content Include="StaticSiteAssets\images\android.png" />
+    <Content Include="StaticSiteAssets\images\appbanner.jpg" />
+    <Content Include="StaticSiteAssets\images\apple.png" />
+    <Content Include="StaticSiteAssets\images\bitcoin.png" />
+    <Content Include="StaticSiteAssets\images\btc-logo.png" />
+    <Content Include="StaticSiteAssets\images\btcbitcoin.jpg" />
+    <Content Include="StaticSiteAssets\images\btcforexmarket.jpg" />
+    <Content Include="StaticSiteAssets\images\btcsinvestfund.jpg" />
+    <Content Include="StaticSiteAssets\images\btcsmarket.jpg" />
+    <Content Include="StaticSiteAssets\images\btcsmonthlyreturn.jpg" />
+    <Content Include="StaticSiteAssets\images\btcstradeteam.jpg" />
+    <Content Include="StaticSiteAssets\images\download.png" />
+    <Content Include="StaticSiteAssets\images\earth.jpg" />
+    <Content Include="StaticSiteAssets\images\earth.png" />
+    <Content Include="StaticSiteAssets\images\en.png" />
+    <Content Include="StaticSiteAssets\images\favicon.ico" />
+    <Content Include="StaticSiteAssets\images\jupiter.jpg" />
+    <Content Include="StaticSiteAssets\images\jupiter.png" />
+    <Content Include="StaticSiteAssets\images\logo.jpg" />
+    <Content Include="StaticSiteAssets\images\man7.jpg" />
+    <Content Include="StaticSiteAssets\images\man8.jpg" />
+    <Content Include="StaticSiteAssets\images\mercury.jpg" />
+    <Content Include="StaticSiteAssets\images\mercury.png" />
+    <Content Include="StaticSiteAssets\images\pluto.jpg" />
+    <Content Include="StaticSiteAssets\images\pluto.png" />
+    <Content Include="StaticSiteAssets\images\tranding.jpg" />
+    <Content Include="StaticSiteAssets\js\app.js" />
+    <Content Include="StaticSiteAssets\js\bootstrap.js" />
+    <Content Include="StaticSiteAssets\js\bootstrap.min.js" />
+    <Content Include="StaticSiteAssets\js\html5shiv.js" />
+    <Content Include="StaticSiteAssets\js\jquery-3.1.1.min.js" />
+    <Content Include="StaticSiteAssets\js\lib\stats.js" />
+    <Content Include="StaticSiteAssets\js\main.js" />
+    <Content Include="StaticSiteAssets\js\particles.js" />
+    <Content Include="StaticSiteAssets\js\smoothscroll.js" />
+    <Content Include="StaticSiteAssets\js\wow.min.js" />
+    <Content Include="theme.html" />
+    <Content Include="timeline.html" />
+    <Content Include="tree_view.html" />
+    <Content Include="typography.html" />
+    <Content Include="vector_map.html" />
+    <Content Include="Views\Shared\Modal.html" />
+    <Content Include="widget.html" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-aria\angular-aria.min.js.map" />
+    <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular-aria.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Content\attachment.pdf" />
+    <None Include="Properties\PublishProfiles\BtcPro_Publish.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\TeamMembers.cshtml" />
+    <Content Include="Views\Home\Genealogy.cshtml" />
+    <Content Include="Views\Home\TeamStructure.cshtml" />
+    <Content Include="Views\Home\Network.cshtml" />
+    <Content Include="Views\Home\MyPurchase.cshtml" />
+    <Content Include="Views\Home\PackagesShop.cshtml" />
+    <Content Include="Views\Home\OrderHistory.cshtml" />
+    <Content Include="Views\Home\Invoices.cshtml" />
+    <Content Include="Views\Home\SalesHistory.cshtml" />
+    <Content Include="Views\Home\CashWallet.cshtml" />
+    <Content Include="Views\Home\ReturnWallet.cshtml" />
+    <Content Include="Views\Home\ReserveWallet.cshtml" />
+    <Content Include="Views\Home\FrozenWallet.cshtml" />
+    <Content Include="Views\Home\Earnings.cshtml" />
+    <Content Include="Views\Home\Withdrawals.cshtml" />
+    <Content Include="Views\Home\Transfers.cshtml" />
+    <Content Include="Views\Home\UploadBalance.cshtml" />
+    <Content Include="Views\Home\WithdrawalRequests.cshtml" />
+    <Content Include="Views\Home\TransferRequests.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
+    <Content Include="Views\Home\UploadKYC.cshtml" />
+    <Content Include="Views\Home\AccountStatus.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
+    <Content Include="Views\Home\ChangeTrnPassword.cshtml" />
+    <Content Include="Views\Home\Notifications.cshtml" />
+    <Content Include="Views\Home\Logout.cshtml" />
+    <Content Include="Views\Home\AdminTransfers.cshtml" />
+    <Content Include="Views\Home\Illustration.cshtml" />
+    <Content Include="Views\Home\GenerationStructure.cshtml" />
+    <Content Include="Views\Home\MyRePurchase.cshtml" />
+    <Content Include="Views\Home\TeamStructureNew.cshtml" />
+    <Content Include="Views\Home\Tickets.cshtml" />
+    <Content Include="StaticSiteAssets\fonts\fontawesome-webfont.eot" />
+    <Content Include="StaticSiteAssets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="StaticSiteAssets\fonts\fontawesome-webfont.woff" />
+    <Content Include="StaticSiteAssets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="StaticSiteAssets\fonts\FontAwesome.otf" />
+    <Content Include="StaticSiteAssets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="StaticSiteAssets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="StaticSiteAssets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Views\Home\IndexMain.cshtml" />
+    <Content Include="Views\Home\ApproveBitcoinTransfers.cshtml" />
+    <Content Include="Views\Home\PayoutByAdmin.cshtml" />
+    <Content Include="Views\Home\ProcessSupportTickets.cshtml" />
+    <Content Include="Views\Home\FixedPayout.cshtml" />
+    <Content Include="Views\Shared\_SponsorError.cshtml" />
+    <Content Include="Views\Home\ReferralLink.cshtml" />
+    <Content Include="Views\Home\ManageNews.cshtml" />
+    <Content Include="Views\Home\MemberBlockUnblock.cshtml" />
+    <Content Include="Views\Home\FreeJoining.cshtml" />
+    <Content Include="Views\Home\MemberArea.cshtml" />
+    <Content Include="Views\Home\MemberPage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="js\calendar\src\" />
+    <Folder Include="js\file-uploader\server\php\files\thumbnail\" />
+    <Folder Include="Views\Library\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201705021838042_Register.resx">
+      <DependentUpon>201705021838042_Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705061411365_Tables_03.resx">
+      <DependentUpon>201705061411365_Tables_03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705061711420_Register-Joined.resx">
+      <DependentUpon>201705061711420_Register-Joined.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705061830119_ReferrerId-Register.resx">
+      <DependentUpon>201705061830119_ReferrerId-Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705070929424_Assorted_Changes1.resx">
+      <DependentUpon>201705070929424_Assorted_Changes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705071226254_Assorted_Changes2.resx">
+      <DependentUpon>201705071226254_Assorted_Changes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705071308246_Assorted_Changes3.resx">
+      <DependentUpon>201705071308246_Assorted_Changes3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705071456156_Assorted_Changes4.resx">
+      <DependentUpon>201705071456156_Assorted_Changes4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705071504493_Assorted_Changes5.resx">
+      <DependentUpon>201705071504493_Assorted_Changes5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705071535547_temp.resx">
+      <DependentUpon>201705071535547_temp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705071638090_Misc1.resx">
+      <DependentUpon>201705071638090_Misc1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705071647383_Misc2.resx">
+      <DependentUpon>201705071647383_Misc2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081616531_WeeklyIncomes.resx">
+      <DependentUpon>201705081616531_WeeklyIncomes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081618191_WeeklyIncomes1.resx">
+      <DependentUpon>201705081618191_WeeklyIncomes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081722473_WeeklyIncomes2.resx">
+      <DependentUpon>201705081722473_WeeklyIncomes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081841032_WeeklyIncomes3.resx">
+      <DependentUpon>201705081841032_WeeklyIncomes3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081951180_Otherincome.resx">
+      <DependentUpon>201705081951180_Otherincome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705090300567_Otherincomes.resx">
+      <DependentUpon>201705090300567_Otherincomes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091616412_BinaryIncome_Update.resx">
+      <DependentUpon>201705091616412_BinaryIncome_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091623439_BinaryIncome_Update1.resx">
+      <DependentUpon>201705091623439_BinaryIncome_Update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091649311_BinaryIncome_Update2.resx">
+      <DependentUpon>201705091649311_BinaryIncome_Update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705100457518_Ledger_Update.resx">
+      <DependentUpon>201705100457518_Ledger_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705131302496_Wallets.resx">
+      <DependentUpon>201705131302496_Wallets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705180322223_NewTables.resx">
+      <DependentUpon>201705180322223_NewTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705231515333_TrxPassword_added.resx">
+      <DependentUpon>201705231515333_TrxPassword_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241002205_Ticket.resx">
+      <DependentUpon>201705241002205_Ticket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241146327_date.resx">
+      <DependentUpon>201705241146327_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241148537_date1.resx">
+      <DependentUpon>201705241148537_date1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241155061_date2.resx">
+      <DependentUpon>201705241155061_date2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241420320_data4.resx">
+      <DependentUpon>201705241420320_data4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241423149_data5.resx">
+      <DependentUpon>201705241423149_data5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241427469_data6.resx">
+      <DependentUpon>201705241427469_data6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705301428136_CountryTable.resx">
+      <DependentUpon>201705301428136_CountryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706041348032_ProcessFields.resx">
+      <DependentUpon>201706041348032_ProcessFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706050232397_WithdrawalRequests.resx">
+      <DependentUpon>201706050232397_WithdrawalRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706050346228_Amount_edited.resx">
+      <DependentUpon>201706050346228_Amount_edited.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706050408150_update-date.resx">
+      <DependentUpon>201706050408150_update-date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061721272_WalletAccount.resx">
+      <DependentUpon>201706061721272_WalletAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706070238035_WithdrawalRequest_BatchNo.resx">
+      <DependentUpon>201706070238035_WithdrawalRequest_BatchNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706070805392_BinaryOpenings.resx">
+      <DependentUpon>201706070805392_BinaryOpenings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706070818571_BinaryOpenings_Update.resx">
+      <DependentUpon>201706070818571_BinaryOpenings_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706070826515_BinaryOpenings_Update1.resx">
+      <DependentUpon>201706070826515_BinaryOpenings_Update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706090159288_WithdrawalRequest_newfield_ReferenceNo.resx">
+      <DependentUpon>201706090159288_WithdrawalRequest_newfield_ReferenceNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706100524105_WithdrawalRequest_update_BitCoinAcfieldadded.resx">
+      <DependentUpon>201706100524105_WithdrawalRequest_update_BitCoinAcfieldadded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706131843528_Register_WorkingLeg.resx">
+      <DependentUpon>201706131843528_Register_WorkingLeg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706150126287_NewsReport.resx">
+      <DependentUpon>201706150126287_NewsReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181852212_ipn.resx">
+      <DependentUpon>201706181852212_ipn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706182000360_ipn_update.resx">
+      <DependentUpon>201706182000360_ipn_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706230205598_WithdrawalRequest_addfield_comment.resx">
+      <DependentUpon>201706230205598_WithdrawalRequest_addfield_comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706250538455_Ledger_field_comment.resx">
+      <DependentUpon>201706250538455_Ledger_field_comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706260832115_Register_addfield_isblocked.resx">
+      <DependentUpon>201706260832115_Register_addfield_isblocked.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706280325188_KYCTable_newFields.resx">
+      <DependentUpon>201706280325188_KYCTable_newFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706280411572_KYCTable_addField_Date.resx">
+      <DependentUpon>201706280411572_KYCTable_addField_Date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706291912137_CryptoCurrency_Table.resx">
+      <DependentUpon>201706291912137_CryptoCurrency_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706300718367_Cryptocurrencies_update.resx">
+      <DependentUpon>201706300718367_Cryptocurrencies_update.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>27071</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:27071/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

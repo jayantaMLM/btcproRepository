@@ -1,0 +1,338 @@
+﻿<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/PackageShopController.js"></script>
+
+<!--main content start-->
+
+<section class="wrapper">
+    <div ng-app="app" ng-controller="PackageShop" ng-cloak>
+        <!-- page start-->
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel" ng-hide="isProductSelected">
+                    <header class="panel-heading">
+                        <i class="fa fa-shopping-cart"></i> Products Table
+                    </header>
+                    <div class="panel-body">
+                        <!--price start-->
+                        <div class="text-center price-head" style="padding:0px !important">
+                            <h1 class="color-terques"> Earn handsomely from all the packages </h1>
+                            <p>Assured Return. High Sales Dividends. Unlimited earning potential.</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-hide="hidePurchaseBtn">
+                            <div class="pricing-table">
+                                <div class="pricing-head" style="background-color:#2f9f9e;">
+                                    <h1> Pluto </h1>
+                                </div>
+                                <div class="pricing-quote" style="font-size:32px !important; ">
+                                    20$
+                                    <h5 style="margin:0px !important">to</h5>
+                                    99$
+                                </div>
+                                <ul class="list-unstyled" style="color:black !important">
+                                    <li><i class="fa fa-check"></i> Weekly (1 Year): 3%</li>
+                                    <li><i class="fa fa-check"></i> Introducing Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Binary Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Weekly Binary Bonus Limit: $500</li>
+                                    <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%</li>
+                                </ul>
+                                <div class="price-actions">
+                                    <a class="btn" style="background-color:#2f9f9e;" ng-hide="hidePurchaseBtn" ng-click="isProductSelected=true;packageId=1;selectedProduct='Pluto';minPay=20;maxPay=99;priceToPay='20$ - 99$';payamount=99">Purchase This Plan</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-hide="hidePurchaseBtn">
+                            <div class="pricing-table most-popular">
+                                <div class="pricing-head" style="background-color:#9c5d7a;">
+                                    <h1> Jupiter </h1>
+                                </div>
+                                <div class="pricing-quote" style="font-size:32px !important">
+                                    100$
+                                    <h5 style="margin:0px !important">to</h5>
+                                    2999$
+                                </div>
+                                <ul class="list-unstyled" style="color:black !important">
+                                    <li><i class="fa fa-check"></i> Weekly (1 Year): 4%</li>
+                                    <li><i class="fa fa-check"></i> Introducing Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Binary Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Weekly Binary Bonus Limit: $1000</li>
+                                    <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%,7%</li>
+                                </ul>
+                                <div class="price-actions">
+                                    <a class="btn" style="background-color:#9c5d7a !important;" ng-hide="hidePurchaseBtn" ng-click="isProductSelected=true;packageId=2;selectedProduct='Jupiter';minPay=100;maxPay=2999;priceToPay='100$ - 2999$';payamount=2999">Purchase This Plan</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-hide="hidePurchaseBtn">
+                            <div class="pricing-table">
+                                <div class="pricing-head" style="background-color: #4897cc;">
+                                    <h1> Earth  </h1>
+                                </div>
+                                <div class="pricing-quote" style="font-size:32px !important">
+                                    3000$
+                                    <h5 style="margin:0px !important">to</h5>
+                                    5000$
+                                </div>
+                                <ul class="list-unstyled" style="color:black !important">
+                                    <li><i class="fa fa-check"></i> Weekly (1 Year): 5%</li>
+                                    <li><i class="fa fa-check"></i> Introducing Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Binary Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Weekly Binary Bonus Limit: $3000</li>
+                                    <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%,7%,9%</li>
+                                </ul>
+                                <div class="price-actions">
+                                    <a class="btn" style="background-color: #4897cc;" ng-hide="hidePurchaseBtn" ng-click="isProductSelected=true;packageId=3;selectedProduct='Earth';minPay=3000;maxPay=5000;priceToPay='3000$ - 5000$';payamount=5000">Purchase This Plan</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-hide="hidePurchaseBtn">
+                            <div class="pricing-table most-popular">
+                                <div class="pricing-head" style="background-color:#e9a640;">
+                                    <h1> Mercury </h1>
+                                </div>
+                                <div class="pricing-quote" style="font-size:32px !important">
+                                    @*5000$
+                                        <h5 style="margin:0px !important">to</h5>*@
+                                    10000$
+                                </div>
+                                <ul class="list-unstyled" style="color:black !important">
+                                    <li><i class="fa fa-check"></i> Weekly (1 Year): 6%</li>
+                                    <li><i class="fa fa-check"></i> Introducing Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Binary Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Weekly Binary Bonus Limit: $5000</li>
+                                    <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%,7%,9%,10%</li>
+                                </ul>
+                                <div class="price-actions">
+                                    <a class="btn" style="background-color:#e9a640 !important;" ng-hide="hidePurchaseBtn" ng-click="isProductSelected=true;packageId=4;selectedProduct='Mercury';minPay=10000;maxPay=10000;priceToPay='10000$';payamount=10000">Purchase This Plan</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-`2 col-sm-`2 col-xs-12" ng-show="hidePurchaseBtn">
+                            <div class="pricing-table most-popular">
+                                <div class="pricing-head" style="background-color:#00385a;">
+                                    <h1> Repurchase </h1>
+                                </div>
+                                <div class="pricing-quote" style="font-size:32px !important">
+                                    20$
+                                    <h5 style="margin:0px !important">to</h5>
+                                    no limit
+                                </div>
+                                <ul class="list-unstyled" style="color:black !important">
+                                    <li><i class="fa fa-check"></i> Weekly (1 Year): Your first package default</li>
+                                    <li><i class="fa fa-check"></i> Introducing Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Binary Bonus: 10%</li>
+                                    <li><i class="fa fa-check"></i> Weekly Binary Bonus Limit: Your first package default</li>
+                                    <li><i class="fa fa-check"></i> Generation Matching: Your first package default</li>
+                                </ul>
+                                <div class="price-actions">
+                                    <a class="btn" ng-click="isProductSelected=true;packageId=0;selectedProduct='Repurchase';minPay=20;maxPay=1000000;priceToPay='20$ and above';payamount=100">Purchase This Plan</a>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div  class="price-actions row" style="text-align:center;margin-top:5px">
+                                <button class="btn btn-success" style="margin-top:15px" ng-show="hidePurchaseBtn" ng-click="packageId=0;isProductSelected=true;selectedProduct='Repurchase';minPay=100;maxPay=1000000;priceToPay='20$ and above';payamount=100">Repurchase</button>
+                            </div>*@
+                        <!--price end-->
+                    </div>
+                </section>
+
+                <section class="panel" ng-show="isProductSelected && !proceed && !showBitCoinInfo">
+                    <header class="panel-heading">
+                        <i class="fa fa-shopping-cart"></i> CART
+                    </header>
+                    <div class="panel-body" style="min-height:200px;text-align:center;font-size:16px">
+                        <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:180px;padding-left:0px;padding-right:0px">
+                            <header class="panel-heading">Selected Product</header>
+                            <br />
+                            {{selectedProduct}}
+                        </div>
+                        <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:180px;padding-left:0px;padding-right:0px">
+                            <header class="panel-heading">Package Range</header>
+                            <br />
+                            {{priceToPay}}
+                        </div>
+                        <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:180px;padding-left:0px;padding-right:0px">
+                            <header class="panel-heading">Purchase Amount ($)</header>
+                            <br />
+                            <input type="number" ng-model="payamount" ng-change="payamount_validate()" />
+                            <br /><br />
+                            <div style="color:red" ng-hide="errmsg==''"><i class="fa fa-exclamation-circle"></i>&nbsp;{{errmsg}}</div>
+                        </div>
+                        <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:180px;padding-left:0px;padding-right:0px">
+                            <header class="panel-heading">Action</header>
+                            <br />
+                            <button class="btn btn-success" ng-click="proceed=true;getbalance()" ng-show="errmsg==''"><i class="fa fa-shopping-cart"></i>  Buy</button>&nbsp;&nbsp;<button class="btn btn-danger" ng-click="isProductSelected=false">Return</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel" ng-show="proceed && !showInvoice">
+                    <header class="panel-heading">
+                        <i class="fa fa-shopping-cart"></i> Select payment method
+                    </header>
+                    <div class="panel-body" style="min-height:200px;text-align:center;font-size:16px;padding-bottom:0px !important">
+                        <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px;padding-bottom:5px">
+                            <header class="panel-heading">Payment Method</header>
+                            <img src="~/Content/e-wallet.png" />
+                        </div>
+                        <div class="col-sm-6 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
+                            <header class="panel-heading">Description</header>
+                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This payment option allows you to pay using the income that you have earned in the system.</p></div>
+
+                        </div>
+                        <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
+                            <header class="panel-heading">Action</header>
+                            <div class="col-sm-7" style="text-align:right;padding-top:20px">e-Wallet Balance :</div>
+                            <div class="col-sm-5" style="text-align:left;padding-top:20px">{{walletBalance | currency}}</div>
+                            <div class="col-sm-7" style="text-align:right">Wallet Deduction :</div>
+                            <div class="col-sm-5" style="text-align:left">{{payamount | currency}}</div>
+
+                            <div>
+                                <button ng-show="walletBalance>=payamount && !loader" ng-click="newPurchase();showInvoice=true" class="btn btn-success" style="margin-top:10px">Pay</button><span ng-show="loader"><img src="~/Content/loader.gif" /></span>
+                                <label ng-show="walletBalance<payamount" style="color:red"><i class="fa fa-exclamation-triangle"></i> {{errmsg1}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body" style="min-height:230px;text-align:center;font-size:16px;padding-top:0px !important">
+                        <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:160px;padding-left:0px;padding-right:0px">
+                            <img src="~/Content/Bitcoin2.png" style="height:132px" />
+                        </div>
+                        <div class="col-sm-6 col-xs-12" style="border:1px solid;border-color:lightgray;height:160px;padding-left:0px;padding-right:0px">
+                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This option allows you to pay using Bitcoins. The transaction details are provided on the next page to complete your purchase.</p></div>
+                        </div>
+                        <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:160px;padding-left:0px;padding-right:0px">
+                            <div style="margin-top:50px"><button ng-show="!loaderBTC" class="btn btn-success" style="vertical-align:central" ng-click="loaderBTC=true;bitCoinPurchase();">Pay</button><span ng-show="loaderBTC"><img src="~/Content/loader.gif" /></span></div>
+                        </div>
+
+                        <button class="btn btn-danger" ng-click="proceed=false" style="margin-top:12px">Return</button>
+                    </div>
+                </section>
+                <section class="panel" ng-show="!proceed && !showInvoice &&showBitCoinInfo">
+                    <header class="panel-heading">
+                        <i class="fa fa-btc"></i> Bitcoin transaction details
+                    </header>
+                    <div style="padding:15px">
+                        <div class="col-sm-8 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px;padding-bottom:5px;text-align:center">
+                            <header class="panel-heading">Transaction Details</header>
+                            <div style="padding:15px">
+                                <p>Use the transaction details to complete your order. Amount <b>{{objTransaction.ConvertedAmount}}&nbsp;{{objTransaction.Target_Currency}}</b></p>
+                                <p>Wallet Address:&nbsp;<b>{{objTransaction.TargetWalletAccount}}</b></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px;text-align:center">
+                            <header class="panel-heading">QR Code</header>
+                            <img src="{{TrustedviewerFullFilePath}}" style="height:135px" />
+                        </div>
+                        <div style="text-align:center">
+                            <button class="btn btn-danger" ng-click="proceed=true;showBitCoinInfo=false" style="margin-top:12px;margin-bottom:25px">Return</button>
+                        </div>
+                    </div>
+                    
+                </section>
+                <section class="panel" ng-show="showInvoice">
+                    <div class="panel-body invoice">
+                        <div class="invoice-header">
+                            <div class="invoice-title col-md-3 col-xs-2">
+                                <h1>invoice</h1>
+                            </div>
+                            <div class="invoice-info col-md-9 col-xs-10">
+                                <div class="pull-right">
+                                    <div class="col-md-6 col-sm-6 pull-left">
+                                        <p>
+                                            BTC PRO INC <br />
+                                            22 Marine Parade <br />
+                                            A9 Cork St, Belize City <br />
+                                            Belize
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 pull-right">
+                                        <p>
+                                            Email : info@btcpro.co<br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row invoice-to">
+                            <div class="col-md-4 col-sm-4 pull-left">
+                                <h4>Invoice To:</h4>
+                                <h2>{{address.Fullname}}</h2>
+                                <p>
+                                    {{address.AddressLine1}}<br>
+                                    {{address.AddressLine2}}<br>
+                                    {{address.City}},{{address.State}},{{address.Country}}<br>
+                                    {{address.EmailId}}
+                                </p>
+                            </div>
+                            <div class="col-md-4 col-sm-5 pull-right">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-5 inv-label">Invoice #</div>
+                                    <div class="col-md-8 col-sm-7">233426</div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-5 inv-label">Date #</div>
+                                    <div class="col-md-8 col-sm-7">{{ today | date }}</div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 inv-label">
+                                        <h3>TOTAL</h3>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h1 class="amnt-value">{{payamount | currency}}</h1>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <table class="table table-invoice">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Item Description</th>
+                                    <th class="text-center">Unit Cost</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-center">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <h4>Item 1</h4>
+                                        <p>{{selectedProduct}} package</p>
+                                    </td>
+                                    <td class="text-center">{{minPay | currency}} - {{maxPay | currency}}</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">{{payamount | currency}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-8 col-xs-7 payment-method">
+                                <h4>Payment Method</h4>
+                                <p>Online</p>
+
+                                <br>
+                                <h3 class="inv-label itatic">Thank you for your business</h3>
+                            </div>
+                            <div class="col-md-4 col-xs-5 invoice-block pull-right">
+                                <ul class="unstyled amounts">
+                                    <li>Sub - Total amount : {{payamount | currency}}</li>
+                                    <li class="grand-total">Grand Total : {{payamount | currency}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        @*<div class="text-center invoice-btn">
+                                <a class="btn btn-success btn-lg"><i class="fa fa-check"></i> Submit Invoice </a>
+                                <a href="invoice_print.html" target="_blank" class="btn btn-primary btn-lg"><i class="fa fa-print"></i> Print </a>
+                            </div>*@
+                    </div>
+                </section>
+            </div>
+            <!-- page end-->
+        </div>
+    </div>
+</section>
+
+<!--main content end-->

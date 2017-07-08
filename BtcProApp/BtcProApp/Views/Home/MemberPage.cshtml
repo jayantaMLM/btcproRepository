@@ -1,0 +1,172 @@
+﻿<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+<script src="~/js/ng-pattern-restrict.min.js"></script>
+
+<script src="~/app/scripts/EditProfileController.js"></script>
+
+<section class="wrapper">
+    <div ng-app="app" ng-controller="Member" ng-cloak>
+        <!-- page start-->
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class="fa fa-shopping-cart"></i> Member Details
+                        <span style="margin-left:50px"><label>Member:</label><input type="text" ng-model="member1"/><button ng-click="findMember()">Search</button></span>
+                    </header>
+                    <div class="panel-body" style="background-color:antiquewhite !important">
+                        <form name="MemberForm" class="form-validation">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Username</label>
+                                        <input ng-model="member.Username" disabled>
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Full Name</label>
+                                        <input ng-model="member.Firstname">  @*ng-pattern="/^[a-zA-Z ]*$/"*@
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Email Id</label>
+                                        <input type="email" ng-model="member.Emailid">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Date of Joining</label>
+                                        <md-datepicker ng-model="member.Doj" disabled></md-datepicker>
+                                    </md-input-container>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Street address</label>
+                                        <input ng-model="member.Addressline1">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>House/Block/Locality</label>
+                                        <input ng-model="member.Addressline2">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>City</label>
+                                        <input ng-model="member.City" ng-pattern="/^[a-zA-Z ]*$/">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Postal Code</label>
+                                        <input ng-model="member.Postcode" ng-pattern="/[0-9]*$/" ng-maxlength="6" ng-pattern-restrict>
+                                    </md-input-container>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>State</label>
+                                        <input ng-model="member.State" ng-pattern="/^[a-zA-Z ]*$/">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Country</label>
+                                        <input ng-model="member.Country" ng-pattern="/^[a-zA-Z ]*$/">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Mobile Number</label>
+                                        <input ng-model="member.Mobileno" type="tel">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Preferred Language</label>
+                                        <input ng-model="member.Preferredlanguage" disabled>
+                                    </md-input-container>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Transaction Password</label>
+                                        <input ng-model="member.Transactionpassword" disabled>
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Secret Question</label>
+                                        <input ng-model="member.Secretquestion">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Secret Password</label>
+                                        <input ng-model="member.Secretpassword" type="text" ng-pattern="/^[A-Za-z0-9]*$/" ng-minlength="6" ng-maxlength="14">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>Sponsor Name</label>
+                                        <input ng-model="member.Referrerusername" disabled>
+                                    </md-input-container>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <md-input-container>
+                                        <label>KYC Status</label>
+                                        <input ng-model="kyc_status" disabled>
+                                    </md-input-container>
+                                </div>
+                                <div class="col-md-9">
+                                    <md-input-container style="width:90%">
+                                        <label>KYC Documents</label>
+                                        <input ng-model="kyc_documents" disabled>
+                                    </md-input-container>
+                                </div>
+                            </div>
+
+                            <div class="row" style="text-align:center;margin-bottom:20px">
+                                <input type="submit" class="btn btn-info" ng-disabled="MemberForm.$pristine || MemberForm.$invalid" ng-click="buttonclick0()">
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="myDialog">
+        <md-dialog layout-padding>
+            <h2>Pre-Rendered Dialog</h2>
+            <p>
+                This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
+                template on each opening.
+                <br /><br />
+                The Dialog Element is a static element in the DOM, which is just visually hidden.<br />
+                Once the dialog opens, we just fetch the element from the DOM into our dialog and upon close
+                we restore the element back into its old DOM position.
+            </p>
+        </md-dialog>
+    </div>
+</div>
+

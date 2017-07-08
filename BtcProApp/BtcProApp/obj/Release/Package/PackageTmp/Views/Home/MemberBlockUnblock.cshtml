@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "MemberBlockUnblock";
+}
+
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/MemberBlockUnblockController.js"></script>
+
+<section class="wrapper">
+    <div ng-app="app" ng-controller="MemberBlockUnblock" ng-cloak>
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class="fa fa-money" style="color:green"></i> Member Block / Unblock
+                    </header>
+                    <div class="panel-body" style="padding-top:50px;padding-bottom:50px">
+                        <table style="width:50%;margin:auto !important;" class="table-bordered">
+                            <tr style="height:50px">
+                                <td style="width:15%;text-align:center">User Id:</td>
+                                <td style="width:45%;padding-left:10px;padding-right:10px"><input type="text" class="form-control" ng-model="username" ng-change="isUsernameFound=false;status='';showBlockUnblock=false"/>
+                                <p style="color:red" ng-hide="errormessage==''">{{errormessage}}</p>
+                                 </td>
+                                <td style="width:40%;padding-left:10px"><button class="btn btn-primary" ng-disabled="username==''" ng-click="checkLoginUsername()">Search</button></td>
+                            </tr>
+                            <tr  style="height:50px">
+                                <td style="text-align:center">Status:</td>
+                                <td style="padding-left:10px;padding-right:10px"><h3 style="margin-top:-1px">{{status}}</h3></td>
+                                <td style="padding-left:10px"><div ng-show="showBlockUnblock"><input type="radio" ng-model="blockunblock" name="block_unblock" value="True" />&nbsp;Block &nbsp;&nbsp;&nbsp;<span><input type="radio" ng-model="blockunblock" name="block_unblock" value="False" />&nbsp;Un-Block </span></div></td>
+                            </tr>
+                            <tr  style="height:50px">
+                                <td colspan="3" style="text-align:center"><button class="btn btn-info" ng-show="isUsernameFound" ng-click="updateStatus()">Update</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+

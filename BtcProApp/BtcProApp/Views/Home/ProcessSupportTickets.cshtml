@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Support Tickets Action By Admin";
+}
+
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/TicketController.js"></script>
+
+<section class="wrapper">
+    <div ng-app="app" ng-controller="TicketSupport" ng-cloak>
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class="fa fa-money" style="color:green"></i> Support Ticket Action by Members
+                    </header>
+                    <div class="panel-body">
+                        <div style="text-align:center">
+                        </div>
+                        <div style="margin-bottom:10px">Showing 1 - {{requests.length}} of {{requests.length}} total</div>
+
+                        <table style="width:100%;margin:0 auto" class="table table-bordered table-striped" ng-hide="isIframe">
+                            <tr>
+                                <th style="width:15%">Date</th>
+                                <th style="width:10%">Category</th>
+                                <th style="width:10%">UserId</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th style="width:5%">Attachment</th>
+                                <th style="width:20%">Feedback</th>
+                                <th colspan="2" style="width:15%;text-align:center">My Actions</th>
+                            </tr>
+                            <tr ng-repeat="ticket in mytickets | orderBy:'-Id'">
+                                <td>{{ticket.DateString}}</td>
+                                <td>{{ticket.TicketCategory | TypeFilter}}</td>
+                                <td>{{ticket.UserId}}</td>
+                                <td>{{ticket.Subject}}</td>
+                                <td>{{ticket.Message}}</td>
+                                <td style="text-align:center;cursor:pointer"><i ng-if="ticket.Id>0" class="fa fa-clipboard" ng-click="showimage(ticket.Id)"></i></td>
+                                <td><textarea class="form-control" ng-model=ticket.Status></textarea></td>
+                                <td><button class="btn btn-success" ng-click="notifyuser(ticket);">Notify User</button></td>
+                                <td><button class="btn btn-danger" ng-click="closeticket(ticket);">Close Ticket</button></td>
+                            </tr>
+                        </table>
+                        <div ng-show="isIframe">
+                            <div class="panel-heading" style="margin-top:25px;width:100%;height:50px;background-color:rgba(35, 183, 229, 0.37)">
+                                <div class="pull-left">
+                                    <label style="padding:5px;padding-top:0px;font-weight: bolder;font-size: medium;">Attachment File Name : {{documentNAME}} </label>
+                                </div>
+                                <div class="pull-right">
+                                    <a><i class="fa fa-2x fa-times" ng-click="isIframe=false"></i></a>
+                                </div>
+                            </div>
+                            <div class="panel-body col-sm-12" style="background-color:white; min-height:750px;position:relative">
+                                <div>
+                                    <image ng-if="documentFILETYPE=='IMAGE'" src="{{fullFilePath}}" style="max-height:100%;max-width:100%" />
+                                    <div ng-if="documentFILETYPE=='PDF' || documentFILETYPE=='WORD' || documentFILETYPE=='EXCEL' || documentFILETYPE=='POWERPOINT' || documentFILETYPE=='TEXT' || documentFILETYPE=='HTML'">
+                                        <div ng-bind-html="TrustedviewerFullFilePath"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+

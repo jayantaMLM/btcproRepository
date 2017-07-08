@@ -1,0 +1,373 @@
+body {
+	overflow: auto;
+}
+
+#chartA canvas {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	text-align: center;
+}
+
+.info {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+}
+
+.market {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+	margin: 24px;
+	margin-bottom: 0px;
+}
+
+.chart {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	background-color: #161616;
+}
+
+.title {
+	margin: 8px;
+	text-align: left;
+}
+
+.title span {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+}
+
+.title div {
+	float: right;
+}
+
+.chart {
+	font-size: 0px;
+	line-height: 0px;
+	width: 200px;
+	height: 120px;
+}
+
+div.overview {
+	font-size: 14px;
+	font-family: Arial, sans;
+	color: #CCC;
+}
+
+div.overview .red {
+	color: #C00;
+}
+
+div.overview .green {
+	color: #0C0;
+}
+
+div.overview table {
+	border-collapse: collapse;
+	margin: auto;
+}
+
+div.overview table tbody.head {
+	font-family: Arial, sans;
+	color: #666;
+	border-bottom: 1px solid #111;
+}
+
+div.overview table td.outer {
+	border: none;
+}
+
+div.overview table td {
+	text-align: right;
+	padding: 3px 6px;
+	border-bottom: 1px solid #111;
+	border-top: 1px solid #111;
+	white-space: nowrap;
+}
+
+div.overview table tbody.type th {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+div.overview table tbody.body td:first-child, div.overview table tbody.head td:first-child, div.overview table tbody.exchanges td:first-child {
+	border-left: 1px solid #111;
+}
+
+div.overview table tbody.body td:last-child, div.overview table tbody.head td:last-child, div.overview table tbody.exchanges td:last-child {
+	border-right: 1px solid #111;
+}
+
+div.overview table tbody.body td {
+	cursor: pointer;
+}
+
+div.overview table tbody.gg td {
+	border: none;
+}
+
+div.overview table tbody.gg .inner {
+	width: 728px;
+	height: 90px;
+	margin: auto;
+	margin-top: 12px;
+	background-color: #111;
+	background-image: url("/img/gg728x90.png");
+}
+
+div.overview table .pair {
+	font-family: Arial, sans;
+}
+
+div.overview table .c {
+	text-align: center;
+}
+
+div.overview table .r {
+	text-align: right;
+}
+
+div.overview table colgroup.block {
+	border-right: 1px solid #111;
+}
+
+div.overview table td.gg {
+	padding-top: 32px;
+	width: 160px;
+	vertical-align: top;
+}
+
+div.overview .options table {
+	border-collapse: collpase;
+}
+
+div.overview .options table td {
+	border: 1px solid #111;
+}
+
+div.overview dl.exchanges {
+	text-align: left;
+	padding: 0px;
+	margin: 0px;
+	font-family: Arial, sans;
+}
+
+div.overview dl.exchanges dd {
+	color: #EEE;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	background-color: #111;
+	margin: 3px;
+	padding: 3px 6px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+div.overview dl.exchanges dd a {
+	color: #EEE;
+}
+
+div.overview dl.exchanges dd.c-bitstamp {
+	background-color: #363;
+}
+
+div.overview dl.exchanges dd.c-btce {
+	background-color: #039;
+}
+
+div.overview dl.exchanges dd.c-huobi {
+	background-color: #600;
+}
+
+div.overview dl.exchanges dd.c-okcoin {
+	background-color: #036;
+}
+
+div.overview dl.exchanges dd.c-cavirtex {
+	background-color: #069;
+}
+
+div.overview dl.exchanges dd.c-kraken {
+	background-color: #56A3C9;
+}
+
+div.overview dl.exchanges dd.c-btcchina {
+	background-color: #369;
+}
+
+div.overview dl.exchanges dd.c-bitfinex {
+	background-color: #06C;
+}
+
+div.overview dl.exchanges dd.c-bitcoinde {
+	background-color: #36C;
+}
+
+div.overview dl.exchanges dd.c-bter {
+	background-color: #099;
+}
+
+div.overview dl.exchanges dd.c-coinbase {
+	background-color: #3882CD;
+}
+
+div.overview dl.exchanges dd.c-campbx {
+	background-color: #630;
+}
+
+div.overview dl.exchanges dd.c-vos {
+	background-color: #366;
+}
+
+div.overview dl.exchanges dd.c-mintpal {
+	background-color: #006B4D;
+}
+
+div.overview dl.exchanges dd.c-cryptsy {
+	background-color: #069;
+}
+
+div.overview dl.exchanges dd.c-cexio {
+	background-color: #096;
+}
+
+div.overview dl.exchanges dd.c-bittrex {
+	background-color: #2C3742;
+}
+
+div.overview dl.exchanges dd.c-poloniex {
+	background-color: #5A826E;
+}
+
+div.overview dl.exchanges dd.c-mercado {
+	background-color: #16283A;
+}
+
+div.overview dl.exchanges dd.c-quadrigacx {
+	background-color: #2C2C2C;
+}
+
+div.overview .name {
+	font-size: 18px;
+	font-family: Arial, sans;
+	font-weight: bold;
+	text-align: center;
+	color: #CCC;
+	margin-top: 24px;
+	margin-bottom: 12px;
+}
+
+div.overview .charts {
+	position: relative;
+	padding-top: 24px;
+}
+
+div.overview .charts .info {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 24px;
+	line-height: 24px;
+	text-align: left;
+	font-family: consolas, monospace;
+	font-size: 12px;
+}
+
+div.overview .charts .info div {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	margin-right: 8px;
+}
+
+/*
+.footer {
+	margin-top: 36px;
+	border-top: 1px solid #111;
+}
+*/
+
+.footer .inner {
+	width: 100%;
+	margin: 8px auto;
+}
+
+div.overview g {
+	color: #222;
+}
+
+.change .percent {
+	width: 60px;
+	height: 6px;
+	position: relative;
+	background-color: #1F1F1F;
+}
+
+.change .percent div {
+	height: 100%;
+}
+
+.change .percent .red {
+	background-color: #630;
+}
+
+.change .percent .green {
+	background-color: #363;
+}
+
+.light .overview {
+	color: #333;
+}
+
+.light .overview .green {
+	color: #080;
+}
+
+.light .overview table td {
+	border-top: 1px solid #EFEFEF;
+	border-left: 1px solid #EFEFEF;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+.light .overview table tbody.head {
+	color: #333;
+}
+
+.light .overview table tbody.body td:first-child, .light .overview table tbody.head td:first-child, .light .overview table tbody.exchanges td:first-child {
+	border-left: 1px solid #EFEFEF;
+}
+
+.light .overview table tbody.body td:last-child, .light .overview table tbody.head td:last-child, .light .overview table tbody.exchanges td:last-child {
+	border-right: 1px solid #EFEFEF;
+}
+
+.light .overview table tbody.type th {
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #FFF;
+}
+
+.light .overview .name {
+	color: #333;
+}
+
+.light .overview g {
+	color: #CCC;
+}
+
+.light .overview tr.expand td {
+	border-bottom: 1px solid #ccc;
+}
+
+@media(max-width:767px){
+    div.overview {
+    overflow-x:scroll; 
+}
+}

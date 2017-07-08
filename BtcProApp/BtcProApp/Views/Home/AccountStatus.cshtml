@@ -1,0 +1,35 @@
+﻿<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/TicketController.js"></script>
+
+<section class="wrapper" style="background-color:rgba(211, 211, 211, 0.5)">
+    <div ng-app="app" ng-controller="AccountStatus" ng-cloak>
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class="fa fa-sitemap" style="color:green"></i> Account Deposit - BitCoin
+                    </header>
+                    <div class="panel-body" style="text-align:center">
+                   
+                        <table style="width:50%;margin:auto;border-collapse: separate;border-spacing: 20px;">
+                            <tr>
+                                <td style="width:50%"><label>My Transaction Password.:</label></td>
+                                <td><input type="password" ng-model="trnpassword" class="form-control" ng-change="IsTrnPasswordOK()" /></td>
+                            </tr>
+                            <tr>
+                                <td style="width:50%"><label>My BitCoin Account No.:</label></td>
+                                <td><input class="form-control" ng-model="BitCoinAcNo" ng-disabled="!trnpasswordIsOk" /></td>
+                            </tr>
+                            <tr ng-if="trnpasswordIsOk">
+                                <td colspan="2" style="padding-top:20px;text-align:center;padding-bottom:20px"><button class="btn btn-primary" ng-disabled="BitCoinAcNo==''" ng-click="UpdateAcno()">Update</button></td>
+                            </tr>
+                        </table>
+                        <div ng-if="trnpasswordIsOk"><h4><i class="fa fa-info-circle"></i>&nbsp;&nbsp;Update your Bitcoin Wallet Id, it will be used by the system for your payouts</h4></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+
