@@ -79,6 +79,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -441,10 +442,31 @@
     <Compile Include="Migrations\201706300718367_Cryptocurrencies_update.Designer.cs">
       <DependentUpon>201706300718367_Cryptocurrencies_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707181612133_update_binaryOpening.cs" />
+    <Compile Include="Migrations\201707181612133_update_binaryOpening.Designer.cs">
+      <DependentUpon>201707181612133_update_binaryOpening.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707181830462_update_binaryOpening2.cs" />
+    <Compile Include="Migrations\201707181830462_update_binaryOpening2.Designer.cs">
+      <DependentUpon>201707181830462_update_binaryOpening2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707190551448_Payoutprocess_tbl.cs" />
+    <Compile Include="Migrations\201707190551448_Payoutprocess_tbl.Designer.cs">
+      <DependentUpon>201707190551448_Payoutprocess_tbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707210045156_BinaryOpening_update.cs" />
+    <Compile Include="Migrations\201707210045156_BinaryOpening_update.Designer.cs">
+      <DependentUpon>201707210045156_BinaryOpening_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BtcProDB.cs" />
     <Compile Include="Models\CoinPayment.cs" />
+    <Compile Include="Models\dbview.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbview.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -457,6 +479,9 @@
     <Content Include="404.html" />
     <Content Include="500.html" />
     <Content Include="advanced_form.html" />
+    <Content Include="app\scripts\BinaryLedgerController.js" />
+    <Content Include="app\scripts\BitCoinDepositController.js" />
+    <Content Include="app\scripts\ChangeUserIdController.js" />
     <Content Include="app\scripts\FixedPayoutController.js" />
     <Content Include="app\scripts\AdminTransferController.js" />
     <Content Include="app\scripts\BusinessReportController.js" />
@@ -470,6 +495,7 @@
     <Content Include="app\scripts\MemberAreaController.js" />
     <Content Include="app\scripts\MemberBlockUnblockController.js" />
     <Content Include="app\scripts\MemberTransferController.js" />
+    <Content Include="app\scripts\MemberWalletsController.js" />
     <Content Include="app\scripts\MemberWithdrawalController.js" />
     <Content Include="app\scripts\MyIllustrationController.js" />
     <Content Include="app\scripts\MyPurchaseController.js" />
@@ -529,6 +555,7 @@
     <Content Include="Content\people.jpg" />
     <Content Include="Content\pluto1.png" />
     <Content Include="Content\progress.gif" />
+    <Content Include="Content\qrgen.png" />
     <Content Include="Content\tline.png" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Content\vline.png" />
@@ -1205,6 +1232,12 @@
     <Content Include="js\ckeditor\styles.js" />
     <Content Include="js\config.js" />
     <Content Include="js\config.router.js" />
+    <Content Include="js\css3-countdown-master\css\normalize.css" />
+    <Content Include="js\css3-countdown-master\css\style.css" />
+    <Content Include="js\css3-countdown-master\images\bg-gradient.png" />
+    <Content Include="js\css3-countdown-master\images\bg.gif" />
+    <Content Include="js\css3-countdown-master\index.html" />
+    <Content Include="js\css3-countdown-master\js\countdown.js" />
     <Content Include="js\css3clock\css\style.css" />
     <Content Include="js\css3clock\images\clockface.png" />
     <Content Include="js\css3clock\images\hourhand.png" />
@@ -1886,6 +1919,11 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Content\attachment.pdf" />
+    <Content Include="Models\dbview.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbview.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\BtcPro_Publish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1987,6 +2025,11 @@
     <Content Include="Views\Home\FreeJoining.cshtml" />
     <Content Include="Views\Home\MemberArea.cshtml" />
     <Content Include="Views\Home\MemberPage.cshtml" />
+    <Content Include="Views\Home\ChangeUserId.cshtml" />
+    <Content Include="Views\Home\Members.cshtml" />
+    <Content Include="Views\Home\BitCoinDeposit.cshtml" />
+    <Content Include="Views\Home\BinaryOpenings.cshtml" />
+    <Content Include="Views\Home\MemberWallets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2168,6 +2211,24 @@
     <EmbeddedResource Include="Migrations\201706300718367_Cryptocurrencies_update.resx">
       <DependentUpon>201706300718367_Cryptocurrencies_update.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707181612133_update_binaryOpening.resx">
+      <DependentUpon>201707181612133_update_binaryOpening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707181830462_update_binaryOpening2.resx">
+      <DependentUpon>201707181830462_update_binaryOpening2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707190551448_Payoutprocess_tbl.resx">
+      <DependentUpon>201707190551448_Payoutprocess_tbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707210045156_BinaryOpening_update.resx">
+      <DependentUpon>201707210045156_BinaryOpening_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Models\dbview.dbml.layout">
+      <DependentUpon>dbview.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

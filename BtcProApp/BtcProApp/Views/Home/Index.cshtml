@@ -154,7 +154,8 @@
                             <div class="col-md-9" style="padding-top:10px">
                                 <h4 style="color:#0d69df"><b>{{selectedreport.NewsItemTitle}}</b></h4><br />
                                 <p>{{selectedreport.CreatedDate | date}}</p>
-                                <p style="padding-top:2px;text-align:justify">{{selectedreport.NewsItemBody}}</p>
+                                @*<div style="padding-top:2px;text-align:justify" ng-bind-html="trustedSelectedReport"></div>*@
+                                <span ng-bind-html="trustedSelectedReport"></span>
                                 <div class="col-md-12" style="text-align:left;padding-top:5px;margin-left:-15px">
                                     <b>BTC Pro Management</b>
                                 </div>
@@ -217,7 +218,7 @@
                 <!--widget graph start-->
                 <section class="panel">
                     <div class="panel-body">
-                        <ul class="clearfix prospective-spark-bar">
+                        @*<ul class="clearfix prospective-spark-bar">
                             <li class="pull-left spark-bar-label">
                                 <span class="bar-label-value"> $18887</span>
                                 <span>Prospective Earnings</span>
@@ -225,7 +226,8 @@
                             <li class="pull-right">
                                 <div class="sparkline" data-type="bar" data-resize="true" data-height="40" data-width="90%" data-bar-color="#f6b0ae" data-bar-width="5" data-data="[300,200,500,700,654,987,457,300,876,454,788,300,200,500,700,654,987,457,300,876,454,788]"></div>
                             </li>
-                        </ul>
+                        </ul>*@
+
                     </div>
                 </section>
                 <!--widget graph end-->

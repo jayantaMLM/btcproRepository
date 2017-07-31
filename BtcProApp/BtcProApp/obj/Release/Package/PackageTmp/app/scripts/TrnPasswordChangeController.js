@@ -9,6 +9,7 @@ module.controller('TrnPasswordChange', function ($scope, $http) {
     $scope.newpwdErrMsg = "";
     $scope.confirmpwdErrMsg = "";
     $scope.trxpassword = "";
+    $scope.sending = false;
 
     $http.get("/Home/TransactionPasswordExists").then(function (response) {
         $scope.isExists = response.data.isEXISTS;
@@ -62,5 +63,17 @@ module.controller('TrnPasswordChange', function ($scope, $http) {
 
             })
         }
+    }
+
+    $scope.sendMyTransactionPassword = function () {
+        $scope.sending=true;
+        $http.post("/Home/sendMyTransactionPassword").then(function (response) {
+            $scope.sending = false;
+            if (response.data.Status) {
+                alert("An email has been sent to your registered email id");
+            } else {
+                alert("Error! Email could not be sent");
+            }
+        })
     }
 })

@@ -1,5 +1,5 @@
 ﻿var module = angular.module('app', []);
-module.controller('Dashboard', function ($scope, $http, $location) {
+module.controller('Dashboard', function ($scope, $http, $location,$sce) {
     $scope.data = [];
     var dataPie = [{
         label: "Left",
@@ -100,6 +100,7 @@ module.controller('Dashboard', function ($scope, $http, $location) {
     $scope.showreport = function (report) {
         $scope.list = false;
         $scope.selectedreport = report;
+        $scope.trustedSelectedReport = $sce.trustAsHtml($scope.selectedreport.NewsItemBody);
     }
 
 })

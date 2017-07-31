@@ -21,6 +21,10 @@ module.controller('EditProfile', function ($scope, $http) {
         }
     })
 
+    $http.get("/Home/GetCountries").then(function (response) {
+        $scope.countries = response.data.Countries;
+    })
+
     $scope.buttonclick0 = function () {
         debugger;
         $http.post("/Home/UpdateMember/" + $scope.member.Id, $scope.member).then(function (response) {
@@ -58,6 +62,10 @@ module.controller('Member', function ($scope, $http) {
         //$http("/Home/IsUserNameExist?UserName=" + $scope.member1).then(function (response) {
         //if (response.data.Found) {
 
+        $http.get("/Home/GetCountries").then(function (response) {
+            $scope.countries = response.data.Countries;
+        })
+
         $http.get("/Home/MemberDetail?Member=" + $scope.member1).then(function (response) {
             $scope.member = response.data.Member;
             $scope.member.Preferredlanguage = "English(US)";
@@ -82,10 +90,17 @@ module.controller('Member', function ($scope, $http) {
             })
         })
 
-        // } else {
-        //    alert("Member not joined yet");
-        // }
-        // })
+        $scope.buttonclick0 = function () {
+            debugger;
+            $http.post("/Home/UpdateMember/" + $scope.member.Id, $scope.member).then(function (response) {
+                if (response.data.Success) {
+                    alert('Saved successfully');
+                } else {
+                    alert('Save not successful !!!');
+                }
+
+            })
+        }
 
     }
 })

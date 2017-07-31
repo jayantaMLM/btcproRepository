@@ -34,6 +34,7 @@ namespace BtcProApp.Models
         public virtual DbSet<NewsReport> NewsReports { get; set; }
         public virtual DbSet<ipn> Ipns { get; set; }
         public virtual DbSet<CryptoCurrrency> CryptoCurrencies { get; set; }
+        public virtual DbSet<PayoutProcess> PayoutProcess { get; set; }
     }
 
     public class Member
@@ -361,11 +362,30 @@ namespace BtcProApp.Models
     {
         public long Id { get; set; }
         public long RegistrationId { get; set; }
+        public double LeftSideOp { get; set; }
+        public double RightSideOp { get; set; }
+        public double LeftSideCurrent { get; set; }
+        public double RightSideCurrent { get; set; }
+        public double LeftSideGrandTotal { get; set; }
+        public double RightSideGrandTotal { get; set; }
+        public double Binary { get; set; }
+        public double CappingAmount { get; set; }
+        public double Income { get; set; }
         public double LeftSideCd { get; set; }
         public double RightSideCd { get; set; }
         public string ProcessId { get; set; }
+        public string Week { get; set; }
         public Boolean IsCurrent { get; set; }
     }
+
+    public class PayoutProcess
+        {
+        public int Id { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public DateTime Date { get; set; }
+        public string ProcessNo { get; set; }
+        }
 
     public class NewsReport
     {

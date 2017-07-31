@@ -2,6 +2,11 @@
 
 module.controller('ReferralLink', function ($scope, $http, $location) {
     $scope.position = "L";
+    $scope.isMember = false;
+
+    $http.get("/Home/IsUserMember").then(function (response) {
+        if (response.data.Found) { $scope.isMember = true;}
+    })
     $http.get("/Home/Membername").then(function (data) {
         $scope.user = data.data.CurrentUser;
     });

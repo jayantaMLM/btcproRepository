@@ -1,5 +1,5 @@
 ﻿var module = angular.module('app', []);
-module.controller('PackageShop', function ($scope, $http, $sce) {
+module.controller('PackageShop', function ($scope, $http, $sce, $interval) {
     $scope.isProductSelected = false;
     $scope.selectedProduct = "";
     $scope.minPay = 0;
@@ -18,6 +18,9 @@ module.controller('PackageShop', function ($scope, $http, $sce) {
     $scope.today = new Date();
     $scope.hidePurchaseBtn = true;
     $scope.showBitCoinInfo = false;
+    //$scope.FullQRImagePath = "/Content/qrgen.png";
+    $scope.FullQRImagePath = "";
+    $scope.TrustedviewerFullFilePath = $sce.trustAsHtml($scope.FullQRImagePath);
 
     $scope.getbalance = function () {
         $http.get("MyWalletBalance?WalletId=2").then(function (data) {
@@ -64,6 +67,11 @@ module.controller('PackageShop', function ($scope, $http, $sce) {
         })
     }
 
+    var updateQRCode = function () {
+        $scope.TrustedviewerFullFilePath = $sce.trustAsHtml($scope.FullQRImagePath);
+        $scope.$apply();
+    };
+
     $scope.bitCoinPurchase = function () {
         $http.post("PayCryptoCurrency?packageId=" + $scope.packageId + "&UplineId=0&investmentAmt=" + $scope.payamount).then(function (response) {
             $scope.objTransaction = response.data.objTransaction;
@@ -72,6 +80,7 @@ module.controller('PackageShop', function ($scope, $http, $sce) {
             $scope.proceed = false;
             $scope.showBitCoinInfo = true;
             $scope.loaderBTC = false;
+            $interval(updateQRCode, 1000);
         })
     }
 })

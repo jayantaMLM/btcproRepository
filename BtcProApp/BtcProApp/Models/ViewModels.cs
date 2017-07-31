@@ -5,6 +5,26 @@ using System.Web;
 
 namespace BtcProApp.Models
 {
+    public class vmBinaryOpening
+        {
+        public long Id { get; set; }
+        public long RegistrationId { get; set; }
+        public double LeftSideOp { get; set; }
+        public double RightSideOp { get; set; }
+        public double LeftSideCurrent { get; set; }
+        public double RightSideCurrent { get; set; }
+        public double LeftSideGrandTotal { get; set; }
+        public double RightSideGrandTotal { get; set; }
+        public double Binary { get; set; }
+        public double CappingAmount { get; set; }
+        public double Income { get; set; }
+        public double LeftSideCd { get; set; }
+        public double RightSideCd { get; set; }
+        public string ProcessId { get; set; }
+        public string Week { get; set; }
+        public Boolean IsCurrent { get; set; }
+        }
+
     public class WeekModel
     {
         public int WeekNo { get; set; }
@@ -106,6 +126,7 @@ namespace BtcProApp.Models
         public double IncomeAmount { get; set; }
         public double cdLeftAmount { get; set; }
         public double cdRightAmount { get; set; }
+        public string Week { get; set;}
     }
 
     public class DashboardModel
@@ -212,5 +233,15 @@ namespace BtcProApp.Models
         public string ProcessId { get; set; }
         public string Status { get; set; }
     }
+
+    public class vmMemberWallet
+        {
+        public long RegistrationId { get; set; }
+        public string MemberName { get; set; }
+        public double CashWalletAmount { get; set; }
+        public double ReserveWalletAmount { get; set; }
+        public double ReturnWalletAmount { get; set; }
+        public double FrozenWalletAmount { get; set; }
+        }
 
 }

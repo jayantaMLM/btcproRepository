@@ -12,7 +12,7 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
     $scope.showEmail = false;
     $scope.CountryCode = "";
     $scope.ReferrerName = "";
-    
+
     $scope.registerModel = {
         ReferrerName: "",
         FullName: "",
@@ -21,9 +21,9 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
         Password: "",
         ConfirmPassword: "",
         CreatedDate: new Date,
-        ReferrerId:0,
+        ReferrerId: 0,
         BinaryPosition: "L",
-        CountryCode:""
+        CountryCode: ""
     }
 
     $scope.loginModel = {
@@ -44,10 +44,12 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
         ConfirmPassword: ""
     }
 
-    $http.get("https://ipinfo.io").then(function (response) {
-        debugger;
-        $scope.CountryCode = response.data.country;
-    })
+    //$scope.getCountryCode = function () {
+    //    $http.get("https://ipinfo.io").then(function (response) {
+    //        debugger;
+    //        $scope.CountryCode = response.data.country;
+    //    })
+    //}
 
     $scope.checkReferrername = function () {
         debugger;
@@ -257,7 +259,7 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
                                                 $scope.isComplete = true;
                                                 $scope.showProceed = false;
                                             } else {
-                                                
+
                                             }
                                         }
                                     })
@@ -273,34 +275,36 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
 
     }
 
-    $scope.registration=function()
-    {
-        debugger;
-        //Add new user to AspNetUer table and send email
-        $http.post('/Account/Adduser?emailId=' + $scope.registerModel.EmailId + "&username=" + $scope.registerModel.UserName + "&password=" + $scope.registerModel.Password).then(function (data) {
-            if (data.data.flag == 'Success') {
-                //add new entry to registration table
-                $scope.registerModel.CountryCode = $scope.CountryCode;
-                debugger;
-                $scope.registerModel.ReferrerName = $scope.ReferrerName;
-                $http.get("/Home/GetWorkingLeg?user=" + $scope.registerModel.ReferrerName).then(function (data) {
-                    $scope.registerModel.BinaryPosition = data.data.Position;
-                    if (data.data.Position == null) {
-                        $scope.registerModel.BinaryPosition = "L";
-                    }
-                    $http.post('/api/Registers', $scope.registerModel).then(function (data) {
-                        $scope.isRegistered = true;
-                        $scope.showEmail = true;
-                        $http.post('/Home/SendMyRegistrationEmail?Username=' + $scope.registerModel.UserName).then(function (response) {
-                            if (response.data.status == 'Success') {
-                                $scope.showEmail = false;
-                            }
+    $scope.registration = function () {
+        $http.get("https://ipinfo.io").then(function (response) {
+            $scope.CountryCode = response.data.country;
+            $scope.registerModel.CountryCode = $scope.CountryCode;
+            //Add new user to AspNetUer table and send email
+            $http.post('/Account/Adduser?emailId=' + $scope.registerModel.EmailId + "&username=" + $scope.registerModel.UserName + "&password=" + $scope.registerModel.Password).then(function (data) {
+                if (data.data.flag == 'Success') {
+                    //add new entry to registration table
+                    $scope.registerModel.CountryCode = $scope.CountryCode;
+                    debugger;
+                    $scope.registerModel.ReferrerName = $scope.ReferrerName;
+                    $http.get("/Home/GetWorkingLeg?user=" + $scope.registerModel.ReferrerName).then(function (data) {
+                        $scope.registerModel.BinaryPosition = data.data.Position;
+                        if (data.data.Position == null) {
+                            $scope.registerModel.BinaryPosition = "L";
+                        }
+                        $http.post('/api/Registers', $scope.registerModel).then(function (data) {
+                            $scope.isRegistered = true;
+                            $scope.showEmail = true;
+                            $http.post('/Home/SendMyRegistrationEmail?Username=' + $scope.registerModel.UserName).then(function (response) {
+                                if (response.data.status == 'Success') {
+                                    $scope.showEmail = false;
+                                }
+                            })
                         })
+
                     })
 
-                })
-                
-            }
+                }
+            })
         })
     }
 

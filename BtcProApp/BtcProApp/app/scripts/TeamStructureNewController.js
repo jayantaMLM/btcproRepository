@@ -361,43 +361,47 @@ module.controller('TeamTreeNew', function ($scope, $http) {
         }
 
         $scope.registration = function () {
-            debugger;
-            if ($scope.currentusername != "superadmin") {
-                $scope.registerModel.ReferrerId = $scope.referrerId;
-                $scope.registerModel.ReferrerName = $scope.currentusername;
-                $scope.registerModel.BinaryPosition = $scope.binarypos;
-            }
-            
-            var data = $scope.registerModel;
-            //Add new user to AspNetUer table and send email
-            $http.post('/Account/Adduser?emailId=' + $scope.registerModel.EmailId + "&username=" + $scope.registerModel.UserName + "&password=" + $scope.registerModel.Password).then(function (data) {
-                if (data.data.flag == 'Success') {
-                    //add new entry to registration table
-                    $http.post('/api/Registers', $scope.registerModel).then(function (data) {
-                        $scope.isRegistered = true;
-                        $scope.showEmail = true;
-                        $http.post('/Home/SendMyRegistrationEmail?Username=' + $scope.registerModel.UserName).then(function (response) {
-                            if (response.data.status == 'Success') {
-                                $scope.showEmail = false;
-                            }
-                        })
+            $http.get("https://ipinfo.io").then(function (response) {
+                $scope.CountryCode = response.data.country;
+                $scope.registerModel.CountryCode = $scope.CountryCode;
 
-                        $http.post("/Home/LedgerPostingMember?Username=" + $scope.registerModel.UserName + "&WalletType=2&Amount=" + $scope.payamount).then(function (response) {
-                            if (response.data.Success) {
-                            }
-                        })
-                        $http.post("AutoPurchase?username="+$scope.registerModel.UserName+"&UplineId="+$scope.uplineId+"&packageId=" + $scope.packageId + "&investmentAmt=" + $scope.payamount).then(function (data) {
-                            debugger;
-                            if (data.data.Success == "TRUE") {
-                                $http.get("MyAddress").then(function (retdata) {
-                                    $scope.address = retdata.data.Address;
-                                    $scope.loader = false;
-                                })
-
-                            }
-                        })
-                    })
+                if ($scope.currentusername != "superadmin") {
+                    $scope.registerModel.ReferrerId = $scope.referrerId;
+                    $scope.registerModel.ReferrerName = $scope.currentusername;
+                    $scope.registerModel.BinaryPosition = $scope.binarypos;
                 }
+
+                var data = $scope.registerModel;
+                //Add new user to AspNetUer table and send email
+                $http.post('/Account/Adduser?emailId=' + $scope.registerModel.EmailId + "&username=" + $scope.registerModel.UserName + "&password=" + $scope.registerModel.Password).then(function (data) {
+                    if (data.data.flag == 'Success') {
+                        //add new entry to registration table
+                        $http.post('/api/Registers', $scope.registerModel).then(function (data) {
+                            $scope.isRegistered = true;
+                            $scope.showEmail = true;
+                            $http.post('/Home/SendMyRegistrationEmail?Username=' + $scope.registerModel.UserName).then(function (response) {
+                                if (response.data.status == 'Success') {
+                                    $scope.showEmail = false;
+                                }
+                            })
+
+                            $http.post("/Home/LedgerPostingMember?Username=" + $scope.registerModel.UserName + "&WalletType=2&Amount=" + $scope.payamount).then(function (response) {
+                                if (response.data.Success) {
+                                }
+                            })
+                            $http.post("AutoPurchase?username=" + $scope.registerModel.UserName + "&UplineId=" + $scope.uplineId + "&packageId=" + $scope.packageId + "&investmentAmt=" + $scope.payamount).then(function (data) {
+                                debugger;
+                                if (data.data.Success == "TRUE") {
+                                    $http.get("MyAddress").then(function (retdata) {
+                                        $scope.address = retdata.data.Address;
+                                        $scope.loader = false;
+                                    })
+
+                                }
+                            })
+                        })
+                    }
+                })
             })
         }
     }
