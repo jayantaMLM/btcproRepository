@@ -22,7 +22,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/25/2017 15:18:48</publishTime>
     </File>
     <File Include="app/scripts/BinaryLedgerController.js">
-      <publishTime>07/23/2017 07:57:43</publishTime>
+      <publishTime>08/14/2017 08:25:26</publishTime>
     </File>
     <File Include="app/scripts/BitCoinDepositController.js">
       <publishTime>07/18/2017 09:17:48</publishTime>
@@ -40,10 +40,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/27/2017 19:00:54</publishTime>
     </File>
     <File Include="app/scripts/DashboardController.js">
-      <publishTime>07/24/2017 05:06:17</publishTime>
+      <publishTime>08/19/2017 13:51:10</publishTime>
     </File>
     <File Include="app/scripts/EditProfileController.js">
-      <publishTime>07/15/2017 23:38:29</publishTime>
+      <publishTime>08/13/2017 16:30:15</publishTime>
     </File>
     <File Include="app/scripts/FixedIncomeWalletController.js">
       <publishTime>06/25/2017 17:13:32</publishTime>
@@ -64,22 +64,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/26/2017 16:49:05</publishTime>
     </File>
     <File Include="app/scripts/MemberTransferController.js">
-      <publishTime>06/26/2017 23:19:29</publishTime>
+      <publishTime>08/23/2017 08:36:44</publishTime>
     </File>
     <File Include="app/scripts/MemberWalletsController.js">
       <publishTime>07/29/2017 00:36:52</publishTime>
     </File>
     <File Include="app/scripts/MemberWithdrawalController.js">
-      <publishTime>07/04/2017 21:35:57</publishTime>
+      <publishTime>08/14/2017 09:10:07</publishTime>
     </File>
     <File Include="app/scripts/MyIllustrationController.js">
       <publishTime>05/20/2017 23:31:36</publishTime>
     </File>
     <File Include="app/scripts/MyPurchaseController.js">
-      <publishTime>05/25/2017 02:59:06</publishTime>
+      <publishTime>08/14/2017 06:46:42</publishTime>
     </File>
     <File Include="app/scripts/PackageShopController.js">
-      <publishTime>07/13/2017 13:55:28</publishTime>
+      <publishTime>08/23/2017 08:34:01</publishTime>
     </File>
     <File Include="app/scripts/PasswordChangeController.js">
       <publishTime>05/23/2017 14:26:30</publishTime>
@@ -88,10 +88,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/25/2017 09:25:08</publishTime>
     </File>
     <File Include="app/scripts/ReferralLink.js">
-      <publishTime>07/15/2017 12:28:57</publishTime>
+      <publishTime>08/14/2017 06:16:15</publishTime>
     </File>
     <File Include="app/scripts/RegistrationController.js">
-      <publishTime>07/17/2017 08:20:36</publishTime>
+      <publishTime>08/16/2017 23:31:43</publishTime>
     </File>
     <File Include="app/scripts/ReserveIncomeWalletController.js">
       <publishTime>06/25/2017 17:44:48</publishTime>
@@ -103,10 +103,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/20/2017 23:31:21</publishTime>
     </File>
     <File Include="app/scripts/TeamStructureNewController.js">
-      <publishTime>07/17/2017 11:19:46</publishTime>
+      <publishTime>08/01/2017 04:37:48</publishTime>
     </File>
     <File Include="app/scripts/TicketController.js">
-      <publishTime>07/07/2017 17:56:26</publishTime>
+      <publishTime>08/13/2017 17:03:00</publishTime>
     </File>
     <File Include="app/scripts/TreeReportController.js">
       <publishTime>05/20/2017 23:31:18</publishTime>
@@ -118,7 +118,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2017 13:33:01</publishTime>
     </File>
     <File Include="app/scripts/UploadKycController.js">
-      <publishTime>06/28/2017 10:02:30</publishTime>
+      <publishTime>08/13/2017 17:05:04</publishTime>
     </File>
     <File Include="ApplicationInsights.config">
       <publishTime>04/23/2017 14:56:48</publishTime>
@@ -133,7 +133,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2017 14:56:48</publishTime>
     </File>
     <File Include="bin/BtcProApp.dll">
-      <publishTime>07/31/2017 09:00:12</publishTime>
+      <publishTime>08/23/2017 08:38:18</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/23/2017 14:56:34</publishTime>
@@ -345,6 +345,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="chartjs.html">
       <publishTime>04/23/2017 15:08:41</publishTime>
     </File>
+    <File Include="Content/amazing.png">
+      <publishTime>08/01/2017 04:26:53</publishTime>
+    </File>
     <File Include="Content/angular-material.css">
       <publishTime>04/23/2017 19:21:00</publishTime>
     </File>
@@ -379,7 +382,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/06/2017 18:00:00</publishTime>
     </File>
     <File Include="Content/Bitcoin2.png">
-      <publishTime>05/06/2017 18:00:00</publishTime>
+      <publishTime>08/02/2017 01:25:58</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>04/23/2017 14:56:27</publishTime>
@@ -396,14 +399,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/BtcProIcon.png">
       <publishTime>05/14/2017 17:56:57</publishTime>
     </File>
+    <File Include="Content/btcproimg1.png">
+      <publishTime>08/12/2017 17:41:43</publishTime>
+    </File>
+    <File Include="Content/btcproimg2.png">
+      <publishTime>08/12/2017 17:50:46</publishTime>
+    </File>
     <File Include="Content/Certificate of Incorporation.jpg">
       <publishTime>06/03/2017 14:03:27</publishTime>
+    </File>
+    <File Include="Content/DashCoin2.png">
+      <publishTime>08/02/2017 01:25:59</publishTime>
     </File>
     <File Include="Content/e-wallet.png">
       <publishTime>05/06/2017 17:54:54</publishTime>
     </File>
     <File Include="Content/Earth1.png">
       <publishTime>05/08/2017 00:08:30</publishTime>
+    </File>
+    <File Include="Content/Ethereum2.png">
+      <publishTime>08/02/2017 01:26:00</publishTime>
     </File>
     <File Include="Content/hline.png">
       <publishTime>03/16/2017 13:31:30</publishTime>
@@ -414,11 +429,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/Jupiter1.png">
       <publishTime>05/08/2017 00:08:30</publishTime>
     </File>
+    <File Include="Content/LiteCoin2.png">
+      <publishTime>08/02/2017 01:25:56</publishTime>
+    </File>
     <File Include="Content/loader.gif">
       <publishTime>05/07/2017 00:18:39</publishTime>
     </File>
     <File Include="Content/Mercury1.png">
       <publishTime>05/08/2017 00:08:30</publishTime>
+    </File>
+    <File Include="Content/octa-core.png">
+      <publishTime>08/01/2017 04:26:53</publishTime>
     </File>
     <File Include="Content/people.jpg">
       <publishTime>06/16/2017 14:46:04</publishTime>
@@ -448,7 +469,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2015 10:59:42</publishTime>
     </File>
     <File Include="css/bootstrap-reset.css">
-      <publishTime>05/07/2017 14:30:22</publishTime>
+      <publishTime>08/11/2017 19:53:35</publishTime>
     </File>
     <File Include="css/bootstrap-switch.css">
       <publishTime>07/07/2015 10:59:42</publishTime>
@@ -480,11 +501,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="css/purple-theme.css">
       <publishTime>07/07/2015 10:59:42</publishTime>
     </File>
+    <File Include="css/style - Copy.css">
+      <publishTime>08/14/2017 07:12:37</publishTime>
+    </File>
     <File Include="css/style-responsive.css">
-      <publishTime>07/07/2015 10:59:42</publishTime>
+      <publishTime>08/11/2017 20:07:53</publishTime>
     </File>
     <File Include="css/style.css">
-      <publishTime>07/15/2017 12:57:47</publishTime>
+      <publishTime>08/11/2017 20:18:11</publishTime>
     </File>
     <File Include="css/table-responsive.css">
       <publishTime>07/07/2015 10:59:42</publishTime>
@@ -626,6 +650,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff">
       <publishTime>04/23/2017 14:56:27</publishTime>
+    </File>
+    <File Include="ForgetPassword.html">
+      <publishTime>08/14/2017 14:23:25</publishTime>
     </File>
     <File Include="form_component.html">
       <publishTime>04/23/2017 15:08:41</publishTime>
@@ -4300,13 +4327,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/20/2017 08:19:09</publishTime>
     </File>
     <File Include="Scripts/getorgchart.css">
-      <publishTime>05/25/2017 14:44:47</publishTime>
+      <publishTime>08/14/2017 17:41:45</publishTime>
     </File>
     <File Include="Scripts/getorgchart.js">
+      <publishTime>08/14/2017 17:41:45</publishTime>
+    </File>
+    <File Include="Scripts/getorgchart_org.css">
+      <publishTime>08/14/2017 17:41:45</publishTime>
+    </File>
+    <File Include="Scripts/getorgchart_unlicensed.css">
+      <publishTime>05/25/2017 14:44:47</publishTime>
+    </File>
+    <File Include="Scripts/getorgchart_unlicensed.js">
       <publishTime>05/26/2017 01:01:28</publishTime>
     </File>
     <File Include="Scripts/graphics.png">
-      <publishTime>05/20/2017 08:00:25</publishTime>
+      <publishTime>08/14/2017 17:42:10</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>04/23/2017 14:56:28</publishTime>
@@ -4333,7 +4369,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2017 14:56:31</publishTime>
     </File>
     <File Include="Scripts/readme.txt">
-      <publishTime>05/20/2017 08:00:24</publishTime>
+      <publishTime>08/14/2017 17:42:10</publishTime>
     </File>
     <File Include="Scripts/respond.js">
       <publishTime>04/23/2017 14:56:31</publishTime>
@@ -4345,52 +4381,52 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/23/2017 08:24:08</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>07/28/2017 23:27:36</publishTime>
+      <publishTime>08/14/2017 17:42:07</publishTime>
     </File>
     <File Include="slider.html">
       <publishTime>04/23/2017 15:08:41</publishTime>
     </File>
     <File Include="StaticSiteAssets/bitcoin/app.css">
-      <publishTime>05/16/2017 12:06:52</publishTime>
+      <publishTime>08/01/2017 19:48:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/bitcoin/index.html">
-      <publishTime>05/18/2017 02:46:04</publishTime>
+      <publishTime>08/01/2017 19:48:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/bitcoin/main_a.js">
-      <publishTime>05/16/2017 12:06:53</publishTime>
+      <publishTime>08/01/2017 19:48:24</publishTime>
     </File>
     <File Include="StaticSiteAssets/bitcoin/main_d.js">
-      <publishTime>05/16/2017 12:06:53</publishTime>
+      <publishTime>08/01/2017 19:48:26</publishTime>
     </File>
     <File Include="StaticSiteAssets/bitcoin/overview.css">
-      <publishTime>05/16/2017 12:06:53</publishTime>
+      <publishTime>08/01/2017 19:48:26</publishTime>
     </File>
     <File Include="StaticSiteAssets/css/animate.css">
-      <publishTime>05/16/2017 12:48:35</publishTime>
+      <publishTime>08/05/2017 11:48:39</publishTime>
     </File>
     <File Include="StaticSiteAssets/css/bootstrap.css">
-      <publishTime>05/16/2017 12:48:37</publishTime>
+      <publishTime>08/05/2017 11:48:40</publishTime>
     </File>
     <File Include="StaticSiteAssets/css/crimson.css">
-      <publishTime>05/16/2017 12:48:37</publishTime>
+      <publishTime>08/05/2017 11:48:40</publishTime>
     </File>
     <File Include="StaticSiteAssets/css/font-awesome.css">
-      <publishTime>05/16/2017 12:48:37</publishTime>
+      <publishTime>08/05/2017 11:48:41</publishTime>
     </File>
     <File Include="StaticSiteAssets/css/magnific-popup.css">
-      <publishTime>05/16/2017 12:48:37</publishTime>
+      <publishTime>08/05/2017 11:48:41</publishTime>
     </File>
     <File Include="StaticSiteAssets/css/main.css">
-      <publishTime>05/16/2017 12:48:37</publishTime>
+      <publishTime>08/05/2017 11:48:42</publishTime>
     </File>
     <File Include="StaticSiteAssets/css/responsive.css">
-      <publishTime>05/16/2017 14:00:39</publishTime>
+      <publishTime>08/11/2017 19:57:41</publishTime>
     </File>
     <File Include="StaticSiteAssets/css/style-particles.css">
-      <publishTime>05/16/2017 12:48:37</publishTime>
+      <publishTime>08/05/2017 11:48:43</publishTime>
     </File>
     <File Include="StaticSiteAssets/css/style.css">
-      <publishTime>05/24/2017 20:46:04</publishTime>
+      <publishTime>08/11/2017 20:03:33</publishTime>
     </File>
     <File Include="StaticSiteAssets/fonts/fontawesome-webfont.eot">
       <publishTime>05/16/2017 12:06:27</publishTime>
@@ -4426,118 +4462,124 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2017 12:06:33</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/8.jpg">
-      <publishTime>05/16/2017 12:06:39</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/about-img.jpg">
-      <publishTime>05/16/2017 12:06:36</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/android.png">
-      <publishTime>05/16/2017 12:06:36</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/appbanner.jpg">
-      <publishTime>05/16/2017 12:48:53</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/apple.png">
-      <publishTime>05/16/2017 12:06:40</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/bitcoin.png">
-      <publishTime>05/16/2017 12:06:40</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/btc-logo.png">
-      <publishTime>05/16/2017 12:06:40</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/btcbitcoin.jpg">
-      <publishTime>05/16/2017 12:06:40</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/btcforexmarket.jpg">
-      <publishTime>05/16/2017 12:06:40</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/btcsinvestfund.jpg">
-      <publishTime>05/16/2017 12:06:40</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/btcsmarket.jpg">
-      <publishTime>05/16/2017 12:06:40</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/btcsmonthlyreturn.jpg">
-      <publishTime>05/16/2017 12:06:41</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/btcstradeteam.jpg">
-      <publishTime>05/16/2017 12:06:41</publishTime>
+      <publishTime>08/01/2017 19:45:14</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/download.png">
-      <publishTime>05/16/2017 12:06:43</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/earth.jpg">
-      <publishTime>05/16/2017 12:06:42</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/earth.png">
-      <publishTime>05/16/2017 12:06:43</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/en.png">
-      <publishTime>05/16/2017 12:06:43</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
+    </File>
+    <File Include="StaticSiteAssets/images/ethereum-icon.png">
+      <publishTime>08/19/2017 07:56:52</publishTime>
+    </File>
+    <File Include="StaticSiteAssets/images/ethereum-img.jpg">
+      <publishTime>08/19/2017 07:56:52</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/favicon.ico">
-      <publishTime>05/16/2017 14:14:11</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/jupiter.jpg">
-      <publishTime>05/16/2017 12:06:43</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/jupiter.png">
-      <publishTime>05/16/2017 12:06:44</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/logo.jpg">
-      <publishTime>05/16/2017 12:06:44</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/man7.jpg">
-      <publishTime>05/16/2017 12:06:44</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/man8.jpg">
-      <publishTime>05/16/2017 12:06:46</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/mercury.jpg">
-      <publishTime>05/16/2017 12:06:45</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/mercury.png">
-      <publishTime>05/16/2017 12:06:46</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/pluto.jpg">
-      <publishTime>05/16/2017 12:06:46</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/pluto.png">
-      <publishTime>05/16/2017 12:06:47</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/images/tranding.jpg">
-      <publishTime>05/16/2017 12:06:50</publishTime>
+      <publishTime>08/01/2017 19:45:15</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/app.js">
-      <publishTime>05/16/2017 12:06:48</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/bootstrap.js">
-      <publishTime>05/16/2017 12:06:48</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/bootstrap.min.js">
-      <publishTime>05/16/2017 12:06:50</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/html5shiv.js">
-      <publishTime>05/16/2017 12:06:50</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/jquery-3.1.1.min.js">
-      <publishTime>05/16/2017 12:06:51</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/lib/stats.js">
-      <publishTime>05/16/2017 12:06:52</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/main.js">
-      <publishTime>05/16/2017 12:06:50</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/particles.js">
-      <publishTime>05/16/2017 12:06:51</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/smoothscroll.js">
-      <publishTime>05/16/2017 12:06:51</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="StaticSiteAssets/js/wow.min.js">
-      <publishTime>05/16/2017 12:06:52</publishTime>
+      <publishTime>08/01/2017 19:46:23</publishTime>
     </File>
     <File Include="theme.html">
       <publishTime>04/23/2017 15:08:41</publishTime>
@@ -4591,10 +4633,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2017 14:56:34</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>04/23/2017 14:56:25</publishTime>
+      <publishTime>08/11/2017 18:28:12</publishTime>
+    </File>
+    <File Include="Views/Home/Aboutus.cshtml">
+      <publishTime>08/19/2017 08:11:57</publishTime>
     </File>
     <File Include="Views/Home/AccountStatus.cshtml">
-      <publishTime>07/04/2017 07:34:35</publishTime>
+      <publishTime>08/13/2017 17:32:10</publishTime>
     </File>
     <File Include="Views/Home/AdminTransfers.cshtml">
       <publishTime>06/25/2017 12:43:20</publishTime>
@@ -4603,19 +4648,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2017 13:11:11</publishTime>
     </File>
     <File Include="Views/Home/BinaryOpenings.cshtml">
-      <publishTime>07/23/2017 07:53:21</publishTime>
+      <publishTime>08/14/2017 08:23:20</publishTime>
     </File>
     <File Include="Views/Home/BitCoinDeposit.cshtml">
       <publishTime>07/19/2017 09:46:35</publishTime>
     </File>
+    <File Include="Views/Home/BizOpportunity.cshtml">
+      <publishTime>08/21/2017 18:28:33</publishTime>
+    </File>
     <File Include="Views/Home/CashWallet.cshtml">
-      <publishTime>06/25/2017 17:40:42</publishTime>
+      <publishTime>08/14/2017 09:22:22</publishTime>
     </File>
     <File Include="Views/Home/ChangePassword.cshtml">
-      <publishTime>05/19/2017 09:02:05</publishTime>
+      <publishTime>08/13/2017 17:38:29</publishTime>
     </File>
     <File Include="Views/Home/ChangeTrnPassword.cshtml">
-      <publishTime>07/25/2017 07:23:57</publishTime>
+      <publishTime>08/13/2017 17:52:14</publishTime>
     </File>
     <File Include="Views/Home/ChangeUserId.cshtml">
       <publishTime>07/11/2017 08:20:20</publishTime>
@@ -4623,11 +4671,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>05/07/2017 18:55:06</publishTime>
     </File>
+    <File Include="Views/Home/Contactus.cshtml">
+      <publishTime>08/19/2017 08:14:50</publishTime>
+    </File>
     <File Include="Views/Home/Earnings.cshtml">
       <publishTime>04/25/2017 22:24:07</publishTime>
     </File>
     <File Include="Views/Home/EditProfile.cshtml">
-      <publishTime>07/15/2017 22:41:06</publishTime>
+      <publishTime>08/13/2017 16:30:40</publishTime>
+    </File>
+    <File Include="Views/Home/Ethereum.cshtml">
+      <publishTime>08/21/2017 20:13:10</publishTime>
+    </File>
+    <File Include="Views/Home/Faq.cshtml">
+      <publishTime>08/19/2017 08:14:07</publishTime>
     </File>
     <File Include="Views/Home/FixedPayout.cshtml">
       <publishTime>06/11/2017 00:59:31</publishTime>
@@ -4648,13 +4705,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2017 18:36:22</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/24/2017 05:22:58</publishTime>
+      <publishTime>08/19/2017 14:01:52</publishTime>
+    </File>
+    <File Include="Views/Home/IndexMain - Copy.cshtml">
+      <publishTime>08/02/2017 06:55:48</publishTime>
     </File>
     <File Include="Views/Home/IndexMain.cshtml">
-      <publishTime>06/14/2017 14:16:31</publishTime>
+      <publishTime>08/22/2017 12:27:02</publishTime>
     </File>
     <File Include="Views/Home/Invoices.cshtml">
       <publishTime>04/25/2017 22:22:10</publishTime>
+    </File>
+    <File Include="Views/Home/Login.cshtml">
+      <publishTime>08/19/2017 08:08:55</publishTime>
     </File>
     <File Include="Views/Home/Logout.cshtml">
       <publishTime>04/25/2017 22:27:00</publishTime>
@@ -4669,7 +4732,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/26/2017 16:43:35</publishTime>
     </File>
     <File Include="Views/Home/MemberPage.cshtml">
-      <publishTime>07/15/2017 23:25:48</publishTime>
+      <publishTime>08/14/2017 09:56:29</publishTime>
     </File>
     <File Include="Views/Home/Members.cshtml">
       <publishTime>07/17/2017 01:43:19</publishTime>
@@ -4678,7 +4741,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/29/2017 01:16:46</publishTime>
     </File>
     <File Include="Views/Home/MyPurchase.cshtml">
-      <publishTime>06/11/2017 11:18:30</publishTime>
+      <publishTime>08/14/2017 06:48:57</publishTime>
     </File>
     <File Include="Views/Home/MyRePurchase.cshtml">
       <publishTime>05/13/2017 12:36:09</publishTime>
@@ -4693,7 +4756,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/25/2017 22:21:56</publishTime>
     </File>
     <File Include="Views/Home/PackagesShop.cshtml">
-      <publishTime>07/13/2017 13:16:10</publishTime>
+      <publishTime>08/19/2017 07:44:45</publishTime>
     </File>
     <File Include="Views/Home/PayoutByAdmin.cshtml">
       <publishTime>06/25/2017 09:15:36</publishTime>
@@ -4702,43 +4765,46 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2017 17:49:41</publishTime>
     </File>
     <File Include="Views/Home/ReferralLink.cshtml">
-      <publishTime>07/15/2017 12:31:07</publishTime>
+      <publishTime>08/13/2017 18:00:06</publishTime>
+    </File>
+    <File Include="Views/Home/Registration.cshtml">
+      <publishTime>08/19/2017 08:08:17</publishTime>
     </File>
     <File Include="Views/Home/ReserveWallet.cshtml">
-      <publishTime>06/25/2017 17:46:42</publishTime>
+      <publishTime>08/06/2017 15:30:27</publishTime>
     </File>
     <File Include="Views/Home/ReturnWallet.cshtml">
-      <publishTime>06/25/2017 17:32:00</publishTime>
+      <publishTime>08/06/2017 15:35:58</publishTime>
     </File>
     <File Include="Views/Home/SalesHistory.cshtml">
       <publishTime>06/04/2017 16:36:39</publishTime>
     </File>
     <File Include="Views/Home/TeamMembers.cshtml">
-      <publishTime>06/11/2017 01:43:28</publishTime>
+      <publishTime>08/05/2017 09:03:33</publishTime>
     </File>
     <File Include="Views/Home/TeamStructure.cshtml">
       <publishTime>05/13/2017 12:26:46</publishTime>
     </File>
     <File Include="Views/Home/TeamStructureNew.cshtml">
-      <publishTime>06/27/2017 08:38:36</publishTime>
+      <publishTime>08/18/2017 19:50:09</publishTime>
     </File>
     <File Include="Views/Home/Tickets.cshtml">
-      <publishTime>07/07/2017 17:42:53</publishTime>
+      <publishTime>08/13/2017 16:52:06</publishTime>
     </File>
     <File Include="Views/Home/TransferRequests.cshtml">
       <publishTime>04/25/2017 22:25:15</publishTime>
     </File>
     <File Include="Views/Home/Transfers.cshtml">
-      <publishTime>06/26/2017 22:43:39</publishTime>
+      <publishTime>08/06/2017 20:44:12</publishTime>
     </File>
     <File Include="Views/Home/UploadBalance.cshtml">
-      <publishTime>06/07/2017 06:31:28</publishTime>
+      <publishTime>08/13/2017 17:57:37</publishTime>
     </File>
     <File Include="Views/Home/UploadKYC.cshtml">
-      <publishTime>06/28/2017 09:59:31</publishTime>
+      <publishTime>08/13/2017 16:57:13</publishTime>
     </File>
     <File Include="Views/Home/WithdrawalRequests.cshtml">
-      <publishTime>07/04/2017 21:57:02</publishTime>
+      <publishTime>08/14/2017 09:50:04</publishTime>
     </File>
     <File Include="Views/Home/Withdrawals.cshtml">
       <publishTime>04/25/2017 22:24:18</publishTime>
@@ -4771,7 +4837,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/23/2017 08:01:11</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/28/2017 23:23:36</publishTime>
+      <publishTime>08/21/2017 09:36:39</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>04/23/2017 14:56:34</publishTime>
@@ -4786,7 +4852,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2017 18:37:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/29/2017 01:17:53</publishTime>
+      <publishTime>08/19/2017 01:02:03</publishTime>
     </File>
     <File Include="widget.html">
       <publishTime>04/23/2017 15:08:41</publishTime>

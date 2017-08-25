@@ -458,6 +458,14 @@
     <Compile Include="Migrations\201707210045156_BinaryOpening_update.Designer.cs">
       <DependentUpon>201707210045156_BinaryOpening_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708030831320_update_member_field_Acheivement1.cs" />
+    <Compile Include="Migrations\201708030831320_update_member_field_Acheivement1.Designer.cs">
+      <DependentUpon>201708030831320_update_member_field_Acheivement1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708030906532_update_member_field_Acheivement1Date.cs" />
+    <Compile Include="Migrations\201708030906532_update_member_field_Acheivement1Date.Designer.cs">
+      <DependentUpon>201708030906532_update_member_field_Acheivement1Date.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BtcProDB.cs" />
@@ -528,6 +536,7 @@
     <Content Include="c3_chart.html" />
     <Content Include="calendar.html" />
     <Content Include="chartjs.html" />
+    <Content Include="Content\amazing.png" />
     <Content Include="Content\angular-material.css" />
     <Content Include="Content\angular-material.layout-attributes.css" />
     <Content Include="Content\angular-material.layout-attributes.min.css" />
@@ -544,14 +553,20 @@
     <Content Include="Content\btcpro.png" />
     <Content Include="Content\BtcProIcon.ico" />
     <Content Include="Content\BtcProIcon.png" />
+    <Content Include="Content\btcproimg1.png" />
+    <Content Include="Content\btcproimg2.png" />
     <Content Include="Content\Certificate of Incorporation.jpg" />
+    <Content Include="Content\DashCoin2.png" />
     <Content Include="Content\e-wallet.png" />
     <Content Include="Content\Earth1.png" />
+    <Content Include="Content\Ethereum2.png" />
     <Content Include="Content\hline.png" />
     <Content Include="Content\ifsc_licence copy-1.jpg" />
     <Content Include="Content\Jupiter1.png" />
+    <Content Include="Content\LiteCoin2.png" />
     <Content Include="Content\loader.gif" />
     <Content Include="Content\Mercury1.png" />
+    <Content Include="Content\octa-core.png" />
     <Content Include="Content\people.jpg" />
     <Content Include="Content\pluto1.png" />
     <Content Include="Content\progress.gif" />
@@ -571,6 +586,7 @@
     <Content Include="css\jquery.steps.css" />
     <Content Include="css\orange-theme.css" />
     <Content Include="css\purple-theme.css" />
+    <Content Include="css\style - Copy.css" />
     <Content Include="css\style-responsive.css" />
     <Content Include="css\style.css" />
     <Content Include="css\table-responsive.css" />
@@ -587,6 +603,7 @@
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="fontawesome.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ForgetPassword.html" />
     <Content Include="form_component.html" />
     <Content Include="form_validation.html" />
     <Content Include="form_wizard.html" />
@@ -1843,8 +1860,10 @@
     <Content Include="js\skycons\.gitignore" />
     <Content Include="js\skycons\README.md" />
     <Content Include="Scripts\getorgchart - Copy.js" />
-    <Content Include="Scripts\getorgchart.css" />
+    <Content Include="Scripts\getorgchart_org.css" />
     <Content Include="Scripts\getorgchart.js" />
+    <Content Include="Scripts\getorgchart_unlicensed.css" />
+    <Content Include="Scripts\getorgchart_unlicensed.js" />
     <Content Include="Scripts\graphics.png" />
     <Content Include="Scripts\readme.txt" />
     <Content Include="Scripts\ui-bootstrap-tpls-2.5.0.min.js" />
@@ -1883,6 +1902,8 @@
     <Content Include="StaticSiteAssets\images\earth.jpg" />
     <Content Include="StaticSiteAssets\images\earth.png" />
     <Content Include="StaticSiteAssets\images\en.png" />
+    <Content Include="StaticSiteAssets\images\ethereum-icon.png" />
+    <Content Include="StaticSiteAssets\images\ethereum-img.jpg" />
     <Content Include="StaticSiteAssets\images\favicon.ico" />
     <Content Include="StaticSiteAssets\images\jupiter.jpg" />
     <Content Include="StaticSiteAssets\images\jupiter.png" />
@@ -2030,6 +2051,14 @@
     <Content Include="Views\Home\BitCoinDeposit.cshtml" />
     <Content Include="Views\Home\BinaryOpenings.cshtml" />
     <Content Include="Views\Home\MemberWallets.cshtml" />
+    <Content Include="Views\Home\IndexMain - Copy.cshtml" />
+    <Content Include="Views\Home\Aboutus.cshtml" />
+    <Content Include="Views\Home\BizOpportunity.cshtml" />
+    <Content Include="Views\Home\Faq.cshtml" />
+    <Content Include="Views\Home\Contactus.cshtml" />
+    <Content Include="Views\Home\Registration.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Ethereum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2222,6 +2251,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707210045156_BinaryOpening_update.resx">
       <DependentUpon>201707210045156_BinaryOpening_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708030831320_update_member_field_Acheivement1.resx">
+      <DependentUpon>201708030831320_update_member_field_Acheivement1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708030906532_update_member_field_Acheivement1Date.resx">
+      <DependentUpon>201708030906532_update_member_field_Acheivement1Date.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Models\dbview.dbml.layout">
       <DependentUpon>dbview.dbml</DependentUpon>

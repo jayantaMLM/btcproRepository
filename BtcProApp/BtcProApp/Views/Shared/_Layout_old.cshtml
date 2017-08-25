@@ -1,0 +1,460 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    @*<meta name="author" content="ThemeBucket">*@
+    <link rel="shortcut icon" href="~/Content/BtcProIcon.png">
+    <title>BtcPro App</title>
+    <!--Core CSS -->
+    <link href="~/bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="~/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="~/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/js/jvector-map/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <link href="~/css/clndr.css" rel="stylesheet">
+    <!--clock css-->
+    <link href="~/js/css3clock/css/style.css" rel="stylesheet">
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="~/js/morris-chart/morris.css">
+    <!-- Custom styles for this template -->
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/style-responsive.css" rel="stylesheet" />
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]>
+    <script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <section id="container">
+        <!--header start-->
+        <header class="header fixed-top clearfix">
+            <div class="col-md-4">
+                <!--logo start-->
+                <div class="brand" style="text-align:center !important; width:225px;padding-top:5px">
+                    <img src="~/Content/btcpro.png" style="width:45%" />
+                    <div class="sidebar-toggle-box" style="margin-top:-55px">
+                        <div class="fa fa-bars"></div>
+                    </div>
+                </div>
+                <!--logo end-->
+            </div>
+            <div class="col-md-4">
+                <div id="countdown" style="height:80px;text-align:center;padding-top:12px;margin-left:25%">
+                    @*<div style="float:left"><img src="~/Content/animated-bell-image-0001.gif" /></div>*@
+                    <div id="countdown0" style="float:left;width:auto;height:50px;" title="Next Closing to go..">
+                    </div>
+                    <div style="font-size:small;font-weight:600;clear:both;float:left;padding-left:18px">next closing time to go...</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pull-right" style="margin-top:25px;margin-right:20px">
+                    @*<img id="countryImg" src="@ViewBag.ImagePath" style="width:30px;height:20px;margin-top:-10px" />&nbsp;*@<i class="fa fa-2x fa-user" style="margin-left:1px;color:darkorange"></i>&nbsp;&nbsp;You have logged in as&nbsp;<span style="font-size:16px;color:darkorange">@User.Identity.Name</span>&nbsp;<span id="CountryCode"></span>
+                </div>
+            </div>
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            @if (User.Identity.Name.ToUpper() == "ADMINISTRATOR")
+            {
+                <div id="sidebar" class="nav-collapse">
+                    <!-- sidebar menu start-->
+                    <div class="leftside-navigation">
+                        <ul class="sidebar-menu" id="nav-accordion">
+                            <li>
+                                <a class="active" href='@Url.Action("Index","Home")'>
+                                    <i class="fa fa-dashboard"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Actions</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("ProcessSupportTickets","Home")'>Support Ticket process</a></li>
+                                    <li><a href='@Url.Action("MemberBlockUnblock","Home")'>Member Block / Unblock</a></li>
+                                    <li><a href='@Url.Action("MemberPage","Home")'>View Member Profile</a></li>
+                                    <li><a href='@Url.Action("ChangeUserId","Home")'>Change User Id</a></li>
+
+                                </ul>
+                            </li>
+                           
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>News Report</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("ManageNews","Home")'>Manage News</a></li>
+                                </ul>
+                            </li>
+                            <li><a href='@Url.Action("ChangePassword","Home")'>Change Password</a></li>
+                            <li>
+                                <a href='@Url.Action("LogOff","Account")'>
+                                    <i class="fa fa-external-link"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+            else if (User.Identity.Name.ToUpper() == "SUPERADMIN")
+            {
+                <div id="sidebar" class="nav-collapse">
+                    <!-- sidebar menu start-->
+                    <div class="leftside-navigation">
+                        <ul class="sidebar-menu" id="nav-accordion">
+                            <li>
+                                <a class="active" href='@Url.Action("Index","Home")'>
+                                    <i class="fa fa-dashboard"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Super Actions</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("AdminTransfers","Home")'>Transfer Money</a></li>
+                                    <li><a href='@Url.Action("PayoutByAdmin","Home")'>Process Withdrawal Request</a></li>
+                                    <li><a href='@Url.Action("FreeJoining","Home")'>Free Joining</a></li>
+                                    <li><a href='@Url.Action("MemberPage","Home")'>View Member Profile</a></li>
+                                    <li><a href='@Url.Action("ChangeUserId","Home")'>Change User Id</a></li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Payouts</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("FixedPayout","Home")'>Process Daily Investment Return</a></li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Member Account</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("FixedPayout","Home")'>View Member Account</a></li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Bitcoin Account</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("ApproveBitcoinTransfers","Home")'>Bitcoin Transfers</a></li>
+                                </ul>
+                            </li>
+                           
+                            <li><a href='@Url.Action("ChangePassword","Home")'>Change Password</a></li>
+                            <li>
+                                <a href='@Url.Action("LogOff","Account")'>
+                                    <i class="fa fa-external-link"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div id="sidebar" class="nav-collapse">
+
+                    <!-- sidebar menu start-->
+                    <div class="leftside-navigation">
+                        <ul class="sidebar-menu" id="nav-accordion">
+                            <li>
+                                <a class="active" href='@Url.Action("Index","Home")'>
+                                    <i class="fa fa-dashboard"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>My Team</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("TeamMembers","Home")'>Team Members</a></li>
+                                    @*<li><a href='@Url.Action("Contact","Home")'>Genealogy</a></li>*@
+                                    <li><a href='@Url.Action("TeamStructureNew","Home")'>Binary Team Structure</a></li>
+                                    <li><a href='@Url.Action("GenerationStructure","Home")'>Generation Team Structure</a></li>
+                                    @*<li><a href='@Url.Action("Network","Home")'>Network</a></li>*@
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-suitcase"></i>
+                                    <span>My Business</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("PackagesShop","Home")'>Packages Shop</a></li>
+                                    @*<li><a href='@Url.Action("MyRePurchase","Home")'>Repurchase</a></li>*@
+                                    <li><a href='@Url.Action("MyPurchase","Home")'>My Purchase/Repurchases</a></li>
+                                    @*<li><a href='@Url.Action("OrderHistory","Home")'>Order History</a></li>*@
+                                    <li><a href='@Url.Action("SalesHistory","Home")'>Current Business & Earnings</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href='@Url.Action("ReferralLink","Home")'>
+                                    <i class="fa fa-coffee"></i>
+                                    <span>My Referral Link</span>
+                                </a>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="~/javascript:;">
+                                    <i class="fa fa-dollar"></i>
+                                    <span>Money</span>
+                                </a>
+                                <ul class="sub">
+                                    @*<li><a href='@Url.Action("Illustration","Home")'>Fixed Return Illustration</a></li>*@
+                                    <li><a href='@Url.Action("CashWallet","Home")'>Cash Wallet</a></li>
+                                    <li><a href='@Url.Action("ReserveWallet","Home")'>Reserve Wallet</a></li>
+                                    <li><a href='@Url.Action("ReturnWallet","Home")'>Return Wallet</a></li>
+
+                                    @*<li><a href='@Url.Action("FrozenWallet","Home")'>Frozen Wallet</a></li>*@
+                                    @*<li><a href='@Url.Action("Earnings","Home")'>Earnings</a></li>
+                                        <li><a href='@Url.Action("Withdrawals","Home")'>Withdrawls</a></li>*@
+                                    <li><a href='@Url.Action("Transfers","Home")'>Transfers</a></li>
+                                    <li><a href='@Url.Action("UploadBalance","Home")'>Deposit BitCoin</a></li>
+                                    <li><a href='@Url.Action("WithdrawalRequests","Home")'>Withdrawal Requests</a></li>
+                                    @*<li><a href='@Url.Action("TransferRequests","Home")'>Transfer Requests</a></li>*@
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-user"></i>
+                                    <span>Account</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("EditProfile","Home")'>Edit Profile</a></li>
+                                    <li><a href='@Url.Action("UploadKYC","Home")'>Upload KYC Documents</a></li>
+                                    <li><a href='@Url.Action("AccountStatus","Home")'>My BitCoin Account</a></li>
+                                    <li><a href='@Url.Action("ChangePassword","Home")'>Change Password</a></li>
+                                    <li><a href='@Url.Action("ChangeTrnPassword","Home")'>Change Transaction Password</a></li>
+                                    @*<li><a href='@Url.Action("Notifications","Home")'>Notifications Center</a></li>*@
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                    <span>Support</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("Tickets","Home")'>My Tickets</a></li>
+                                    @*<li><a href='@Url.Action("Report2","Home")'>Contact Referrer</a></li>
+                                        <li><a href='@Url.Action("Report3","Home")'>Compensation Plan</a></li>
+                                        <li><a href='@Url.Action("Report3","Home")'>Downloads</a></li>*@
+                                </ul>
+                            </li>
+                            <li>
+                                @*<a href='@Url.Action("Logout","Home")'>*@
+                                @*<a onclick='window.location.href="https://www.btcpro.co";return false;'>*@
+                                <a href='@Url.Action("LogOff","Account")'>
+                                    <i class="fa fa-external-link"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                            @*<li>
+                                <a href="#modalLicense" data-toggle="modal" data-target="#modalLicense" style="color:yellow">
+                                    <i class="fa fa-bullhorn"></i>
+                                    <span>License </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#modalCertificate" data-toggle="modal" data-target="#modalCertificate" style="color:yellow">
+                                    <i class="fa fa-certificate"></i>
+                                    <span>Certificate </span>
+                                </a>
+                            </li>*@
+                        </ul>
+                        <button style="background-color:rgb(51, 54, 71);margin-top:50px;margin-left:20px;margin-bottom:10px;width:190px;text-align:center" class="btn btn-round btn-info" data-toggle="modal" data-target="#modalCertificate">Certificate</button>
+                        <button style="background-color:rgb(51, 54, 71);margin-left:20px;margin-bottom:10px;width:190px;text-align:center" class="btn btn-round btn-info" data-toggle="modal" data-target="#modalLicense">License</button>
+                        <button style="background-color:rgb(51, 54, 71);margin-left:20px;width:190px;text-align:center" class="btn btn-round btn-info" onclick='window.open("https://www.changer.com","_blank")'>Exchanger</button>
+                    </div>
+                    <!-- sidebar menu end-->
+                </div>
+            }
+
+        </aside>
+
+        <section id="main-content">
+            @RenderBody()
+        </section>
+
+    </section>
+   
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!--Core js-->
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+    <script src="~/bs3/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/js/jquery.scrollTo.min.js"></script>
+    <script src="~/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+    <script src="~/js/jquery.nicescroll.js"></script>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="~/js/flot-chart/excanvas.min.js"></script><![endif]-->
+    <script src="~/js/skycons/skycons.js"></script>
+    <script src="~/js/jquery.scrollTo/jquery.scrollTo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="~/js/calendar/clndr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="~/js/calendar/moment-2.2.1.js"></script>
+    <script src="~/js/evnt.calendar.init.js"></script>
+    <script src="~/js/jvector-map/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="~/js/jvector-map/jquery-jvectormap-us-lcc-en.js"></script>
+    <script src="~/js/gauge/gauge.js"></script>
+    <!--clock init-->
+    <script src="~/js/css3clock/js/css3clock.js"></script>
+    <!--Easy Pie Chart-->
+    <script src="~/js/easypiechart/jquery.easypiechart.js"></script>
+    <!--Sparkline Chart-->
+    <script src="~/js/sparkline/jquery.sparkline.js"></script>
+    <!--Morris Chart-->
+    <script src="~/js/morris-chart/morris.js"></script>
+    <script src="~/js/morris-chart/raphael-min.js"></script>
+    <!--jQuery Flot Chart-->
+    <script src="~/js/flot-chart/jquery.flot.js"></script>
+    <script src="~/js/flot-chart/jquery.flot.tooltip.min.js"></script>
+    <script src="~/js/flot-chart/jquery.flot.resize.js"></script>
+    <script src="~/js/flot-chart/jquery.flot.pie.resize.js"></script>
+    <script src="~/js/flot-chart/jquery.flot.animator.min.js"></script>
+    <script src="~/js/flot-chart/jquery.flot.growraf.js"></script>
+    @*<script src="~/js/dashboard.js"></script>*@
+    <script src="~/js/jquery.customSelect.min.js"></script>
+
+    <!--common script init for all pages-->
+    <script src="~/js/scripts.js"></script>
+    <!--script for this page-->
+    @*<script src="~/Scripts/angular.min.js"></script>*@
+    @*<script src="~/Scripts/angular/angular.min.js"></script>*@
+    <script src="~/Scripts/angular-messages.min.js"></script>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("July 17, 2017 09:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now an the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("countdown0").innerHTML = "" +
+            "<div style='float:left;font-size:medium;margin-left:5px'><span style='font-size:xx-large'>" + days + "</span>&nbsp;d</div>" +
+            "<div style='float:left;font-size:medium;margin-left:5px'><span style='font-size:xx-large'>" + hours + "</span>&nbsp;h</div>" +
+            "<div style='float:left;font-size:medium;margin-left:5px'><span style='font-size:xx-large'>" + minutes + "</span>&nbsp;m</div>" +
+            "<div style='float:left;font-size:medium;margin-left:5px'><span style='font-size:xx-large'>" + seconds + "</span>&nbsp;s</div></div>";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "DECLARED";
+            }
+        }, 1000);
+        //session end
+        @*var sessionTimeoutWarning = @Session.Timeout -1;
+
+        var sTimeout = parseInt(sessionTimeoutWarning) * 5 * 1000;
+        setTimeout('SessionEnd()', sTimeout);
+
+        function SessionEnd() {
+            window.location = "/Account/LogOff";
+        }*@
+
+        var data = $.ajax({
+            type: "GET",
+            url: "https://ipinfo.io",
+            dataType: "json",
+            success: function (data) {
+                var d = data.country;
+                var c = "";
+
+                var data1 = $.ajax({
+                    type: "GET",
+                    url: "/Home/GetCountry?countryCode=" + d,
+                    dataType: "json",
+                    success: function (data1) {
+                        c = "from " + data1.CountryName;
+                        $("#CountryCode").text(c);
+                    }
+                });
+
+            }
+        });
+
+        $('.sidebar-toggle-box .fa-bars').click(function (e) {
+
+            $(".leftside-navigation").niceScroll({
+                cursorcolor: "#1FB5AD",
+                cursorborder: "0px solid #fff",
+                cursorborderradius: "0px",
+                cursorwidth: "3px"
+            });
+
+            $('#sidebar').toggleClass('hide-left-bar');
+            if ($('#sidebar').hasClass('hide-left-bar')) {
+                $(".leftside-navigation").getNiceScroll().hide();
+            }
+            $(".leftside-navigation").getNiceScroll().show();
+            $('#main-content').toggleClass('merge-left');
+            e.stopPropagation();
+            if ($('#container').hasClass('open-right-panel')) {
+                $('#container').removeClass('open-right-panel')
+            }
+            if ($('.right-sidebar').hasClass('open-right-bar')) {
+                $('.right-sidebar').removeClass('open-right-bar')
+            }
+
+            if ($('.header').hasClass('merge-header')) {
+                $('.header').removeClass('merge-header')
+            }
+
+
+        });
+    </script>
+
+    <div class="modal fade" id="modalLicense" role="dialog">
+        <div class="modal-dialog" style="left:-150px">
+            <div class="modal-content">
+                <img src="~/Content/ifsc_licence copy-1.jpg" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCertificate" role="dialog">
+        <div class="modal-dialog" style="left:-100px">
+            <div class="modal-content">
+                <img src="~/Content/Certificate of Incorporation.jpg" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

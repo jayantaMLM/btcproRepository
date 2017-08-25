@@ -84,7 +84,6 @@ module.controller('MemberWithdraw', function ($scope, $http, $location) {
     //-------------------------------------------------------------------------transaction password related code end
 
     $scope.calculateTotals = function (arr) {
-        debugger;
         $scope.total_Amount = 0;
         $scope.total_Payable = 0;
         $scope.total_AdministrativeChg = 0;
@@ -96,7 +95,6 @@ module.controller('MemberWithdraw', function ($scope, $http, $location) {
         })
     }
     $scope.filterChanged = function (arr) {
-        debugger;
         if (arr) {
             $scope.Arr = arr;
             if ($scope.searchText == '') { $scope.Arr = $scope.transfers; }
@@ -132,7 +130,6 @@ module.controller('MemberWithdraw', function ($scope, $http, $location) {
     }
 
     $scope.amountisValid = function () {
-        debugger;
         if ($scope.wallet == "1") {
             if ($scope.amount > $scope.cashwalletBalance) {
                 return true;
@@ -153,7 +150,6 @@ module.controller('MemberWithdraw', function ($scope, $http, $location) {
         var ans = confirm("Are you sure?");
         if (ans) {
             $http.post("/Home/WithdrawPostingMember?WalletType=" + $scope.wallet + "&Amount=" + $scope.amount).then(function (response) {
-                debugger;
                 if (response.data.Success) {
                     $scope.getbalance();
                     $scope.GetHistory();
@@ -173,6 +169,9 @@ module.controller('MemberWithdraw', function ($scope, $http, $location) {
         $scope.adminchange = 0;
         $http.get("/Home/MemberWithdrawalHistory").then(function (response) {
             $scope.transfers = response.data.Transfers;
+            angular.forEach($scope.transfers, function (value, index) {
+                if (value.Comment == "" || value.Comment == null) { value.Comment = "-"; }
+            })
             $scope.recordCount = $scope.transfers.length;
             $scope.changeBoundary();
             $scope.calculateTotals($scope.transfers);

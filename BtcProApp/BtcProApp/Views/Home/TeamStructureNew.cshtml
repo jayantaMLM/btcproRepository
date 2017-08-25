@@ -7,8 +7,8 @@
 <script src="~/js/flot-chart/jquery.min.js"></script>
 <link href="~/js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" />
 <script src="~/js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
-<link href="~/Scripts/getorgchart.css" rel="stylesheet" />
-<script src="~/Scripts/getorgchart.js"></script>
+<link href="~/Scripts/getorgchart_unlicensed.css" rel="stylesheet" />
+<script src="~/Scripts/getorgchart_unlicensed.js"></script>
 
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
@@ -48,7 +48,6 @@
         padding: 1px;
         height: 20px;
     }
-
 </style>
 
 <section class="wrapper" style="background-color:rgba(211, 211, 211, 0.5)">
@@ -58,59 +57,61 @@
                 <section class="panel">
                     <header class="panel-heading">
                         <i class="fa fa-rotate-180 fa-code-fork" style="color:green"></i> My TEAM Structure
-                      
+
                         @*<span class="pull-right"><a id="arrowLeft"><i class="fa fa-2x fa-arrow-circle-left"></i></a>&nbsp;&nbsp;<a id="arrowUp"><i class="fa fa-2x fa-arrow-circle-up"></i></a>&nbsp;&nbsp;<a id="arrowDown"><i class="fa fa-2x fa-arrow-circle-down"></i></a>&nbsp;&nbsp;<a id="arrowRight"><i class="fa fa-2x fa-arrow-circle-right"></i></a></span>*@
                     </header>
-                    <div class="panel-body">
-                        <div style="float:left"><input type="text" class="form-control" style="width:200px" placeholder="Username" id="searchUser" /></div><div style="float:left"><button id="searchBtn" style="height:32px" class="btn btn-info"><i class="fa fa-search"></i> Search</button></div>
+                    <div class="panel-body" style="min-height:500px">
+                        <div style="float:left"><input type="text" class="form-control" style="width:200px;" placeholder="Username" id="searchUser" /></div><div style="float:left"><button id="searchBtn" style="height:32px" class="btn btn-info"><i class="fa fa-search"></i> Search</button></div>
 
                         <div ng-show="showTree" id="Tree" style="clear:both">
                             <div id="people"></div>
 
-                            <div id="dialog" style="background-color:white;padding:0px">
-                                <table class="table" style="background-color:white;font-size:0.8em">
-                                    @*<tr>
-                                        <td style="text-align:right;width:50%"><label>Full name:</label></td>
-                                        <td><div id="fullname"></div></td>
-                                    </tr>*@
-                                    <tr>
-                                        <td style="text-align:right;width:8em;padding:0.3em"><label>User Id:</label></td>
-                                        <td style="padding:0.3em"><div id="username"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:right;padding:0.3em"><label>Sponsor Id:</label></td>
-                                        <td style="padding:0.3em"><div id="sponsorname"></div></td>
-                                    </tr>
-                                    @*<tr>
-                                        <td style="text-align:right"><label>Package:</label></td>
-                                        <td><div id="package"></div></td>
-                                    </tr>*@
-                                    <tr><td colspan="2" style="text-align:center;background-color:antiquewhite;color:#d4a521"><b>Total Business</b></td></tr>
-                                    <tr>
-                                        <td style="text-align:right;padding:0.3em"><label>Left side $:</label></td>
-                                        <td style="padding:0.3em"><div id="totalbusinessleft"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:right;padding:0.3em"><label>Right side $:</label></td>
-                                        <td style="padding:0.3em"><div id="totalbusinessright"></div></td>
-                                    </tr>
-                                    <tr><td colspan="2" style="text-align:center;background-color:antiquewhite;color:#d4a521"><b>Current Week Business</b></td></tr>
-                                    <tr>
-                                        <td style="text-align:right;padding:0.3em"><label>Left side $:</label></td>
-                                        <td style="padding:0.3em"><div id="businessleft"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:right;padding:0.3em"><label>Right side $:</label></td>
-                                        <td style="padding:0.3em"><div id="businessright"></div></td>
-                                    </tr>
-                                    @*<tr>
-                                        <td style="text-align:right"><label>Achievement:</label></td>
-                                        <td><div id="achievement"></div></td>
-                                    </tr>*@
-                                </table>
-                                <div style="text-align:center;margin-bottom:10px;margin-top:-12px"><button id="newMember" class="btn btn-info" style="font-size:1em">Click to view Tree</button></div>
-                            </div>
+                            <div id="dialog" style="background-color:lightgoldenrodyellow;padding:0px;overflow:hidden">
+                                <!---------------------------------------------------------------------------------------------->
+                                <div class="col-lg-12 col-md-12 col-sm-12" style="font-size:x-small;">
+                                    <fieldset style="margin-left:-10px;margin-right:-10px">
+                                        <legend style="font-size:small;margin-bottom:0px;color:GrayText">User Info</legend>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><label>User Id</label></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="username"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><label>Sponsor Id</label></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="sponsorname"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><label>Club</label></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="achievement"></div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset  style="margin-left:-10px;margin-right:-10px">
+                                        <legend style="font-size:small;margin-bottom:0px;color:GrayText">Total business</legend>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><label>Leftside $</label></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="totalbusinessleft"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><label>Rightside $</label></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="totalbusinessright"></div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset  style="margin-left:-10px;margin-right:-10px">
+                                        <legend style="font-size:small;margin-bottom:0px;color:GrayText">Current business</legend>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><label>Leftside $</label></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="businessleft"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><label>Rightside $</label></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="businessright"></div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                              
+                                <!---------------------------------------------------------------------------------------------->
 
+                                <div style="text-align:center;margin-bottom:10px;margin-top:0px"><button id="newMember" class="btn btn-info" style="font-size:x-small;margin-top:10px">Click to view Tree</button></div>
+                            </div>
                         </div>
 
                         <div ng-show="!showTree && step1 && !step2 " id="JoinForm" style="text-align:center">
@@ -136,10 +137,16 @@
                                     <td style="width:30%;vertical-align:middle">3000$ - 5000$</td>
                                 </tr>
                                 <tr>
-                                    <td style="width:10%;vertical-align: middle"><input type="radio" ng-model="selectedOption" ng-click="payamount_click()" name="selPackage" value="M" /></td>
-                                    <td style="width:30%"><img src="~/Content/Mercury1.png" style="height:50px;width:50px" /></td>
-                                    <td style="width:30%;vertical-align:middle"><label>Mercury</label></td>
-                                    <td style="width:30%;vertical-align:middle">10000$</td>
+                                    <td style="width:10%;vertical-align: middle"><input type="radio" ng-model="selectedOption" ng-click="payamount_click()" name="selPackage" value="A" /></td>
+                                    <td style="width:30%"><img src="~/Content/amazing.png" style="height:50px;width:50px" /></td>
+                                    <td style="width:30%;vertical-align:middle"><label>Amazing</label></td>
+                                    <td style="width:30%;vertical-align:middle">20000$</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10%;vertical-align: middle"><input type="radio" ng-model="selectedOption" ng-click="payamount_click()" name="selPackage" value="O" /></td>
+                                    <td style="width:30%"><img src="~/Content/octa-core.png" style="height:50px;width:50px" /></td>
+                                    <td style="width:30%;vertical-align:middle"><label>Octa-Core</label></td>
+                                    <td style="width:30%;vertical-align:middle">30000$</td>
                                 </tr>
                             </table>
                             <div>
@@ -786,10 +793,10 @@ following terms and conditions:
 <script>
     $(document).ready(function () {
         var member = "";
-        function GetData(){
+        function GetData() {
             var data = $.ajax({
                 type: "GET",
-                url: "/Home/GetTeamByName?Member="+member,
+                url: "/Home/GetTeamByName?Member=" + member,
                 dataType: "json",
                 success: function (data) {
                     var d = data.Members;
@@ -820,6 +827,8 @@ following terms and conditions:
                     });
                 }
             });
+
+            $("#people").prop("height", "500px");
         }
 
         GetData();
@@ -863,72 +872,12 @@ following terms and conditions:
                     $("#totalbusinessright").text(args.node.data.totalbusinessright);
                     $("#businessleft").text(args.node.data.businessleft);
                     $("#businessright").text(args.node.data.businessright);
-                    $("#achievement").text("");
+                    $("#achievement").text(args.node.data.achievement);
 
                     $("#dialog").dialog("open");
                 }
             }
         }
-
-        //using System;
-        //using System.Collections.Generic;
-        //using System.Linq;
-        //using System.Text;
-        //namespace libCoinPaymentsNET
-        //{ 
-        //    public class CoinPayments
-        //{ 
-        //    private string s_privkey = "";
-        //    private string s_pubkey = "";
-        //    private static readonly Encoding encoding = Encoding.UTF8;
-        //    public CoinPayments(string privkey, string pubkey) {
-        //        s_privkey = privkey;
-        //        s_pubkey = pubkey;
-        //        if (s_privkey.Length == 0 || s_pubkey.Length == 0)
-        //        { 
-        //            throw new ArgumentException("Private or Public Key is empty");
-        //        }
-        //    }
-        //    public Dictionary CallAPI(string cmd, SortedList parms = null)
-        //    {
-        //        if (parms == null) {
-        //            parms = new SortedList();
-        //        } 
-        //        parms["version"] = "1";
-        //        parms["key"] = s_pubkey;
-        //        parms["cmd"] = cmd;
-        //        string post_data = "";
-        //        foreach (KeyValuePair parm in parms) 
-        //        { 
-        //        if (post_data.Length > 0)
-        //        { 
-        //            post_data += "&";
-        //        }
-        //        post_data += parm.Key + "=" + Uri.EscapeDataString(parm.Value); 
-        //    }
-        //    byte [] keyBytes = encoding.GetBytes(s_privkey);
-        //    byte [] postBytes = encoding.GetBytes(post_data); 
-        //    var hmacsha512 = new System.Security.Cryptography.HMACSHA512(keyBytes);
-        //    string hmac = BitConverter.ToString(hmacsha512.ComputeHash(postBytes)).Replace("-", string.Empty);
-        //    // do the post: 
-        //    System.Net.WebClient cl = new System.Net.WebClient(); 
-        //    cl.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-        //    cl.Headers.Add("HMAC", hmac);
-        //    cl.Encoding = encoding;
-        //    var ret = new Dictionary();
-        //        try { string resp = cl.UploadString("https://www.coinpayments.net/api.php", post_data);
-        //            var decoder = new System.Web.Script.Serialization.JavaScriptSerializer();
-        //            ret = decoder.Deserialize>(resp);
-        //    } catch (System.Net.WebException e)
-        //    { 
-        //        ret["error"] = "Exception while contacting CoinPayments.net: " + e.Message;
-        //    } catch (Exception e) { 
-        //    ret["error"] = "Unknown exception: " + e.Message;
-        //    } 
-        //    return ret;
-        //    }
-        //    } 
-        //} 
 
         function insertNodeEvent(sender, args) {
             alert("Insert event fired");

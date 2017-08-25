@@ -22,7 +22,7 @@ namespace BtcProApp.Models
             }
         }
 
-        public Dictionary<string, object> CallAPI(string cmd, string username, string packagename, double investmentAmt, SortedList<string, string> parms = null)
+        public Dictionary<string, object> CallAPI(string cmd, string username, string packagename, double investmentAmt, string cointype, SortedList<string, string> parms = null)
         {
             if (parms == null)
             {
@@ -34,7 +34,10 @@ namespace BtcProApp.Models
             //parms["txid"] = "CPBF0T9M9AZ3RSADV9V4LGD4DD";
             parms["amount"] = investmentAmt.ToString(); ;
             parms["currency1"] = "USD";
-            parms["currency2"] = "BTC";
+            if (cointype == "BTC") { parms["currency2"] = "BTC"; }
+            if (cointype == "ETH") { parms["currency2"] = "ETH"; }
+            if (cointype == "LTC") { parms["currency2"] = "LTC"; }
+            if (cointype == "DASH") { parms["currency2"] = "DASH"; }
             parms["buyer_name"] = username;
             parms["item_name"] = packagename;
             parms["ipn_url"] = "https://btcpro.co/Home/ipn";

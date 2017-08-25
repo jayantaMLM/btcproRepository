@@ -23,23 +23,33 @@
     .media-filter {
         margin: 25px 0;
     }
+    
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
+    header{
+        padding-bottom: 10px;
+    }
   .header{
     position: relative! important;
-    margin-top: 80px ! important;
 }
     .merge-header{
         margin-right: 0px !important;
     }
-.brand{
-    width: 100%;
-    float: none;
-    position: fixed;
-    top: 0px;
-    z-index: 1005;
-}
+    .brand{
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+    .brand img {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 50%;
+    }
+    .right-pt-log {
+        margin-top: 20px;
+        text-align: center;
+        }
     .sidebar-toggle-box{
         right: 10px;
     }
@@ -182,11 +192,9 @@
 
 }
 @media (max-width: 479px) {
-    body{
-        margin-top:80px !important;
-    }
     .header{
         position: relative !important;
+        padding-bottom: 10px;
 
     }
     .merge-header{
@@ -195,9 +203,16 @@
     .brand{
         width: 100%;
         float: none;
-        position: fixed;
-        top: 0px;
-        z-index: 1005;
+        text-align: center;
+    }
+    .brand img {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 50%;
+    }
+    .right-pt-log {
+        margin-top: 20px;
+        text-align: center;
     }
     .sidebar-toggle-box{
         right: 10px;

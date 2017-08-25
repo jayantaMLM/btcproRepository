@@ -1,22 +1,23 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 @{
     Layout = null;
 }
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="Description" content="BTC Pro is best investment company in world">
+    <title>BTC PRO : Best Cryptocurrency Investment</title>
+    <meta name="Keyword" content="btc, btcpro, btc pro, Btcpro Mining, weekly  investment return, Btc investment, Btcpro unilevel,financial investment company,networking Website" />
+    <meta name="Description" content="BTC Pro is the best investment company in Belize, Central America">
     <meta name="Author" content="btcpro" />
     <meta name="DC.Language" content="en" />
     <meta name="Language" content="en" />
-    <meta name="Keyword" content="BTC, Btcpro, Btc Pro, Daily investment return" />
-    <title>BTC Pro : Make Your Financial Future</title><!-- Title In Tab Put Your Porject Name -->
+
+    <!-- Title In Tab Put Your Porject Name -->
     <!-- favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/StaticSiteAssets/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="~/StaticSiteAssets/images/favicon.ico" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <link href="~/StaticSiteAssets/css/bootstrap.css" rel="stylesheet">
@@ -27,26 +28,9 @@
     <!-- Google Font  -->
     <link href="~/StaticSiteAssets/css/animate.css" rel="stylesheet">
     <!-- style styles for this template -->
+    <link href="~/StaticSiteAssets/css/menu.css" rel="stylesheet">
     <link href="~/StaticSiteAssets/css/style.css" rel="stylesheet">
     <link href="~/StaticSiteAssets/css/responsive.css" rel="stylesheet">
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <link href="~/js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" />
-    <script src="~/js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
-
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-    @*<script src="~/Scripts/angular.min.js"></script>*@
-
-
-    <script src="~/app/scripts/RegistrationController.js"></script>
-    <link href="~/css/style.css" rel="stylesheet" />
-
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -54,346 +38,184 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link type="text/css" href="https://s.tradingview.com/static/bundles/index_search.541bf8600ecd72c1d13b972c070af2ec.541bf8600ecd.css" rel="stylesheet" />
-
     <!-- Start Alexa Certify Javascript -->
     <script type="text/javascript">
-        _atrk_opts = { atrk_acct:"uBd4p1IWhd104B", domain:"btcpro.co",dynamic: true};
-        (function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
-
-        function showRegistrationPage(){
-            $("#mainPage").hide();
-            $("#particles-js").hide();
-            $("#loginPage").hide();
-            debugger;
-            var sel = 'div[ng-controller="Register"]';
-            var $scope = angular.element(sel).scope();
-            $scope.isComplete=false;
-            $scope.isRegistered=false;
-            $scope.registerModel.ReferrerName="";
-            $scope.registerModel.FullName="";
-            $scope.registerModel.EmailId="";
-            $scope.registerModel.UserName="";
-            $scope.registerModel.Password="";
-            $scope.registerModel.ConfirmPassword="";
-            $scope.$apply();
-            $("#registrationPage").show();
-        }
-        function showLoginPage(){
-            $("#mainPage").hide();
-            $("#particles-js").hide();
-            $("#registrationPage").hide();
-            $("#loginPage").show();
-        }
-        function otherClick(){
-            $("#mainPage").show();
-            $("#particles-js").show();
-            $("#loginPage").hide();
-            $("#registrationPage").hide();
-        }
+_atrk_opts = { atrk_acct:"uBd4p1IWhd104B", domain:"btcpro.co",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
     </script>
     <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=uBd4p1IWhd104B" style="display:none" height="1" width="1" alt="" /></noscript>
     <!-- End Alexa Certify Javascript -->
-    <style>
-        .errorcls {
-            color: red;
-            margin-top: -15px;
-            font-size: small;
-            padding-left: 0px;
+    <script src="/StaticSiteAssets/js/jquery-3.1.1.min.js"></script>
+    <!-- bootstrap.min.js -->
+    <script src="~/StaticSiteAssets/js/bootstrap.js"></script>
+    <script src="~/StaticSiteAssets/js/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="~/StaticSiteAssets/js/script.js"></script>
+    <script>
+    //script to create sticky header 
+    jQuery(function(){
+        createSticky(jQuery("#sticky-wrap"));
+    });
+    function createSticky(sticky) {
+        if (typeof sticky != "undefined") {
+            var pos = sticky.offset().top ,
+                win = jQuery(window);
+            win.on("scroll", function() {
+                if( win.scrollTop() > pos ) {
+                    sticky.addClass("stickyhead");
+                } else {
+                    sticky.removeClass("stickyhead");
+                }           
+            });         
         }
+    }
+    </script>
 
-        .ui-dialog-titlebar-close {
-            visibility: hidden;
-        }
-    </style>
+
 </head>
 
-<body class="loading-scroll-hiden">
-
-    <!-- particles.js container -->
-    <!-- Edit Image Homepage (ex: background-image: url(images/imagename.jpg);) -->
-    <div id="particles-js" style="background-image: url('../../StaticSiteAssets/images/8.jpg');"></div>
+<body>
 
     <!-- Start navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" id="nav">
+    <section class="menu-pt">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation DivCon</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- Name Of Porject For You Change Up To You
-                      EX:<a class="navbar-brand" href="#">name<small>name</small></a>
-                -->
-                <a class="navbar-brand smoothScroll" href="#home" onclick="otherClick()"><img src="~/StaticSiteAssets/images/logo.jpg" alt="btc"></a>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="logo-pt">
+                        <a href='@Url.Action("Indexmain","Home")'><img src="~/StaticSiteAssets/images/btc-logo.png" alt="btc" class="img-responsive"></a>
+                    </div>
+                </div>
+                <div id="sticky-wrap">
+                    <div class="col-sm-10 no-padding">
+                        <div id='cssmenu'>
+                            <ul>
+                                <li><a href='@Url.Action("Indexmain","Home")'>home</a></li>
+                                <li><a href='@Url.Action("Aboutus","Home")'>about us</a></li>
+                                <li><a href='@Url.Action("BizOpportunity","Home")'>opportunity</a></li>
+                                <li><a href='@Url.Action("Ethereum","Home")'>Ethereum</a></li>
+                                <li><a href='@Url.Action("Faq","Home")'>faq</a></li>
+                                <li><a href='@Url.Action("Contact","Home")'>contact</a></li>
+                                <li><a href='@Url.Action("Registration","Home")'>registration</a></li>
+                                <li><a href='@Url.Action("Login","Home")'>login</a></li>
+                                <li><a href="#"><img src="~/StaticSiteAssets/images/en.png" alt="btc"> English</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#home" class="smoothScroll" onclick="otherClick()">Home</a></li>
-                    <li><a href="#about" class="smoothScroll" onclick="otherClick()">About Us</a></li>
-                    <li><a href="#opportunity" class="smoothScroll" onclick="otherClick()">Opportunity</a></li>
-                    <li><a href="#faq" class="smoothScroll" onclick="otherClick()">FAQ</a></li>
-                    <li><a href="#contact" class="smoothScroll" onclick="otherClick()">Contact</a></li>
-                    <li><a href="#" onclick="showRegistrationPage()">Registration</a></li>
-                    <li><a href="#" onclick="showLoginPage()">Login</a></li>
-                    <li><img src="~/StaticSiteAssets/images/en.png"> English</li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
         </div>
-    </nav>
+    </section>
     <!-- Start navbar -->
+    <!-- particles.js container -->
+    <div id="particles-js" style="background-image: url('../../StaticSiteAssets/images/8.jpg');"></div>
     <!-- Start Home Page -->
-    <div ng-app="app" ng-controller="Register">
-        <div id="mainPage">
-            <section id="home" class="home-page">
-                <div class="container">
-                    <div class="row">
-                        <div class="sub-container col-md-12 col-sm-12 col-xs-12 text-center">
-                            <h4>hello</h4>
-                            <h1>BTC Pro</h1>
-                            <h3>Helping You to Make Smart Financial Choices</h3>
-                        </div>
+    <section id="home" class="home-page">
+        <div class="container">
+            <div class="row">
+                <div class="sub-container col-md-12 col-sm-12 col-xs-12 text-center">
+                    <h4>hello</h4>
+                    <h1>BTC Pro Inc</h1>
+                    <h3>Helping You to Make Smart Financial Choices</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Home Page -->
+    <!-- Start About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row text-center t-thumb">
+                <!-- Service 1 -->
+                <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
+                    <img src="~/StaticSiteAssets/images/btcforexmarket.jpg" alt="btc" class="img-thumbnail">
+                    <h4>Forex <span>Market</span></h4>
+                    <!-- Text Paragraph -->
+                    <p>Micro Investors intending to invest for guaranteed income In the FOREX Market.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
+                    <img src="~/StaticSiteAssets/images/btcbitcoin.jpg" alt="btc" class="img-thumbnail">
+                    <h4>Bitcoin <span>Market</span></h4>
+                    <!-- Text Paragraph -->
+                    <p>Bitcoin helped us envision a future, where financial infrastructure could be a public good, much like the internet is today.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
+                    <img src="~/StaticSiteAssets/images/btcsmarket.jpg" alt="btc" class="img-thumbnail">
+                    <h4>Cryptocurrency <span>Market</span></h4>
+                    <!-- Text Paragraph -->
+                    <p>Cryptocurrency is the new digital currency, nothing different than the money in your wallet.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
+                    <img src="~/StaticSiteAssets/images/btcsinvestfund.jpg" alt="btc" class="img-thumbnail">
+                    <h4>Our <span>Investment</span></h4>
+                    <!-- Text Paragraph -->
+                    <p>We invest the collective funds in the various trading market with a remarkable experience.</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
+                    <img src="~/StaticSiteAssets/images/btcstradeteam.jpg" alt="btc" class="img-thumbnail">
+                    <h4>Expert <span>Trader Team</span></h4>
+                    <!-- Text Paragraph -->
+                    <p>We have the Expert Trader Team who can manage the fund efficiently for a guaranteed profit.</p>
+                </div>
+                <!-- Service 6 -->
+                <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
+                    <img src="~/StaticSiteAssets/images/btcsmonthlyreturn.jpg" alt="btc" class="img-thumbnail">
+                    <h4>Proven Track <span>Record</span></h4>
+                    <!-- Text Paragraph -->
+                    <p>Our commitment to a guaranteed returns that makes our investors happy and smiles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About -->
+    <!-- start app banner -->
+    <section class="appbanner text-center">
+        <img src="~/StaticSiteAssets/images/appbanner.jpg" alt="btc" class="img-responsive" style="width:100%;">
+        <div class="applink">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>Download the BTC Pro App</h2>
+                        <p>Download for free today!</p>
+                        <p><a href="#"><img src="~/StaticSiteAssets/images/apple.png" alt="btc"></a> <a href="#"><img src="~/StaticSiteAssets/images/android.png" alt="btc"></a></p>
                     </div>
                 </div>
-            </section>
-            <!-- End Home Page -->
-            <!-- Start About -->
-            <section id="about" class="about">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12">
-                            <h2>About Us</h2>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <!-- Edit Image About ex:src="images/imagename.jpg" -->
-                            <img src="~/StaticSiteAssets/images/about-img.jpg" alt="image-person">
-                        </div>
-                        <div class="col-md-8">
-                            <p class="sub-text text-justify">
-                                BTCpro is an investment management company, created to revolutionize the trading market of digital coins. In a competitive billion dollar market to which only a few have access to, BTCpro’s system is developed by a specialized team, bringing the opportunity to people to start in the trading market of digital coins, obtaining automated gains, it does not matter if you are with a very little or even no skills about the trading market.
-                            </p>
-                            <p class="sub-p text-justify">
-                                BTCpro sets high slandered to its services because quality is just as decisive for us as for our investors. We believe that versatile financial services require versatility in thinking and a unified policy of business principles.
-                            </p>
-                            <p class="sub-p text-justify">Our mission is to keep pace with global market demands and approach our clients’ investment goal with an open mind.</p>
-                        </div>
+            </div>
+        </div>
+    </section>
+    <!-- end app banner -->
+    <!-- Start Contact -->
+    <section class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="api-pt">
+                        <iframe width="100%" height="250" src="https://www.youtube.com/embed/7kPe1SuCFTU" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row text-center t-thumb">
-                        <!-- Service 1 -->
-                        <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <img src="~/StaticSiteAssets/images/btcforexmarket.jpg" alt="market" class="img-thumbnail">
-                            <h4>Forex <span>Market</span></h4>
-                            <!-- Text Paragraph -->
-                            <p>Micro Investors intending to invest for guaranteed income In the FOREX Market.</p>
-                        </div>
-                        <!-- Service 2 -->
-                        <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <img src="~/StaticSiteAssets/images/btcbitcoin.jpg" alt="market" class="img-thumbnail">
-                            <h4>Bitcoin <span>Market</span></h4>
-                            <!-- Text Paragraph -->
-                            <p>Bitcoin helped us envision a future, where financial infrastructure could be a public good, much like the internet is today.</p>
-                        </div>
-                        <!-- Service 3 -->
-                        <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <img src="~/StaticSiteAssets/images/btcsmarket.jpg" alt="market" class="img-thumbnail">
-                            <h4>Cryptocurrency <span>Market</span></h4>
-                            <!-- Text Paragraph -->
-                            <p>Cryptocurrency is the new digital currency, nothing different than the money in your wallet.</p>
-                        </div>
-                        <!-- Service 4 -->
-                        <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <img src="~/StaticSiteAssets/images/btcsinvestfund.jpg" alt="marchand" class="img-thumbnail">
-                            <h4>Our <span>Investment</span></h4>
-                            <!-- Text Paragraph -->
-                            <p>We invest the collective funds in the various trading market with a remarkable experience.</p>
-                        </div>
-                        <!-- Service 5 -->
-                        <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <img src="~/StaticSiteAssets/images/btcstradeteam.jpg" alt="marchand" class="img-thumbnail">
-                            <h4>Expert <span>Trader Team</span></h4>
-                            <!-- Text Paragraph -->
-                            <p>We have the Expert Trader Team who can manage the fund efficiently for a guaranteed profit.</p>
-                        </div>
-                        <!-- Service 6 -->
-                        <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <img src="~/StaticSiteAssets/images/btcsmonthlyreturn.jpg" alt="marchand" class="img-thumbnail">
-                            <h4>Guaranteed <span>Return</span></h4>
-                            <!-- Text Paragraph -->
-                            <p>Our commitment to a guaranteed returns that makes our investors happy and smiles.</p>
-                        </div>
+                <div class="col-md-4">
+                    <div class="api-pt1">
+                        <iframe width="100%" height="250" src="https://www.youtube.com/embed/MjYfD0v3pj0" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
-            </section>
-            <!-- End About -->
-            <!-- Start Service -->
-            <section id='opportunity' class='service'>
-                <div class="container">
-                    <h2 class="text-center"><strong>Opportunity</strong></h2>
-                    <div class="row">
-                        <!-- Service 1 -->
-                        <div class="col-md-3 col-sm-3 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <div class="packages">
-                                <h4>Pluto</h4>
-                                <div class="price bg-color">
-                                    <div class="txt-pt">
-                                        <img src="~/StaticSiteAssets/images/pluto.png" alt="earth" class="img-responsive">
-                                    </div>
-                                    <p>Package Range: 20$ - 99$</p>
-                                </div>
-                                <div class="content-pt">
-                                    <ul class="inner-page">
-                                        <li><i class="fa fa-check"></i> Weekly (1 Year): 3%</li>
-                                        <li><i class="fa fa-check"></i> Introducing Bonus: 10%</li>
-                                        <li><i class="fa fa-check"></i> Binary Bonus: 10%</li>
-                                        <li><i class="fa fa-check"></i> Weekly Binary Bonus Limit: 5,00$</li>
-                                        <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%</li>
-                                    </ul>
-                                </div>
-                                <div class="btn-pt text-center">
-                                    <a href="#"></a>
-                                </div>
-                                <div class="btn-pt1 text-center">
-                                    <a href="#" onclick="showRegistrationPage()">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Service 2 -->
-                        <div class="col-md-3 col-sm-3 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <div class="packages">
-                                <h4>Jupiter</h4>
-                                <div class="price bg-color2">
-                                    <div class="txt-pt">
-                                        <img src="~/StaticSiteAssets/images/jupiter.png" alt="earth" class="img-responsive">
-                                    </div>
-                                    <p>Package Range: 100$ - 2999$</p>
-                                </div>
-                                <div class="content-pt">
-                                    <ul class="inner-page">
-                                        <li><i class="fa fa-check"></i> Weekly (1 Year): 4%</li>
-                                        <li><i class="fa fa-check"></i> Introducing Bonus: 10%</li>
-                                        <li><i class="fa fa-check"></i> Binary Bonus: 10%</li>
-                                        <li><i class="fa fa-check"></i> Weekly Binary Bonus Limit: 1,000$</li>
-                                        <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%, 7%</li>
-                                    </ul>
-                                </div>
-
-                                <div class="btn-pt text-center">
-                                    <a href="#"></a>
-                                </div>
-                                <div class="btn-pt1 text-center">
-                                    <a href="#" onclick="showRegistrationPage()">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Service 3 -->
-                        <div class="col-md-3 col-sm-3 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <div class="packages">
-                                <h4>Earth</h4>
-                                <div class="price bg-color1">
-                                    <div class="txt-pt">
-                                        <img src="~/StaticSiteAssets/images/earth.png" alt="earth" class="img-responsive">
-                                    </div>
-                                    <p>Package Range: 3000$ - 5000$</p>
-                                </div>
-                                <div class="content-pt">
-                                    <ul class="inner-page">
-                                        <li><i class="fa fa-check"></i> Weekly (1 Year): 5%</li>
-                                        <li><i class="fa fa-check"></i> Introducing Bonus: 10%</li>
-                                        <li><i class="fa fa-check"></i> Binary Bonus: 10%</li>
-                                        <li><i class="fa fa-check"></i> Weekly Binary Bonus Limit: 3,000$</li>
-                                        <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%, 7%, 9%</li>
-                                    </ul>
-                                </div>
-                                <div class="btn-pt text-center">
-                                    <a href="#"></a>
-                                </div>
-                                <div class="btn-pt1 text-center">
-                                    <a href="#" onclick="showRegistrationPage()">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Service 4 -->
-                        <div class="col-md-3 col-sm-3 col-xs-12 wow fadeInUp" data-wow-delay=".3s">
-                            <div class="packages">
-                                <h4>Mercury</h4>
-                                <div class="price bg-color3">
-                                    <div class="txt-pt">
-                                        <img src="~/StaticSiteAssets/images/mercury.png" alt="earth" class="img-responsive">
-                                    </div>
-                                    <p>Package Range: 10000$</p>
-                                </div>
-                                <div class="content-pt">
-                                    <ul class="inner-page">
-                                        <li><i class="fa fa-check"></i> Weekly (1 Year): 6%</li>
-                                        <li><i class="fa fa-check"></i> Introducing Bonus: 10%</li>
-                                        <li><i class="fa fa-check"></i> Binary Bonus: 10%</li>
-                                        <li><i class="fa fa-check"></i> Weekly Binary Bonus Limit: 5,000$</li>
-                                        <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%, 7%, 9%, 10%</li>
-                                    </ul>
-                                </div>
-                                <div class="btn-pt text-center">
-                                    <a href="#"></a>
-                                </div>
-                                <div class="btn-pt1 text-center">
-                                    <a href="#" onclick="showRegistrationPage()">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-            <!-- End Service -->
-            <!-- start app banner -->
-            <section class="appbanner text-center">
-                <img src="~/StaticSiteAssets/images/appbanner.jpg" alt="app" class="img-responsive" style="width:100%;">
-                <div class="applink">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h2>Download the BTC Pro App<br>to get real time updates</h2>
-                                <p>Download for free today!</p>
-                                <p><a href="#"><img src="~/StaticSiteAssets/images/apple.png"></a> <a href="#"><img src="~/StaticSiteAssets/images/android.png"></a></p>
-                            </div>
-                        </div>
+                <div class="col-md-4">
+                    <div class="api-pt">
+                        <iframe width="100%" height="250" src="https://www.youtube.com/embed/4Z0IfUp45wU" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
-            </section>
-            <!-- end app banner -->
-            <!-- Start Contact -->
-            <section class="contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="api-pt">
-                                <iframe width="100%" height="250" src="https://www.youtube.com/embed/7kPe1SuCFTU" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="api-pt1">
-                                <iframe width="100%" height="250" src="https://www.youtube.com/embed/rvWctAXMARM" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="api-pt">
-                                <iframe width="100%" height="250" src="https://www.youtube.com/embed/4Z0IfUp45wU" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="container">
+            <div class="row widgets">
+                <div class="col-sm-12 col-md-12 margin-t-70">
+                    <iframe src="~/StaticSiteAssets/bitcoin/index.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0"></iframe>
                 </div>
-                <div class="clearfix"></div>
-                <div class="container">
-                    <div class="row widgets">
-                        <div class="col-sm-12 col-md-12 margin-t-70">
-                            <iframe src="~/StaticSiteAssets/bitcoin/index.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0"></iframe>
-                        </div>
-                        <div class="col-sm-7">
-                            <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
-                            <script type="text/javascript">
+                <div class="col-sm-7">
+                    <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+                    <script type="text/javascript">
                                 new TradingView.widget({
                                     "width": "100%",
                                     "height": 600,
@@ -410,1188 +232,174 @@
                                     "popup_width": "1000",
                                     "popup_height": "650"
                                 });
-                            </script>
-
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="widgets-pt">
-                                <!-- TradingView Widget BEGIN -->
-                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js">
-                                    {
-                                        "showChart": true,
-                                        "locale": "en",
-                                        "width": "400",
-                                        "height": "660",
-                                        "plotLineColorGrowing": "rgba(60, 188, 152, 1)",
-                                        "plotLineColorFalling": "rgba(255, 74, 104, 1)",
-                                        "gridLineColor": "rgba(233, 233, 234, 1)",
-                                        "scaleFontColor": "rgba(218, 221, 224, 1)",
-                                        "belowLineFillColorGrowing": "rgba(60, 188, 152, 0.05)",
-                                        "belowLineFillColorFalling": "rgba(255, 74, 104, 0.05)",
-                                        "symbolActiveColor": "rgba(242, 250, 254, 1)",
-                                        "tabs": [
-                                          {
-                                              "title": "Equities",
-                                              "symbols": [
-                                                {
-                                                    "s": "INDEX:SPX",
-                                                    "d": "The Standard&Poor's Index"
-                                                },
-                                                {
-                                                    "s": "INDEX:IUXX",
-                                                    "d": "NQ100"
-                                                },
-                                                {
-                                                    "s": "INDEX:DOWI",
-                                                    "d": "Dow30"
-                                                },
-                                                {
-                                                    "s": "INDEX:NKY",
-                                                    "d": "Nikkei 225 Index"
-                                                },
-                                                {
-                                                    "s": "NASDAQ:AAPL",
-                                                    "d": "APPLE INC"
-                                                },
-                                                {
-                                                    "s": "NASDAQ:GOOG",
-                                                    "d": "Google"
-                                                }
-                                              ]
-                                          },
-                                          {
-                                              "title": "Commodities",
-                                              "symbols": [
-                                                {
-                                                    "s": "CME_MINI:ES1!",
-                                                    "d": "Emini"
-                                                },
-                                                {
-                                                    "s": "CME:E61!",
-                                                    "d": "Euro"
-                                                },
-                                                {
-                                                    "s": "COMEX:GC1!",
-                                                    "d": "Gold"
-                                                },
-                                                {
-                                                    "s": "NYMEX:CL1!",
-                                                    "d": "Light Crude Oil Futures"
-                                                },
-                                                {
-                                                    "s": "NYMEX:NG1!",
-                                                    "d": "Natural Gas Futures"
-                                                },
-                                                {
-                                                    "s": "CBOT:ZC1!",
-                                                    "d": "Corn Futures"
-                                                }
-                                              ]
-                                          },
-                                          {
-                                              "title": "Bonds",
-                                              "symbols": [
-                                                {
-                                                    "s": "CME:GE1!",
-                                                    "d": "Eurodollar"
-                                                },
-                                                {
-                                                    "s": "CBOT:ZB1!",
-                                                    "d": "T-Bond"
-                                                },
-                                                {
-                                                    "s": "CBOT:UD1!",
-                                                    "d": "Ultra T-Bond"
-                                                },
-                                                {
-                                                    "s": "EUREX:GG1!",
-                                                    "d": "Euro Bund"
-                                                },
-                                                {
-                                                    "s": "EUREX:II1!",
-                                                    "d": "Euro BTP"
-                                                },
-                                                {
-                                                    "s": "EUREX:HR1!",
-                                                    "d": "Euro BOBL"
-                                                }
-                                              ]
-                                          },
-                                          {
-                                              "title": "Forex",
-                                              "symbols": [
-                                                {
-                                                    "s": "FX:EURUSD"
-                                                },
-                                                {
-                                                    "s": "FX:GBPUSD"
-                                                },
-                                                {
-                                                    "s": "FX:USDJPY"
-                                                },
-                                                {
-                                                    "s": "FX:USDCHF"
-                                                },
-                                                {
-                                                    "s": "FX:AUDUSD"
-                                                },
-                                                {
-                                                    "s": "FX:USDCAD"
-                                                }
-                                              ]
-                                          }
-                                        ]
-                                    }
-                                </script>
-                                <!-- TradingView Widget END -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- End Contact -->
-            <!-- Start portfolio -->
-            <section class="portfoliopage" id="faq">
-                <div class="container">
-                    <!-- Filter Controls - Simple Mode -->
-                    <div class="row">
-                        <!-- Header Work Page -->
-                        <h2 class="text-center"><strong>Frequently Asked Questions</strong> <small>BTC Pro will work on something awesome</small></h2>
-                    </div>
-                    <div class="panel-group" id="accordion">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#1">
-                                        1. WHAT IS BTC PRO?
-                                    </a><i class="indicator glyphicon glyphicon-minus"></i>
-                                </h4>
-                            </div>
-                            <div id="1" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <p>BTC Pro is an Internet-Based Forex, Bitcoin and Cryptocurrency Fund Management service of   with guaranteed monthly return of 12% to 24% for Individuals anywhere in the world. Anyone can become members and receive attractive Monthly Return from market traded by our expert trader’s team.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#2">
-                                        2.	WHY SHOULD I JOIN BTC PRO?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>By joining BTC Pro, you are offered guaranteed return as well as marketing opportunities which can earn you binary income and direct referral income.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#3">
-                                        3.	WHAT’S THE MINIMUM AGE TO JOIN BTC PRO?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="3" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>An individual must be minimum 18 years of age to become an BTC Pro Member.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#4">
-                                        4.	HOW DO I BECOME A MEMBER OF BTC PRO?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="4" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Once you decide to join BTC Pro, all you need to do is click the "Sign Up" link on our website & fill out the registration form. Please note that you need to have a sponsor to join. A sponsor is the person who introduced this business to you.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#5">
-                                        5.	IS THERE A COST INVOLVED?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="5" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Joining BTC Pro is free of cost, but if you want to earn from BTC Pro, you need to invest minimum of $20 to your account.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#6">
-                                        6.	WHAT IS THE MODE OF PAYMENT?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="6" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>We currently accept payments via Bitcoin.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#7">
-                                        7.	HOW LONG DOES IT TAKE FOR THE MEMBERSHIP TO GET ACTIVATED?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="7" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>The moment you sign up with us by investing minimum $ 20 your membership gets activated. You will immediately receive your membership back office site and access to your account and make more deposit, sponsor others and start earning your income.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#8">
-                                        8.	DO I NEED TO SEEL ANY PRODUCTS?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="8" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>If you want to invest and get your profit, so you do not need to sell any of our product packages, but if you want to earn commissions, so you need to sell.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#9">
-                                        9.	HOW DO I EARN MONEY THROUGH BTC PRO?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="9" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>In our daily life, we do recommend products and services to our friends, colleagues, family members which we like. We use the same word of mouth referral system to form a compensation plan that pays commissions to people on promotion of our private investment management for our clients.</p>
-                                    <p>BTC Pro, uses the payment of commission where existing members sell our Memberships on behalf of the company is referred to as Multi-Level Marketing or commonly known as Network Marketing. Direct Selling/Network Marketing/Multi-level Marketing is a widely known and established industry all over the world.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#10">
-                                        10.	IF THERE ANY CAPPING LIMIT ON RESIDUAL INCOME AND BUSINESS GENERATION BONUS?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="10" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>There is a cap from our Binary System based on your level of achievement. A Member can earn from $2 to $5000 weekly on the Matching check bonuses based on their investment portfolio.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#11">
-                                        11.	CAN I SELL MORE THAN TWO MEMBERSHIPS?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="11" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>To qualify and earn Binary commissions, you need to sell any no. of Memberships. However, if you want to progress fast through our Compensation Plan, and create multiple streams of income, we do urge you to sell as many memberships as you desire.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#12">
-                                        12.	WHAT IS THE ADVANTAGE OF SELLING MORE THAN TWO MEMBERSHIPS?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="12" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>You will receive a 10% Direct and 10% matching bonus for every member that joins your organization from our Binary System.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#13">
-                                        13.	CAN I OWN MULTIPLE IDS WHILE BUILDING MY TEAM?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="13" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Yes, you can make any no. of membership to building your team.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#14">
-                                        14.	SINCE BTC PRO IS A GLOBAL ONLINE COMPANY, CAN I REFER PROPLE FROM ANYWHERE AROUND THE WORLD?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="14" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Yes, you can have people join from practically any corner of the world & make your network grow. However, in a few countries where we already have a local presence or are intending to have one soon, we have restricted the markets, primarily to ensure compliance of local financial regulations.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#15">
-                                        15.	CAN I TRANSFER MY MEMBERSHIP TO ANY OTHER PERSON?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="15" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Absolutely not. The BTC Pro membership is NON transferable. The membership is also non-refundable.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#16">
-                                        16.	HOW DO I RECEIVE MY COMMISSIONS?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="16" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>All commissions are instantly transferred to your secure e-wallet in your member back office from where you can make withdrawal request  by Bitcoin.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#17">
-                                        17.	CAN BTC PRO BE PROMOTED AS AN INVESTMENT COMPANY?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="17" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Yes. BUT We are strictly against any misrepresentations, Members are encouraged to understand the risk in Forex Market, Bitcoin Market and Cryptocurrency Market and should invest their money to avoid risk.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#18">
-                                        18.	HOW SECURE IS THE MEMBER BACK OFFICE AND PAYMENT SITE?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="18" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Once you become a member, you will be given a user name and password. You will be the only one to have access to the password and you can change it anytime you want. These details cannot even be accessed by the person who sponsored you. And server is fully protect by 64 bit SSL Certificate.  </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#19">
-                                        19.	HOW MUCH TIME YOU WILL TAKE TO GIVE PAYMENT
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="19" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>After receive withdrew request we will take max 48 Hours to process.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#20">
-                                        20.	IS THERE RISK INVOLVED IN MY INVESTMENT?
-                                    </a><i class="indicator glyphicon glyphicon-plus"></i>
-                                </h4>
-                            </div>
-                            <div id="20" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Every leveraged financial tool has its own disadvantages and risks . The potential risk is proportionate to the income potential as well. Our expert team always keep sharp eyes on the methods of reducing risks at the possible ways and we encourage due diligence of our members and associates as well.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    </script>
 
                 </div>
-            </section>
-            <!-- End portfolio -->
-            <!-- start tranding -->
-            <section class="tranding">
-                <div class="container text-center">
-                    <h2>Honest - Hardworking – Dream – Achieve - Success</h2>
-                    <p><a href="#" class="btn btn-success">Join with us</a></p>
-                </div>
-            </section>
-            <!-- end tranding -->
-            <!-- start feedback form -->
-            <section class="contact" id="contact">
-                @*ng-app="app1" ng-controller="Contactus"*@
-                <div class="container">
-                    <div class="row">
-                        <!-- Header Work Page -->
-                        <h2 class="text-center"><strong>Contact Us</strong></h2>
+                <div class="col-sm-5">
+                    <div class="widgets-pt">
+                        <!-- TradingView Widget BEGIN -->
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js">
+                    {
+                      "showChart": true,
+                      "locale": "en",
+                      "width": "400",
+                      "height": "660",
+                      "plotLineColorGrowing": "rgba(60, 188, 152, 1)",
+                      "plotLineColorFalling": "rgba(255, 74, 104, 1)",
+                      "gridLineColor": "rgba(233, 233, 234, 1)",
+                      "scaleFontColor": "rgba(218, 221, 224, 1)",
+                      "belowLineFillColorGrowing": "rgba(60, 188, 152, 0.05)",
+                      "belowLineFillColorFalling": "rgba(255, 74, 104, 0.05)",
+                      "symbolActiveColor": "rgba(242, 250, 254, 1)",
+                      "tabs": [
+                        {
+                          "title": "Equities",
+                          "symbols": [
+                            {
+                              "s": "INDEX:SPX",
+                              "d": "The Standard&Poor's Index"
+                            },
+                            {
+                              "s": "INDEX:IUXX",
+                              "d": "NQ100"
+                            },
+                            {
+                              "s": "INDEX:DOWI",
+                              "d": "Dow30"
+                            },
+                            {
+                              "s": "INDEX:NKY",
+                              "d": "Nikkei 225 Index"
+                            },
+                            {
+                              "s": "NASDAQ:AAPL",
+                              "d": "APPLE INC"
+                            },
+                            {
+                              "s": "NASDAQ:GOOG",
+                              "d": "Google"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Commodities",
+                          "symbols": [
+                            {
+                              "s": "CME_MINI:ES1!",
+                              "d": "Emini"
+                            },
+                            {
+                              "s": "CME:E61!",
+                              "d": "Euro"
+                            },
+                            {
+                              "s": "COMEX:GC1!",
+                              "d": "Gold"
+                            },
+                            {
+                              "s": "NYMEX:CL1!",
+                              "d": "Light Crude Oil Futures"
+                            },
+                            {
+                              "s": "NYMEX:NG1!",
+                              "d": "Natural Gas Futures"
+                            },
+                            {
+                              "s": "CBOT:ZC1!",
+                              "d": "Corn Futures"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Bonds",
+                          "symbols": [
+                            {
+                              "s": "CME:GE1!",
+                              "d": "Eurodollar"
+                            },
+                            {
+                              "s": "CBOT:ZB1!",
+                              "d": "T-Bond"
+                            },
+                            {
+                              "s": "CBOT:UD1!",
+                              "d": "Ultra T-Bond"
+                            },
+                            {
+                              "s": "EUREX:GG1!",
+                              "d": "Euro Bund"
+                            },
+                            {
+                              "s": "EUREX:II1!",
+                              "d": "Euro BTP"
+                            },
+                            {
+                              "s": "EUREX:HR1!",
+                              "d": "Euro BOBL"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Forex",
+                          "symbols": [
+                            {
+                              "s": "FX:EURUSD"
+                            },
+                            {
+                              "s": "FX:GBPUSD"
+                            },
+                            {
+                              "s": "FX:USDJPY"
+                            },
+                            {
+                              "s": "FX:USDCHF"
+                            },
+                            {
+                              "s": "FX:AUDUSD"
+                            },
+                            {
+                              "s": "FX:USDCAD"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                        </script>
+                        <!-- TradingView Widget END -->
                     </div>
-                    <form name="Contactus">
-                        <div class="row contact-us">
-                            <div class="col-sm-6 col-md-6">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" ng-model="fullname" name="" id="" ng-required="true" placeholder="Full Name">
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" ng-model="phoneno" name="" id="" ng-required="true" placeholder="Phone No">
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <input type="email" class="form-control" ng-model="emailid" name="" id="" ng-required="true" placeholder="Email Id">
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" ng-model="country" name="" id="" ng-required="true" placeholder="Country">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" ng-model="subject" name="" id="" ng-required="true" placeholder="Subject">
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <textarea rows="8" cols="12" ng-model="message" class="form-control" ng-required="true" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                                <p style="color:red;font-weight:600">* All fields are mandatory</p>
-                            </div>
-                            <div class="col-sm-12 col-md-12 text-center">
-                                <button class="btn btn-danger" ng-disabled="Contactus.$invalid" ng-click="SendMail()">SEND ENQUIRY</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
-            </section>
         </div>
-        <div>
-            <div id="loginPage">
-                <div class="login-body" style="background:#f5f5f5">
-                    <div class="container">
-                        <form name="Login" class="form-signin" style="height:340px;margin-top:200px;margin-bottom:100px">
-                            <h2 class="form-signin-heading">Member Login</h2>
-                            <div class="login-wrap" style="padding-bottom:0px;padding-top:0px;overflow:hidden auto">
-                                <div class="user-login-info" style="margin-bottom:0px">
-                                    <div class="col-md-12">
-                                        <md-input-container style="width:100%;margin:10px">
-                                            <label>Username</label>
-                                            <input name="Username0" ng-model="loginModel.UserName" ng-blur="checkLoginUsername()" ng-pattern="/^[A-Za-z0-9]*$/" ng-minlength="6" ng-maxlength="30" ng-required="true" />
-                                            <div class="errorcls">{{loginErrModel.UserName}}</div>
-                                        </md-input-container>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <md-input-container style="width:100%;margin:10px">
-                                            <label>Password</label>
-                                            <input type="password" name="Password0" ng-model="loginModel.Password" ng-pattern="/^[A-Za-z0-9]*$/" ng-minlength="6" ng-maxlength="14" ng-required="true" />
-                                            <div class="errorcls">{{loginErrModel.Password}}</div>
-                                        </md-input-container>
-                                    </div>
-                                </div>
-
-                                <div style="float: right;margin-top: -35px;margin-right: 10px">
-                                </div>
-
-                                <div>
-                                    @*<a ng-click="showConfirm($event)" style="float: left;cursor: pointer;margin-left: 30px;margin-top: 10px;">Forgot Password</a>*@
-                                    <a href="#" id="resetlink" style="color:#3b86f5;margin-left:25px;padding:3px">Forgot Password?</a>
-                                    <input type="button" value="Login" class="btn btn-info" ng-click="sendForLogin()" ng-disabled="Login.$invalid || loginErrModel.UserName!=''" style="height:35px;width:30%;margin-bottom:30px;float:right;margin-right:10px" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-
-            <div id="registrationPage">
-                <div class="login-body" style="background:#f5f5f5">
-                    <div class="container">
-                        <form name="Registration" class="form-signin" style="height:625px;margin-top:95px;margin-bottom:100px">
-                            <h2 class="form-signin-heading">register now</h2>
-                            <div class="login-wrap" style="padding-bottom:0px;padding-top:0px;overflow:hidden auto">
-                                <div class="user-login-info" ng-show="!isComplete && !isRegistered" style="margin-bottom:0px">
-                                    <div class="col-md-12" id="referrerdiv">
-                                        <md-input-container style="width:100%;margin:10px">
-                                            <label>Sponsor name</label>
-                                            <input name="ReferrerName" id="referrername" ng-model="ReferrerName" ng-change="validation1()" ng-blur="checkReferrername()" ng-required="true" />
-                                            <div class="errorcls">{{errorModel.ReferrerName}}</div>
-                                        </md-input-container>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <md-input-container style="width:100%;margin:10px">
-                                            <label>Member name</label>
-                                            <input name="Fullname" ng-model="registerModel.FullName" ng-required="true" ng-change="validation2()" />  @*ng-pattern="/^[a-zA-Z ]*$/"*@
-                                            <div class="errorcls">{{errorModel.FullName}}</div>
-                                        </md-input-container>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <md-input-container style="width:100%;margin:10px">
-                                            <label>Email Id</label>
-                                            <input type="email" name="Email" ng-model="registerModel.EmailId" ng-required="true" ng-change="validation3()" ng-blur="checkEmailId()" />
-                                            <div class="errorcls">{{errorModel.EmailId}}</div>
-                                        </md-input-container>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <md-input-container style="width:100%;margin:10px">
-                                            <label>Unique Username</label>
-                                            <input name="Username" ng-model="registerModel.UserName" ng-keyup="validation4()" ng-blur="checkUsername()" ng-pattern="/^[A-Za-z0-9]*$/" ng-minlength="6" ng-maxlength="30" ng-required="true" />
-                                            <div class="errorcls">{{errorModel.UserName}}</div>
-                                        </md-input-container>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <md-input-container style="margin:10px">
-                                            <label>Password</label>
-                                            <input type="password" name="Password" ng-model="registerModel.Password" ng-change="validation5()" ng-pattern="/^[A-Za-z0-9]*$/" ng-minlength="6" ng-maxlength="14" ng-required="true" />
-                                            <div class="errorcls">{{errorModel.Password}}</div>
-                                        </md-input-container>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <md-input-container style="margin:10px">
-                                            <label>ReType Password</label>
-                                            <input type="password" name="Password2" ng-model="registerModel.ConfirmPassword" ng-change="validation6()" ng-required="true" />
-                                            <div class="errorcls">{{errorModel.ConfirmPassword}}</div>
-                                        </md-input-container>
-                                    </div>
-
-                                    @*<div style="margin-left:28px;margin-right:10px">
-                                        <p style="margin-bottom:10px;font-weight:700;color:rgba(0,0,0,0.54);font-size:xx-small">Position</p>
-                                        <input type="radio" ng-model="registerModel.BinaryPosition" value="L" name="BinaryPos" checked="checked" />Left &nbsp;&nbsp;&nbsp; <input type="radio" ng-model="registerModel.BinaryPosition" value="R" name="BinaryPos" />Right
-                                        <hr style="margin-top:10px;margin-bottom:0px;border-top-color:#d4d2d2" />
-                                    </div>*@
-                                </div>
-                            </div>
-
-                            <div style="text-align:center">
-                             
-                                <input type="button" value="PROCEED" class="btn btn-info" ng-disabled="Registration.$invalid || errorModel.ReferrerName!='' || errorModel.UserName!=''" ng-click="showSubmit=true;register()" style="height:35px;width:30%;margin-bottom:30px;" ng-show="!isComplete && !isRegistered" />
-                            </div>
-
-                            <div style="width:100%;background:skyblue;text-align:center" ng-show="isComplete && !isRegistered">
-                                <br />
-                                <div class="pull-left" style="margin-left:20px;cursor:pointer"><i class="fa fa-arrow-circle-o-left" title="Previous page" ng-click="isComplete=false"></i></div><span style="color:blue;padding:5px;font-size:16px">Terms &amp; Conditions</span><span><i class="fa fa-exclamation-circle" style="margin-left:5px;color:#e20824" title="Terms and Conditions must be accepted"></i></span> <br /><br />
-                            </div>
-                            <div ng-show="isComplete && !isRegistered" style="height:400px;overflow-y:scroll;margin-left:2px">
-
-                                <div style="font-size:0.9em">
-
-                                    <pre>
-                     
-Btcpro Terms and Conditions
-By using, accessing, ordering services, buying
-memberships,buying packages, downloading documents,
-selling memberships,and selling packages from this
-Website, you hereby agree to be bound by all of the
-following terms and conditions:
-1.Modifications
-  We reserve the right at any time to:
-  - Change the terms and conditions of this Agreement;
-  - Enhance, add to, modify or discontinue the Site or
-    other Offerings, or any portion of the Site or other
-    Offerings, at any time in our sole discretion.
-    From time to time, we reserve the right, in our sole
-    discretion, to modify, update, add to, discontinue,
-    remove, revise or otherwise change any portion of
-    this Agreement, in whole or in part, at any time.
-    For changes to this Agreement that we consider to
-    be material, we will place a notice on the Site by
-    revising the link on the homepage to read 
-    substantially as 'Updated Terms of Use' for a
-    reasonable amount of time. If you provide
-    information to us, access or use the Site or 
-    participate in any Offering in any way after this
-    Agreement has been changed, you will be deemed to
-    have read, understood and unconditionally consented
-    to and agreed to such changes. The most current
-    version of this Agreement will be available on the
-    Site and will supersede all previous versions of this
-    Agreement.
-2. Use of Site
-  You must obtain access to the Internet and pay any
-  service fees associated with such access to use the
-  Site. In addition, you must provide all equipment 
-  necessary for you to access the Internet. You are
-  and will remain solely responsible for the purchase,
-  hookup, installation, loading, operation and
-  maintenance of any hardware, software, telephone
-  (cable or other) service, and the Internet access
-  service to your personal computer and for all
-  related costs. You are solely responsible for
-  scanning your hardware and software for computer
-  viruses and other related problems before you use 
-  them. We expressly disclaim any liability or
-  responsibility for any errors or failures relating
-  to the malfunction or failure of your hardware or
-  software in connection with the use of the Site
-  or Offerings. Unless otherwise specified, Btcpro,
-  its affiliates and subsidiaries Web Sites are for
-  your personal use. You may not modify, copy,
-  distribute, transmit, display, reproduce, publish,
-  license, create derivative works from, transfer,
-  or sell any information obtained from Btcpro’s
-  Web Sites. Btcpro authorizes you to view and
-  download the materials at this Web Site only for
-  your personal, non-commercial use, provided that
-  you retain all copyright and other proprietary
-  notices contained in the original materials on
-  any copies of the materials. You may not modify
-  the materials at this Site in any way or 
-  reproduce or publicly display, perform, or
-  distribute or otherwise use them for any public
-  or commercial purpose. For purposes of these
-  Terms, any use of these materials on any other
-  Web site or networked computer environment for
-  any purpose is prohibited. The materials at this
-  Site are copyrighted and any unauthorized use of
-  any materials at this Site may violate copyright,
-  trademark, and other laws. If you breach any of
-  these Terms, your authorization to use this Site
-  automatically terminates and you must immediately
-  destroy any downloaded or printed materials.
-3. Terminating this Agreement
-  This Agreement will remain in effect as long as
-  you access the Website, sell or buy any membership,
-  sell or buy any package, or order any service from
-  the Website. We reserve the right to terminate this
-  Agreement without notice and/or refuse to sell to
-  anyone who We believe, in Our sole discretion,
-  (i)   has violated any of the terms of this Agreement,
-  (ii)  is abusing the Products or the services we
-        provide, or 
-  (iii) is unable to provide us with sufficient
-        information to allow us to properly identify
-        the customer’s, independent distributor or
-        club member real name, address, telephone
-        number, legal identification card, passport
-        or other information.
-4. Individuals, Corporations, Tax Exempt Entities
-  You represent and warrant that you are eighteen (18)
-  years of age or older, or if you are under the age of
-  eighteen (18) you are at least the age of seventeen
-  (17) and are accessing the Site with the knowledge
-  and consent of your parent or legal guardian, who
-  will also be deemed to have agreed to this Agreement.
-  Certain features on this Site (including, but not 
-  limited to, user registration) and certain Offerings
-  may be subject to heightened age and/or other
-  eligibility requirements.
-  Btcpro will only consider for acceptance as club
-  member, Independent distributor or club member
-  that fall into one of the following categories:
-  a.) Individuals who are of the legal age. 
-  b.) Married couples of which at least one
-      is under the legal age requirement.
-  c.) Corporations in good standing in the state,
-      province, or country of their incorporation.
-5. Proper Completion of Documents
-   All entries in the Btcpro websites must be
-   completely and properly filled out and
-   acceptance by a check mark of the Independent
-   Distributor Agreement, Terms and Conditions,
-   Policies and Procedures, Income Disclosure,
-   Spam and Privacy policies is indicative of an
-   electronic signature used in signing the Btcpro
-   member agreement, terms and conditions and 
-   privacy policy. Btcpro will not be responsible
-   for loss of commissions or bonuses or for 
-   delays of registrations due to:
-   a) Errors by Club Members sending in wrong
-      information for themselves or on behalf of
-      clients.
-   b) Delays or errors caused by weak Internet
-      connection, virus in your computer, hacker
-      attack to your computer, blocking your 
-      sign up transmission.
-6. Disclaimer.
-  The materials provided at this site are provided
- ‘as is’ without any kind including warranties of
-  merchantability, fitness for a particular purpose,
-  or non-infringement of intellectual property.
-  Btcpro further does not warrant the accuracy and
-  completeness of the materials at this Site. Btcpro
-  may make changes to the materials at this Site, or
-  to the products, prices or compensation plan
-  described in them, at any time without prior notice.
-  The materials at this Site may be out of date,
-  and Btcpro makes no commitment to update the
-  materials at this Site. Information published at
-  this Site may refer to products; programs or
-  services that are intended for use only in a
-  specific country and may not be used or relied upon
-  in any other country. Applicable law may not allow
-  the exclusion of implied warranties, so the above
-  exclusion may not apply to you.
-7. Termination/Access Restriction.
-  Btcpro reserves the right, in its sole discretion,
-  to terminate your access to any or all Btcpro Web
-  Sites, back office and the related services or any
-  portion thereof at any time, without notice. Reasons
-  for termination include but are not limited to:
-  Defamation, Slander or Libel of Btcpro or other
-  members
-  A. Falsely promoting Btcpro in any way that causes
-     damages to Btcpro’s reputation
-  B. Promising or guaranteeing any “returns on
-     investment”
-  C. Transmit, post, send, upload, distribute, submit
-     or otherwise make available any content that is
-     unlawful or infringes, violates or misappropriates
-     any patent, trademark, trade identity right,
-     trade secret, publicity right, privacy right,
-     copyright or any other intellectual property or
-     any other rights of any third party;
-  D. Transmit, post, send, upload, distribute, submit
-     or otherwise make available any viruses, Trojan
-     horses or other harmful, disruptive or destructive
-     files or material that interferes with any third
-     party's use and enjoyment of the Site;
-  E. Violate any applicable local, state, federal or
-     international law, rule or regulation;
-  F. Transmit, post, send, upload, distribute, submit
-     or otherwise make available through the Site any
-     content containing any solicitation of funds,
-     promotion, advertising, or solicitation for goods
-     or services. You also hereby acknowledge that you
-     are prohibited from soliciting other guests to join
-     or become members of any commercial online service
-     or other organization;
-  G. Collect or harvest the information of any user or
-     otherwise access the Site using automated means
-     (including but not limited to harvesting bots,
-     robots, spiders or scrapers); J. “frame”, “mirror”
-     or “deep link” any part of the Site or other
-     Offerings without our prior written authorization.
-  H. Promising or guaranteeing any profit
-  I. Promising or guaranteeing any passive income
-  J. Using a false identity
-  K. Btcpro is unable to verify identity
-  L. Member owes money to the company
-  M. Member failed to perform obligations as a member
-     or distributor
-  N. Unauthorized use of another’s account
-  O. Violating any terms and conditions
-  P. Other misconduct and violations
-  Q. Violations of law of any Country or State
-8. Modification of These Terms of Use
-    Btcpro may revise these Terms at any time by updating
-    this posting. You should visit this page from time to
-    time to review the then-current Terms because they 
-    are binding on you. Certain provisions of these Terms
-    may be superseded by expressly designated legal
-    notices or terms located on particular pages at this
-    Site.
-9. Limitation of Liability
-   In no event will Btcpro, its suppliers, or other third
-   parties mentioned at this site be liable for any
-   damages whatsoever (including, without limitation,
-   those resulting from lost profits, lost data or
-   business interruption) arising out of the use,
-   inability to use, or the results of use of this site,
-   any web sites linked to this site, or the materials
-   or information contained at any of all such sites,
-   whether based on warranty, contract, tort or any other
-   legal theory and whether or not advised of the
-   possibility of such damages, if your use of the
-   materials or information from this site results in the
-   need for servicing, repair or correction of equipment
-   or data, you assume all cost thereof, applicable law
-   may not allow the exclusion or limitation of
-   incidental or consequential damages, so the above
-   limitation or exclusion may not apply to you.
-10. Indemnification
-   You agree to defend, indemnify, and hold harmless
-   Btcpro, its officers, directors, shareholders,
-   employees, independent contractors, telecommunication 
-   providers, and agents, from and against any and all
-   claims, actions, loss, liabilities, expenses, costs,
-   or demands, including without limitation legal and 
-   accounting fees, for all damages directly, indirectly,
-   and/or consequentially resulting or allegedly 
-   resulting from Your misuse or inability to use the
-   Website, or Your breach of any of these terms and 
-   conditions of this Agreement. We shall promptly
-   notify you by electronic mail of any such claim or
-   suit, and cooperate fully (at Your expense) in the
-   defense of such claim or suit. If we do not hear from
-   you promptly, we reserve the right to defend such
-   claim or suit and seek full recompense from you.
-11. Membership Refund
-   When a Btcpro Member applicant, enrolls and purchases 
-   a Membership or package, Btcpro applies 45% of the
-   membership value to the operations and administrative
-   expenses and uses 55% to trade crypto currencies 
-   with third party exchanges. As Btcpro distributed 
-   all the payment instantly, So Btcpo cannot refund 
-   any of your money from system. So all the membership
-   packages and purchases are nonrefundable.
-12. Electronic Signatures / Assent Required
-   No one is authorized or allowed to access this Site
-   or use the Services unless he, she or it has signed
-   this Agreement. Such signature does not need to be
-   a physical signature, since electronic acceptance
-   of this Agreement is permitted by various jurisdictions’
-   laws, such as the Electronic Signatures in Global and
-   National Commerce Act (E-Sign Act) and similar 
-   legislation. You manifest your agreement to this
-   Agreement by taking any act demonstrating your assent 
-   thereto. Most likely, you have clicked or will click a 
-   button containing the words “I agree” or some similar
-   syntax. You should understand that this has the same
-   legal effect as you placing your physical signature
-   on any other legal contract. If you click any link,
-   button or other device provided to you in any part of
-   our Site’s interface, then you have legally agreed to
-   all of these Terms and Conditions. Additionally, by
-   using any part of our Site or Services in any manner,
-   including the Exchange, you understand and agree that
-   such use constitutes your affirmation of your complete
-   and unconditional No one is authorized or allowed to 
-   access this Site or use the Services unless he, she or 
-   it has signed this Agreement. Such signature does not
-   need to be a physical signature, since electronic
-   acceptance of this Agreement is permitted by 
-   various jurisdictions’ laws, such as the Electronic
-   Signatures in Global and National Commerce Act
-   (E-Sign Act) acceptance to all of the terms in this
-   Agreement. Even if you fail to sign this Agreement,
-   you understand and agree that you are still bound by
-   the terms of this Agreement by virtue of your viewing
-   the Site or using any portion of the Site or our
-   Services.
-13. Not a bank or Trust account:
-   Your account with us (and any available currency
-   therein) is not a bank account, a trust account,
-   a securities account, a credit card or deposit 
-   account. Our services are not financial instruments.
-   No interest will be paid on any funds or currency
-   you use to purchase or trade for any other currency,
-   bitcoin, or any other thing with other members,
-   and all assets, including such currency or bitcoin,
-   that are directly held by the company are not
-   insured by the company or any government agency. 
-   All currency bought and sold by you will be
-   associated with your account until used to purchase
-   or sell from or with other members or until
-   withdrawn by you.
-14. Disclaimer:
-   Risk Factors Btcpro is not responsible for any loss or
-   damage incurred by you as a result of your use of our
-   Services or for your failure to understand the nature
-   of virtual currencies or the market for such 
-   currencies. All we are providing you is a method by 
-   which you can exchange, trade, and store certain
-   virtual currencies, and we make no representations
-   or warranties concerning the value, stability, or
-   legality of any such virtual currencies.
-   You acknowledge the following risks related to your use
-   of the Site and the Services:
-   1. The risk of loss in trading virtual currencies such
-      as Bitcoin (collectively, “Digital Assets”) may be
-      substantial and losses may occur over a short period
-      of time.
-   2. The price and liquidity of Digital Assets has been
-      subject to large fluctuations in the past and may be
-      subject to large fluctuations in the future.
-   3. Digital Assets are not legal tender, not backed
-      by any government, and accounts and value balances
-      are not subject to Federal Deposit Insurance 
-      Corporation or Securities Investor Protection 
-      Corporation protections.
-   4. Legislative and regulatory changes or actions at
-      the state, federal or international level may
-      adversely affect the use, transfer, exchange and 
-     value of Digital Assets.
-   5. Transactions in Digital Assets may be irreversible,
-      and accordingly, losses due to fraudulent or
-      accidental transactions may not be recoverable.
-   6. Some Digital Assets transactions shall be deemed to
-      be made when recorded on a public ledger, which is 
-      not necessarily the date or time that the customer
-      initiates the transactions.
-   7. The value of Digital Assets may be derived from the
-      continued willingness of market participants to
-      exchange fiat currencies for Digital Assets, which
-      may result in the potential for permanent and total
-      loss of value of a particular virtual currency
-      should the market for that virtual currency 
-      disappear.
-   8. There is no assurance that a person who accepts
-      Digital Assets as a payment today will continue to
-      do so in the future.
-   9. The nature of Digital Assets may lead to an 
-      increased risk of fraud or cyber attack, and may
-      mean that technological difficulties experienced 
-      by the Company may prevent the access or use of
-      your Digital Assets.
-  10. Your account with Btcpro may not be sufficient to 
-      cover all losses incurred by you.
-      You acknowledge and agree that you are solely
-      responsible for determining the nature, potential
-      value, suitability, and appropriateness of those
-      risks for you, and that Btcpro does not give advice
-      or recommendations regarding Digital Assets,
-      including the suitability and appropriateness of,
-      and investment strategies for, Digital Assets. You 
-      acknowledge and agree that you shall access and use
-      the Services and the Site at your own risk. This 
-      brief statement does not disclose all of the risks
-      associated with trading, exchanging, and storing 
-      in Digital Assets. You should, therefore, carefully
-      consider whether such trading, exchanging and
-      storing’s are suitable for you in light of your 
-      circumstances and financial resources. You should
-      be aware that you may sustain a total loss of the
-      funds in your Account (as defined below), and that
-      under certain market conditions, you may find it
-      difficult or impossible to liquidate a position.
- 
-15. Virtual Currency Values
-    You understand and agree that, due to technical and
-    other restrictions, the virtual currency values 
-    displayed on our Site may be delayed and therefore
-    not reflect the current, live market value of such
-    currency.
-    Nonetheless, you agree that the values displayed
-    on our Site control your Account and your use of
-    the Site and Services.
-16. Your Account Registration Data
-    In order to use Btcpro systems, you must create an
-    account with us (your 'Account'). Your Account will
-    be used to store various virtual currency amounts as
-    deposited by you. In creating your Account, you may
-    be asked to provide certain registration details and 
-    information. In order to verify your identity, some
-    of this information may be personal, private or 
-    detailed. In connection with completing the online
-    registration form, you agree to provide true, accurate,
-    current and complete information about yourself as
-    prompted by the registration form (such information 
-    being the 'Registration Data');and you further agree
-    to maintain and promptly update the Registration Data
-    to keep it true, accurate, current and complete at all
-    times while you are a Member. While we use reasonable
-    efforts to protect the personal information of others
-    from inadvertent release or misappropriation, we are
-    not responsible for the intentional or criminal acts 
-    of third parties such as hackers or 'phishers'.
-17. Changes to Registration Data
-    You must promptly inform/update us of all changes, 
-    including, but not limited to, changes in your 
-    address and changes in any virtual or fiat currency
-    account used by you in connection with the Site and
-    Services, if applicable. If you provide any 
-    information that is untrue, inaccurate, not current
-    or incomplete, or if we or any of our authorized
-    agents have reasonable grounds to suspect that such
-    information is untrue, inaccurate, not current or
-    incomplete, we have the right to suspend or terminate
-    your Account and refuse any and all current or future
-    use of the Site and Services by you, as well as
-    subject you to civil liability or refer you to the
-    appropriate law enforcement authorities for criminal
-    prosecution. We shall not be liable to make any
-    compensation, monetary or otherwise, following such
-    suspension, termination or inability to use the Site
-    or the Services. You are responsible for any fees
-    that the Company incurs with respect to your Account.
-    If you fail to reimburse us for any fees within 
-    thirty (30) calendar days of our initial demand for
-    reimbursement, you agree that you will pay us 0.50 BTC
-    as liquidated damages, being a genuine pre-estimate
-    of loss and damage suffered by the Btcpro,
-    as well as any costs incurred by the Company for each 
-    fee incurred plus interest on the amount owed at a 
-    rate equal to the lesser of 
-    (i) 1% per month or 
-    (ii) the maximum rate permitted by applicable law.
-18. Your Account Responsibility
-    You are entirely responsible for any and all
-    activities conducted through your Account. You
-    agree to notify us immediately of any unauthorized
-    use of your password or Member ID, as well as of
-    any other breach of security. While we may implement
-    certain monitoring procedures designed to alert us
-    to fraudulent activity, we are not responsible for
-    any unauthorized use of your Account, and you agree
-    that you are responsible for such unauthorized
-    use and for protecting the confidentiality of your
-    password.
-19. Account Transfers
-    Control or use of your Account may be transferred
-    or sold to a third party. To complete the process
-    you will need to use the form “REQUEST FOR THE
-    TRANSFER OF A BTCPRO BUSINESS CENTER”. You will send
-    the form as requested and notarized to the email
-    compliance@tradecoinclub.com. Btcpro compliance
-    department will verify the request and  the process
-    of an account transfer will be complete in 7 business
-    days. If any information is missing, compliance 
-    department will notify the current account owner 
-    and could denied the request.
-    A. To complete the process a fee of 0.05BTC will be
-       apply.
-    B. The Assignor is prevented from making new
-       membership in the club for a period of 90 days,
-       counting from the date held.
-    C. All points accumulated in the binary will be
-       flush upon transfer.
-    D. Affiliates who sign this agreement agree not
-       to communicate or contact any members of their
-       downline for a period of one year from the date
-       of transfer. 
-       Any refusal to comply with this agreement will
-       result in the immediate termination of this
-       account and the eventual adoption of further
-       measures.
-    E. We disclaim any and all liability arising from 
-       fraudulent entry and use of the Site. If a User 
-       fraudulently obtains access to your Account, we
-       may terminate the User’s access and membership
-       immediately and take all necessary and
-       appropriate actions under applicable federal,
-       state, and international laws.
-20. Password Security:
-    As part of our security measures and policies,
-    please note that we will never ask you, for any
-    reason, whether by email, regular mail or 
-    telephone, to disclose your account password.
-    Password inquiries will only be conducted online
-    and only after you have signed onto the company’s
-    site. We will never send you embedded links in an
-    email requesting that you sign onto the site by
-    clicking such a link. If you receive an embedded
-    link by email, claiming to be from us, you should
-    not open it or click on the link. The email in
-    not from us and is likely fraudulent. Never give 
-    your account password to anyone whom you do not
-    intend to authorize to use your account. 20.Third
-    Party Account Information In order to provide you
-    with the Services, you may also be required to
-    disclose certain other third-party account 
-    information to us, including, without limitation,
-    your Bitcoin addresses and related information.
-    As indicated elsewhere in this Agreement, we are
-    not responsible for any unauthorized use of your
-    Account with the Company or any third-party accounts.
-21. Funding Your Account
-    After creating your Account with Btcpro, you
-    will be able to fund your Account by transferring, 
-    from your bitcoin account to the Btcpro account
-    No fees are charged by us for funding your Account.
-    After funding your account please take a screenshot
-    of the transfer and upload it.
-22. No Reversal of Trades, Deposits or Payments
-    Once an order has been executed (transfer user to
-    user, deposit BTC in your cash wallet or request
-    of payout) and the appropriate currencies have
-    been credited and debited from the Members’
-    Accounts, we will not be able to reverse the 
-    transaction in any circumstances.
-23. Service Interruption
-    From time to time due to technological factors,
-    scheduled software uploads and other factors
-    beyond or within our control,the Site, or other
-    Services may be temporarily interrupted.
-    You agree that we are not liable for any loss
-    and damage arising from such interruption and 
-    you agree to hold us harmless against any such
-    interruption of or inability to access the Site
-    or Services.
-24. Withdrawing Currency
-    In addition to allowing Members to trade virtual
-    currency,Btcpro allows Members to withdraw virtual
-    currency upon request to us. Members may withdraw
-    all or some of their virtual currency, and there
-    is no minimum amount of virtual currency required 
-    to maintain your status as a Member (however,
-    as indicated above, you may only trade or sell
-    virtual currency up to the amount shown as 
-    belonging to you in the ledger maintained in your
-    wallet). ABC currency will be transferred from the
-    Exchange’s account to the specific Bitcoin address 
-    provided by the Member. Withdrawals will generally 
-    take up to three (3) business days to complete,
-    provided that larger withdrawals may take up to
-    thirty (30) business days to complete and that any
-    withdrawal may be delayed as necessary to comply
-    with applicable law and/or the Exchange’s customer
-    identification and antimony laundering procedures.
-                    </pre>
-                                </div>
-                            </div>
-                            <div style="text-align:center">
-                                <input type="button" value="ACCEPT & SUBMIT" class="btn btn-info" ng-click="showSubmit=false;registration()" style="height:35px;width:35%;margin-bottom:2px;margin-top:5px" ng-show="isComplete && !isRegistered && showSubmit" />
-                                @*<div ng-show="isComplete && !isRegistered">@Html.ActionLink("Go to login page", "Login", "Account")</div>*@
-
-                                <div style="text-align:center;padding-bottom:25px;margin-top:200px" ng-show="isComplete && isRegistered">
-
-                                    <h2 style="color:#0b8a8a">Registration Successful!!!</h2>
-                                    <p ng-show="showEmail" style="text-align:center">Sending email <img src="~/Content/loader.gif" style="width:60px" /></p>
-                                    <p ng-show="!showEmail" style="text-align:center">Email sent !!!</p>
-                                    @*<a ng-click="isComplete=false;isRegistered=false">Continue Registration</a>&nbsp;&nbsp;&nbsp;
-                                        @Html.ActionLink("Click here to login", "Login", "Account")*@
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    </section>
+    <!-- End Contact -->
+    <!-- start tranding -->
+    <section class="tranding">
+        <div class="container text-center">
+            <h2>Honest - Hardworking - Dream - Achieve - Success</h2>
+            <p><a href='@Url.Action("Registration","Home")' class="btn btn-success">Join with us</a></p>
         </div>
-    </div>
-    <!-- end feedback form -->
+    </section>
+    <!-- end tranding -->
     <!-- Start Footer -->
     <footer>
         <div class="container">
             <!-- Start Row -->
             <div class="row">
                 <div class="col-md-3 col-sm-3 margin-b-20">
-                    <h3>WE ACCEPT</h3>
-                    <img src="~/StaticSiteAssets/images/bitcoin.png" alt="bitcoin" class="img-responsive">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href='@Url.Action("Aboutus","Home")'>About Us</a></li>
+                        <li><a href='@Url.Action("BizOpportunity","Home")'>Opportunity</a></li>
+                        <li><a href='@Url.Action("Ethereum","Home")'>Ethereum</a></li>
+                        <li><a href='@Url.Action("Faq","Home")'>Faq</a></li>
+                        <li><a href='@Url.Action("Contact","Home")'>Contact</a></li>
+                    </ul>
                 </div>
                 <div class="col-md-3 col-sm-3 margin-b-20">
                     <h3>Policies</h3>
                     <ul>
                         <li><a role="button" data-toggle="modal" data-target="#myModal">Terms & Conditions</a></li>
-                        <li><a href="~/Content/attachment.pdf" download>Compensation Plan</a></li>
+                        <li><a href="#">Compensation Plan</a></li>
                     </ul>
-                </div>
-                <div class="col-md-3 col-sm-3 margin-b-20">
                     <h3>Support</h3>
                     <ul>
                         <li><a href="#">Need Help?</a></li>
@@ -1601,15 +409,16 @@ following terms and conditions:
                 <div class="col-md-3 col-sm-3 margin-b-20">
                     <h3>Contact Us</h3>
                     <p>
-                        <b>BTC PRO</b><br>
+                        <b>BTC Pro Inc</b><br>
                         22 Marine Parade /A9  <br>
                         Cork St, Belize City<br>
                         Belize
                     </p>
                     <p>info@btcpro.co</p>
                 </div>
-                <div class="col-md-12 col-sm-12 text-center">
-                    <p>© 2017 BTC Pro. All rights reserved</p>
+                <div class="col-md-3 col-sm-3 margin-b-20">
+                    <h3>WE ACCEPT</h3>
+                    <p><img src="~/StaticSiteAssets/images/payment.png" alt="btc" class="img-responsive"></p>
                 </div>
             </div>
             <!-- End Row -->
@@ -1617,98 +426,17 @@ following terms and conditions:
         <!-- End Container -->
     </footer>
     <!-- End Footer -->
-    <!-- scroll part -->
-    <div class="scroll-top-wrapper ">
-        <span class="scroll-top-inner">
-            <i class="fa fa-caret-up"></i>
-        </span>
-    </div>
-
-
-
-    <!-- JQuery.js -->
-    @*<script src="~/StaticSiteAssets/js/jquery-3.1.1.min.js"></script>*@
-
-    <!-- bootstrap.min.js -->
-    <script src="~/StaticSiteAssets/js/bootstrap.js"></script>
-    <script src="~/StaticSiteAssets/js/particles.js"></script>
-    <script src="~/StaticSiteAssets/js/app.js"></script>
-    <!-- stats.js -->
-    <script src="~/StaticSiteAssets/js/lib/stats.js"></script>
-    <!-- smoothscroll.js -->
-    <script src="~/StaticSiteAssets/js/smoothscroll.js"></script>
-    <!-- main.js -->
-    <script src="~/StaticSiteAssets/js/main.js"></script>
-
-    <div id="passwordreset" style="background-color:white;text-align:center">
-        <div id="info" style="text-align:center">
-            <table style="width:70%;margin-top:40px">
-                <tr style="line-height:25px">
-                    <td style="width:50%"><label>Username</label></td>
-                    <td><input id="recoveryname" type="text" /></td>
-                </tr>
-                <tr style="line-height:60px">
-                    <td><label>Email Id</label></td>
-                    <td><input id="recoveryemail" type="email" /></td>
-                </tr>
-            </table>
-            <table style="margin-top:30px">
-                <tr>
-                    <td style="width:80px"><i class="fa fa-2x fa-info" style="color:blue"></i></td>
-                    <td style="text-align:left;padding-right:30px"><h4><span id="message">Input correct username and registered email id for self verification to receive forgotten password in your registered email id.</span></h4></td>
-                </tr>
-            </table>
+    <!-- Copyright -->
+    <section class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <p>© 2017-2020 BTC Pro Mining. All rights reserved</p>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <script>
-        $(document).ready(function () {
-            $("#passwordreset").dialog({
-                autoOpen: false,
-                width: 525,
-                height:425,
-                maxWidth:525,
-                maxheight:425,
-                modal:true,
-                buttons: {
-                    "Recover": function() {
-                        var usr=$("#recoveryname").val();
-                        var email=$("#recoveryemail").val();
-                        $.ajax({
-                            type: "POST",
-                            url: "/Home/CheckIdentity?username="+usr+"&emailId="+email,
-                            dataType: "json",
-                            success: function (response) {
-                                $("#message").text(response.Message);
-                            }
-                        })
-                    },
-                    "Close": function() {
-                        $(this).dialog("close");
-                    }
-                }
-            });
-            $( "#passwordreset" ).dialog( "option", "title", "PASSWORD RECOVERY WINDOW" );
-            var saveDialog = $('#passwordreset');
-
-            $("#resetlink").click(function(){
-                $("#passwordreset").dialog("open");
-            })
-            debugger;
-            var username='@ViewBag.Username';
-            var sel = 'div[ng-controller="Register"]';
-            var $scope = angular.element(sel).scope();
-            $scope.ReferrerName=username;
-            //$scope.$apply();
-            if (username!=""){
-                $("#referrername").prop('disabled',true);
-                $("#referrerdiv").hide();
-            }else{
-                $("#referrerdiv").show();
-            }
-        });
-    </script>
-
+    </section>
+    <!-- End Copyright -->
     <!-- BEGIN # MODAL LOGIN -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -1824,13 +552,26 @@ following terms and conditions:
         </div>
     </div>
     <!-- END # MODAL LOGIN -->
-    <div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog" style="left:-100px">
-            <div class="modal-content">
-                <a href="~/Content/attachment.pdf">~/Content/attachment.pdf</a>t">
-            </div>
-        </div>
+    <div id="my-welcome-message">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/MIDJxhYfNFY" frameborder="0" allowfullscreen></iframe>
     </div>
+    @*<script src="/StaticSiteAssets/js/jquery.firstVisitPopup.js"></script> 
+    <script>
+        $(function () {
+            $('#my-welcome-message').firstVisitPopup({
+                cookieName : 'homepage',
+                showAgainSelector: '#show-message'
+            });
+        });
+    </script>*@
+    <!-- JQuery.js -->
+    <script src="~/StaticSiteAssets/js/particles.js"></script>
+    <script src="~/StaticSiteAssets/js/app.js"></script>
+    <!-- stats.js -->
+    <script src="~/StaticSiteAssets/js/lib/stats.js"></script>
+    
+    
+    
+
 </body>
 </html>
-

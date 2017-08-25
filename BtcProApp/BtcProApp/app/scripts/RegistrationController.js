@@ -1,5 +1,5 @@
-﻿var module = angular.module('app', ['ngMaterial', 'ngMessages']);
-module.controller('Register', function ($scope, $http, $location, $mdDialog) {
+﻿var module = angular.module('app', ['ngMaterial', 'ngMessages', 'ui.bootstrap']);
+module.controller('Register', function ($scope, $http, $location, $mdDialog, $uibModal) {
     $scope.isValid = true;
     $scope.isRegistered = false;
     $scope.isComplete = false;
@@ -13,8 +13,11 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
     $scope.CountryCode = "";
     $scope.ReferrerName = "";
 
+    $scope.SponsorIsCorrect = "";
+
     $scope.registerModel = {
         ReferrerName: "",
+        SponsorName:"",
         FullName: "",
         EmailId: "",
         UserName: "",
@@ -30,6 +33,7 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
         UserName: "",
         Password: "",
     }
+
     $scope.loginErrModel = {
         UserName: "",
         Password: "",
@@ -52,17 +56,29 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
     //}
 
     $scope.checkReferrername = function () {
-        debugger;
         $scope.isValid = false;
-        if ($scope.ReferrerName != "") {
-            $http.get("/Home/IsUserNameExist?UserName=" + $scope.ReferrerName).then(function (data) {
+        //if ($scope.ReferrerName != "") {
+        //    $http.get("/Home/IsUserNameExist?UserName=" + $scope.ReferrerName).then(function (data) {
+        //        $scope.isUsernameFound1 = data.data.Found;
+        //        if (!$scope.isUsernameFound1) {
+        //            $scope.errorModel.ReferrerName = "Incorrect Sponsor Username.";
+        //            $scope.isValid = false;
+        //            //this.Registration.ReferrerName.$setValidity("errReferrerField", false);
+        //        } else {
+        //            $scope.errorModel.ReferrerName = "";
+        //            $scope.isValid = true;
+        //        }
+        //    })
+        //}
+        if ($scope.registerModel.ReferrerName != "") {
+            $http.get("/Home/IsUserNameExist?UserName=" + $scope.registerModel.ReferrerName).then(function (data) {
                 $scope.isUsernameFound1 = data.data.Found;
                 if (!$scope.isUsernameFound1) {
                     $scope.errorModel.ReferrerName = "Incorrect Sponsor Username.";
                     $scope.isValid = false;
-                    //this.Registration.ReferrerName.$setValidity("errReferrerField", false);
                 } else {
                     $scope.errorModel.ReferrerName = "";
+                    $scope.registerModel.SponsorName = data.data.Sponsorname;
                     $scope.isValid = true;
                 }
             })
@@ -88,7 +104,6 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
     }
 
     $scope.checkUsername = function () {
-        debugger;
         $scope.isValid = false;
         if ($scope.registerModel.UserName != "") {
             $http.get("/Home/IsUserNameExist1?UserName=" + $scope.registerModel.UserName).then(function (data) {
@@ -96,10 +111,12 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
                 if ($scope.isUsernameFound1) {
                     $scope.errorModel.UserName = "Username already exists.";
                     $scope.isValid = false;
+                    $scope.SponsorIsCorrect = "N";
                     //this.Registration.UserName.$setValidity("errUsernameField", false);
                 } else {
                     $scope.errorModel.UserName = "";
                     $scope.isValid = true;
+                    $scope.SponsorIsCorrect = "Y";
                 }
             })
         }
@@ -122,13 +139,23 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
     $scope.register = function () {
         //$scope.validations();
         debugger;
+        //$scope.errorModel.ReferrerName = "";
+        //if ($scope.ReferrerName == "") {
+        //    $scope.errorModel.ReferrerName = "Cannot be left blank.";
+        //    $scope.isValid = false;
+        //    this.Registration.ReferrerName.$setValidity("errReferrerField", false);
+        //} else {
+        //    this.Registration.ReferrerName.$setValidity("errReferrerField", true);
+        //}
         $scope.errorModel.ReferrerName = "";
-        if ($scope.ReferrerName == "") {
+        if ($scope.registerModel.ReferrerName == "") {
             $scope.errorModel.ReferrerName = "Cannot be left blank.";
+            $scope.SponsorIsCorrect = "N";
             $scope.isValid = false;
             this.Registration.ReferrerName.$setValidity("errReferrerField", false);
         } else {
             this.Registration.ReferrerName.$setValidity("errReferrerField", true);
+            $scope.SponsorIsCorrect = "Y";
         }
         $scope.errorModel.FullName = "";
         if ($scope.registerModel.FullName == "") {
@@ -209,12 +236,14 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
         } else {
             this.Registration.Password2.$setValidity("errPassword2Field", true);
         }
-        if ($scope.ReferrerName != "") {
-            $http.get("/Home/IsUserNameExist?UserName=" + $scope.ReferrerName).then(function (data) {
+        //if ($scope.ReferrerName != "") {
+        //    $http.get("/Home/IsUserNameExist?UserName=" + $scope.ReferrerName).then(function (data) {
+        if ($scope.registerModel.ReferrerName != "") {
+            $http.get("/Home/IsUserNameExist?UserName=" + $scope.registerModel.ReferrerName).then(function (data) {
                 $scope.isUsernameFound1 = data.data.Found;
                 $scope.registerModel.ReferrerId = data.data.ReferrerId;
                 if (!$scope.isUsernameFound1) {
-                    $scope.errorModel.ReferrerName = "Incorrect Sponsor Username.";
+                    $scope.errorModel.ReferrerName = "Incorrect Sponsor User Id.";
                     $scope.isValid = false;
                 } else {
                     $scope.errorModel.ReferrerName = "";
@@ -284,8 +313,7 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
                 if (data.data.flag == 'Success') {
                     //add new entry to registration table
                     $scope.registerModel.CountryCode = $scope.CountryCode;
-                    debugger;
-                    $scope.registerModel.ReferrerName = $scope.ReferrerName;
+                    //$scope.registerModel.ReferrerName = $scope.ReferrerName;
                     $http.get("/Home/GetWorkingLeg?user=" + $scope.registerModel.ReferrerName).then(function (data) {
                         $scope.registerModel.BinaryPosition = data.data.Position;
                         if (data.data.Position == null) {
@@ -309,14 +337,23 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
     }
 
     $scope.validation1 = function () {
-        debugger;
+        //$scope.errorModel.ReferrerName = "";
+        //if ($scope.ReferrerName == "") {
+        //    $scope.errorModel.ReferrerName = "Cannot be left blank.";
+        //    $scope.isValid = false;
+        //    this.Registration.ReferrerName.$setValidity("errReferrerField", false);
+        //} else {
+        //    this.Registration.ReferrerName.$setValidity("errReferrerField", true);
+        //}
         $scope.errorModel.ReferrerName = "";
-        if ($scope.ReferrerName == "") {
+        if ($scope.registerModel.ReferrerName == "") {
             $scope.errorModel.ReferrerName = "Cannot be left blank.";
             $scope.isValid = false;
-            this.Registration.ReferrerName.$setValidity("errReferrerField", false);
+            $scope.SponsorIsCorrect = "N";
+            this.Registration.ReferrerName.$setValidity("errEmailField", false);
         } else {
-            this.Registration.ReferrerName.$setValidity("errReferrerField", true);
+            this.Registration.ReferrerName.$setValidity("errEmailField", true);
+            $scope.SponsorIsCorrect = "Y";
         }
     }
 
@@ -351,7 +388,6 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
     }
 
     $scope.validation4 = function () {
-        debugger;
         $scope.errorModel.UserName = "";
         if ($scope.registerModel.UserName == "") {
             $scope.errorModel.UserName = "Cannot be left blank.";
@@ -437,7 +473,7 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
                 $scope.loginErrModel.Password = "";
                 var path = $location.path("Home/Index");
                 var abspath = path.$$absUrl;
-                var modifiedpath = abspath.replace("#/", "");
+                var modifiedpath = abspath.replace("/Home/Login#", "");
                 window.location = modifiedpath;
             } else {
                 $scope.loginErrModel.Password = "Invalid Password";
@@ -465,21 +501,54 @@ module.controller('Register', function ($scope, $http, $location, $mdDialog) {
 
     }
 
-    $scope.showConfirm = function (ev) {
-        // Appending dialog to document.body to cover sidenav in docs app
-        var confirm = $mdDialog.confirm()
-              .title('Would you like to reset your password?')
-              .textContent('You will receive a password reset link in your email id.')
-              .ariaLabel('Proceed')
-              .targetEvent(ev)
-              .ok('Proceed to reset!')
-              .cancel('Not now, later!');
-
-        $mdDialog.show(confirm).then(function () {
-            $scope.status = 'A password reset link has been sent in your email id.!!!';
-        }, function () {
-            $scope.status = '';
+    //---------------------------------------Modal dialog start-----------------------------------------------//
+    $scope.showpopup = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: '../ForgetPassword.html',
+            controller: 'ModalInstanceCtrl',
+            backdrop: 'static',
+            scope: $scope,
+            resolve: {
+                objParameters: function () {
+                    return {
+                       
+                    };
+                }
+            }
         });
-    };
+    }
+
+    //---------------------------------------Modal dialog end-------------------------------------------------//
+
+})
+
+module.controller('ModalInstanceCtrl', function ($scope, $controller, $uibModalInstance, $http, $q, objParameters) {
+
+    //close button click
+    $scope.close = function () {
+        $uibModalInstance.close();
+    }
+    $scope.headerText = objParameters.Week + " Forget Password";
+
+
+    $scope.forgetUsername = "";
+    $scope.forgetEmailid = "";
+    $scope.forgetStatus = false;
+    $scope.sending = false;
+    $scope.forgetMessage = "Input correct username and registered email id for self verification to receive forgotten password in your registered email id.";
+    $scope.showMessage = "Input correct username and registered email id for self verification to receive forgotten password in your registered email id.";
+
+    $scope.checkIdentity = function () {
+        $scope.sending = true;
+        $http.post("/Home/CheckIdentity?username=" + $scope.forgetUsername + "&emailId=" + $scope.forgetEmailid).then(function (response) {
+            $scope.showMessage = response.data.Message;
+            if (response.data.Status) {
+                $scope.forgetStatus = true;
+            } else {
+                $scope.forgetStatus = false;
+                $scope.sending = false;
+            }
+        })
+    }
 })
 

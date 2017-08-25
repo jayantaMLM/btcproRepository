@@ -2,7 +2,6 @@
 
 module.filter("TypeFilter", function () {
     return function (charStatus) {
-        debugger;
         var fullname = "";
         var char = "";
         if (charStatus != null) {
@@ -37,6 +36,9 @@ module.controller('KycUpload', function ($scope, $http, $location, $sce) {
 
     $http.get("/api/KYCDocuments").then(function (response) {
         $scope.mykycs = response.data;
+        angular.forEach($scope.mykycs, function (value, index) {
+            if (value.Status == "" || value.Status == null) { value.Status = "-"; }
+        })
     })
 
     var KYCObj = {
@@ -51,7 +53,6 @@ module.controller('KycUpload', function ($scope, $http, $location, $sce) {
 
     //upload KYC document
     $scope.uploadLibraryDocumentA = function (files) {
-        debugger;
         if (files[0].size > 4000000) {
             alert("Maximum 4MB document size allowed!");
             $("#documentA").val("");
@@ -71,7 +72,6 @@ module.controller('KycUpload', function ($scope, $http, $location, $sce) {
                 headers: { 'Content-Type': undefined },
                 transformRequest: angular.identity
             }).then(function (data) {
-                debugger;
                 $scope.fileInterName = data.data[0].fileInternalName;
                 $scope.fileId = data.data[0].fileId;
                 $scope.isAttachmentUploadingA = false;
@@ -110,13 +110,10 @@ module.controller('KycUpload', function ($scope, $http, $location, $sce) {
     //view document
     $scope.showimage = function (Id) {
         //uniquename, filename, filetype, filepath
-        debugger;
         $scope.currentRecordId = Id;
         $http.get('/api/Library/Index?module=Images&moduleId=' + $scope.currentRecordId + "&subModule=KYC&subModuleId=0").then(function (data4) {
-            debugger;
             if (data4.data.uploadresults.length > 0) {
                 $scope.document_attachments = data4.data.uploadresults;
-                debugger;
                 $scope.documentID = data4.data.uploadresults[0].fileInternalName;
                 $scope.documentNAME = data4.data.uploadresults[0].fileName;
                 $scope.documentFILETYPE = data4.data.uploadresults[0].fileType;
@@ -141,7 +138,6 @@ module.controller('KycUpload', function ($scope, $http, $location, $sce) {
         KYCObj.LibraryFilename = $scope.fileInterName;
 
         $http.post("/api/KYCDocuments", KYCObj).then(function (response) {
-            debugger;
             $scope.documentType = "";
             $scope.documentName = "";
             $scope.documentComments = "";
@@ -151,8 +147,10 @@ module.controller('KycUpload', function ($scope, $http, $location, $sce) {
             alert("KYC document submitted successfully");
             $scope.disableSubmit = false;
             $http.get("/api/KYCDocuments").then(function (response) {
-                debugger;
                 $scope.mykycs = response.data;
+                angular.forEach($scope.mykycs, function (value, index) {
+                    if (value.Status == "" || value.Status == null) { value.Status = "-"; }
+                })
             })
         })
     }

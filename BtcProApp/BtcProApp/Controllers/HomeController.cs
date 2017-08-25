@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BtcProApp.Controllers
     {
-    //[Authorize]
+    [Authorize]
     public class HomeController : Controller
         {
         private BtcProDB db = new BtcProDB();
@@ -29,11 +29,14 @@ namespace BtcProApp.Controllers
                     }
                 else
                     {
-                    return View();
+                    ViewBag.Username = mem.Username;
+                    ViewBag.Fullname = mem.Firstname;
+                    return View("Registration");
                     }
                 }
             else
                 {
+                ViewBag.Username = "";
                 return View();
                 }
 
@@ -82,7 +85,7 @@ namespace BtcProApp.Controllers
             var memberWallets = ( from m in db.Members
                                   select new vmMemberWallet
                                       {
-                                      RegistrationId=m.RegistrationId,
+                                      RegistrationId = m.RegistrationId,
                                       MemberName = m.Username,
                                       CashWalletAmount = 0,
                                       ReserveWalletAmount = 0,
@@ -94,7 +97,7 @@ namespace BtcProApp.Controllers
                 for (int i = 0; i < memberWallets.Count(); i++)
                     {
                     memberWallets[i].CashWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 1);
-                    memberWallets[i].ReserveWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 2); 
+                    memberWallets[i].ReserveWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 2);
                     memberWallets[i].ReturnWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 3);
                     }
 
@@ -103,7 +106,7 @@ namespace BtcProApp.Controllers
                 {
 
                 }
-           
+
             return Json(new { Wallets = memberWallets }, JsonRequestBehavior.AllowGet);
             }
         [HttpPost]
@@ -132,18 +135,52 @@ namespace BtcProApp.Controllers
             return Json(new { CountryName = ViewBag.ImagePath }, JsonRequestBehavior.AllowGet);
             }
 
-        public ActionResult About()
+        [AllowAnonymous]
+        public ActionResult Aboutus()
             {
-            ViewBag.Message = "Your application description page.";
-
             return View();
             }
 
+        [AllowAnonymous]
+        public ActionResult Ethereum()
+            {
+            return View();
+            }
+
+        [AllowAnonymous]
+        public ActionResult BizOpportunity()
+            {
+            return View();
+            }
+
+        [AllowAnonymous]
+        public ActionResult Faq()
+            {
+            return View();
+            }
+
+        public ActionResult Contactus()
+            {
+            return View();
+            }
+
+        [AllowAnonymous]
+        public ActionResult Registration()
+            {
+            return View();
+            }
+
+        [AllowAnonymous]
+        public ActionResult Login()
+            {
+            return View();
+            }
+
+        [AllowAnonymous]
         public ActionResult Contact()
             {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
+            return View("ContactUs");
             }
         public ActionResult TeamMembers()
             {
@@ -333,6 +370,7 @@ namespace BtcProApp.Controllers
 
         #region Common Code
 
+        [AllowAnonymous]
         [HttpGet]
         public JsonResult IsUserNameExist(string UserName)
             {
@@ -350,7 +388,7 @@ namespace BtcProApp.Controllers
                 Id = reg.Id;
                 binarypos = reg.BinaryPosition;
                 }
-            return Json(new { Found = isExist, ReferrerId = Id, BinaryPos = binarypos }, JsonRequestBehavior.AllowGet);
+            return Json(new { Found = isExist, ReferrerId = Id, BinaryPos = binarypos, Sponsorname = mem.Firstname }, JsonRequestBehavior.AllowGet);
             }
 
         [HttpGet]
@@ -375,6 +413,7 @@ namespace BtcProApp.Controllers
             var reg = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper() == user.ToUpper());
             return Json(new { WalletAc = reg.MyWalletAccount }, JsonRequestBehavior.AllowGet);
             }
+
         [HttpPost]
         [AllowAnonymous]
         public JsonResult CheckIdentity(string username, string emailId)
@@ -700,7 +739,7 @@ namespace BtcProApp.Controllers
             }
 
         [HttpGet]
-        public JsonResult GetTeamByName(string Member)   //Get Tree of a name
+        public JsonResult GetTeamByName(string Member)   //Get Binary Tree of a name
             {
             if (Member == "")
                 {
@@ -740,6 +779,7 @@ namespace BtcProApp.Controllers
                 BinaryIncomeLedgerVMTotals BI = GetCurrentBinaryIncome(res.Username);
                 Mem0.businessleft = BI.CurrentLeftAmount;
                 Mem0.businessright = BI.CurrentRightAmount;
+                Mem0.achievement = res.Achievement1 == 1 ? "Diamond" : "-";
                 MemberList.Add(Mem0);
 
 
@@ -810,6 +850,8 @@ namespace BtcProApp.Controllers
                                     BinaryIncomeLedgerVMTotals BI1 = GetCurrentBinaryIncome(m[0].Username);
                                     Mem1.businessleft = BI1.CurrentLeftAmount;
                                     Mem1.businessright = BI1.CurrentRightAmount;
+                                    Mem1.achievement = m[0].Achievement1 == 1 ? "Diamond" : "-";
+
                                     MemberList.Add(Mem1);
 
                                     Treemodel Mem2 = new Treemodel();
@@ -858,6 +900,8 @@ namespace BtcProApp.Controllers
                                     BinaryIncomeLedgerVMTotals BI2 = GetCurrentBinaryIncome(m[0].Username);
                                     Mem2.businessleft = BI2.CurrentLeftAmount;
                                     Mem2.businessright = BI2.CurrentRightAmount;
+                                    Mem2.achievement = m[0].Achievement1 == 1 ? "Diamond" : "-";
+
                                     MemberList.Add(Mem2);
 
 
@@ -888,6 +932,8 @@ namespace BtcProApp.Controllers
                                 BinaryIncomeLedgerVMTotals BI3 = GetCurrentBinaryIncome(m[0].Username);
                                 Mem1.businessleft = BI3.CurrentLeftAmount;
                                 Mem1.businessright = BI3.CurrentRightAmount;
+                                Mem1.achievement = m[0].Achievement1 == 1 ? "Diamond" : "-";
+
                                 MemberList.Add(Mem1);
 
                                 Treemodel Mem2 = new Treemodel();
@@ -912,6 +958,8 @@ namespace BtcProApp.Controllers
                                 BinaryIncomeLedgerVMTotals BI4 = GetCurrentBinaryIncome(m[1].Username);
                                 Mem2.businessleft = BI4.CurrentLeftAmount;
                                 Mem2.businessright = BI4.CurrentRightAmount;
+                                Mem2.achievement = m[1].Achievement1 == 1 ? "Diamond" : "-";
+
                                 MemberList.Add(Mem2);
 
                                 }
@@ -1135,7 +1183,7 @@ namespace BtcProApp.Controllers
             }
 
         [HttpGet]
-        public JsonResult GetBinaryTeamByTree(string Member, int levels, int? Id)   //Get Tree of a name
+        public JsonResult GetBinaryTeamByTree(string Member, int levels, int? Id)   //Get Binary Tree of a name
             {
             int levelsToSshow = levels;
 
@@ -1157,6 +1205,8 @@ namespace BtcProApp.Controllers
                 if (mm.Defaultpackagecode == 2) { defaultPackage = "Jupiter1.png"; }
                 if (mm.Defaultpackagecode == 3) { defaultPackage = "Earth1.png"; }
                 if (mm.Defaultpackagecode == 4) { defaultPackage = "Mercury1.png"; }
+                if (mm.Defaultpackagecode == 6) { defaultPackage = "amazing.png"; }
+                if (mm.Defaultpackagecode == 7) { defaultPackage = "octa-core.png"; }
                 }
 
             if (Member == "" && Id == null)
@@ -1167,6 +1217,8 @@ namespace BtcProApp.Controllers
                 if (mm.Defaultpackagecode == 2) { defaultPackage = "Jupiter1.png"; }
                 if (mm.Defaultpackagecode == 3) { defaultPackage = "Earth1.png"; }
                 if (mm.Defaultpackagecode == 4) { defaultPackage = "Mercury1.png"; }
+                if (mm.Defaultpackagecode == 6) { defaultPackage = "amazing.png"; }
+                if (mm.Defaultpackagecode == 7) { defaultPackage = "octa-core.png"; }
                 }
             if (Member == "" && Id != null)
                 {
@@ -1176,6 +1228,8 @@ namespace BtcProApp.Controllers
                 if (mm.Defaultpackagecode == 2) { defaultPackage = "Jupiter1.png"; }
                 if (mm.Defaultpackagecode == 3) { defaultPackage = "Earth1.png"; }
                 if (mm.Defaultpackagecode == 4) { defaultPackage = "Mercury1.png"; }
+                if (mm.Defaultpackagecode == 6) { defaultPackage = "amazing.png"; }
+                if (mm.Defaultpackagecode == 7) { defaultPackage = "octa-core.png"; }
                 }
 
             string MemTree = "<ul><li><a uib-popover-html='<b>HTML</b>, <i>inline</i>'>" + "<img src='../Content/" + defaultPackage + "' class='imgclass'/><br/>" + Member + "</a></li></ul>"; //the actual html string
@@ -1203,6 +1257,8 @@ namespace BtcProApp.Controllers
                     if (mem.Defaultpackagecode == 2) { defaultPackage = "Jupiter1.png"; }
                     if (mem.Defaultpackagecode == 3) { defaultPackage = "Earth1.png"; }
                     if (mem.Defaultpackagecode == 4) { defaultPackage = "Mercury1.png"; }
+                    if (mem.Defaultpackagecode == 6) { defaultPackage = "amazing.png"; }
+                    if (mem.Defaultpackagecode == 7) { defaultPackage = "octa-core.png"; }
                     tmphtml = tmphtml + "<li><a onmouseover='myFunction()'>" + "<img src='../Content/" + defaultPackage + "' class='imgclass'/><br/>" + mem.Username + "</a></li>";
                     }
                 tmphtml = tmphtml + "</ul>";
@@ -1234,6 +1290,8 @@ namespace BtcProApp.Controllers
                             if (mem.Defaultpackagecode == 2) { defaultPackage = "Jupiter1.png"; }
                             if (mem.Defaultpackagecode == 3) { defaultPackage = "Earth1.png"; }
                             if (mem.Defaultpackagecode == 4) { defaultPackage = "Mercury1.png"; }
+                            if (mem.Defaultpackagecode == 6) { defaultPackage = "amazing.png"; }
+                            if (mem.Defaultpackagecode == 7) { defaultPackage = "octa-core.png"; }
                             tmphtml = tmphtml + "<li><a ng-click='clicksearch(" + mem.Id + ")'>" + "<img src='../Content/" + defaultPackage + "' class='imgclass'/><br/>" + mem.Username + "</a></li>";
                             }
                         tmphtml = tmphtml + "</ul>";
@@ -1247,7 +1305,7 @@ namespace BtcProApp.Controllers
             return Json(new { Members = MemTree }, JsonRequestBehavior.AllowGet);
             }
 
-        public JsonResult GetUnilevelTeamByTree(string Member)   //Get Tree of a name
+        public JsonResult GetUnilevelTeamByTree(string Member)   //Get Generation Tree of a name   ///called from GenerationStructureController.js
             {
             if (Member == "")
                 {
@@ -1295,13 +1353,17 @@ namespace BtcProApp.Controllers
                 int param6 = 0;
                 int param7 = 0;
                 int param8 = 0;
+                int param9 = 0;
+                int param10 = 0;
+                int param11 = 0;
+                int param12 = 0;
 
 
                 for (int lvl = 1; lvl <= 1; lvl++)
                     {
                     if (lvl == 1) { param1 = 0; param2 = 0; }
 
-                    if (res.Defaultpackagecode == 1 || res.Defaultpackagecode == 2 || res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4)
+                    if (res.Defaultpackagecode == 1 || res.Defaultpackagecode == 2 || res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4 || res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
                         {
                         #region Level 1
 
@@ -1350,7 +1412,7 @@ namespace BtcProApp.Controllers
                             }
                         #endregion
                         }
-                    if (res.Defaultpackagecode == 2 || res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4)
+                    if (res.Defaultpackagecode == 2 || res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4 || res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
                         {
                         #region Level 2
                         param5 = param4 + 1;
@@ -1399,7 +1461,7 @@ namespace BtcProApp.Controllers
                             }
                         #endregion
                         }
-                    if (res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4)
+                    if (res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4 || res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
                         {
                         #region Level 3
                         param7 = param6 + 1;
@@ -1448,11 +1510,112 @@ namespace BtcProApp.Controllers
                             }
                         #endregion
                         }
-                    if (res.Defaultpackagecode == 4)
+                    if (res.Defaultpackagecode == 4 || res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
                         {
                         #region Level 4
+                        param9 = param8 + 1;
+                        param10 = param8;
 
                         for (int i = param7; i <= param8; i++)
+                            {
+                            try
+                                {
+                                MemberId = MemberList[i].UplineRegistrationId;
+                                var m = db.Members.Where(mm => mm.ReferrerRegistrationId == MemberId).OrderBy(mm => mm.BinaryPosition).ToList();
+
+                                if (m.Count() > 0)
+                                    {
+
+                                    param10 = param10 + m.Count();
+
+                                    for (int w = 0; w < m.Count(); w++)
+                                        {
+                                        Treemodel Mem1 = new Treemodel();
+                                        regId = regId + 1;
+                                        Mem1.id = regId;
+                                        Mem1.UplineRegistrationId = m[w].RegistrationId;
+                                        Mem1.parentId = MemberList[i].id;
+                                        Mem1.Name = "";
+                                        Mem1.isMember = true;
+                                        Mem1.pic = PackageImage((int) m[w].Defaultpackagecode);
+                                        Mem1.position = "L";
+                                        Mem1.fullname = m[w].Firstname;
+                                        Mem1.username = m[w].Username;
+                                        Mem1.sponsorname = m[w].Referrerusername;
+                                        pkgcode = (int) m[w].Defaultpackagecode;
+                                        Mem1.package = db.Packages.Where(p => p.Id == pkgcode).Select(p => p.Name).SingleOrDefault();
+                                        Mem1.totalleft = 0;
+                                        Mem1.totalright = 0;
+                                        regid = m[w].RegistrationId;
+                                        Mem1.businessleft = 0;
+                                        Mem1.businessright = 0;
+                                        MemberList.Add(Mem1);
+                                        }
+                                    }
+
+                                }
+                            catch (Exception e)
+                                {
+
+                                }
+                            }
+                        #endregion
+                        }
+                    if (res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
+                        {
+                        #region Level 5
+                        param11 = param10 + 11;
+                        param12 = param10;
+
+                        for (int i = param9; i <= param10; i++)
+                            {
+                            try
+                                {
+                                MemberId = MemberList[i].UplineRegistrationId;
+                                var m = db.Members.Where(mm => mm.ReferrerRegistrationId == MemberId).OrderBy(mm => mm.BinaryPosition).ToList();
+
+                                if (m.Count() > 0)
+                                    {
+                                    param12 = param12 + m.Count();
+
+                                    for (int w = 0; w < m.Count(); w++)
+                                        {
+                                        Treemodel Mem1 = new Treemodel();
+                                        regId = regId + 1;
+                                        Mem1.id = regId;
+                                        Mem1.UplineRegistrationId = m[w].RegistrationId;
+                                        Mem1.parentId = MemberList[i].id;
+                                        Mem1.Name = "";
+                                        Mem1.isMember = true;
+                                        Mem1.pic = PackageImage((int) m[w].Defaultpackagecode);
+                                        Mem1.position = "L";
+                                        Mem1.fullname = m[w].Firstname;
+                                        Mem1.username = m[w].Username;
+                                        Mem1.sponsorname = m[w].Referrerusername;
+                                        pkgcode = (int) m[w].Defaultpackagecode;
+                                        Mem1.package = db.Packages.Where(p => p.Id == pkgcode).Select(p => p.Name).SingleOrDefault();
+                                        Mem1.totalleft = 0;
+                                        Mem1.totalright = 0;
+                                        regid = m[w].RegistrationId;
+                                        Mem1.businessleft = 0;
+                                        Mem1.businessright = 0;
+                                        MemberList.Add(Mem1);
+                                        }
+                                    }
+
+                                }
+                            catch (Exception e)
+                                {
+
+                                }
+                            }
+                        #endregion
+                        }
+                    if (res.Defaultpackagecode == 7)
+                        {
+                        #region Level 6
+
+                        for (int i = param11; i <= param12; i++)
                             {
                             try
                                 {
@@ -1537,6 +1700,8 @@ namespace BtcProApp.Controllers
                 }
             return Json(new { Found = isExist }, JsonRequestBehavior.AllowGet);
             }
+
+        [AllowAnonymous]
         public JsonResult IsUserNameExist1(string UserName)
             {
             bool isExist = true;
@@ -1601,7 +1766,7 @@ namespace BtcProApp.Controllers
                 db.SaveChanges();
 
                 var reg1 = db.Registrations.Where(r => r.ReferrerName == oldid);
-                foreach(Register line in reg1)
+                foreach (Register line in reg1)
                     {
                     line.ReferrerName = newid;
                     }
@@ -1634,6 +1799,7 @@ namespace BtcProApp.Controllers
             return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
             }
 
+        [AllowAnonymous]
         [HttpGet]
         public JsonResult IsEmailPresent(string EmailId)
             {
@@ -1658,15 +1824,15 @@ namespace BtcProApp.Controllers
                 double sumwithdrawal = db.Ledgers.Where(i => i.RegistrationId == rec.Id && i.WalletId == WalletId).Select(i => i.Withdraw).DefaultIfEmpty(0).Sum(); ;
                 balance = sumdeposit - sumwithdrawal;
                 }
-            catch(Exception e)
+            catch (Exception e)
                 {
                 Console.WriteLine("Exception caught: {0}", e);
                 }
-           
+
             return Json(new { Balance = balance }, JsonRequestBehavior.AllowGet);
             }
 
-        private double MemberWalletBalance(string username,int WalletId)
+        private double MemberWalletBalance(string username, int WalletId)
             {
             var rec = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper().Trim() == username.ToUpper().Trim());
             double sumdeposit = db.Ledgers.Where(i => i.RegistrationId == rec.Id && i.WalletId == WalletId).Select(i => i.Deposit).DefaultIfEmpty(0).Sum();
@@ -1743,7 +1909,12 @@ namespace BtcProApp.Controllers
             //2...
             Purchase pur = new Purchase();
             pur.Purchasedate = DateTime.Now;
-            if (!rec.Joined) { pur.Packageid = packageId; } else { pur.Packageid = 5; packageId = 5; } //0==repurchase
+            //------------------------------------------old code when package upgradation was not allowed------------------//
+            //if (!rec.Joined) { pur.Packageid = packageId; } else { pur.Packageid = 5; packageId = 5; } //0==repurchase
+
+            //-----------------------------------------new code when package upgradation was opened-------------------------//
+            pur.Packageid = packageId;
+
             pur.RegistrationId = rec.Id;
             pur.Amount = investmentAmt;
             pur.Payreferenceno = GuidString;
@@ -1788,7 +1959,16 @@ namespace BtcProApp.Controllers
                     mem.Rightmembers = 0;
                     mem.Leftmembers = 0;
                     mem.Country = temprec.CountryCode;
+                    mem.Achievement1Date = DateTime.Now;
                     db.Members.Add(mem);
+
+                    //club determination of new member
+                    if (packageId == 6 || packageId == 7)
+                        {
+                        mem.Achievement1 = 1; //is a default diamond club achiever
+                        mem.Achievement1Date = DateTime.Now;
+                        }
+
                     //await db.SaveChangesAsync();
                     db.SaveChanges();
                     }
@@ -1813,6 +1993,16 @@ namespace BtcProApp.Controllers
                         if (searchpos == "R") { res1.Rightmembers = ( res1.Rightmembers == null ) ? 1 : res1.Rightmembers + 1; }
                         res1.Totalmembers = ( res1.Totalmembers == null ) ? 1 : res1.Totalmembers + 1;
                         searchpos = res1.BinaryPosition;
+                        //club determination of old member
+                        if (res1.Achievement1 == 0) //not a club member yet
+                            {
+                            Boolean club = IsClubMember(res1.RegistrationId, searchpos, investmentAmt);
+                            if (club)
+                                {
+                                res1.Achievement1 = 1; //is a default diamond club achiever
+                                res1.Achievement1Date = DateTime.Now;
+                                }
+                            }
                         db.SaveChanges();
                         uplineId = (long) res1.UplineRegistrationId;
                         }
@@ -1826,19 +2016,48 @@ namespace BtcProApp.Controllers
 
             //6...
 
-            //if repurchase, then % will be default package %
+            //if repurchase, then % will be default package % (condition changed on 15th Aug 2017)
             double pc = 0;
             try
                 {
                 var pkg = db.Packages.SingleOrDefault(p => p.Id == packageId);
                 if (pkg.Id == 5)
                     {
+                    //#region added on 15/08/2017, default package code to change as per accumulated investment, check on every repurchase
+                    ////----------------what is the total investment so far including today?
+                    //double totalinvestment = db.Purchases.Where(p => p.RegistrationId == rec.Id).Select(p => p.Amount).DefaultIfEmpty(0).Sum();
+                    ////----------------what should be the package code for this amount of investment?-------// 
+                    //var ranges = db.Packages.Where(p => p.Minamount <= totalinvestment && p.Maxamount >= totalinvestment && p.Isactive == true && p.Id!=5).OrderBy(p => p.Id).FirstOrDefault();
+                    //if (ranges != null)
+                    //    {
+                    //    int eligibleDefaultpackageCode = ranges.Id;
+                    //    //----------------update the defaultpackage code and also keep track in PackageCodeHistory field-----//
+                    //    var mmm0 = db.Members.Where(x => x.Username == rec.UserName).Single();
+                    //    if (mmm0.PackageCodeHistory == null || mmm0.PackageCodeHistory == "")
+                    //        {
+                    //        mmm0.PackageCodeHistory = "From " + mmm0.Defaultpackagecode.ToString() + " on " + DateTime.Now.ToShortDateString();
+                    //        }
+                    //    else
+                    //        {
+                    //        mmm0.PackageCodeHistory = mmm0.PackageCodeHistory + "| From " + mmm0.Defaultpackagecode.ToString() + " on " + DateTime.Now.ToShortDateString();
+
+                    //        }
+                    //    mmm0.Defaultpackagecode = eligibleDefaultpackageCode;
+
+                    //    db.SaveChanges();
+                    //    }
+                    ////----------------------------------------------------------------------//
+                    //#endregion
+
                     var mmm = db.Members.Where(x => x.Username == rec.UserName).Single();
                     var pkgg = db.Packages.SingleOrDefault(p => p.Id == mmm.Defaultpackagecode);
                     pc = pkgg.Gauranteedreturn_percent;
                     }
                 else
                     {
+                    var mmm = db.Members.Where(x => x.Username == rec.UserName).Single();
+                    mmm.Defaultpackagecode = packageId;
+                    db.SaveChanges();
                     pc = pkg.Gauranteedreturn_percent;
                     }
                 }
@@ -1909,7 +2128,7 @@ namespace BtcProApp.Controllers
             }
 
         public async Task<JsonResult> AutoPurchase(string username, long UplineId, int packageId, double investmentAmt)
-            //called from tree Binarytree when sponsor is direct joining //called in case of FREE MEMBER JOINING also
+        //called from tree Binarytree when sponsor is direct joining //called in case of FREE MEMBER JOINING also
             {
             var rec = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper().Trim() == username.ToUpper().Trim());
 
@@ -2003,12 +2222,19 @@ namespace BtcProApp.Controllers
 
                     uplineId = (long) mem.UplineRegistrationId;
                     mem.Level = GetnewLevel(uplineId);
-                   
+
                     mem.Defaultpackagecode = packageId;
                     mem.Totalmembers = 0;
                     mem.Rightmembers = 0;
                     mem.Leftmembers = 0;
 
+                    //club determination of new member
+                    if (packageId == 6 || packageId == 7)
+                        {
+                        mem.Achievement1 = 1; //is a default diamond club achiever
+                        mem.Achievement1Date = DateTime.Now;
+                        }
+                    mem.Achievement1Date = DateTime.Now;
                     db.Members.Add(mem);
                     db.SaveChanges();
                     }
@@ -2033,6 +2259,16 @@ namespace BtcProApp.Controllers
                         if (searchpos == "R") { res1.Rightmembers = ( res1.Rightmembers == null ) ? 1 : res1.Rightmembers + 1; }
                         res1.Totalmembers = ( res1.Totalmembers == null ) ? 1 : res1.Totalmembers + 1;
                         searchpos = res1.BinaryPosition;
+                        //club determination of old member
+                        if (res1.Achievement1 == 0) //not a club member yet
+                            {
+                            Boolean club = IsClubMember(res1.RegistrationId, searchpos, investmentAmt);
+                            if (club)
+                                {
+                                res1.Achievement1 = 1; //is a default diamond club achiever
+                                res1.Achievement1Date = DateTime.Now;
+                                }
+                            }
                         db.SaveChanges();
                         uplineId = (long) res1.UplineRegistrationId;
                         }
@@ -2227,12 +2463,21 @@ namespace BtcProApp.Controllers
                         }
 
                     uplineId = (long) mem.UplineRegistrationId;
-                    mem.Level = GetnewLevel(uplineId);                   
+                    mem.Level = GetnewLevel(uplineId);
                     mem.Defaultpackagecode = packageId;
                     mem.Totalmembers = 0;
                     mem.Rightmembers = 0;
                     mem.Leftmembers = 0;
+
+                    //club determination of new member
+                    if (packageId == 6 || packageId == 7)
+                        {
+                        mem.Achievement1 = 1; //is a default diamond club achiever
+                        mem.Achievement1Date = DateTime.Now;
+                        }
+                    mem.Achievement1Date = DateTime.Now;
                     db.Members.Add(mem);
+
                     //await db.SaveChangesAsync();
                     db.SaveChanges();
                     }
@@ -2257,6 +2502,18 @@ namespace BtcProApp.Controllers
                         if (searchpos == "R") { res1.Rightmembers = ( res1.Rightmembers == null ) ? 1 : res1.Rightmembers + 1; }
                         res1.Totalmembers = ( res1.Totalmembers == null ) ? 1 : res1.Totalmembers + 1;
                         searchpos = res1.BinaryPosition;
+
+                        //club determination of old member
+                        if (res1.Achievement1 == 0) //not a club member yet
+                            {
+                            Boolean club = IsClubMember(res1.RegistrationId, searchpos, investmentAmt);
+                            if (club)
+                                {
+                                res1.Achievement1 = 1; //is a default diamond club achiever
+                                res1.Achievement1Date = DateTime.Now;
+                                }
+                            }
+
                         db.SaveChanges();
                         uplineId = (long) res1.UplineRegistrationId;
                         }
@@ -2374,7 +2631,7 @@ namespace BtcProApp.Controllers
             var purchases = ( from p in db.Purchases
                               from s in db.Packages
                               where p.Packageid == s.Id && p.RegistrationId == rec.Id && p.Packageid > 0
-                              orderby p.Purchasedate
+                              orderby p.Purchasedate 
                               select new
                                   {
                                   PurchaseDate = p.Purchasedate.Day + "-" + p.Purchasedate.Month + "-" + p.Purchasedate.Year,
@@ -2385,7 +2642,8 @@ namespace BtcProApp.Controllers
                                   Amount = p.Amount,
                                   Paymode = "",
                                   MinPay = s.Minamount,
-                                  MaxPay = s.Maxamount
+                                  MaxPay = s.Maxamount,
+                                  PackageId=p.Packageid
                                   } ).ToList();
             return Json(new { Purchases = purchases }, JsonRequestBehavior.AllowGet);
             }
@@ -2449,42 +2707,83 @@ namespace BtcProApp.Controllers
 
         public async Task<bool> FixedIncomeCalculation(long RegistrationId, double Pc, double Investment, int PackageId, string GuidString)
             {
-            double bonusamt = 0;
+            //double bonusamt = 0;
             //##################### Bonus 10th July - 13th August 2017 #####################//
             //added on 10th July
-            if (PackageId == 3 || PackageId == 4 || PackageId == 5)
-                {
-                bonusamt = ( Investment * 10 ) / 100;
-                Investment = Investment + bonusamt;
-                }
+            //if (PackageId == 3 || PackageId == 5)
+            //    {
+            //    bonusamt = ( Investment * 5 ) / 100;
+            //    Investment = Investment + bonusamt;
+            //    }
             //##############################################################################//
-            DateTime duedt = DateTime.Now.AddDays(1);
-            List<WeeklyIncome> weeklys = new List<WeeklyIncome>();
-            for (int i = 1; i <= 52; i++)
+
+            if (PackageId == 1 || PackageId == 2 || PackageId == 3 || PackageId==5)
                 {
-                WeeklyIncome wkin = new WeeklyIncome();
-                wkin.RegistrationId = RegistrationId;
-                wkin.WeekNo = i;
-                wkin.Days = 7;
-                wkin.Pc = Pc;
+                #region Weekly payout
+                DateTime duedt = DateTime.Now.AddDays(1);
+                List<WeeklyIncome> weeklys = new List<WeeklyIncome>();
+                for (int i = 1; i <= 52; i++)
+                    {
+                    WeeklyIncome wkin = new WeeklyIncome();
+                    wkin.RegistrationId = RegistrationId;
+                    wkin.WeekNo = i;
+                    wkin.Days = 7;
+                    wkin.Pc = Pc;
 
-                wkin.Income = ( Pc * Investment ) / 100;
-                wkin.PackageId = PackageId;
-                WeekModel wkModel = GetCurrentWeek(DateTime.Now.AddDays(1), duedt);
-                wkin.WeekStartDate = wkModel.WeekStartDate;
-                wkin.WeekEndDate = wkModel.WeekEndDate;
-                wkin.DueDate = duedt.AddDays(7);
-                duedt = wkin.DueDate;
-                wkin.CashWallet = 0;
-                wkin.ReserveWallet = 0;
-                wkin.FixedIncomeWallet = ( Pc * Investment ) / 100;
-                wkin.FrozenWallet = 0;
-                wkin.BatchNo = GuidString;
+                    wkin.Income = ( Pc * Investment ) / 100;
+                    wkin.PackageId = PackageId;
+                    WeekModel wkModel = GetCurrentWeek(DateTime.Now.AddDays(1), duedt);
+                    wkin.WeekStartDate = wkModel.WeekStartDate;
+                    wkin.WeekEndDate = wkModel.WeekEndDate;
+                    wkin.DueDate = duedt.AddDays(7);
+                    duedt = wkin.DueDate;
+                    wkin.CashWallet = 0;
+                    wkin.ReserveWallet = 0;
+                    wkin.FixedIncomeWallet = ( Pc * Investment ) / 100;
+                    wkin.FrozenWallet = 0;
+                    wkin.BatchNo = GuidString;
 
-                weeklys.Add(wkin);
+                    weeklys.Add(wkin);
+                    }
+                db.WeeklyIncomes.AddRange(weeklys);
+                await db.SaveChangesAsync();
+                #endregion
                 }
-            db.WeeklyIncomes.AddRange(weeklys);
-            await db.SaveChangesAsync();
+
+            if (PackageId == 6 || PackageId == 7)
+                {
+                #region Monthly payout
+                DateTime duedt = DateTime.Now.AddDays(1);
+                List<WeeklyIncome> monthly = new List<WeeklyIncome>();
+                for (int i = 1; i <= 36; i++)
+                    {
+                    WeeklyIncome mnthin = new WeeklyIncome();
+                    mnthin.RegistrationId = RegistrationId;
+                    mnthin.WeekNo = i;
+                    mnthin.Days = 30;
+                    mnthin.Pc = Pc;
+
+                    mnthin.Income = ( Pc * Investment ) / 100;
+                    mnthin.PackageId = PackageId;
+                    WeekModel wkModel = GetCurrentMonth(DateTime.Now.AddDays(1), duedt);
+                    mnthin.WeekStartDate = wkModel.WeekStartDate;
+                    mnthin.WeekEndDate = wkModel.WeekEndDate;
+                    mnthin.DueDate = duedt.AddDays(30);
+                    duedt = mnthin.DueDate;
+                    mnthin.CashWallet = 0;
+                    mnthin.ReserveWallet = 0;
+                    mnthin.FixedIncomeWallet = ( Pc * Investment ) / 100;
+                    mnthin.FrozenWallet = 0;
+                    mnthin.BatchNo = GuidString;
+
+                    monthly.Add(mnthin);
+                    }
+                db.WeeklyIncomes.AddRange(monthly);
+                await db.SaveChangesAsync();
+                #endregion
+                }
+
+
             return true;
             }
 
@@ -2783,6 +3082,29 @@ namespace BtcProApp.Controllers
             return wkmodel;
             }
 
+        public WeekModel GetCurrentMonth(DateTime JoiningDate, DateTime Today)
+            {
+            int monthno = 0;
+            DateTime jd = JoiningDate.AddDays(-1);
+            Boolean keepdoing = true;
+
+            do
+                {
+                if (Today >= jd && Today <= jd.AddDays(30))
+                    {
+                    keepdoing = false;
+                    }
+                jd = jd.AddDays(30);
+                monthno = monthno + 1;
+                } while (keepdoing);
+
+            WeekModel wkmodel = new WeekModel();
+            wkmodel.WeekNo = monthno;
+            wkmodel.WeekStartDate = jd.AddDays(-29);
+            wkmodel.WeekEndDate = jd;
+            return wkmodel;
+            }
+
         public WeekModel GetBoundaryWeek(DateTime JoiningDate, int WeekNo)
             {
             int weekno = 0;
@@ -3051,6 +3373,24 @@ namespace BtcProApp.Controllers
                 businesslimit = 50000;
                 }
 
+            if (rec.Defaultpackagecode == 6 && currentbusinessToConsider <= 200000)
+                {
+                businesslimit = currentbusinessToConsider;
+                }
+            else if (rec.Defaultpackagecode == 6 && currentbusinessToConsider > 200000)
+                {
+                businesslimit = 200000;
+                }
+
+            if (rec.Defaultpackagecode == 7 && currentbusinessToConsider <= 300000)
+                {
+                businesslimit = currentbusinessToConsider;
+                }
+            else if (rec.Defaultpackagecode == 7 && currentbusinessToConsider > 300000)
+                {
+                businesslimit = 300000;
+                }
+
             double income = ( businesslimit * 10 ) / 100;
 
             double cdLeftAmt = 0;
@@ -3186,7 +3526,23 @@ namespace BtcProApp.Controllers
                 {
                 businesslimit = 50000;
                 }
+            if (rec.Defaultpackagecode == 6 && currentbusinessToConsider <= 200000)
+                {
+                businesslimit = currentbusinessToConsider;
+                }
+            else if (rec.Defaultpackagecode == 6 && currentbusinessToConsider > 200000)
+                {
+                businesslimit = 200000;
+                }
 
+            if (rec.Defaultpackagecode == 7 && currentbusinessToConsider <= 300000)
+                {
+                businesslimit = currentbusinessToConsider;
+                }
+            else if (rec.Defaultpackagecode == 7 && currentbusinessToConsider > 300000)
+                {
+                businesslimit = 300000;
+                }
             double income = ( businesslimit * 10 ) / 100;
 
             double cdLeftAmt = 0;
@@ -3297,13 +3653,16 @@ namespace BtcProApp.Controllers
                 int param6 = 0;
                 int param7 = 0;
                 int param8 = 0;
-
+                int param9 = 0;
+                int param10 = 0;
+                int param11 = 0;
+                int param12 = 0;
 
                 for (int lvl = 1; lvl <= 1; lvl++)
                     {
                     if (lvl == 1) { param1 = 0; param2 = 0; }
 
-                    if (res.Defaultpackagecode == 1 || res.Defaultpackagecode == 2 || res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4)
+                    if (res.Defaultpackagecode == 1 || res.Defaultpackagecode == 2 || res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4 || res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
                         {
                         #region Level 1
 
@@ -3345,7 +3704,7 @@ namespace BtcProApp.Controllers
                             }
                         #endregion
                         }
-                    if (res.Defaultpackagecode == 2 || res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4)
+                    if (res.Defaultpackagecode == 2 || res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4 || res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
                         {
                         #region Level 2
                         param5 = param4 + 1;
@@ -3387,7 +3746,7 @@ namespace BtcProApp.Controllers
                             }
                         #endregion
                         }
-                    if (res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4)
+                    if (res.Defaultpackagecode == 3 || res.Defaultpackagecode == 4 || res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
                         {
                         #region Level 3
                         param7 = param6 + 1;
@@ -3429,10 +3788,11 @@ namespace BtcProApp.Controllers
                             }
                         #endregion
                         }
-                    if (res.Defaultpackagecode == 4)
+                    if (res.Defaultpackagecode == 4 || res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
                         {
                         #region Level 4
-
+                        param9 = param8 + 1;
+                        param10 = param8;
                         for (int i = param7; i <= param8; i++)
                             {
                             try
@@ -3442,6 +3802,8 @@ namespace BtcProApp.Controllers
 
                                 if (m.Count() > 0)
                                     {
+                                    param10 = param10 + m.Count();
+
                                     for (int w = 0; w < m.Count(); w++)
                                         {
                                         BinaryIncomeLedgerVM Gen4 = new BinaryIncomeLedgerVM();
@@ -3457,6 +3819,93 @@ namespace BtcProApp.Controllers
                                         if (Gen4.Level == 3) { Gen4.WalletAmount = ( Gen4.Total * 9 ) / 100; }
                                         if (Gen4.Level == 4) { Gen4.WalletAmount = ( Gen4.Total * 10 ) / 100; }
                                         MemberList.Add(Gen4);
+                                        }
+                                    }
+
+                                }
+                            catch (Exception e)
+                                {
+
+                                }
+                            }
+                        #endregion
+                        }
+                    if (res.Defaultpackagecode == 6 || res.Defaultpackagecode == 7)
+                        {
+                        #region Level 5
+                        param11 = param10 + 1;
+                        param12 = param10;
+                        for (int i = param9; i <= param10; i++)
+                            {
+                            try
+                                {
+                                MemberId = MemberList[i].RegistrationId;
+                                var m = db.Members.Where(mm => mm.ReferrerRegistrationId == MemberId).OrderBy(mm => mm.BinaryPosition).ToList();
+
+                                if (m.Count() > 0)
+                                    {
+                                    param12 = param12 + m.Count();
+
+                                    for (int w = 0; w < m.Count(); w++)
+                                        {
+                                        BinaryIncomeLedgerVM Gen5 = new BinaryIncomeLedgerVM();
+                                        Gen5.RegistrationId = m[w].RegistrationId;
+                                        Gen5.WeekNo = weekly.WeekNo;
+                                        Gen5.sWeekStartDate = weekly.WeekStartDate.ToLongDateString();
+                                        Gen5.sWeekEndDate = weekly.WeekEndDate.ToLongDateString();
+                                        Gen5.Purchaser = m[w].Username;
+                                        Gen5.Level = 5;
+                                        Gen5.Total = GetBinaryIncome(Gen5.Purchaser);
+                                        if (Gen5.Level == 1) { Gen5.WalletAmount = ( Gen5.Total * 5 ) / 100; }
+                                        if (Gen5.Level == 2) { Gen5.WalletAmount = ( Gen5.Total * 7 ) / 100; }
+                                        if (Gen5.Level == 3) { Gen5.WalletAmount = ( Gen5.Total * 9 ) / 100; }
+                                        if (Gen5.Level == 4) { Gen5.WalletAmount = ( Gen5.Total * 10 ) / 100; }
+                                        if (Gen5.Level == 5) { Gen5.WalletAmount = ( Gen5.Total * 15 ) / 100; }
+
+                                        MemberList.Add(Gen5);
+                                        }
+                                    }
+
+                                }
+                            catch (Exception e)
+                                {
+
+                                }
+                            }
+                        #endregion
+                        }
+                    if (res.Defaultpackagecode == 7)
+                        {
+                        #region Level 6
+
+                        for (int i = param11; i <= param12; i++)
+                            {
+                            try
+                                {
+                                MemberId = MemberList[i].RegistrationId;
+                                var m = db.Members.Where(mm => mm.ReferrerRegistrationId == MemberId).OrderBy(mm => mm.BinaryPosition).ToList();
+
+                                if (m.Count() > 0)
+                                    {
+
+                                    for (int w = 0; w < m.Count(); w++)
+                                        {
+                                        BinaryIncomeLedgerVM Gen6 = new BinaryIncomeLedgerVM();
+                                        Gen6.RegistrationId = m[w].RegistrationId;
+                                        Gen6.WeekNo = weekly.WeekNo;
+                                        Gen6.sWeekStartDate = weekly.WeekStartDate.ToLongDateString();
+                                        Gen6.sWeekEndDate = weekly.WeekEndDate.ToLongDateString();
+                                        Gen6.Purchaser = m[w].Username;
+                                        Gen6.Level = 6;
+                                        Gen6.Total = GetBinaryIncome(Gen6.Purchaser);
+                                        if (Gen6.Level == 1) { Gen6.WalletAmount = ( Gen6.Total * 5 ) / 100; }
+                                        if (Gen6.Level == 2) { Gen6.WalletAmount = ( Gen6.Total * 7 ) / 100; }
+                                        if (Gen6.Level == 3) { Gen6.WalletAmount = ( Gen6.Total * 9 ) / 100; }
+                                        if (Gen6.Level == 4) { Gen6.WalletAmount = ( Gen6.Total * 10 ) / 100; }
+                                        if (Gen6.Level == 5) { Gen6.WalletAmount = ( Gen6.Total * 15 ) / 100; }
+                                        if (Gen6.Level == 6) { Gen6.WalletAmount = ( Gen6.Total * 20 ) / 100; }
+
+                                        MemberList.Add(Gen6);
                                         }
                                     }
 
@@ -3614,6 +4063,25 @@ namespace BtcProApp.Controllers
                 {
                 businesslimit = 50000;
                 }
+
+            if (rec.Defaultpackagecode == 6 && currentbusinessToConsider <= 200000)
+                {
+                businesslimit = currentbusinessToConsider;
+                }
+            else if (rec.Defaultpackagecode == 6 && currentbusinessToConsider > 200000)
+                {
+                businesslimit = 200000;
+                }
+
+            if (rec.Defaultpackagecode == 7 && currentbusinessToConsider <= 300000)
+                {
+                businesslimit = currentbusinessToConsider;
+                }
+            else if (rec.Defaultpackagecode == 7 && currentbusinessToConsider > 300000)
+                {
+                businesslimit = 300000;
+                }
+
             double income = ( businesslimit * 10 ) / 100;
 
             return income;
@@ -3827,6 +4295,9 @@ namespace BtcProApp.Controllers
             if (packageId == 2) { path = "https://btcpro.co/BtcLibrary/Assets/jupiter.png"; }
             if (packageId == 3) { path = "https://btcpro.co/BtcLibrary/Assets/earth.png"; }
             if (packageId == 4) { path = "https://btcpro.co/BtcLibrary/Assets/mercury.png"; }
+            if (packageId == 6) { path = "https://btcpro.co/BtcLibrary/Assets/amazing.png"; }
+            if (packageId == 7) { path = "https://btcpro.co/BtcLibrary/Assets/octa-core.png"; }
+
             if (packageId == 99) { path = "https://btcpro.co/BtcLibrary/Assets/plus-sign.png"; }
             return path;
             }
@@ -3915,6 +4386,7 @@ namespace BtcProApp.Controllers
                 }
             }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<bool> SendContactUsEMail(string fullname, string phone, string country, string mailfrom, string mail_to, string mail_cc, string subj, string desc)
             {
@@ -4068,6 +4540,45 @@ namespace BtcProApp.Controllers
             }
 
         [HttpPost]
+        public async Task<JsonResult> NotifyAdminAboutBalanceTransfer(string ToUsername, double Amount)
+            {
+            string Username = User.Identity.Name;
+            ArrayList array = new ArrayList();
+
+            string body =
+            @"<table>
+            <tr><td><b>Dear Administrator,</b></td></tr>
+            <tr><td><b>"+ Username + @"</b> has transferred <b>$" + Amount + @"</b> to <b>" + ToUsername + @".</b></td></tr>
+            <tr><td>This is a system generated message.</td></tr>
+            </table>";
+
+            bool result = false;
+            result = await SendEMail("noreply@btcpro.co", "", "Reserve Wallet Transfer Notification", body, array);
+
+            return Json(new { status = "Success" }, JsonRequestBehavior.AllowGet);
+            }
+
+        [HttpPost]
+        public async Task<JsonResult> NotifyAdminAboutPackagePurchase(int PackageId, double Amount)
+            {
+            string Username = User.Identity.Name;
+            string Packagename = db.Packages.Where(p => p.Id == PackageId).Select(p => p.Name).FirstOrDefault();
+            ArrayList array = new ArrayList();
+
+            string body =
+            @"<table>
+            <tr><td><b>Dear Administrator,</b></td></tr>
+            <tr><td><b>" + Username + @"</b> has just invested <b>$" + Amount + @"</b> in package <b>" + Packagename + @".</b></td></tr>
+            <tr><td>This is a system generated message.</td></tr>
+            </table>";
+
+            bool result = false;
+            result = await SendEMail("noreply@btcpro.co", "", "New Package Investment Notification", body, array);
+
+            return Json(new { status = "Success" }, JsonRequestBehavior.AllowGet);
+            }
+
+        [HttpPost]
         public async Task<JsonResult> SendMyWithdrawalConfirmationemail(long RegistrationId, double amount, string status)
             {
 
@@ -4158,6 +4669,37 @@ namespace BtcProApp.Controllers
             return Json(new { status = "Success" }, JsonRequestBehavior.AllowGet);
             }
 
+        public async Task<JsonResult> SendSupportTicketemail(string subject, string message, string attachment, string category)
+            {
+            string user = User.Identity.Name;
+            var reg = db.Registrations.SingleOrDefault(i => i.UserName == user);
+            string Username = reg.UserName;
+            string Attachment = attachment == "" ? "No" : "Yes";
+            ArrayList array = new ArrayList();
+            bool result = false;
+
+            string line0 = "<table style='width:100%'>";
+            string line1 = "<tr><td colspan='2'>Dear <b>" + "Administrator" + "</b></td></tr>";
+            string line2 = "<tr style='line-height:28px'><td colspan='2'>" + Username + " has created a support ticket.</td></tr>";
+            string line3 = "<tr style='line-height:40px'><td colspan='2'>The details of the support ticket as follows:</td></tr>";
+            string line4 = "<tr><td style='width:50px'>Ticket Type:</td><td><b>$ " + category + "</b></td></tr>";
+            string line5 = "<tr><td style='width:50px'>Subject:</td><td><b>" + subject + "</b></td></tr>";
+            string line6 = "<tr><td style='width:50px'>Message:</td><td><b>" + message + "</b></td></tr>";
+            string line7 = "<tr><td style='width:50px'>Has Attachment:</td><td><b>" + Attachment + "</b></td></tr>";
+            string line8 = "<tr style='line-height:48px'><td colspan='2'></td><tr>";
+            string line9 = "<tr><td colspan='2' style='line-height:48px'></td><tr>";
+            string line10 = "<tr style='line-height:48px'><td colspan='2'></td><tr>";
+            string line11 = "<tr><td colspan='2'></td><tr>";
+            string line12 = "<tr><td colspan='2'>This is a system generated email.</td><tr>";
+            string line13 = "<tr><td colspan='2'><a></a></td><tr>";
+            string line14 = "<tr><td colspan='2'><a></a></td><tr>";
+            string line15 = "</table>";
+            string body = line0 + line1 + line2 + line3 + line4 + line5 + line6 + line7 + line8 + line9 + line10 + line11 + line12 + line13 + line14 + line15;
+
+            result = await SendEMail(reg.EmailId, "", "New support ticket by " + Username + "!!!", body, array);
+            return Json(new { status = "Success" }, JsonRequestBehavior.AllowGet);
+            }
+
         public async Task<JsonResult> SendPostingUpdateemail(string Username, string DrCr, int WalletType, double Amount, string Comment)
             {
 
@@ -4199,6 +4741,7 @@ namespace BtcProApp.Controllers
             result = await SendEMail(reg.EmailId, "", "Balance transfer by BTC Pro Admin", body, array);
             return Json(new { status = "Success" }, JsonRequestBehavior.AllowGet);
             }
+
         public JsonResult TransactionPasswordExists()
             {
             var user = User.Identity.Name;
@@ -4362,11 +4905,11 @@ namespace BtcProApp.Controllers
             return Json(new { CountryName = Countryname }, JsonRequestBehavior.AllowGet);
             }
 
-
+        [AllowAnonymous]
         public ActionResult CalculatePayout()
             {
             //Set the Process Id
-            string processId = "PRC-09";
+            string processId = "PRC-12";
             var PP = db.PayoutProcess.ToList().OrderByDescending(pp => pp.Id).FirstOrDefault();
 
             //post the Fixed Incomes first
@@ -4460,7 +5003,7 @@ namespace BtcProApp.Controllers
                         SPpostcash.TransactionTypeId = 10;
                         SPpostcash.TransactionId = 0;
                         SPpostcash.SubLedgerId = 6;
-                        SPpostcash.ToFromUser = 0;
+                        SPpostcash.ToFromUser = sponsorpostings[k].RegistrationId;
                         SPpostcash.BatchNo = "";
                         SPpostcash.ProcessId = processId;
                         SPpostcash.Leftside_cd = 0;
@@ -4476,7 +5019,7 @@ namespace BtcProApp.Controllers
                         SPpostreserve.TransactionTypeId = 10;
                         SPpostreserve.TransactionId = 0;
                         SPpostreserve.SubLedgerId = 6;
-                        SPpostreserve.ToFromUser = 0;
+                        SPpostreserve.ToFromUser = sponsorpostings[k].RegistrationId;
                         SPpostreserve.BatchNo = "";
                         SPpostreserve.ProcessId = processId;
                         SPpostreserve.Leftside_cd = 0;
@@ -4509,7 +5052,7 @@ namespace BtcProApp.Controllers
                             GPpostcash.TransactionTypeId = 10;
                             GPpostcash.TransactionId = 0;
                             GPpostcash.SubLedgerId = 7;
-                            GPpostcash.ToFromUser = 0;
+                            GPpostcash.ToFromUser = generationpostings[k].RegistrationId;
                             GPpostcash.BatchNo = "";
                             GPpostcash.ProcessId = processId;
                             GPpostcash.Leftside_cd = 0;
@@ -4525,17 +5068,17 @@ namespace BtcProApp.Controllers
                             GPpostreserve.TransactionTypeId = 10;
                             GPpostreserve.TransactionId = 0;
                             GPpostreserve.SubLedgerId = 7;
-                            GPpostreserve.ToFromUser = 0;
+                            GPpostreserve.ToFromUser = generationpostings[k].RegistrationId;
                             GPpostreserve.BatchNo = "";
                             GPpostreserve.ProcessId = processId;
                             GPpostreserve.Leftside_cd = 0;
                             GPpostreserve.Rightside_cd = 0;
                             GPpostings.Add(GPpostreserve);
-
-                            db.Ledgers.AddRange(GPpostings);
-                            db.SaveChanges();
                             }
                         }
+                    db.Ledgers.AddRange(GPpostings);
+
+                    db.SaveChanges();
                     }
                 #endregion
                 }
@@ -4673,6 +5216,7 @@ namespace BtcProApp.Controllers
             return Json(new { CurrentUser = user }, JsonRequestBehavior.AllowGet);
             }
 
+        [AllowAnonymous]
         public JsonResult GetWorkingLeg(string user)
             {
             if (user == "")
@@ -4684,6 +5228,7 @@ namespace BtcProApp.Controllers
             string leg = rec.WorkingLeg;
             return Json(new { Position = leg }, JsonRequestBehavior.AllowGet);
             }
+
         public JsonResult SetWorkingLeg(string leg)
             {
             string user = User.Identity.Name;
@@ -4709,7 +5254,7 @@ namespace BtcProApp.Controllers
             isMatched = ( rec.TrxPassword == TxPassword ? true : false );
             return Json(new { Success = isMatched }, JsonRequestBehavior.AllowGet);
             }
-        public ActionResult PayCryptoCurrency(string username, long UplineId, int packageId, double investmentAmt)
+        public ActionResult PayCryptoCurrency(string username, long UplineId, int packageId, double investmentAmt, string cointype)
             {
             if (username == null) { username = User.Identity.Name; }
             string packagename = db.Packages.Where(p => p.Id == packageId).Select(p => p.Name).FirstOrDefault();
@@ -4719,7 +5264,7 @@ namespace BtcProApp.Controllers
                 }
             CoinPayments cnp = new CoinPayments("1396f745295c35c328aD3381EfFb833d39524E59e7Ae333C9Db0e96a03c2Cd93", "247d9b36d83aa885f5d9ac79d695ae3fcc4bf7a368910e1843d2cfb3cdd3b98d");
             //cnp.CallAPI("get_tx_info");
-            var retobj = cnp.CallAPI("create_transaction", username, packagename, investmentAmt);
+            var retobj = cnp.CallAPI("create_transaction", username, packagename, investmentAmt, cointype);
             try
                 {
                 CryptoCurrrency objcurrency = new CryptoCurrrency();
@@ -4741,7 +5286,7 @@ namespace BtcProApp.Controllers
                 objcurrency.PackageAmt = investmentAmt;
                 objcurrency.UplineId = UplineId;
                 objcurrency.Paying_Currency = "USD";
-                objcurrency.Target_Currency = "BTC";
+                objcurrency.Target_Currency = cointype;
 
                 db.CryptoCurrencies.Add(objcurrency);
                 db.SaveChanges();
@@ -4905,6 +5450,27 @@ namespace BtcProApp.Controllers
                         capamt = 50000;
                         }
 
+                    if (rec.Defaultpackagecode == 6 && bo.Binary <= 200000)
+                        {
+                        bo.CappingAmount = bo.Binary;
+                        capamt = 200000;
+                        }
+                    else if (rec.Defaultpackagecode == 6 && bo.Binary > 200000)
+                        {
+                        bo.CappingAmount = 200000;
+                        capamt = 200000;
+                        }
+
+                    if (rec.Defaultpackagecode == 7 && bo.Binary <= 500000)
+                        {
+                        bo.CappingAmount = bo.Binary;
+                        capamt = 500000;
+                        }
+                    else if (rec.Defaultpackagecode == 7 && bo.Binary > 500000)
+                        {
+                        bo.CappingAmount = 500000;
+                        capamt = 500000;
+                        }
                     bo.Income = ( bo.CappingAmount * 10 ) / 100;
                     bo.CappingAmount = capamt;
 
@@ -5009,6 +5575,24 @@ namespace BtcProApp.Controllers
                             bo.CappingAmount = 50000;
                             }
 
+                        if (rec.Defaultpackagecode == 6 && bo.Binary <= 200000)
+                            {
+                            bo.CappingAmount = bo.Binary;
+                            }
+                        else if (rec.Defaultpackagecode == 6 && bo.Binary > 200000)
+                            {
+                            bo.CappingAmount = 200000;
+                            }
+
+                        if (rec.Defaultpackagecode == 7 && bo.Binary <= 500000)
+                            {
+                            bo.CappingAmount = bo.Binary;
+                            }
+                        else if (rec.Defaultpackagecode == 7 && bo.Binary > 500000)
+                            {
+                            bo.CappingAmount = 500000;
+                            }
+
                         bo.Income = ( bo.CappingAmount * 10 ) / 100;
 
                         BinaryOpening record = new BinaryOpening();
@@ -5085,6 +5669,23 @@ namespace BtcProApp.Controllers
 
             return Json(new { DetailData = list }, JsonRequestBehavior.AllowGet);
 
+            }
+
+        private Boolean IsClubMember(long RegistrationId, string searchpos, double investamt)   //Club determination of existing member
+            {
+            double totalbusinessleft = db.BinaryIncomes.Where(i => i.RegistrationId == RegistrationId).Select(bi => bi.LeftNewBusinessAmount).DefaultIfEmpty(0).Sum();
+            double totalbusinessright = db.BinaryIncomes.Where(i => i.RegistrationId == RegistrationId).Select(bi => bi.RightNewBusinessAmount).DefaultIfEmpty(0).Sum();
+            if (searchpos == "L") { totalbusinessleft = totalbusinessleft + investamt; }
+            if (searchpos == "R") { totalbusinessright = totalbusinessright + investamt; }
+
+            if (totalbusinessleft >= 25000 && totalbusinessright >= 25000)
+                {
+                return true;
+                }
+            else
+                {
+                return false;
+                }
             }
         #endregion
         }

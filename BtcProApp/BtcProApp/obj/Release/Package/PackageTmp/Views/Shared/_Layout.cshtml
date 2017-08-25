@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     @*<meta name="author" content="ThemeBucket">*@
-    <link rel="shortcut icon" href="~/Content/BtcProIcon.png">
+    <link rel="shortcut icon" href="~/StaticSiteAssets/images/favicon.ico" type="image/x-icon">
     <title>BtcPro App</title>
     <!--Core CSS -->
     <link href="~/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -15,10 +15,14 @@
     <link href="~/js/jvector-map/jquery-jvectormap-1.2.2.css" rel="stylesheet">
     <link href="~/css/clndr.css" rel="stylesheet">
     <!--clock css-->
-    <link href="~/js/css3clock/css/style.css" rel="stylesheet">
+    @*<link href="~/js/css3clock/css/style.css" rel="stylesheet">*@
+    <link rel="stylesheet" media="screen" href="~/js/css3-countdown-master/css/normalize.css" />
+    <link rel="stylesheet" media="screen" href="~/js/css3-countdown-master/css/style.css" />
+
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="~/js/morris-chart/morris.css">
     <!-- Custom styles for this template -->
+    <link href="~/css/menu.css" rel="stylesheet">
     <link href="~/css/style.css" rel="stylesheet">
     <link href="~/css/style-responsive.css" rel="stylesheet" />
     <!-- Just for debugging purposes. Don't actually copy this line! -->
@@ -29,42 +33,294 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <script src="~/js/jquery.js"></script>
+    <script src="~/bs3/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery-latest.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <script type="text/javascript">
+        var _rys = jQuery.noConflict();
+        _rys("document").ready(function(){
+
+            _rys(window).scroll(function () {
+                if (_rys(this).scrollTop() > 0) {
+                    _rys('.main-menu').addClass("f-nav");
+                } else {
+                    _rys('.main-menu').removeClass("f-nav");
+                }
+            });
+
+        });
+    </script>
 
 </head>
 <body>
     <section id="container">
         <!--header start-->
-        <header class="header fixed-top clearfix">
-            <div class="col-md-4">
+        <header class="header clearfix" style="padding-top:5px;padding-bottom:5px">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <!--logo start-->
-                <div class="brand" style="text-align:center !important; width:225px;padding-top:5px">
-                    <img src="~/Content/btcpro.png" style="width:45%" />
-                    <div class="sidebar-toggle-box" style="margin-top:-55px">
-                        <div class="fa fa-bars"></div>
-                    </div>
+                <div class="brand img-responsive hidden-xs">
+                    <img src="~/StaticSiteAssets/images/btc-logo.png" style="width:80%;padding-top:20px" />
+                </div>
+                <div class="brand img-responsive hidden-lg hidden-md hidden-sm visible-xs">
+                    <img src="~/StaticSiteAssets/images/btc-logo.png" style="width:40%;padding-top:20px;margin:0 auto" />
                 </div>
                 <!--logo end-->
             </div>
-            <div class="col-md-4">
-                <div id="countdown" style="height:80px;text-align:center;padding-top:12px;margin-left:25%">
-                    @*<div style="float:left"><img src="~/Content/animated-bell-image-0001.gif" /></div>*@
-                    <div id="countdown0" style="float:left;width:auto;height:50px;" title="Next Closing to go..">
-                    </div>
-                    <div style="font-size:small;font-weight:600;clear:both;float:left;padding-left:18px">next closing time to go...</div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding-bottom:15px">
+                <div style="text-align:center">
+                    <p style="font-size:small;color:black;margin-top:0px;margin-bottom:-1px !important">Next payout</p>
+                    <div id="CDT" style="margin-bottom:5px;margin-top:3px !important"></div>
                 </div>
+                
             </div>
-            <div class="col-md-4">
-                <div class="pull-right" style="margin-top:25px;margin-right:20px">
-                    @*<img id="countryImg" src="@ViewBag.ImagePath" style="width:30px;height:20px;margin-top:-10px" />&nbsp;*@<i class="fa fa-2x fa-user" style="margin-left:1px;color:darkorange"></i>&nbsp;&nbsp;You have logged in as&nbsp;<span style="font-size:16px;color:darkorange">@User.Identity.Name</span>&nbsp;<span id="CountryCode"></span>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="right-pt-log">
+                  <img id="countryImg" src="" style="width:30px;height:20px;margin-top:-10px" /> &nbsp;<i class="fa fa-2x fa-user" style="margin-left:1px;color:darkorange"></i>&nbsp;&nbsp;You have logged in as&nbsp;<span style="font-size:16px;color:darkorange">@User.Identity.Name</span>&nbsp;<span id="CountryCode"></span>
                 </div>
             </div>
         </header>
         <!--header end-->
-        <!--sidebar start-->
+        
+        <!-- menu part -->
+        <section class="main-menu hidden-lg hidden-md hidden-sm">
+            <!-- menu part -->
+            <div class="col-md-12 no-padding">
+                <div id="cssmenu">
+                        @if (User.Identity.Name.ToUpper() == "ADMINISTRATOR")
+                        {
+                        <ul>
+                            <li>
+                                <a class="active" href='@Url.Action("Index","Home")'>
+                                    <i class="fa fa-dashboard"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Actions</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("ProcessSupportTickets","Home")'>Support Ticket process</a></li>
+                                    <li><a href='@Url.Action("MemberBlockUnblock","Home")'>Member Block / Unblock</a></li>
+                                    @*<li><a href='@Url.Action("MemberPage","Home")'>View Member Profile</a></li>*@
+                                    <li><a href='@Url.Action("ChangeUserId","Home")'>Change User Id</a></li>
+                                    <li><a href='@Url.Action("Members","Home")'>Members List</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>News Report</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("ManageNews","Home")'>Manage News</a></li>
+                                </ul>
+                            </li>
+                            <li><a href='@Url.Action("ChangePassword","Home")'>Change Password</a></li>
+                            <li>
+                                <a href='@Url.Action("LogOff","Account")'>
+                                    <i class="fa fa-external-link"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                        }
+                        else if (User.Identity.Name.ToUpper() == "SUPERADMIN")
+                        {
+                        <ul>
+                            <li>
+                                <a class="active" href='@Url.Action("Index","Home")'>
+                                    <i class="fa fa-dashboard"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Super Actions</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("AdminTransfers","Home")'>Transfer Money</a></li>
+                                    <li><a href='@Url.Action("PayoutByAdmin","Home")'>Process Withdrawal Request</a></li>
+                                    <li><a href='@Url.Action("FreeJoining","Home")'>Free Joining</a></li>
+                                    <li><a href='@Url.Action("MemberPage","Home")'>View Member Profile</a></li>
+                                    <li><a href='@Url.Action("ChangeUserId","Home")'>Change User Id</a></li>
+                                    <li><a href='@Url.Action("Members","Home")'>Members List</a></li>
+                                    <li><a href='@Url.Action("MemberWallets","Home")'>Member Wallets</a></li>
+                                    <li><a href='@Url.Action("BitCoinDeposit","Home")'>BitCoin Deposit</a></li>
+                                    <li><a href='@Url.Action("BinaryOpenings","Home")'>Binary Ledger</a></li>
+                                    <li><a href='@Url.Action("ProcessSupportTickets","Home")'>Support Ticket process</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Payouts</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("FixedPayout","Home")'>Process Daily Investment Return</a></li>
+                                </ul>
+                            </li>
+                            @*<li>
+                                <a href="#">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Member Account</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("FixedPayout","Home")'>View Member Account</a></li>
+                                </ul>
+                            </li>*@
+                            <li>
+                                <a href="#;">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>Bitcoin Account</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("ApproveBitcoinTransfers","Home")'>Bitcoin Transfers</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href='@Url.Action("ChangePassword","Home")'>Change Password</a></li>
+                            <li>
+                                <a href='@Url.Action("LogOff","Account")'>
+                                    <i class="fa fa-external-link"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                        }
+                        else
+                        {
+                        <ul>
+                            <li>
+                                <a class="active" href='@Url.Action("Index","Home")'>
+                                    <i class="fa fa-dashboard"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-code-fork"></i>
+                                    <span>My Team</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("TeamMembers","Home")'>Team Members</a></li>
+                                    @*<li><a href='@Url.Action("Contact","Home")'>Genealogy</a></li>*@
+                                    <li><a href='@Url.Action("TeamStructureNew","Home")'>Binary Team Structure</a></li>
+                                    <li><a href='@Url.Action("GenerationStructure","Home")'>Generation Team Structure</a></li>
+                                    @*<li><a href='@Url.Action("Network","Home")'>Network</a></li>*@
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-suitcase"></i>
+                                    <span>My Business</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("PackagesShop","Home")'>Packages Shop</a></li>
+                                    @*<li><a href='@Url.Action("MyRePurchase","Home")'>Repurchase</a></li>*@
+                                    <li><a href='@Url.Action("MyPurchase","Home")'>My Purchase/Repurchases</a></li>
+                                    @*<li><a href='@Url.Action("OrderHistory","Home")'>Order History</a></li>*@
+                                    <li><a href='@Url.Action("SalesHistory","Home")'>Current Business & Earnings</a></li>
+                                    <li><a href='@Url.Action("BinaryOpenings","Home")'>Binary Ledger</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href='@Url.Action("ReferralLink","Home")'>
+                                    <i class="fa fa-coffee"></i>
+                                    <span>My Referral Link</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-dollar"></i>
+                                    <span>Money</span>
+                                </a>
+                                <ul class="sub">
+                                    @*<li><a href='@Url.Action("Illustration","Home")'>Fixed Return Illustration</a></li>*@
+                                    <li><a href='@Url.Action("CashWallet","Home")'>Cash Wallet</a></li>
+                                    <li><a href='@Url.Action("ReserveWallet","Home")'>Reserve Wallet</a></li>
+                                    <li><a href='@Url.Action("ReturnWallet","Home")'>Return Wallet</a></li>
+
+                                    @*<li><a href='@Url.Action("FrozenWallet","Home")'>Frozen Wallet</a></li>*@
+                                    @*<li><a href='@Url.Action("Earnings","Home")'>Earnings</a></li>
+                                        <li><a href='@Url.Action("Withdrawals","Home")'>Withdrawls</a></li>*@
+                                    <li><a href='@Url.Action("Transfers","Home")'>Transfers</a></li>
+                                    <li><a href='@Url.Action("UploadBalance","Home")'>Deposit CryptoCurrency</a></li>
+                                    <li><a href='@Url.Action("WithdrawalRequests","Home")'>Withdrawal Requests</a></li>
+                                    @*<li><a href='@Url.Action("TransferRequests","Home")'>Transfer Requests</a></li>*@
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-user"></i>
+                                    <span>Account</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("EditProfile","Home")'>Edit Profile</a></li>
+                                    <li><a href='@Url.Action("UploadKYC","Home")'>Upload KYC Documents</a></li>
+                                    <li><a href='@Url.Action("AccountStatus","Home")'>My BitCoin Account</a></li>
+                                    <li><a href='@Url.Action("ChangePassword","Home")'>Change Password</a></li>
+                                    <li><a href='@Url.Action("ChangeTrnPassword","Home")'>Change Transaction Password</a></li>
+                                    @*<li><a href='@Url.Action("Notifications","Home")'>Notifications Center</a></li>*@
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                    <span>Support</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href='@Url.Action("Tickets","Home")'>My Tickets</a></li>
+                                    <li>
+                                        <a href="#modalCertificate" data-toggle="modal" data-target="#modalCertificate">Certificate</a>
+                                    </li>
+                                    <li>
+                                        <a href="#modalCertificate" data-toggle="modal" data-target="#modalLicense">License</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onclick='window.open("https://www.changer.com","_blank")'>Exchanger</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                @*<a href='@Url.Action("Logout","Home")'>*@
+                                @*<a onclick='window.location.href="https://www.btcpro.co";return false;'>*@
+                                <a href='@Url.Action("LogOff","Account")'>
+                                    <i class="fa fa-external-link"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                            @*<li>
+                                    <a href="#modalLicense" data-toggle="modal" data-target="#modalLicense" style="color:yellow">
+                                        <i class="fa fa-bullhorn"></i>
+                                        <span>License </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#modalCertificate" data-toggle="modal" data-target="#modalCertificate" style="color:yellow">
+                                        <i class="fa fa-certificate"></i>
+                                        <span>Certificate </span>
+                                    </a>
+                                </li>*@
+                           
+                        </ul>
+                          }   
+                    </div>
+            </div>
+            <!-- menu end -->
+        </section>
+        <!-- menu part end -->
+
         <aside>
             @if (User.Identity.Name.ToUpper() == "ADMINISTRATOR")
-            {
-                <div id="sidebar" class="nav-collapse">
+                {
+                <div id="sidebar" class="nav-collapse hidden-xs">
                     <!-- sidebar menu start-->
                     <div class="leftside-navigation">
                         <ul class="sidebar-menu" id="nav-accordion">
@@ -82,10 +338,12 @@
                                 <ul class="sub">
                                     <li><a href='@Url.Action("ProcessSupportTickets","Home")'>Support Ticket process</a></li>
                                     <li><a href='@Url.Action("MemberBlockUnblock","Home")'>Member Block / Unblock</a></li>
-                                    <li><a href='@Url.Action("MemberPage","Home")'>View Member Profile</a></li>
+                                    @*<li><a href='@Url.Action("MemberPage","Home")'>View Member Profile</a></li>*@
+                                    <li><a href='@Url.Action("ChangeUserId","Home")'>Change User Id</a></li>
+                                    <li><a href='@Url.Action("Members","Home")'>Members List</a></li>
                                 </ul>
                             </li>
-                           
+
                             <li class="sub-menu">
                                 <a href="javascript:;">
                                     <i class="fa fa-code-fork"></i>
@@ -105,9 +363,9 @@
                         </ul>
                     </div>
                 </div>
-            }
+                }
             else if (User.Identity.Name.ToUpper() == "SUPERADMIN")
-            {
+                {
                 <div id="sidebar" class="nav-collapse">
                     <!-- sidebar menu start-->
                     <div class="leftside-navigation">
@@ -128,6 +386,13 @@
                                     <li><a href='@Url.Action("PayoutByAdmin","Home")'>Process Withdrawal Request</a></li>
                                     <li><a href='@Url.Action("FreeJoining","Home")'>Free Joining</a></li>
                                     <li><a href='@Url.Action("MemberPage","Home")'>View Member Profile</a></li>
+                                    <li><a href='@Url.Action("ChangeUserId","Home")'>Change User Id</a></li>
+                                    <li><a href='@Url.Action("Members","Home")'>Members List</a></li>
+                                    <li><a href='@Url.Action("MemberWallets","Home")'>Member Wallets</a></li>
+                                    <li><a href='@Url.Action("BitCoinDeposit","Home")'>BitCoin Deposit</a></li>
+                                    <li><a href='@Url.Action("BinaryOpenings","Home")'>Binary Ledger</a></li>
+                                    <li><a href='@Url.Action("ProcessSupportTickets","Home")'>Support Ticket process</a></li>
+
                                 </ul>
                             </li>
                             <li class="sub-menu">
@@ -139,7 +404,7 @@
                                     <li><a href='@Url.Action("FixedPayout","Home")'>Process Daily Investment Return</a></li>
                                 </ul>
                             </li>
-                            <li class="sub-menu">
+                            @*<li class="sub-menu">
                                 <a href="javascript:;">
                                     <i class="fa fa-code-fork"></i>
                                     <span>Member Account</span>
@@ -147,7 +412,7 @@
                                 <ul class="sub">
                                     <li><a href='@Url.Action("FixedPayout","Home")'>View Member Account</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                             <li class="sub-menu">
                                 <a href="javascript:;">
                                     <i class="fa fa-code-fork"></i>
@@ -157,7 +422,7 @@
                                     <li><a href='@Url.Action("ApproveBitcoinTransfers","Home")'>Bitcoin Transfers</a></li>
                                 </ul>
                             </li>
-                           
+
                             <li><a href='@Url.Action("ChangePassword","Home")'>Change Password</a></li>
                             <li>
                                 <a href='@Url.Action("LogOff","Account")'>
@@ -168,9 +433,9 @@
                         </ul>
                     </div>
                 </div>
-            }
+                }
             else
-            {
+                {
                 <div id="sidebar" class="nav-collapse">
 
                     <!-- sidebar menu start-->
@@ -206,6 +471,7 @@
                                     <li><a href='@Url.Action("MyPurchase","Home")'>My Purchase/Repurchases</a></li>
                                     @*<li><a href='@Url.Action("OrderHistory","Home")'>Order History</a></li>*@
                                     <li><a href='@Url.Action("SalesHistory","Home")'>Current Business & Earnings</a></li>
+                                    <li><a href='@Url.Action("BinaryOpenings","Home")'>Binary Ledger</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -227,9 +493,9 @@
 
                                     @*<li><a href='@Url.Action("FrozenWallet","Home")'>Frozen Wallet</a></li>*@
                                     @*<li><a href='@Url.Action("Earnings","Home")'>Earnings</a></li>
-                                        <li><a href='@Url.Action("Withdrawals","Home")'>Withdrawls</a></li>*@
+                                    <li><a href='@Url.Action("Withdrawals","Home")'>Withdrawls</a></li>*@
                                     <li><a href='@Url.Action("Transfers","Home")'>Transfers</a></li>
-                                    <li><a href='@Url.Action("UploadBalance","Home")'>Deposit BitCoin</a></li>
+                                    <li><a href='@Url.Action("UploadBalance","Home")'>Deposit CryptoCurrency</a></li>
                                     <li><a href='@Url.Action("WithdrawalRequests","Home")'>Withdrawal Requests</a></li>
                                     @*<li><a href='@Url.Action("TransferRequests","Home")'>Transfer Requests</a></li>*@
                                 </ul>
@@ -256,8 +522,8 @@
                                 <ul class="sub">
                                     <li><a href='@Url.Action("Tickets","Home")'>My Tickets</a></li>
                                     @*<li><a href='@Url.Action("Report2","Home")'>Contact Referrer</a></li>
-                                        <li><a href='@Url.Action("Report3","Home")'>Compensation Plan</a></li>
-                                        <li><a href='@Url.Action("Report3","Home")'>Downloads</a></li>*@
+                                    <li><a href='@Url.Action("Report3","Home")'>Compensation Plan</a></li>
+                                    <li><a href='@Url.Action("Report3","Home")'>Downloads</a></li>*@
                                 </ul>
                             </li>
                             <li>
@@ -287,16 +553,17 @@
                     </div>
                     <!-- sidebar menu end-->
                 </div>
-            }
+                }
 
         </aside>
-
+        
+        <!--sidebar start-->
         <section id="main-content">
             @RenderBody()
         </section>
 
     </section>
-   
+
     <!-- Placed js at the end of the document so the pages load faster -->
     <!--Core js-->
     <script src="~/js/jquery.js"></script>
@@ -317,8 +584,9 @@
     <script src="~/js/jvector-map/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="~/js/jvector-map/jquery-jvectormap-us-lcc-en.js"></script>
     <script src="~/js/gauge/gauge.js"></script>
-    <!--clock init-->
-    <script src="~/js/css3clock/js/css3clock.js"></script>
+        <!--clock init-->
+    @*<script src="~/js/css3-countdown-master/js/countdown.js"></script>*@
+
     <!--Easy Pie Chart-->
     <script src="~/js/easypiechart/jquery.easypiechart.js"></script>
     <!--Sparkline Chart-->
@@ -335,7 +603,6 @@
     <script src="~/js/flot-chart/jquery.flot.growraf.js"></script>
     @*<script src="~/js/dashboard.js"></script>*@
     <script src="~/js/jquery.customSelect.min.js"></script>
-
     <!--common script init for all pages-->
     <script src="~/js/scripts.js"></script>
     <!--script for this page-->
@@ -344,38 +611,46 @@
     <script src="~/Scripts/angular-messages.min.js"></script>
 
     <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date("July 10, 2017 09:00:00").getTime();
+        function CountdownTimer(elm, tl, mes) {
+            this.initialize.apply(this, arguments);
+        }
+        CountdownTimer.prototype = {
+            initialize: function (elm, tl, mes) {
+                this.elem = document.getElementById(elm);
+                this.tl = tl;
+                this.mes = mes;
+            }, countDown: function () {
+                var timer = '';
+                var today = new Date();
+                var day = Math.floor((this.tl - today) / (24 * 60 * 60 * 1000));
+                var hour = Math.floor(((this.tl - today) % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+                var min = Math.floor(((this.tl - today) % (24 * 60 * 60 * 1000)) / (60 * 1000)) % 60;
+                var sec = Math.floor(((this.tl - today) % (24 * 60 * 60 * 1000)) / 1000) % 60 % 60;
+                var me = this;
 
-        // Update the count down every 1 second
-        var x = setInterval(function () {
+                if ((this.tl - today) > 0) {
+                    timer += '<span class="number-wrapper"><div class="line"></div><div class="caption">DAYS</div><span class="number day">' + day + '</span></span>';
+                    timer += '<span class="number-wrapper"><div class="line"></div><div class="caption">HOURS</div><span class="number hour">' + hour + '</span></span>';
+                    timer += '<span class="number-wrapper"><div class="line"></div><div class="caption">MINS</div><span class="number min">' + this.addZero(min) + '</span></span><span class="number-wrapper"><div class="line"></div><div class="caption">SECS</div><span class="number sec">' + this.addZero(sec) + '</span></span>';
+                    this.elem.innerHTML = timer;
+                    tid = setTimeout(function () { me.countDown(); }, 10);
+                } else {
+                    this.elem.innerHTML = this.mes;
+                    return;
+                }
+            }, addZero: function (num) { return ('0' + num).slice(-2); }
+        }
+        function CDT() {
 
-            // Get todays date and time
-            var now = new Date().getTime();
+            // Set countdown limit
+            var tl = new Date('2017/08/28 07:30:00');
 
-            // Find the distance between now an the count down date
-            var distance = countDownDate - now;
-
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result in the element with id="demo"
-            document.getElementById("countdown0").innerHTML = "" +
-            "<div style='float:left;font-size:medium;margin-left:5px'><span style='font-size:xx-large'>" + days + "</span>&nbsp;d</div>" +
-            "<div style='float:left;font-size:medium;margin-left:5px'><span style='font-size:xx-large'>" + hours + "</span>&nbsp;h</div>" +
-            "<div style='float:left;font-size:medium;margin-left:5px'><span style='font-size:xx-large'>" + minutes + "</span>&nbsp;m</div>" +
-            "<div style='float:left;font-size:medium;margin-left:5px'><span style='font-size:xx-large'>" + seconds + "</span>&nbsp;s</div></div>";
-
-            // If the count down is finished, write some text
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("demo").innerHTML = "DECLARED";
-            }
-        }, 1000);
-        //session end
+            // You can add time's up message here
+            var timer = new CountdownTimer('CDT', tl, '<span class="number-wrapper"><div class="line"></div><span class="number end">Time is up!</span></span>');
+            timer.countDown();
+        }
+        //
+        CDT();
         @*var sessionTimeoutWarning = @Session.Timeout -1;
 
         var sTimeout = parseInt(sessionTimeoutWarning) * 5 * 1000;
@@ -385,24 +660,34 @@
             window.location = "/Account/LogOff";
         }*@
 
-        var data = $.ajax({
+        //var data = $.ajax({
+        //    type: "GET",
+        //    url: "https://ipinfo.io",
+        //    dataType: "json",
+        //    success: function (data) {
+        //        var d = data.country;
+        //        var c = "";
+
+        //        var data1 = $.ajax({
+        //            type: "GET",
+        //            url: "/Home/GetCountry?countryCode=" + d,
+        //            dataType: "json",
+        //            success: function (data1) {
+        //                c = "from " + data1.CountryName;
+        //                $("#CountryCode").text(c);
+        //            }
+        //        });
+
+        //    }
+        //});
+
+        var data1 = $.ajax({
             type: "GET",
-            url: "https://ipinfo.io",
+            url: "/Home/Country",
             dataType: "json",
-            success: function (data) {
-                var d = data.country;
-                var c = "";
-
-                var data1 = $.ajax({
-                    type: "GET",
-                    url: "/Home/GetCountry?countryCode=" + d,
-                    dataType: "json",
-                    success: function (data1) {
-                        c = "from " + data1.CountryName;
-                        $("#CountryCode").text(c);
-                    }
-                });
-
+            success: function (data1) {
+                c = data1.CountryName;
+                $("#countryImg").attr("src",c);
             }
         });
 
@@ -438,17 +723,17 @@
     </script>
 
     <div class="modal fade" id="modalLicense" role="dialog">
-        <div class="modal-dialog" style="left:-150px">
+        <div class="modal-dialog" style="left:0px;margin-top:75px">
             <div class="modal-content">
-                <img src="~/Content/ifsc_licence copy-1.jpg" />
+                <img src="~/Content/ifsc_licence copy-1.jpg" style="width:100%" />
             </div>
         </div>
     </div>
 
     <div class="modal fade" id="modalCertificate" role="dialog">
-        <div class="modal-dialog" style="left:-100px">
+        <div class="modal-dialog" style="left:0px;margin-top:75px">
             <div class="modal-content">
-                <img src="~/Content/Certificate of Incorporation.jpg" />
+                <img src="~/Content/Certificate of Incorporation.jpg" style="width:100%"/>
             </div>
         </div>
     </div>

@@ -1,6 +1,12 @@
 ﻿<script src="~/Scripts/angular.min.js"></script>
 <script src="~/app/scripts/TicketController.js"></script>
 
+<style>
+.mywrap p{
+    text-indent:40px;
+}
+</style>
+
 <section class="wrapper">
     <div ng-app="app" ng-controller="Ticket" ng-cloak>
         <div class="row">
@@ -11,7 +17,7 @@
                     </header>
                     <div class="panel-body">
                         <form name="TicketFrm" ng-hide="isIframe">
-                            <table style="width:50%;margin:0 auto" class="table table-bordered">
+                            @*<table style="width:50%;margin:0 auto" class="table table-bordered">
                                 <tr>
                                     <td style="width:25%;text-align:right"><label>Select Ticket Category:</label></td>
                                     <td>
@@ -53,36 +59,122 @@
                                     <td colspan="2">
                                         <div style="width:100%">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-hide="TicketFrm.$invalid || disableSubmit" style="border:1px solid #dcd4d4 !important;min-height: 50px; margin-bottom: 10px;padding-top: 12px;">
-                                                <input type="file" id="documentA" name="file" onchange="angular.element(this).scope().uploadLibraryDocumentA(this.files)" /><span style="float:right;margin-top:-25px" ng-required="true"></span>@*<img src="/Content/progress.gif" />*@
+                                                <input type="file" id="documentA" name="file" onchange="angular.element(this).scope().uploadLibraryDocumentA(this.files)" /><span style="float:right;margin-top:-25px" ng-required="true"></span>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding-top:15px;text-align:center">
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                            </table>
+                            </table>*@
+
+                            <!------------------------------------------------------------------>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-1 col-sm-1 col-xs-0">
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                                    <span style="float:right" class="hidden-xs"><label>Select Ticket Category:</label></span>
+                                    <span style="float:left" class="hidden-lg hidden-md hidden-sm visible-xs"><label>Select Ticket Category:</label></span>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                                    <select name="oTicketType" ng-model="ticketType" placeholder="Select an option" ng-required="true" class="form-control">
+                                        <option value="A">Business building queries</option>
+                                        <option value="B">Bitcoin deposit in Account</option>
+                                        <option value="C">Financial</option>
+                                        <option value="D">Founder upgrade</option>
+                                        <option value="E">From support email</option>
+                                        <option value="F">General</option>
+                                        <option value="G">Personal information error</option>
+                                        <option value="H">Product queries</option>
+                                        <option value="I">Website error</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 col-md-3 col-sm-1 col-xs-0">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:10px">
+                                <div class="col-lg-2 col-md-1 col-sm-1 col-xs-0">
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                                    <span style="float:right" class="hidden-xs"><label>Subject:</label></span>
+                                    <span style="float:left" class="hidden-lg hidden-md hidden-sm visible-xs"><label>Subject:</label></span>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                                    <input type="text" ng-model="subjectName" class="form-control" ng-required="true" />
+                                </div>
+                                <div class="col-lg-4 col-md-3 col-sm-1 col-xs-0">
+                                </div>
+                            </div>
+                            <div class="row"  style="margin-top:10px">
+                                <div class="col-lg-2 col-md-1 col-sm-1 col-xs-0">
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                                    <span style="float:right" class="hidden-xs"><label>Message:</label></span>
+                                    <span style="float:left" class="hidden-lg hidden-md hidden-sm visible-xs"><label>Message:</label></span>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                                    <textarea ng-model="documentComments" class="form-control" rows="8" ng-required="true"></textarea>
+                                </div>
+                                <div class="col-lg-4 col-md-3 col-sm-1 col-xs-0">
+                                </div>
+                            </div>
+                            <div class="row"  style="margin-top:10px">
+                                <div class="col-lg-2 col-md-1 col-sm-1 col-xs-0">
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                                    <span style="float:right" class="hidden-xs"><label>Priority:</label></span>
+                                    <span style="float:left" class="hidden-lg hidden-md hidden-sm visible-xs"><label>Priority:</label></span>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                                    <select name="oTicketPriority" ng-model="ticketPriority" placeholder="Select an option" ng-required="true" class="form-control">
+                                        <option value="V">Very low</option>
+                                        <option value="L">Low</option>
+                                        <option value="N">Normal</option>
+                                        <option value="H">High</option>
+                                        <option value="C">Critical</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 col-md-3 col-sm-1 col-xs-0">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:10px">
+                                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-0">
+                                </div>
+                                <div class="col-lg-5 col-md-7 col-sm-9 col-xs-12" ng-hide="TicketFrm.$invalid || disableSubmit" style="border:1px solid #dcd4d4 !important;min-height: 50px; margin-bottom: 10px;padding-top: 12px;">
+                                    <input type="file" id="documentA" name="file" onchange="angular.element(this).scope().uploadLibraryDocumentA(this.files)" /><span style="float:right;margin-top:-25px" ng-show="isAttachmentUploadingA"></span>@*<img src="/Content/progress.gif" />*@
+                                </div>
+                                <div class="col-lg-4 col-md-3 col-sm-1 col-xs-0">
+                                </div>
+                            </div>
+                            @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-hide="TicketFrm.$invalid || disableSubmit" style="border:1px solid #dcd4d4 !important;min-height: 50px; margin-bottom: 10px;padding-top: 12px;">
+                                <input type="file" id="documentA" name="file" onchange="angular.element(this).scope().uploadLibraryDocumentA(this.files)" /><span style="float:right;margin-top:-25px" ng-required="true"></span>
+                            </div>*@
+                            <!------------------------------------------------------------------>
+
                             <div style="text-align:center;margin-top:10px;margin-bottom:20px">
                                 <button type="button" value="Submit" ng-disabled="TicketFrm.$invalid || disableSubmit ||isAttachmentUploadingA" ng-click="disableSubmit=true;submitTicket()" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                         <table style="width:100%;margin:0 auto" class="table table-bordered table-striped" ng-hide="isIframe">
-                            <tr>
-                                <th style="width:15%">Date</th>
-                                <th style="width:10%">Category</th>
-                                <th >Subject</th>
-                                <th >Message</th>
-                                <th style="width:5%">Attachment</th>
-                                <th style="width:20%">Admin response</th>
-                                <th style="width:15%">Status</th>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th style="width:15%">Date</th>
+                                    <th style="width:10%">Category</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th style="width:5%">Attachment</th>
+                                    <th style="width:20%">Admin response</th>
+                                    <th style="width:15%">Status</th>
+                                </tr>
+                            </thead>
                             <tr ng-repeat="ticket in mytickets">
-                                <td>{{ticket.DateString}}</td>
-                                <td>{{ticket.TicketCategory | TypeFilter}}</td>
-                                <td>{{ticket.Subject}}</td>
-                                <td>{{ticket.Message}}</td>
-                                <td style="text-align:center;cursor:pointer"><i ng-if="ticket.Id>0" class="fa fa-clipboard" ng-click="showimage(ticket.Id)"></i></td>
-                                <td>{{ticket.Status}}</td>
-                                <td>{{ticket.Comment}}</td>
+                                <td data-label="Date">{{ticket.DateString}}</td>
+                                <td data-label="Category">{{ticket.TicketCategory | TypeFilter}}</td>
+                                <td data-label="Subject">{{ticket.Subject}}</td>
+                                <td data-label="Message">{{ticket.Message}}</td>
+                                <td data-label="Attachment"style="text-align:center;cursor:pointer"><i ng-if="ticket.Id>0" class="fa fa-clipboard" ng-click="showimage(ticket.Id)"></i></td>
+                                <td data-label="Comment">{{ticket.Status}}</td>
+                                <td data-label="Status"><p class="mywrap">{{ticket.Comment}}</p></td>
                             </tr>
                         </table>
                         <div ng-show="isIframe">

@@ -46,7 +46,6 @@ module.controller('MemberTransfer', function ($scope, $http, $location) {
     }
     //
     $scope.calculateTotals = function (arr) {
-        debugger;
         $scope.totalDeposit = 0;
         $scope.totalWithdraw = 0;
         angular.forEach(arr, function (value, index) {
@@ -55,7 +54,6 @@ module.controller('MemberTransfer', function ($scope, $http, $location) {
         })
     }
     $scope.filterChanged = function (arr) {
-        debugger;
         if (arr) {
             $scope.Arr = arr;
             if ($scope.searchText == '') { $scope.Arr = $scope.transfers;}
@@ -82,7 +80,6 @@ module.controller('MemberTransfer', function ($scope, $http, $location) {
 
     $scope.getbalance = function () {
         $http.get("/Home/MyWalletBalance?WalletId=2").then(function (data) {
-            debugger;
             $scope.walletBalance = data.data.Balance;
         })
     }
@@ -90,8 +87,8 @@ module.controller('MemberTransfer', function ($scope, $http, $location) {
         var ans=confirm("Are you sure?");
         if (ans) {
             $http.post("/Home/LedgerPostingMember?Username=" + $scope.username + "&WalletType=" + $scope.wallet + "&Amount=" + $scope.amount).then(function (response) {
-                debugger;
                 if (response.data.Success) {
+                    $http.post("/Home/NotifyAdminAboutBalanceTransfer?ToUsername=" + $scope.username + "&Amount=" + $scope.amount);
                     $scope.username = "";
                     $scope.amount = 0;
                     $scope.errormessage = "";

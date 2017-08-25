@@ -72,6 +72,9 @@ namespace BtcProApp.Models
         public int? Level { get; set; }
         public int? Defaultpackagecode { get; set; }
         public long RegistrationId { get; set; }
+        public int Achievement1 { get; set; }
+        public DateTime Achievement1Date { get; set; }
+        public string PackageCodeHistory { get; set; }
     }
 
     public class Package

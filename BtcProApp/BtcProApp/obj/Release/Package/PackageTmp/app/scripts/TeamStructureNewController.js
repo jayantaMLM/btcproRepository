@@ -85,11 +85,16 @@ module.controller('TeamTreeNew', function ($scope, $http) {
             $scope.maxPay = 5000;
             $scope.payamount = $scope.maxPay;
             $scope.packageId = 3;
-        } else if ($scope.selectedOption == "M") {
-            $scope.minPay = 10000;
-            $scope.maxPay = 10000;
+        } else if ($scope.selectedOption == "A") {
+            $scope.minPay = 20000;
+            $scope.maxPay = 20000;
             $scope.payamount = $scope.maxPay;
-            $scope.packageId = 4;
+            $scope.packageId = 6;
+        } else if ($scope.selectedOption == "O") {
+            $scope.minPay = 30000;
+            $scope.maxPay = 30000;
+            $scope.payamount = $scope.maxPay;
+            $scope.packageId = 7;
         } else {
             $scope.minPay = 0;
             $scope.maxPay = 0;

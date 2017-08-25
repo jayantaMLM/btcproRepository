@@ -4,6 +4,36 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic);
 @import url(bucket-ico-fonts.css);
 
+@media screen and (max-width: 600px) {
+    table thead {
+      display: none;
+    }
+
+    table tr {
+      margin-bottom: 10px;
+      display: block;
+      width:100%;
+    }
+
+    table td {
+      display: block;
+      text-align: left;
+      font-size: 13px;
+      width:100%;
+    }
+
+    table td:before {
+      content: attr(data-label);
+      float: left;
+      text-align:right;
+      padding-right:15px;
+      text-transform: uppercase;
+      font-weight: bold;
+      width:40%;
+      vertical-align:middle;
+    }
+  }
+
 html {
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
@@ -143,8 +173,8 @@ a,a:hover,a:focus {
 #sidebar {
     width:240px;
     height:100%;
-    position:fixed;
-    background:#0072c6 /*#32323a*/;
+    position:absolute;
+    background:#4c5986 /*#32323a*/;
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
     -o-transition:all .3s ease-in-out;
@@ -210,7 +240,7 @@ ul.sidebar-menu,ul.sidebar-menu li ul.sub {
     padding:0;
 }
 ul.sidebar-menu {
-    padding-top:95px;
+    padding-top:0px;
 
 }
 #sidebar>ul>li>ul.sub {
@@ -265,8 +295,8 @@ ul.sidebar-menu li a {
     color:#fff /*#aeb2b7*/ ;
     text-decoration:none;
     display:block;
-    padding:18px 0 18px 25px;
-    font-size:12px;
+    padding: 12px 0 12px 25px;
+    font-size: 13px;
     outline:none;
     -webkit-transition:all 0.3s ease;
     -moz-transition:all 0.3s ease;
@@ -329,10 +359,21 @@ ul.sidebar-menu li a.active i {
 }
 .wrapper {
     display:inline-block;
-    margin-top:80px;
+    margin-top:0px;
     padding:15px;
     width:100%;
 
+}
+.breadcum{
+    width: 100%;
+    background: #000;
+    padding: 10px;
+    color: #fff;
+    font-size: 14px;
+    margin: -15px 0 20px;
+}
+.breadcum span{
+    color: #ffd24f;
 }
 .brand {
     background:#fff /*#1fb5ad*/ ;

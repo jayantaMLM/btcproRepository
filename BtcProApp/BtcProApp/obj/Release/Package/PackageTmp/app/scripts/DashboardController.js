@@ -91,7 +91,6 @@ module.controller('Dashboard', function ($scope, $http, $location,$sce) {
 
     $scope.getAllNews = function () {
         $http.get("/api/NewsReports").then(function (data) {
-            debugger;
             $scope.allReports = data.data;
         })
     }
@@ -102,5 +101,16 @@ module.controller('Dashboard', function ($scope, $http, $location,$sce) {
         $scope.selectedreport = report;
         $scope.trustedSelectedReport = $sce.trustAsHtml($scope.selectedreport.NewsItemBody);
     }
+
+    //------------------------------Referral Link-----------------------------------------------------------//
+    $scope.isMember = false;
+    $http.get("/Home/IsUserMember").then(function (response) {
+        if (response.data.Found) { $scope.isMember = true; }
+    })
+    $http.get("/Home/Membername").then(function (data) {
+        $scope.user = data.data.CurrentUser;
+    });
+    $scope.path = $location.host();
+    $scope.port = $location.port();
 
 })

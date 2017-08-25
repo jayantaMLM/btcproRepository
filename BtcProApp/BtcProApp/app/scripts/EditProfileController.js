@@ -1,7 +1,6 @@
 ﻿var module = angular.module('app', ['ngMaterial', 'ngMessages']);
 
 module.controller('EditProfile', function ($scope, $http) {
-
     $http.get("/Home/MemberDetail?Member=").then(function (response) {
         $scope.member = response.data.Member;
         $scope.member.Preferredlanguage = "English(US)";
@@ -26,7 +25,6 @@ module.controller('EditProfile', function ($scope, $http) {
     })
 
     $scope.buttonclick0 = function () {
-        debugger;
         $http.post("/Home/UpdateMember/" + $scope.member.Id, $scope.member).then(function (response) {
             if (response.data.Success) {
                 alert('Saved successfully');
@@ -58,7 +56,6 @@ module.controller('EditProfile', function ($scope, $http) {
 module.controller('Member', function ($scope, $http) {
     $scope.member1 = "";
     $scope.findMember = function () {
-        debugger;
         //$http("/Home/IsUserNameExist?UserName=" + $scope.member1).then(function (response) {
         //if (response.data.Found) {
 

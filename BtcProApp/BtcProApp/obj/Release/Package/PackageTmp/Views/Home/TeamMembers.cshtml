@@ -23,8 +23,8 @@
                             <thead>
                                 <tr>
                                     <th style="text-align:center">Profile Pic</th>
-                                    <th style="text-align:center">Username</th>
-                                    <th style="text-align:center">Name</th>
+                                    <th style="text-align:center">User Id</th>
+                                    <th style="text-align:center">User Name</th>
                                     <th style="text-align:center">Member Type</th>
                                     <th style="text-align:center">Country</th>
                                     <th style="text-align:center">Joining Date</th>
@@ -33,29 +33,31 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="tm in team">
-                                    <td><img src="~/Content/avatar1.jpg" style="height:50px;width:50px"/></td>
-                                    <td style="padding-top:22px">{{tm.Username}}</td>
-                                    <td style="padding-top:22px">{{tm.Firstname}}</td>
-                                    <td>
+                                    <td data-label="User Profile Picture"><img src="~/Content/avatar1.jpg" style="height:50px;width:50px"/></td>
+                                    <td data-label="User Id" style="padding-top:22px">{{tm.Username}}</td>
+                                    <td data-label="User Name" style="padding-top:22px"><div>{{tm.Firstname}}</div></td>
+                                    <td data-label="Member Type">
                                         <img src="~/Content/pluto1.png" ng-if="tm.Defaultpackagecode==1" style="height:50px;width:50px" title="Pluto"/>
                                         <img src="~/Content/Jupiter1.png"  ng-if="tm.Defaultpackagecode==2" style="height:50px;width:50px" title="Jupiter"/>
                                         <img src="~/Content/Earth1.png"  ng-if="tm.Defaultpackagecode==3" style="height:50px;width:50px" title="Earth"/>
                                         <img src="~/Content/Mercury1.png"  ng-if="tm.Defaultpackagecode==4" style="height:50px;width:50px" title="Mercury"/>
+                                        <img src="~/Content/amazing.png" ng-if="tm.Defaultpackagecode==6" style="height:50px;width:50px" title="Amazing" />
+                                        <img src="~/Content/octa-core.png" ng-if="tm.Defaultpackagecode==7" style="height:50px;width:50px" title="Octa-Core" />
                                     </td>
-                                    <td  style="padding-top:22px">{{tm.Country}}</td>
-                                    <td  style="padding-top:22px">{{tm.Doj}}</td>
-                                    <td  style="padding-top:22px" ng-if="tm.BinaryPosition=='L'">Left Leg</td>
-                                    <td  style="padding-top:22px" ng-if="tm.BinaryPosition=='R'">Right Leg</td>
+                                    <td data-label="Country" style="padding-top:22px">{{tm.Country}}</td>
+                                    <td data-label="Join Date" style="padding-top:22px">{{tm.Doj}}</td>
+                                    <td data-label="Binary Leg" style="padding-top:22px" ng-if="tm.BinaryPosition=='L'">Left Leg</td>
+                                    <td data-label="Binary Leg" style="padding-top:22px" ng-if="tm.BinaryPosition=='R'">Right Leg</td>
                                 </tr>
                                 <tr ng-repeat="rec in freeteam">
-                                    <td><img src="~/Content/avatar1.jpg" style="height:50px;width:50px" /></td>
-                                    <td style="padding-top:22px">{{rec.UserName}}</td>
-                                    <td style="padding-top:22px">{{rec.FullName}}</td>
-                                    <td style="padding-top:22px"><b style="color:red">Free Member</b></td>
-                                    <td style="padding-top:22px">{{rec.CountryCode}}</td>
-                                    <td style="padding-top:22px">{{rec.Password}}</td>
-                                    <td style="padding-top:22px" ng-if="rec.BinaryPosition=='L'">Left Leg</td>
-                                    <td style="padding-top:22px" ng-if="rec.BinaryPosition=='R'">Right Leg</td>
+                                    <td data-label="User Profile Picture"><img src="~/Content/avatar1.jpg" style="height:50px;width:50px" /></td>
+                                    <td data-label="User Id" style="padding-top:22px">{{rec.UserName}}</td>
+                                    <td data-label="User Name" style="padding-top:22px">{{rec.FullName}}</td>
+                                    <td data-label="Member Type" style="padding-top:22px"><b style="color:red">Free Member</b></td>
+                                    <td data-label="Country" style="padding-top:22px">{{rec.CountryCode}}</td>
+                                    <td data-label="Join Date" style="padding-top:22px">{{rec.Password}}</td>
+                                    <td data-label="Binary Leg" style="padding-top:22px" ng-if="rec.BinaryPosition=='L'">Left Leg</td>
+                                    <td data-label="Binary Leg" style="padding-top:22px" ng-if="rec.BinaryPosition=='R'">Right Leg</td>
                                 </tr>
                             </tbody>
                         </table>

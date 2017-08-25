@@ -20,7 +20,6 @@ module.controller('ReferralLink', function ($scope, $http, $location) {
     }
 
     $scope.getPosition = function () {
-        debugger;
         $http.get("/Home/GetWorkingLeg?user=").then(function (data) {
             $scope.position = data.data.Position;
             if ($scope.position == null) {

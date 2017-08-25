@@ -59,6 +59,9 @@ module.controller('Ticket', function ($scope, $http, $location,$sce) {
    
     $http.get("/api/Tickets").then(function (response) {
         $scope.mytickets = response.data;
+        angular.forEach($scope.mytickets, function (value, index) {
+            if (value.Status=="" || value.Status==null){value.Status="-";}
+        })
     })
 
     var TicketObj = {
@@ -162,6 +165,17 @@ module.controller('Ticket', function ($scope, $http, $location,$sce) {
         TicketObj.LibraryId = $scope.fileId;
         TicketObj.LibraryFilename = $scope.fileInterName;
 
+        var sTktCategory = "";
+        if (TicketObj.TicketCategory == "A") { sTktCategory = "Business building queries";}
+        if (TicketObj.TicketCategory == "B") { sTktCategory = "Bitcoin deposit in Account"; }
+        if (TicketObj.TicketCategory == "C") { sTktCategory = "Financial"; }
+        if (TicketObj.TicketCategory == "D") { sTktCategory = "Founder upgrade"; }
+        if (TicketObj.TicketCategory == "E") { sTktCategory = "From support email"; }
+        if (TicketObj.TicketCategory == "F") { sTktCategory = "General"; }
+        if (TicketObj.TicketCategory == "G") { sTktCategory = "Personal information error"; }
+        if (TicketObj.TicketCategory == "H") { sTktCategory = "Product queries"; }
+        if (TicketObj.TicketCategory == "I") { sTktCategory = "Website error"; }
+
         $http.post("/api/Tickets", TicketObj).then(function (response) {
             $scope.Filename = "";
             $scope.subjectName = "";
@@ -173,7 +187,11 @@ module.controller('Ticket', function ($scope, $http, $location,$sce) {
             $scope.disableSubmit = false;
             $http.get("/api/Tickets").then(function (response) {
                 $scope.mytickets = response.data;
+                angular.forEach($scope.mytickets, function (value, index) {
+                    if (value.Status == "" || value.Status == null) { value.Status = "-"; }
+                })
             })
+            $http.get("/Home/SendSupportTicketemail?subject=" + TicketObj.Subject + "&message=" + TicketObj.Message + "&attachment=" + TicketObj.LibraryFilename + "&category=" + sTktCategory).then(function (resp) { })
         })
     }
 })
@@ -236,7 +254,6 @@ module.controller('TicketSupport', function ($scope, $http, $location, $sce) {
     
     $scope.getTickets = function () {
         $http.get("/Home/ActiveSupportTickets").then(function (response) {
-            debugger;
             $scope.mytickets = response.data.Tickets;
         })
     }
@@ -246,10 +263,8 @@ module.controller('TicketSupport', function ($scope, $http, $location, $sce) {
         //uniquename, filename, filetype, filepath
         $scope.currentRecordId = Id;
         $http.get('/api/Library/Index?module=Images&moduleId=' + $scope.currentRecordId + "&subModule=Attachments&subModuleId=0").then(function (data4) {
-            debugger;
             if (data4.data.uploadresults.length > 0) {
                 $scope.document_attachments = data4.data.uploadresults;
-                debugger;
                 $scope.documentID = data4.data.uploadresults[0].fileInternalName;
                 $scope.documentNAME = data4.data.uploadresults[0].fileName;
                 $scope.documentFILETYPE = data4.data.uploadresults[0].fileType;

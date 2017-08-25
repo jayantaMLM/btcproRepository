@@ -3,12 +3,10 @@
     ViewBag.Title = "MemberTransfers";
 }
 
-<h2>Member Transfers</h2>
-
 <script src="~/Scripts/angular.min.js"></script>
 <script src="~/app/scripts/MemberTransferController.js"></script>
 
-<section class="wrapper" style="margin-top:30px !important">
+<section class="wrapper">
     <div ng-app="app" ng-controller="MemberTransfer" ng-cloak>
         <div class="row">
             <div class="col-sm-12">
@@ -17,7 +15,7 @@
                         <i class=""></i> Transfers - Member Panel
                     </header>
                     <div class="panel-body">
-                        <div ng-show="isExists && trnpasswordexists">
+                        <div ng-show="isExists && trnpasswordexists" class="hidden-xs">
                             <table style="width:50%;min-width:300px;margin:0 auto">
                                 <tr style="line-height:30px">
                                     <td><label>Reserve Wallet balance ($) :</label></td>
@@ -50,22 +48,80 @@
                                     <td></td>
                                     <td><br /><button class="btn btn-success" ng-hide="username=='' || amount==null || amount<0 || amount==0 || amount > walletBalance || !trnpasswordIsOk" ng-click="Transaction()" style="margin:0 auto;">Transfer</button></td>
                                 </tr>
+                               
                             </table>
                         </div>
+                        <!---------------------------------------------------------------------------------->
+                        <div ng-show="isExists && trnpasswordexists" class="visible-xs" style="background-color:white;margin-bottom:15px">
+                            <div class="col-xs-12" style="margin-bottom:15px;background-color:white">
+                                <div class="col-xs-12"><label>Reserve Wallet balance$</label></div>
+                                <div class="col-xs-12">{{walletBalance | currency}}</div>
+                                <hr/>
+                            </div>
+                            <div class="col-xs-12"  style="margin-bottom:15px;background-color:white">
+                                <div class="col-xs-12"><label>Transfer to userId</label></div>
+                                <div class="col-xs-12"><input type="text" ng-model="username" class="form-control" ng-blur="checkUsername()" /></div>
+                                <div ng-if="errormessage.length>0" class="col-xs-12"><label style="color:red">{{errormessage}}</label></div>
+                                <hr/>
+                            </div>
+                            <div class="col-xs-12"  style="margin-bottom:15px;background-color:white">
+                                <div class="col-xs-12"><label>Wallet Type</label></div>
+                                <div class="col-xs-12">
+                                    <select name="wallet" ng-model="wallet" required class="form-control">
+                                         <option value="2">Reserve Wallet</option>
+                                    </select>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div class="col-xs-12"  style="margin-bottom:15px;background-color:white">
+                                <div class="col-xs-12"><label>Amount$ to transfer</label></div>
+                                <div class="col-xs-12"><input type="number" ng-model="amount" class="form-control" ng-min="1" /></div>
+                                <hr/>
+                            </div>
+                            <div class="col-xs-12"  style="margin-bottom:15px;background-color:white" ng-hide="username=='' || amount==null || amount<0 || amount==0 || amount > walletBalance">
+                                <div class="col-xs-12"><label>Transaction Password</label></div>
+                                <div class="col-xs-12"><input type="password" ng-model="trnpassword" class="form-control" ng-change="IsTrnPasswordOK()"/></div>
+                                <hr/>
+                             </div>
+                            <div class="col-xs-12"  style="margin-bottom:15px;background-color:white">
+                                <div class="col-xs-12" style="text-align:center"><button class="btn btn-success" ng-hide="username=='' || amount==null || amount<0 || amount==0 || amount > walletBalance || !trnpasswordIsOk" ng-click="Transaction()" style="margin:0 auto;">Transfer</button></div>
+                            </div>
+                        </div>
+                        <!----------------------------------------------------------------------------------->
                         <div ng-show="isExists && !trnpasswordexists" style="text-align:center">
                             <h2 style="color:darkseagreen">Your transaction password is not set. You can transfer after it is set!!!</h2><br />
                             <table style="width:50%;margin:auto !important">
                                 <tr>
                                     <td style="width:50%">New Transaction password:</td>
-                                    <td><input type="password" ng-model="trxpassword" class="form-control"/></td>
+                                    <td><input type="password" ng-model="trxpassword" class="form-control" /></td>
                                 </tr>
                             </table>
                             <button class="btn" ng-click="updateTrnPwd()" style="background-color:orange;margin-top:15px"><i class="fa fa-key"></i> Set Transaction Password</button>
                         </div>
                         <div ng-hide="isExists" style="text-align:center">
-                            <h2 style="color:darkseagreen">You can transfer only after upgrading your account with package purchase!!!</h2><br />
+                            <h2 style="color:black">You can transfer only after upgrading your account with package purchase!!!</h2><br />
                             <button class="btn" ng-click="goToPurchase()" style="background-color:orange"><i class="fa fa-shopping-cart"></i> Purchase package</button>
                         </div>
+
+                        <div ng-show="isExists" style="margin-bottom:15px;margin-top:15px;background-color:aliceblue" class="hidden-lg hidden-md hidden-sm visible-xs">
+                            <table class="table">
+                                <tbody>
+                                    <tr style="font-size:large;color:green">
+                                        <td data-label="SUMMARY:" style="border:none">(see below)</td>
+                                    </tr>
+                                    <tr style="font-size:large;color:green">
+                                        <td data-label="Deposit" ;style="color:none">{{totalDeposit | currency}}</td>
+                                    </tr>
+                                    <tr style="font-size:large;color:green">
+                                        <td data-label="Withdraw" style="border:none">{{totalWithdraw | currency}}</td>
+                                    </tr>
+                                    <tr style="font-size:large;color:green">
+                                        <td data-label="Balance" style="border:none">{{(totalDeposit - totalWithdraw) | currency}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <table class="table table-bordered table-striped" style="margin-top:30px">
                             <thead>
                                 <tr>
@@ -78,21 +134,58 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="trf in transfers | orderBy:'-Id'| filter:searchText |myLimitTo:maxSize:startindex">
-                                    <td>{{trf.Date}}</td>
-                                    <td>{{trf.Transfer}}</td>
-                                    <td>{{trf.Deposit | currency}}</td>
-                                    <td>{{trf.Withdraw | currency}}</td>
-                                    <td>{{trf.Amount | currency}}</td>
+                                    <td data-label="Trf. Date">{{trf.Date}}</td>
+                                    <td data-label="To / From">{{trf.Transfer}}</td>
+                                    <td data-label="Deposit$">{{trf.Deposit | currency}}</td>
+                                    <td data-label="Withdraw$">{{trf.Withdraw | currency}}</td>
+                                    <td data-label="Balance$">{{trf.Amount | currency}}</td>
                                 </tr>
                             </tbody>
+                            @*<tfoot>
+                                    <tr style="font-size:large;color:green">
+                                        <td colspan="2" style="padding-right:25px;text-align:right">Totals:</td>
+                                        <td>{{totalDeposit | currency}}</td>
+                                        <td>{{totalWithdraw | currency}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" class="text-center" style="padding-top:20px">
+                                            <div class="pull-left" style="padding-left:50px">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(transfers|filter:searchText).length}}</span></div>
+                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
+                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
+                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
+                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
+                                            <div class="pull-right">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>*@
                             <tfoot>
-                                <tr style="font-size:large;color:green">
-                                    <td colspan="2" style="padding-right:25px;text-align:right">Totals:</td>
+                                <tr style="font-size:large;color:green" class="hidden-xs">
+                                    <td colspan="3" style="padding-right:25px;text-align:right">Totals:</td>
                                     <td>{{totalDeposit | currency}}</td>
                                     <td>{{totalWithdraw | currency}}</td>
-                                    <td></td>
+                                    <td colspan="2"></td>
                                 </tr>
-                                <tr>
+
+                                <tr ng-show="isExists" class="hidden-lg hidden-md hidden-sm visible-xs">
+                                    <td colspan="5" style="border:none;text-align:center">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(transfers|filter:searchText).length}}</span></td>
+                                </tr>
+                                <tr ng-show="isExists" class="hidden-lg hidden-md hidden-sm visible-xs">
+                                    <td colspan="5" style="border:none;text-align:center">
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
+                                    </td>
+                                </tr>
+                                <tr ng-show="isExists" class="hidden-lg hidden-md hidden-sm visible-xs">
+                                    <td colspan="5" style="border:none;text-align:center">
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
+                                    </td>
+                                </tr>
+                                <tr ng-show="isExists" class="hidden-lg hidden-md hidden-sm visible-xs">
+                                    <td colspan="5" style="border:none;text-align:center">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></td>
+                                </tr>
+                                <tr class="hidden-xs">
                                     <td colspan="5" class="text-center" style="padding-top:20px">
                                         <div class="pull-left" style="padding-left:50px">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(transfers|filter:searchText).length}}</span></div>
                                         <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
@@ -102,7 +195,9 @@
                                         <div class="pull-right">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></div>
                                     </td>
                                 </tr>
+
                             </tfoot>
+
                         </table>
                     </div>
                 </section>
