@@ -1,0 +1,69 @@
+﻿<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/scripts/BusinessStatsController.js"></script>
+
+<section class="wrapper" style="margin-top:30px !important">
+    <div ng-app="app" ng-controller="BusinessStats" ng-cloak>
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <i class=""></i> Back Office Updates
+                    </header>
+                    <header class="panel-heading tab-bg-dark-navy-blue ">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#current">Business Statistics</a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" href="#wallet">Wallet A/c numbers</a>
+                            </li>
+                        </ul>
+                    </header>
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div id="current" class="tab-pane active">
+                                <table>
+                                    <tr>
+                                        <td>Total Investment ($):</td>
+                                        <td><input type="number" class="form-control" ng-model="stats.total_investment" ng-required="true" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Payout ($):</td>
+                                        <td><input type="number" class="form-control" ng-model="stats.total_payout" ng-required="true" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Current Month Investment ($):</td>
+                                        <td><input type="number" class="form-control" ng-model="stats.current_investment" ng-required="true" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Current Month Payout ($):</td>
+                                        <td><input type="number" class="form-control" ng-model="stats.current_payout" ng-required="true" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align:center;"><button type="submit" style="margin-top:20px" ng-click="save()">Save</button></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="wallet" class="tab-pane">
+                                <table class="table-inbox">
+                                    <tr>
+                                        <td style="width:20%">Bitcoin Wallet:</td>
+                                        <td><input type="text" class="form-control" ng-model="wallets.BitcoinWallet" ng-required="true" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ethereum Wallet:</td>
+                                        <td><input type="text" class="form-control" ng-model="wallets.EthereumWallet" ng-required="true" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align:center;"><button type="submit" style="margin-top:20px" ng-click="saveWallets()">Save</button></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>

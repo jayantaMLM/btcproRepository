@@ -8,6 +8,7 @@
         <!-- page start-->
         <div class="row">
             <div class="col-sm-12">
+
                 <section class="panel" ng-hide="isProductSelected">
                     <header class="panel-heading">
                         <i class="fa fa-shopping-cart"></i> Products Table
@@ -19,7 +20,7 @@
                             <p>Assured Return. High Sales Dividends. Unlimited earning potential.</p>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-hide="hidePurchaseBtn_Pluto">
-                            <div class="pricing-table" style="margin-bottom:25px">
+                            <div class="pricing-table" style="margin-bottom:25px;margin-top:20px;height:800px">
                                 <div class="pricing-head" style="background-color:#2f9f9e;">
                                     <h1> Pluto </h1>
                                 </div>
@@ -36,12 +37,12 @@
                                     <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%</li>
                                 </ul>
                                 <div class="price-actions">
-                                    <a class="btn" style="background-color:#2f9f9e;" ng-click="isProductSelected=true;packageId=1;selectedProduct='Pluto';minPay=20;maxPay=99;priceToPay='20$ - 99$';payamount=99"><span ng-if="upgradeOption==false">Purchase this Plan</span><span ng-if="upgradeOption==true">Upgrade to Plan</span> </a>
+                                    <a class="btn" style="background-color:#2f9f9e;" ng-click="isProductSelected=true;packageId=1;selectedProduct='Pluto';minPay=20;maxPay=99;priceToPay='20$ - 99$';payamount=99;walletBalance=walletBalance_USD;currencyToPay='(USD$)'"><span ng-if="upgradeOption==false">Purchase this Plan</span><span ng-if="upgradeOption==true">Upgrade to Plan</span> </a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-hide="hidePurchaseBtn_Jupiter">
-                            <div class="pricing-table most-popular"  style="margin-bottom:25px">
+                            <div class="pricing-table most-popular"  style="margin-bottom:25px;margin-top:20px;height:800px">
                                 <div class="pricing-head" style="background-color:#9c5d7a;">
                                     <h1> Jupiter </h1>
                                 </div>
@@ -58,12 +59,12 @@
                                     <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%,7%</li>
                                 </ul>
                                 <div class="price-actions">
-                                    <a class="btn" style="background-color:#9c5d7a !important;" ng-click="isProductSelected=true;packageId=2;selectedProduct='Jupiter';minPay=100;maxPay=2999;priceToPay='100$ - 2999$';payamount=2999"><span ng-if="upgradeOption==false">Purchase this Plan</span><span ng-if="upgradeOption==true">Upgrade to Plan</span></a>
+                                    <a class="btn" style="background-color:#9c5d7a !important;" ng-click="isProductSelected=true;packageId=2;selectedProduct='Jupiter';minPay=100;maxPay=2999;priceToPay='100$ - 2999$';payamount=2999;walletBalance=walletBalance_USD;currencyToPay='(USD$)'"><span ng-if="upgradeOption==false">Purchase this Plan</span><span ng-if="upgradeOption==true">Upgrade to Plan</span></a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-hide="hidePurchaseBtn_Earth">
-                            <div class="pricing-table" style="margin-bottom:25px">
+                            <div class="pricing-table" style="margin-bottom:25px;margin-top:20px;height:800px">
                                 <div class="pricing-head" style="background-color: #4897cc;">
                                     <h1> Earth  </h1>
                                 </div>
@@ -80,13 +81,13 @@
                                     <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%,7%,9%</li>
                                 </ul>
                                 <div class="price-actions">
-                                    <a class="btn" style="background-color: #4897cc;" ng-click="isProductSelected=true;packageId=3;selectedProduct='Earth';minPay=3000;maxPay=5000;priceToPay='3000$ - 5000$';payamount=5000"><span ng-if="upgradeOption==false">Purchase this Plan</span><span ng-if="upgradeOption==true">Upgrade to Plan</span></a>
+                                    <a class="btn" style="background-color: #4897cc;" ng-click="isProductSelected=true;packageId=3;selectedProduct='Earth';minPay=3000;maxPay=5000;priceToPay='3000$ - 5000$';payamount=5000;walletBalance=walletBalance_USD;currencyToPay='(USD$)'"><span ng-if="upgradeOption==false">Purchase this Plan</span><span ng-if="upgradeOption==true">Upgrade to Plan</span></a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top:20px" ng-hide="hidePurchaseBtn">
-                            <div class="pricing-table most-popular"  style="margin-bottom:25px">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="margin-top:20px" ng-hide="$scope.hidePurchaseBtn_Amazing ">
+                            <div class="pricing-table most-popular"  style="margin-bottom:25px;height:800px">
                                 <div class="pricing-head" style="background-color:#e9a640;">
                                     <h1> Amazing </h1>
                                 </div>
@@ -105,12 +106,12 @@
                                     <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%,7%,9%,10%,15%</li>
                                 </ul>
                                 <div class="price-actions">
-                                    <a class="btn" style="background-color:#e9a640 !important;" ng-hide="hidePurchaseBtn" ng-click="isProductSelected=true;packageId=6;selectedProduct='Amazing';minPay=20000;maxPay=20000;priceToPay='20000$';payamount=20000">Purchase This Plan</a>
+                                    <a class="btn" style="background-color:#e9a640 !important;" ng-hide="hidePurchaseBtn_Amazing" ng-click="isProductSelected=true;packageId=6;selectedProduct='Amazing';minPay=20000;maxPay=20000;walletBalance=walletBalance_USD;priceToPay='20000$';payamount=20000;currencyToPay='(USD$)'"><span ng-if="upgradeOption==false">Purchase this Plan</span><span ng-if="upgradeOption==true">Upgrade to Plan</span></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top:20px" ng-hide="hidePurchaseBtn">
-                            <div class="pricing-table most-popular"  style="margin-bottom:25px">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="margin-top:20px" ng-hide="$scope.hidePurchaseBtn_OctaCore">
+                            <div class="pricing-table most-popular"  style="margin-bottom:25px;height:800px">
                                 <div class="pricing-head" style="background-color:#9a85b9;">
                                     <h1> Octa Core </h1>
                                 </div>
@@ -129,14 +130,50 @@
                                     <li><i class="fa fa-check"></i> Generation Matching Bonus: 5%,7%,9%,10%,15%, 20%</li>
                                 </ul>
                                 <div class="price-actions">
-                                    <a class="btn" style="background-color:#9a85b9 !important;" ng-hide="hidePurchaseBtn" ng-click="isProductSelected=true;packageId=7;selectedProduct='Octa Core';minPay=30000;maxPay=30000;priceToPay='30000$';payamount=30000">Purchase This Plan</a>
+                                    <a class="btn" style="background-color:#9a85b9 !important;" ng-hide="hidePurchaseBtn_OctaCore" ng-click="isProductSelected=true;packageId=7;selectedProduct='Octa Core';minPay=30000;maxPay=30000;priceToPay='30000$';payamount=30000;walletBalance=walletBalance_USD;currencyToPay='(USD$)'"><span ng-if="upgradeOption==false">Purchase this Plan</span><span ng-if="upgradeOption==true">Upgrade to Plan</span></a>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="margin-top:20px;" ng-hide="hidePurchaseBtn_Ethereum">
+                            <div class="pricing-table most-popular" style="margin-bottom:25px;height:800px">
+                                <div class="pricing-head" style="background-color:#e9408e;">
+                                    <h1> Ethereum </h1>
+                                </div>
+                                <div class="pricing-quote" style="font-size:32px !important;padding-top:55px">
+                                    10 ETH
+                                </div>
+                                <ul class="list-unstyled" style="color:black !important">
+                                    <li><i class="fa fa-check"></i> Monthly (2 Years): 7% ETH</li>
+                                    <li><i class="fa fa-check"></i> Generation Matching Bonus: 10%,5%,2%,1%,1%,1%</li>
+                                    <li><i class="fa fa-check"></i> Generation Matching Level: As per package default</li>
+                                </ul>
+                                <div class="price-actions">
+                                    <a class="btn" style="background-color:#e9408e !important;" ng-hide="hidePurchaseBtn_Ethereum" ng-click="isProductSelected=true;packageId=8;selectedProduct='Ethereum';minPay=10;maxPay=10;priceToPay='10 ETH';payamount=10;walletBalance=walletBalance_ETH;currencyToPay='(ETH)'">Purchase This Plan</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="margin-top:20px;" ng-hide="hidePurchaseBtn_EthereumPlus">
+                            <div class="pricing-table most-popular" style="margin-bottom:25px;height:800px">
+                                <div class="pricing-head" style="background-color:#87b171;">
+                                    <h1> Ethereum Plus </h1>
+                                </div>
+                                <div class="pricing-quote" style="font-size:32px !important;padding-top:55px">
+                                    20 ETH
+                                </div>
+                                <ul class="list-unstyled" style="color:black !important">
+                                    <li><i class="fa fa-check"></i> Monthly (3 Years): 10% ETH</li>
+                                    <li><i class="fa fa-check"></i> Generation Matching Bonus: 15%,6%,3%,2%,2%,2%</li>
+                                    <li><i class="fa fa-check"></i> Generation Matching Level: As per package default</li>
+                                </ul>
+                                <div class="price-actions">
+                                    <a class="btn" style="background-color:#87b171 !important;" ng-hide="hidePurchaseBtn_EthereumPlus" ng-click="isProductSelected=true;packageId=9;selectedProduct='Ethereum Plus';minPay=20;maxPay=20;walletBalance=walletBalance_ETH;priceToPay='20 ETH';payamount=20;currencyToPay='(ETH)'">Purchase This Plan</a>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-show="hidePurchaseBtn">
-                            <div class="pricing-table most-popular">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-show="hidePurchaseBtn" style="margin-top:20px">
+                            <div class="pricing-table most-popular" style="height:800px">
                                 <div class="pricing-head" style="background-color:#00385a;">
                                     <h1> Repurchase </h1>
                                 </div>
@@ -153,13 +190,10 @@
                                     <li><i class="fa fa-check"></i> Generation Matching: Your highest package default</li>
                                 </ul>
                                 <div class="price-actions">
-                                    <a class="btn" ng-click="isProductSelected=true;packageId=5;selectedProduct='Repurchase';minPay=20;maxPay=1000000;priceToPay='20$ and above';payamount=100">Purchase This Plan</a>
+                                    <a class="btn" ng-click="isProductSelected=true;packageId=5;selectedProduct='Repurchase';minPay=20;maxPay=1000000;walletBalance=walletBalance_USD;priceToPay='20$ and above';payamount=100;currencyToPay='(USD$)'">Purchase This Plan</a>
                                 </div>
                             </div>
                         </div>
-                        @*<div  class="price-actions row" style="text-align:center;margin-top:5px">
-                                <button class="btn btn-success" style="margin-top:15px" ng-show="hidePurchaseBtn" ng-click="packageId=0;isProductSelected=true;selectedProduct='Repurchase';minPay=100;maxPay=1000000;priceToPay='20$ and above';payamount=100">Repurchase</button>
-                            </div>*@
                         <!--price end-->
                     </div>
                 </section>
@@ -181,9 +215,9 @@
                         </div>
 
                         <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:125px;padding-left:0px;padding-right:0px">
-                            <header class="panel-heading">Purchase Amount ($)</header>
+                            <header class="panel-heading">Purchase Amount {{currencyToPay}}</header>
                             <br />
-                            <input type="number" ng-model="payamount" ng-change="payamount_validate()" />
+                            <input type="number" ng-model="payamount" ng-change="payamount_validate()" ng-readonly="minPay==maxPay" />
                             <br /><br />
                             <div style="color:red" ng-hide="errmsg==''"><i class="fa fa-exclamation-circle"></i>&nbsp;{{errmsg}}</div>
                         </div>
@@ -197,9 +231,11 @@
                 </section>
 
                 <section class="panel" ng-show="proceed && !showInvoice">
+                    
                     <header class="panel-heading">
                         <i class="fa fa-shopping-cart"></i> Select payment method
                     </header>
+
                     <div class="panel-body" style="min-height:230px;text-align:center;font-size:16px;padding-bottom:0px !important">
                         <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px;padding-bottom:5px">
                             <header class="panel-heading">Payment Method</header>
@@ -207,15 +243,15 @@
                         </div>
                         <div class="col-sm-5 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
                             <header class="panel-heading visible-lg visible-md visible-sm hidden-xs">Description</header>
-                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This payment option allows you to pay using the income that you have earned in the system.</p></div>
+                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This payment option allows you to pay using the income that you have earned in the system or from the balance received from the system vide manual deposit in the company account.</p></div>
 
                         </div>
                         <div class="col-sm-4 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
                             <header class="panel-heading visible-lg visible-md visible-sm hidden-xs">Action</header>
                             <div class="col-xs-8" style="text-align:right;padding-top:20px">e-Wallet Balance :</div>
-                            <div class="col-xs-4" style="text-align:left;padding-top:20px;padding-left:0px">{{walletBalance | currency}}</div>
+                            <div class="col-xs-4" style="text-align:left;padding-top:20px;padding-left:0px">{{walletBalance | currency:currencyToPay+' '}}</div>
                             <div class="col-xs-8" style="text-align:right">Wallet Deduction :</div>
-                            <div class="col-xs-4" style="text-align:left;padding-left:0px">{{payamount | currency}}</div>
+                            <div class="col-xs-4" style="text-align:left;padding-left:0px">{{payamount | currency:currencyToPay+' '}}</div>
 
                             <div>
                                 <button ng-show="walletBalance>=payamount && !loader" ng-click="newPurchase();showInvoice=true" class="btn btn-success" style="margin-top:10px">Pay</button><span ng-show="loader"><img src="~/Content/loader.gif" /></span>
@@ -224,13 +260,13 @@
                         </div>
                     </div>
 
-                    <div class="panel-body" style="min-height:230px;text-align:center;font-size:16px;padding-top:0px !important;margin-top:15px">
+                    <div class="panel-body" style="min-height:230px;text-align:center;font-size:16px;padding-top:0px !important;margin-top:15px" ng-hide="currencyToPay=='(ETH)'">
                         <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
                             <header class="panel-heading hidden-lg hidden-md hidden-sm visible-xs">Payment Method</header> 
                              <img src="~/Content/Bitcoin2.png" style="height:132px" />
                         </div>
                         <div class="col-sm-5 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
-                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This option allows you to pay using Bitcoins. The transaction details are provided on the next page to complete your purchase.</p></div>
+                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This option allows you to pay using <b>BitCoin</b>. The transaction details are provided on the next page to complete your purchase.</p></div>
                         </div>
                         <div class="col-sm-4 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
                             <div style="margin-top:50px"><button ng-show="!loaderBTC" class="btn btn-success" style="vertical-align:central" ng-click="loaderBTC=true;bitCoinPurchase('BTC');">Pay with BitCoin</button><span ng-show="loaderBTC"><img src="~/Content/loader.gif" /></span></div>
@@ -243,40 +279,43 @@
                             <img src="~/Content/Ethereum2.png" style="height:132px" />
                         </div>
                         <div class="col-sm-5 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
-                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This option allows you to pay using Ethereum. The transaction details are provided on the next page to complete your purchase.</p></div>
+                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This option allows you to pay using <b>Ethereum</b>. The transaction details are provided on the next page to complete your purchase.</p></div>
                         </div>
                         <div class="col-sm-4 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
                             <div style="margin-top:50px"><button ng-show="!loaderETH" class="btn btn-success" style="vertical-align:central" ng-click="loaderETH=true;bitCoinPurchase('ETH');">Pay with Ethereum</button><span ng-show="loaderETH"><img src="~/Content/loader.gif" /></span></div>
                         </div>
                     </div>
 
-                    <div class="panel-body" style="min-height:230px;text-align:center;font-size:16px;padding-top:0px !important">
+                    <div class="panel-body" style="min-height:230px;text-align:center;font-size:16px;padding-top:0px !important" ng-hide="currencyToPay=='(ETH)'">
                         <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
                             <header class="panel-heading hidden-lg hidden-md hidden-sm visible-xs">Payment Method</header>
                             <img src="~/Content/LiteCoin2.png" style="height:132px" />
                         </div>
                         <div class="col-sm-5 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
-                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This option allows you to pay using Litecoins. The transaction details are provided on the next page to complete your purchase.</p></div>
+                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This option allows you to pay using <b>Litecoin</b>. The transaction details are provided on the next page to complete your purchase.</p></div>
                         </div>
                         <div class="col-sm-4 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
                             <div style="margin-top:50px"><button ng-show="!loaderLTC" class="btn btn-success" style="vertical-align:central" ng-click="loaderLTC=true;bitCoinPurchase('LTC');">Pay with LiteCoin</button><span ng-show="loaderLTC"><img src="~/Content/loader.gif" /></span></div>
                         </div>
                     </div>
 
-                    <div class="panel-body" style="min-height:230px;text-align:center;font-size:16px;padding-top:0px !important">
+                    <div class="panel-body" style="min-height:230px;text-align:center;font-size:16px;padding-top:0px !important" ng-hide="currencyToPay=='(ETH)'">
                         <div class="col-sm-3 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
                             <header class="panel-heading hidden-lg hidden-md hidden-sm visible-xs">Payment Method</header>
                             <img src="~/Content/DashCoin2.png" style="height:132px" />
                         </div>
                         <div class="col-sm-5 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
-                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This option allows you to pay using Dash. The transaction details are provided on the next page to complete your purchase.</p></div>
+                            <div style="padding:10px;vertical-align:middle;height:150px;text-align:left; padding-top:40px !important"><p>This option allows you to pay using <b>Dash</b>. The transaction details are provided on the next page to complete your purchase.</p></div>
                         </div>
                         <div class="col-sm-4 col-xs-12" style="border:1px solid;border-color:lightgray;height:200px;padding-left:0px;padding-right:0px">
                             <div style="margin-top:50px"><button ng-show="!loaderDSC" class="btn btn-success" style="vertical-align:central" ng-click="loaderDSC=true;bitCoinPurchase('DASH');">Pay with Dash</button><span ng-show="loaderDSC"><img src="~/Content/loader.gif" /></span></div>
                         </div>
+                    </div>
 
+                    <div style="text-align:center;padding-bottom:30px">
                         <button class="btn btn-danger" ng-click="proceed=false" style="margin-top:12px">Return</button>
                     </div>
+                    
                 </section>
 
                 <section class="panel" ng-show="!proceed && !showInvoice &&showBitCoinInfo">
@@ -353,7 +392,7 @@
                                         <h3>TOTAL</h3>
                                     </div>
                                     <div class="col-md-12">
-                                        <h1 class="amnt-value">{{payamount | currency}}</h1>
+                                        <h1 class="amnt-value">{{payamount | currency:currencyToPay+' '}}</h1>
                                     </div>
                                 </div>
 
@@ -376,9 +415,9 @@
                                         <h4>Item 1</h4>
                                         <p>{{selectedProduct}} package</p>
                                     </td>
-                                    <td class="text-center">{{minPay | currency}} - {{maxPay | currency}}</td>
+                                    <td class="text-center">{{minPay | currency:currencyToPay+' '}} - {{maxPay | currency:currencyToPay+' '}}</td>
                                     <td class="text-center">1</td>
-                                    <td class="text-center">{{payamount | currency}}</td>
+                                    <td class="text-center">{{payamount | currency:currencyToPay+' '}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -392,8 +431,8 @@
                             </div>
                             <div class="col-md-4 col-xs-5 invoice-block pull-right">
                                 <ul class="unstyled amounts">
-                                    <li>Sub - Total amount : {{payamount | currency}}</li>
-                                    <li class="grand-total">Grand Total : {{payamount | currency}}</li>
+                                    <li>Sub - Total amount : {{payamount | currency:currencyToPay + ' '}}</li>
+                                    <li class="grand-total">Grand Total : {{payamount | currency:currencyToPay + ' '}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -403,6 +442,7 @@
                             </div>*@
                     </div>
                 </section>
+
             </div>
             <!-- page end-->
         </div>

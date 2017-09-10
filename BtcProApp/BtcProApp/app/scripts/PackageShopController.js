@@ -6,6 +6,7 @@ module.controller('PackageShop', function ($scope, $http, $sce, $interval) {
     $scope.maxPay = 0;
     $scope.priceToPay = "";
     $scope.payamount = 0;
+    $scope.currencyToPay = "";
     $scope.errmsg = "";
     $scope.errmsg1 = "";
     $scope.proceed = false;
@@ -27,6 +28,8 @@ module.controller('PackageShop', function ($scope, $http, $sce, $interval) {
     $scope.hidePurchaseBtn_Earth = false;
     $scope.hidePurchaseBtn_Amazing = false;
     $scope.hidePurchaseBtn_OctaCore = false;
+    $scope.hidePurchaseBtn_Ethereum = false;
+    $scope.hidePurchaseBtn_EthereumPlus = false;
 
     $scope.showBitCoinInfo = false;
     //$scope.FullQRImagePath = "/Content/qrgen.png";
@@ -35,7 +38,11 @@ module.controller('PackageShop', function ($scope, $http, $sce, $interval) {
 
     $scope.getbalance = function () {
         $http.get("MyWalletBalance?WalletId=2").then(function (data) {
-            $scope.walletBalance = data.data.Balance;
+            $scope.walletBalance_USD = data.data.Balance;
+            $scope.CheckBalance();
+        })
+        $http.get("MyWalletBalance?WalletId=4").then(function (data) {
+            $scope.walletBalance_ETH = data.data.Balance;
             $scope.CheckBalance();
         })
         $http.get("/Home/MyPurchases").then(function (purdata) {
@@ -50,6 +57,8 @@ module.controller('PackageShop', function ($scope, $http, $sce, $interval) {
                 $scope.hidePurchaseBtn_Earth = false;
                 $scope.hidePurchaseBtn_Amazing = false;
                 $scope.hidePurchaseBtn_OctaCore = false;
+                $scope.hidePurchaseBtn_Ethereum = true;
+                $scope.hidePurchaseBtn_EthereumPlus = true;
             } else {
                 $scope.filteredpurchases = [];
                 angular.forEach($scope.purchases, function (value, index) {
@@ -67,6 +76,8 @@ module.controller('PackageShop', function ($scope, $http, $sce, $interval) {
                 $scope.hidePurchaseBtn_Earth = false;
                 $scope.hidePurchaseBtn_Amazing = false;
                 $scope.hidePurchaseBtn_OctaCore = false;
+                $scope.hidePurchaseBtn_Ethereum = false;
+                $scope.hidePurchaseBtn_EthereumPlus = false;
             }
             if ($scope.filteredpurchases.length > 0 && $scope.filteredpurchases[$scope.filteredpurchases.length - 1].PackageId == 2) {
                 $scope.hidePurchaseBtn = true;
@@ -77,6 +88,8 @@ module.controller('PackageShop', function ($scope, $http, $sce, $interval) {
                 $scope.hidePurchaseBtn_Earth = false;
                 $scope.hidePurchaseBtn_Amazing = false;
                 $scope.hidePurchaseBtn_OctaCore = false;
+                $scope.hidePurchaseBtn_Ethereum = false;
+                $scope.hidePurchaseBtn_EthereumPlus = false;
             }
             if ($scope.filteredpurchases.length > 0 && $scope.filteredpurchases[$scope.filteredpurchases.length - 1].PackageId == 3) {
                 $scope.hidePurchaseBtn = true;
@@ -87,6 +100,8 @@ module.controller('PackageShop', function ($scope, $http, $sce, $interval) {
                 $scope.hidePurchaseBtn_Earth = true;
                 $scope.hidePurchaseBtn_Amazing = false;
                 $scope.hidePurchaseBtn_OctaCore = false;
+                $scope.hidePurchaseBtn_Ethereum = false;
+                $scope.hidePurchaseBtn_EthereumPlus = false;
             }
         })
     }
@@ -112,7 +127,7 @@ module.controller('PackageShop', function ($scope, $http, $sce, $interval) {
 
     $scope.newPurchase = function () {
         $scope.loader = true;
-        $http.post("MyNewPurchase?packageId=" + $scope.packageId + "&investmentAmt=" + $scope.payamount).then(function (data) {
+        $http.post("MyNewPurchase?packageId=" + $scope.packageId + "&investmentAmt=" + $scope.payamount + "&Currency=" + $scope.currencyToPay).then(function (data) {
             if (data.data.Success == "TRUE") {
                 $http.post("/Home/NotifyAdminAboutPackagePurchase?PackageId=" + $scope.packageId + "&Amount=" + $scope.payamount);
                 $http.get("MyAddress").then(function (retdata) {

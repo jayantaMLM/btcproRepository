@@ -466,6 +466,38 @@
     <Compile Include="Migrations\201708030906532_update_member_field_Acheivement1Date.Designer.cs">
       <DependentUpon>201708030906532_update_member_field_Acheivement1Date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708270645574_CurrencyField_LedgerTable.cs" />
+    <Compile Include="Migrations\201708270645574_CurrencyField_LedgerTable.Designer.cs">
+      <DependentUpon>201708270645574_CurrencyField_LedgerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708270721028_CurrencyField_PurchaseTable.cs" />
+    <Compile Include="Migrations\201708270721028_CurrencyField_PurchaseTable.Designer.cs">
+      <DependentUpon>201708270721028_CurrencyField_PurchaseTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708270748316_CurrencyField_WalletTable.cs" />
+    <Compile Include="Migrations\201708270748316_CurrencyField_WalletTable.Designer.cs">
+      <DependentUpon>201708270748316_CurrencyField_WalletTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708271558005_CurrencyField_WeeklyTable.cs" />
+    <Compile Include="Migrations\201708271558005_CurrencyField_WeeklyTable.Designer.cs">
+      <DependentUpon>201708271558005_CurrencyField_WeeklyTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708271658532_CurrencyField_GenerationIncome.cs" />
+    <Compile Include="Migrations\201708271658532_CurrencyField_GenerationIncome.Designer.cs">
+      <DependentUpon>201708271658532_CurrencyField_GenerationIncome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709031133088_BusinessStats_table.cs" />
+    <Compile Include="Migrations\201709031133088_BusinessStats_table.Designer.cs">
+      <DependentUpon>201709031133088_BusinessStats_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709070234276_WalletAccount1.cs" />
+    <Compile Include="Migrations\201709070234276_WalletAccount1.Designer.cs">
+      <DependentUpon>201709070234276_WalletAccount1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709101140588_Register_EthereumWalletAccount.cs" />
+    <Compile Include="Migrations\201709101140588_Register_EthereumWalletAccount.Designer.cs">
+      <DependentUpon>201709101140588_Register_EthereumWalletAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BtcProDB.cs" />
@@ -489,6 +521,7 @@
     <Content Include="advanced_form.html" />
     <Content Include="app\scripts\BinaryLedgerController.js" />
     <Content Include="app\scripts\BitCoinDepositController.js" />
+    <Content Include="app\scripts\BusinessStatsController.js" />
     <Content Include="app\scripts\ChangeUserIdController.js" />
     <Content Include="app\scripts\FixedPayoutController.js" />
     <Content Include="app\scripts\AdminTransferController.js" />
@@ -2059,6 +2092,7 @@
     <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Ethereum.cshtml" />
+    <Content Include="Views\Home\BusinessStats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2257,6 +2291,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708030906532_update_member_field_Acheivement1Date.resx">
       <DependentUpon>201708030906532_update_member_field_Acheivement1Date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708270645574_CurrencyField_LedgerTable.resx">
+      <DependentUpon>201708270645574_CurrencyField_LedgerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708270721028_CurrencyField_PurchaseTable.resx">
+      <DependentUpon>201708270721028_CurrencyField_PurchaseTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708270748316_CurrencyField_WalletTable.resx">
+      <DependentUpon>201708270748316_CurrencyField_WalletTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271558005_CurrencyField_WeeklyTable.resx">
+      <DependentUpon>201708271558005_CurrencyField_WeeklyTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271658532_CurrencyField_GenerationIncome.resx">
+      <DependentUpon>201708271658532_CurrencyField_GenerationIncome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709031133088_BusinessStats_table.resx">
+      <DependentUpon>201709031133088_BusinessStats_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709070234276_WalletAccount1.resx">
+      <DependentUpon>201709070234276_WalletAccount1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709101140588_Register_EthereumWalletAccount.resx">
+      <DependentUpon>201709101140588_Register_EthereumWalletAccount.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Models\dbview.dbml.layout">
       <DependentUpon>dbview.dbml</DependentUpon>

@@ -292,3 +292,11 @@ C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\ob
 C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.BinaryOpening_update.resources
 C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.update_member_field_Acheivement1.resources
 C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.update_member_field_Acheivement1Date.resources
+C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.CurrencyField_LedgerTable.resources
+C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.CurrencyField_PurchaseTable.resources
+C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.CurrencyField_WalletTable.resources
+C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.CurrencyField_WeeklyTable.resources
+C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.CurrencyField_GenerationIncome.resources
+C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.BusinessStats_table.resources
+C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.WalletAccount1.resources
+C:\Users\Bhim Prakash Singh\Source\Repos\btcproRepository\BtcProApp\BtcProApp\obj\Debug\BtcProApp.Migrations.Register_EthereumWalletAccount.resources

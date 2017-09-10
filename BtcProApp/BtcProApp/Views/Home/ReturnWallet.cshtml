@@ -7,108 +7,218 @@
 <script src="~/app/scripts/FixedIncomeWalletController.js"></script>
 
 <section class="wrapper">
-    <div ng-app="app" ng-controller="FixedIncomeWallet" ng-cloak>
+    <div ng-app="app">
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
                         <i class="fa fa-money" style="color:green"></i> Investment Return Wallet
                     </header>
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#current">USD$</a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" href="#eth">ETH</a>
+                        </li>
+                    </ul>
                     <div class="panel-body">
-                        <div style="text-align:center">
-                        </div>
-                        <div style="margin-bottom:10px">Showing 1 - {{FixedWalletledger.length}} of {{FixedWalletledger.length}} total</div>
-                        <div style="margin-bottom:10px;min-height:40px">
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="margin-bottom:10px;background-color:white">
-                                <div class="col-xs-4" style="vertical-align:middle;padding:0;padding-top:8px">
-                                    Search :&nbsp;<i class="fa fa-search"></i>
-                                </div>
-                                <div class="col-xs-8" style="padding:0px;margin-bottom:10px;">
-                                    <input type="text" class="form-control" ng-model="searchText" ng-change="filterChanged({{FixedWalletledger|filter:searchText}})" placeholder="Input search text" />
+                        <div class="tab-content">
+                            <div id="current" class="tab-pane active">
+                                <div ng-controller="FixedIncomeWallet" ng-cloak>
+                                    <div style="margin-bottom:10px">Showing 1 - {{FixedWalletledger.length}} of {{FixedWalletledger.length}} total</div>
+                                    <div style="margin-bottom:10px;min-height:40px">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="margin-bottom:10px;background-color:white">
+                                            <div class="col-xs-4" style="vertical-align:middle;padding:0;padding-top:8px">
+                                                Search :&nbsp;<i class="fa fa-search"></i>
+                                            </div>
+                                            <div class="col-xs-8" style="padding:0px;margin-bottom:10px;">
+                                                <input type="text" class="form-control" ng-model="searchText" ng-change="filterChanged({{FixedWalletledger|filter:searchText}})" placeholder="Input search text" />
+                                            </div>
+                                        </div>
+                                        <div style="margin-bottom:15px;margin-top:15px;background-color:aliceblue" class="hidden-lg hidden-md hidden-sm visible-xs">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr style="font-size:large;color:green">
+                                                        <td data-label="SUMMARY:" style="border:none">(see below)</td>
+                                                    </tr>
+                                                    <tr style="font-size:large;color:green">
+                                                        <td data-label="Deposit" ;style="color:none">{{totalDeposit | currency}}</td>
+                                                    </tr>
+                                                    <tr style="font-size:large;color:green">
+                                                        <td data-label="Withdraw" style="border:none">{{totalWithdraw | currency}}</td>
+                                                    </tr>
+                                                    <tr style="font-size:large;color:green">
+                                                        <td data-label="Balance" style="border:none">{{(totalDeposit - totalWithdraw) | currency}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <table class="table table-striped table-bordered" style="width:100%;text-align:center">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align:center">Date</th>
+                                                    <th style="text-align:center">Transaction Type</th>
+                                                    <th style="text-align:center">Ledger</th>
+                                                    <th style="text-align:center">Deposit Amount</th>
+                                                    <th style="text-align:center">Withdrawal Amount</th>
+                                                    <th style="text-align:center">Balance</th>
+                                                    <th style="text-align:center">Remarks</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="ldgr in FixedWalletledger | orderBy:'-Id'| filter:searchText |myLimitTo:maxSize:startindex">
+                                                    <td data-label="Date">{{ldgr.sDate}}</td>
+                                                    <td data-label="Trn. Type">{{ldgr.TransactionType}}</td>
+                                                    <td data-label="Ledger">{{ldgr.Ledger}}</td>
+                                                    <td data-label="Deposit$">{{ldgr.Deposit | currency}}</td>
+                                                    <td data-label="Withdraw$">{{ldgr.Withdraw | currency}}</td>
+                                                    <td data-label="Balance$">{{ldgr.Balance | currency}}</td>
+                                                    <td data-label="Remarks"><span ng-if="ldgr.Remarks.length==null">-</span>{{ldgr.Remarks}}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr style="font-size:large;color:green" class="hidden-xs">
+                                                    <td colspan="3" style="padding-right:25px;text-align:right">Totals:</td>
+                                                    <td>{{totalDeposit | currency}}</td>
+                                                    <td>{{totalWithdraw | currency}}</td>
+                                                    <td colspan="2"></td>
+                                                </tr>
+
+                                                <tr class="hidden-lg hidden-md hidden-sm visible-xs">
+                                                    <td colspan="7" style="border:none;text-align:center">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(FixedWalletledger|filter:searchText).length}}</span></td>
+                                                </tr>
+                                                <tr class="hidden-lg hidden-md hidden-sm visible-xs">
+                                                    <td colspan="7" style="border:none;text-align:center">
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hidden-lg hidden-md hidden-sm visible-xs">
+                                                    <td colspan="7" style="border:none;text-align:center">
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hidden-lg hidden-md hidden-sm visible-xs">
+                                                    <td colspan="7" style="border:none;text-align:center">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></td>
+                                                </tr>
+                                                <tr class="hidden-xs">
+                                                    <td colspan="7" class="text-center" style="padding-top:20px">
+                                                        <div class="pull-left" style="padding-left:50px">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(FixedWalletledger|filter:searchText).length}}</span></div>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
+                                                        <div class="pull-right">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></div>
+                                                    </td>
+                                                </tr>
+
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                            <div style="margin-bottom:15px;margin-top:15px;background-color:aliceblue" class="hidden-lg hidden-md hidden-sm visible-xs">
-                                <table class="table">
-                                    <tbody>
-                                        <tr style="font-size:large;color:green">
-                                            <td data-label="SUMMARY:" style="border:none">(see below)</td>
-                                        </tr>
-                                        <tr style="font-size:large;color:green">
-                                            <td data-label="Deposit" ;style="color:none">{{totalDeposit | currency}}</td>
-                                        </tr>
-                                        <tr style="font-size:large;color:green">
-                                            <td data-label="Withdraw" style="border:none">{{totalWithdraw | currency}}</td>
-                                        </tr>
-                                        <tr style="font-size:large;color:green">
-                                            <td data-label="Balance" style="border:none">{{(totalDeposit - totalWithdraw) | currency}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+
+                            <div id="eth" class="tab-pane">
+                                <div ng-controller="ETHFixedIncomeWallet" ng-cloak>
+                                    <div style="margin-bottom:10px">Showing 1 - {{FixedWalletledger.length}} of {{FixedWalletledger.length}} total</div>
+                                    <div style="margin-bottom:10px;min-height:40px">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="margin-bottom:10px;background-color:white">
+                                            <div class="col-xs-4" style="vertical-align:middle;padding:0;padding-top:8px">
+                                                Search :&nbsp;<i class="fa fa-search"></i>
+                                            </div>
+                                            <div class="col-xs-8" style="padding:0px;margin-bottom:10px;">
+                                                <input type="text" class="form-control" ng-model="searchText" ng-change="filterChanged({{FixedWalletledger|filter:searchText}})" placeholder="Input search text" />
+                                            </div>
+                                        </div>
+                                        <div style="margin-bottom:15px;margin-top:15px;background-color:aliceblue" class="hidden-lg hidden-md hidden-sm visible-xs">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr style="font-size:large;color:green">
+                                                        <td data-label="SUMMARY:" style="border:none">(see below)</td>
+                                                    </tr>
+                                                    <tr style="font-size:large;color:green">
+                                                        <td data-label="Deposit" ;style="color:none">{{totalDeposit | currency:'ETH '}}</td>
+                                                    </tr>
+                                                    <tr style="font-size:large;color:green">
+                                                        <td data-label="Withdraw" style="border:none">{{totalWithdraw | currency:'ETH '}}</td>
+                                                    </tr>
+                                                    <tr style="font-size:large;color:green">
+                                                        <td data-label="Balance" style="border:none">{{(totalDeposit - totalWithdraw) | currency:'ETH '}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <table class="table table-striped table-bordered" style="width:100%;text-align:center">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align:center">Date</th>
+                                                    <th style="text-align:center">Transaction Type</th>
+                                                    <th style="text-align:center">Ledger</th>
+                                                    <th style="text-align:center">Deposit Amount</th>
+                                                    <th style="text-align:center">Withdrawal Amount</th>
+                                                    <th style="text-align:center">Balance</th>
+                                                    <th style="text-align:center">Remarks</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="ldgr in FixedWalletledger | orderBy:'-Id'| filter:searchText |myLimitTo:maxSize:startindex">
+                                                    <td data-label="Date">{{ldgr.sDate}}</td>
+                                                    <td data-label="Trn. Type">{{ldgr.TransactionType}}</td>
+                                                    <td data-label="Ledger">{{ldgr.Ledger}}</td>
+                                                    <td data-label="Deposit$">{{ldgr.Deposit | currency:'ETH '}}</td>
+                                                    <td data-label="Withdraw$">{{ldgr.Withdraw | currency:'ETH '}}</td>
+                                                    <td data-label="Balance$">{{ldgr.Balance | currency:'ETH '}}</td>
+                                                    <td data-label="Remarks"><span ng-if="ldgr.Remarks.length==null">-</span>{{ldgr.Remarks}}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr style="font-size:large;color:green" class="hidden-xs">
+                                                    <td colspan="3" style="padding-right:25px;text-align:right">Totals:</td>
+                                                    <td>{{totalDeposit | currency:'ETH '}}</td>
+                                                    <td>{{totalWithdraw | currency:'ETH '}}</td>
+                                                    <td colspan="2"></td>
+                                                </tr>
+
+                                                <tr class="hidden-lg hidden-md hidden-sm visible-xs">
+                                                    <td colspan="7" style="border:none;text-align:center">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(FixedWalletledger|filter:searchText).length}}</span></td>
+                                                </tr>
+                                                <tr class="hidden-lg hidden-md hidden-sm visible-xs">
+                                                    <td colspan="7" style="border:none;text-align:center">
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hidden-lg hidden-md hidden-sm visible-xs">
+                                                    <td colspan="7" style="border:none;text-align:center">
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hidden-lg hidden-md hidden-sm visible-xs">
+                                                    <td colspan="7" style="border:none;text-align:center">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></td>
+                                                </tr>
+                                                <tr class="hidden-xs">
+                                                    <td colspan="7" class="text-center" style="padding-top:20px">
+                                                        <div class="pull-left" style="padding-left:50px">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(FixedWalletledger|filter:searchText).length}}</span></div>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
+                                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
+                                                        <div class="pull-right">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></div>
+                                                    </td>
+                                                </tr>
+
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-
-                            <table class="table table-striped table-bordered" style="width:100%;text-align:center">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align:center">Date</th>
-                                        <th style="text-align:center">Transaction Type</th>
-                                        <th style="text-align:center">Ledger</th>
-                                        <th style="text-align:center">Deposit Amount</th>
-                                        <th style="text-align:center">Withdrawal Amount</th>
-                                        <th style="text-align:center">Balance</th>
-                                        <th style="text-align:center">Remarks</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="ldgr in FixedWalletledger | orderBy:'-Id'| filter:searchText |myLimitTo:maxSize:startindex">
-                                        <td data-label="Date">{{ldgr.sDate}}</td>
-                                        <td data-label="Trn. Type">{{ldgr.TransactionType}}</td>
-                                        <td data-label="Ledger">{{ldgr.Ledger}}</td>
-                                        <td data-label="Deposit$">{{ldgr.Deposit | currency}}</td>
-                                        <td data-label="Withdraw$">{{ldgr.Withdraw | currency}}</td>
-                                        <td data-label="Balance$">{{ldgr.Balance | currency}}</td>
-                                        <td data-label="Remarks"><span ng-if="ldgr.Remarks.length==null">-</span>{{ldgr.Remarks}}</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr style="font-size:large;color:green" class="hidden-xs">
-                                        <td colspan="3" style="padding-right:25px;text-align:right">Totals:</td>
-                                        <td>{{totalDeposit | currency}}</td>
-                                        <td>{{totalWithdraw | currency}}</td>
-                                        <td colspan="2"></td>
-                                    </tr>
-
-                                    <tr class="hidden-lg hidden-md hidden-sm visible-xs">
-                                        <td colspan="7" style="border:none;text-align:center">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(FixedWalletledger|filter:searchText).length}}</span></td>
-                                    </tr>
-                                    <tr class="hidden-lg hidden-md hidden-sm visible-xs">
-                                        <td colspan="7" style="border:none;text-align:center">
-                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
-                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="hidden-lg hidden-md hidden-sm visible-xs">
-                                        <td colspan="7" style="border:none;text-align:center">
-                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
-                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px;margin:2px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="hidden-lg hidden-md hidden-sm visible-xs">
-                                        <td colspan="7" style="border:none;text-align:center">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></td>
-                                    </tr>
-                                    <tr class="hidden-xs">
-                                        <td colspan="7" class="text-center" style="padding-top:20px">
-                                            <div class="pull-left" style="padding-left:50px">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(FixedWalletledger|filter:searchText).length}}</span></div>
-                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
-                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
-                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
-                                            <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
-                                            <div class="pull-right">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></div>
-                                        </td>
-                                    </tr>
-
-                                </tfoot>
-                            </table>
                         </div>
+                       
                     </div>
                 </section>
             </div>

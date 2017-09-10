@@ -238,11 +238,12 @@ module.controller('AccountStatus', function ($scope, $http, $location, $sce) {
     $scope.BitCoinAcNo = "";
     $http.get("/Home/GetMyAccountNo").then(function (response) {
         $scope.BitCoinAcNo = response.data.WalletAc;
+        $scope.EthereumAcNo = response.data.EthereumWalletAc;
         $scope.trnpassword = "";
     })
 
     $scope.UpdateAcno = function () {
-        $http.get("/Home/MyAccountNo?WalletId=" + $scope.BitCoinAcNo).then(function (data) {
+        $http.get("/Home/MyAccountNo?WalletId=" + $scope.BitCoinAcNo+"&MyEthereumAccountNo="+$scope.EthereumAcNo).then(function (data) {
             if (data.data.Success) {
                 alert("Updated successfully");
             }

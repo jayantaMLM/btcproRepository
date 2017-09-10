@@ -1,11 +1,4 @@
-﻿
-@{
-    ViewBag.Title = "AdminTransfers";
-}
-
-<h2>AdminTransfers</h2>
-
-<script src="~/Scripts/angular.min.js"></script>
+﻿<script src="~/Scripts/angular.min.js"></script>
 <script src="~/app/scripts/AdminTransferController.js"></script>
 
 <section class="wrapper" style="margin-top:30px !important">
@@ -16,122 +9,193 @@
                     <header class="panel-heading">
                         <i class=""></i> Transfers - Admin Panel
                     </header>
+                    <header class="panel-heading tab-bg-dark-navy-blue ">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#current">Transfer Form</a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" href="#report">Transfer Report</a>
+                            </li>
+                        </ul>
+                    </header>
                     <div class="panel-body">
-                       <table style="width:50%;min-width:300px;margin:0 auto">
-                           <tr style="line-height:30px">
-                               <td><label>Transfer to Username:</label>
-                                   <label>{{dummy}}</label>
-                               </td>
-                               <td><input type="text" ng-model="username" class="form-control" ng-blur="checkUsername()"/>
-                               </td>
-                           </tr>
-                           <tr ng-if="errormessage!=''">
-                               <td></td>
-                               <td style="color:red;float:left"><label class="pull-right">{{errormessage}}</label></td>
-                           </tr>
-                           <tr ng-show="idfound">
-                               <td><label>Name:</label></td>
-                               <td>{{name}}</td>
-                           </tr>
-                           <tr ng-show="idfound">
-                               <td><label>Email:</label></td>
-                               <td>{{email}}</td>
-                           </tr>
-                           <tr ng-show="idfound">
-                               <td><label>CountryCode:</label></td>
-                               <td>{{countrycode}}</td>
-                           </tr>
-                          
-                           <tr ng-show="idfound">
-                               <td><label>Cash Wallet ($):</label></td>
-                               <td>{{CashwalletBalance | currency}}</td>
-                           </tr>
-                           <tr ng-show="idfound">
-                               <td><label>Reserve Wallet ($):</label></td>
-                               <td>{{ReservewalletBalance | currency}}</td>
-                           </tr>
-                           <tr ng-show="idfound">
-                               <td><label>Investment Return Wallet ($):</label></td>
-                               <td>{{InvestmentReturnwalletBalance | currency}}</td>
-                           </tr>
-                           <tr ng-show="idfound">
-                               <td><label>Frozen Wallet ($):</label></td>
-                               <td>{{FrozenwalletBalance | currency}}</td>
-                           </tr>
-                           <tr style="line-height:30px">
-                               <td><label>Transaction Type:</label></td>
-                               <td><input name="trnType" type="radio" ng-model="dr_or_cr" value="W"/>&nbsp;Withdraw <input style="margin-left:10px" name="trntype" type="radio" ng-model="dr_or_cr" value="D"/>&nbsp;Deposit</td>
-                           </tr>
-                           <tr style="line-height:30px">
-                               <td><label>Wallet Type:</label></td>
-                               <td>
-                                   <select name="wallet" ng-model="wallet" required class="form-control">
-                                       <option value="1">Cash Wallet</option>
-                                       <option value="2">Reserve Wallet</option>
-                                       <option value="3">Invest Return Wallet</option>
-                                       <option value="4">Frozen Wallet</option>
-                                   </select>
-                               </td>
-                           </tr>
-                           <tr style="line-height:30px">
-                               <td><label>Amount to Transfer ($):</label></td>
-                               <td><input type="number" ng-model="amount" class="form-control" ng-min="1"/></td>
-                           </tr>
-                           <tr style="line-height:30px">
-                               <td><label>Comment:</label></td>
-                               <td><textarea rows="4" ng-model="comment" class="form-control"></textarea></td>
-                           </tr>
-                           <tr style="line-height:30px;margin:5px" >
-                               <td></td>
-                               <td><br/><button class="btn btn-success" ng-show="idfound && amount>0 && !isNotExcessWithdraw()" ng-click="Transaction()" style="margin:0 auto;">Transfer</button></td>
-                           </tr>
-                       </table>
-                        <hr/>
-                        <br/>
-                        <div style="margin-bottom:10px;min-height:40px">
-                            <div class="col-md-2" style="vertical-align:middle;padding-top:8px">Search :&nbsp;<i class="fa fa-search"></i></div>
-                            <div class="col-md-4"><input type="text" class="form-control" ng-model="searchText" ng-change="filterChanged({{transfers|filter:searchText}})" placeholder="Input search text here" /></div><div class="col-md-6"></div>
+                        <div class="tab-content">
+                            <div id="current" class="tab-pane active">
+                                <table style="width:50%;min-width:300px;margin:0 auto">
+                                    <tr style="line-height:30px">
+                                        <td>
+                                            <label>Transfer to Username:</label>
+                                            <label>{{dummy}}</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" ng-model="username" class="form-control" ng-blur="checkUsername()" />
+                                        </td>
+                                    </tr>
+                                    <tr ng-if="errormessage!=''">
+                                        <td></td>
+                                        <td style="color:red;float:left"><label class="pull-right">{{errormessage}}</label></td>
+                                    </tr>
+                                    <tr ng-show="idfound">
+                                        <td><label>Name:</label></td>
+                                        <td>{{name}}</td>
+                                    </tr>
+                                    <tr ng-show="idfound">
+                                        <td><label>Email:</label></td>
+                                        <td>{{email}}</td>
+                                    </tr>
+                                    <tr ng-show="idfound">
+                                        <td><label>CountryCode:</label></td>
+                                        <td>{{countrycode}}</td>
+                                    </tr>
+
+                                    <tr ng-show="idfound">
+                                        <td><label>Cash Wallet ($):</label></td>
+                                        <td>{{CashwalletBalance | currency}}</td>
+                                    </tr>
+                                    <tr ng-show="idfound">
+                                        <td><label>Reserve Wallet ($):</label></td>
+                                        <td>{{ReservewalletBalance | currency}}</td>
+                                    </tr>
+                                    <tr ng-show="idfound">
+                                        <td><label>Investment Return Wallet ($):</label></td>
+                                        <td>{{InvestmentReturnwalletBalance | currency}}</td>
+                                    </tr>
+                                    <tr ng-show="idfound">
+                                        <td><label>Ethereum Wallet (ETH):</label></td>
+                                        <td>{{EthereumwalletBalance | currency:'ETH '}}</td>
+                                    </tr>
+                                    <tr ng-show="idfound">
+                                        <td><label>Ethereum Cash Wallet (ETH):</label></td>
+                                        <td>{{CashEthereumwalletBalance | currency:'ETH '}}</td>
+                                    </tr>
+                                    <tr style="line-height:30px">
+                                        <td><label>Transaction Type:</label></td>
+                                        <td><input name="trnType" type="radio" ng-model="dr_or_cr" value="W" />&nbsp;Withdraw <input style="margin-left:10px" name="trntype" type="radio" ng-model="dr_or_cr" value="D" />&nbsp;Deposit</td>
+                                    </tr>
+                                    <tr style="line-height:30px">
+                                        <td><label>Wallet Type:</label></td>
+                                        <td>
+                                            <select name="wallet" ng-model="wallet" required class="form-control">
+                                                <option value="1">Cash Wallet</option>
+                                                <option value="2">Reserve Wallet</option>
+                                                <option value="3">Return Wallet</option>
+                                                <option value="5">Ethereum Cash Wallet</option>
+                                                <option value="4">Ethereum Wallet</option>
+                                                <option value="6">Ethereum Return Wallet</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr style="line-height:30px">
+                                        <td><label>Amount to Transfer (<span ng-if="wallet==1 || wallet==2 || wallet==3">USD$</span><span ng-if="wallet==4 || wallet==5 || wallet==6">ETH</span>):</label></td>
+                                        <td><input type="number" ng-model="amount" class="form-control" ng-min="1" /></td>
+                                    </tr>
+                                    <tr style="line-height:30px">
+                                        <td><label>Comment:</label></td>
+                                        <td><textarea rows="4" ng-model="comment" class="form-control"></textarea></td>
+                                    </tr>
+                                    <tr style="line-height:30px;margin:5px">
+                                        <td></td>
+                                        <td><br /><button class="btn btn-success" ng-show="idfound && amount>0 && !isNotExcessWithdraw()" ng-click="Transaction()" style="margin:0 auto;">Transfer</button></td>
+                                    </tr>
+                                </table>
+                                <hr />
+                                <br />
+                                <div style="margin-bottom:10px;min-height:40px">
+                                    <div class="col-md-2" style="vertical-align:middle;padding-top:8px">Search :&nbsp;<i class="fa fa-search"></i></div>
+                                    <div class="col-md-4"><input type="text" class="form-control" ng-model="searchText" ng-change="filterChanged({{transfers|filter:searchText}})" placeholder="Input search text here" /></div><div class="col-md-6"></div>
+                                </div>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Transfer Date</th>
+                                            <th>User ID</th>
+                                            <th>Deposit</th>
+                                            <th>Withdraw</th>
+                                            <th>Wallet Type</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="trf in transfers| filter:searchText |myLimitTo:maxSize:startindex">
+                                            <td>{{trf.Date}}</td>
+                                            <td>{{trf.Transfer}}</td>
+                                            <td>{{trf.Deposit | currency:trf.Currency+' '}}</td>
+                                            <td>{{trf.Withdraw | currency:trf.Currency+' '}}</td>
+                                            <td>{{trf.Walletname}}</td>
+                                            <td>{{trf.Comment}}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr style="font-size:large;color:green">
+                                            <td colspan="2" style="padding-right:25px;text-align:right">Totals (USD):</td>
+                                            <td>{{totalDeposit | currency}}</td>
+                                            <td>{{totalWithdraw | currency}}</td>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                        <tr style="font-size:large;color:green">
+                                            <td colspan="2" style="padding-right:25px;text-align:right">Totals (ETH):</td>
+                                            <td>{{totalDeposit_ETH | currency:'ETH '}}</td>
+                                            <td>{{totalWithdraw_ETH | currency:'ETH '}}</td>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6" class="text-center" style="padding-top:20px">
+                                                <div class="pull-left" style="padding-left:50px">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(transfers|filter:searchText).length}}</span></div>
+                                                <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
+                                                <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
+                                                <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
+                                                <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
+                                                <div class="pull-right">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <div id="report" class="tab-pane">
+                                <div>
+                                    <div class="col-md-2" style="text-align:right;padding-top:10px">Start Date</div>
+                                    <div class="col-md-3"><input type="date" ng-model="fromDate" /></div>
+                                    <div class="col-md-2" style="text-align:right;padding-top:10px">End Date</div>
+                                    <div class="col-md-3"><input type="date" ng-model="toDate" /></div>
+                                    <div class="col-md-2"><button class="btn btn-primary" ng-click="fetch()">Fetch</button></div>
+                                </div>
+                                <hr />
+                                <div style="margin-top:50px">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Transfers(USD)</th>
+                                                <th>Realized(USD)</th>
+                                                <th>Transfers(ETH)</th>
+                                                <th>Realized(ETH)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           <tr ng-repeat="row in daterangeReportData">
+                                               <td>{{row.date | date}}</td>
+                                               <td>{{row.usdtotaltransferred | currency}}</td>
+                                               <td>{{row.usdtotalrealised | currency}}</td>
+                                               <td>{{row.ethereumtotaltransferred | currency:'ETH '}}</td>
+                                               <td>{{row.ethereumtotalrealized | currency:'ETH '}}</td>
+                                           </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td></td>
+                                                <td><b>{{usdtotaltransferredT | currency}}</b></td>
+                                                <td><b>{{usdtotalrealisedT | currency}}</b></td>
+                                                <td><b>{{ethereumtotaltransferredT | currency:'ETH '}}</b></td>
+                                                <td><b>{{ethereumtotalrealizedT | currency:'ETH '}}</b></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Transfer Date</th>
-                                    <th>User ID</th>
-                                    <th>Deposit</th>
-                                    <th>Withdraw</th>
-                                    <th>Wallet Type</th>
-                                    <th>Remarks</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="trf in transfers| filter:searchText |myLimitTo:maxSize:startindex">
-                                    <td>{{trf.Date}}</td>
-                                    <td>{{trf.Transfer}}</td>
-                                    <td>{{trf.Deposit | currency}}</td>
-                                    <td>{{trf.Withdraw | currency}}</td>
-                                    <td>{{trf.Walletname}}</td>
-                                    <td>{{trf.Comment}}</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr style="font-size:large;color:green">
-                                    <td colspan="2" style="padding-right:25px;text-align:right">Totals:</td>
-                                    <td>{{totalDeposit | currency}}</td>
-                                    <td>{{totalWithdraw | currency}}</td>
-                                    <td colspan="2"></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="6" class="text-center" style="padding-top:20px">
-                                        <div class="pull-left" style="padding-left:50px">Page {{currentPage}} of {{pageBoundary}}<span style="margin-left:10px">Count:{{(transfers|filter:searchText).length}}</span></div>
-                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=1;pageChanged(currentPage)" ng-disabled="currentPage==1"><i class="fa fa-angle-double-left"></i>First</button>
-                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1;pageChanged(currentPage)"><i class="fa fa-angle-left"></i>Previous</button>
-                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-disabled="currentPage==pageBoundary" ng-click="currentPage=currentPage+1;pageChanged(currentPage)"><i class="fa fa-angle-right"></i>Next</button>
-                                        <button class="btn m-b-xs btn-sm btn-info btn-addon" style="width:100px" ng-click="currentPage=pageBoundary;pageChanged(currentPage)" ng-disabled="currentPage==pageBoundary"><i class="fa fa-angle-double-right"></i>Last</button>
-                                        <div class="pull-right">Rows per page:<input type="number" ng-model="maxSize" min="5" max="100" step="5" /></div>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>  
+
                     </div>
                 </section>
             </div>

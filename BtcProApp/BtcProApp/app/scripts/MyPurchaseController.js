@@ -25,12 +25,11 @@ module.controller('Purchase', function ($scope, $http) {
         $http.get('/Home/GetFixedIncomeIllustration?Guid='+purobj.ReferenceNo).then(function (response) {
             $scope.ledger = response.data.FixedIncomeArray;
             if ($scope.ledger.length > 0) {
-                if ($scope.ledger[0].Package == 'Amazing' || $scope.ledger[0].Package == 'OctaCore') {
+                if ($scope.ledger[0].Package == 'Amazing' || $scope.ledger[0].Package == 'OctaCore' || $scope.ledger[0].Package == 'Ethereum' || $scope.ledger[0].Package == 'Ethereum Plus') {
                     $scope.frequency = 'Monthly ';
                 } else {
                     $scope.frequency = 'Weekly';
                 }
-                $scope.InterestFrequency
                 var calculatedAmt = 0;
                 angular.forEach($scope.ledger, function (value, index) {
                     calculatedAmt = calculatedAmt + value.Amount;

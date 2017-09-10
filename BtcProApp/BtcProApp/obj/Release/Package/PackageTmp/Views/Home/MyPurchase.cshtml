@@ -37,7 +37,7 @@
                                     <td data-label="Status">{{pur.Status}}</td>
                                     <td data-label="Package">{{pur.Package}}</td>
                                     <td data-label="Quantity">{{pur.Quantity}}</td>
-                                    <td data-label="Amount">{{pur.Amount | currency}}</td>
+                                    <td data-label="Amount">{{pur.Amount | currency:pur.Currency+' '}}</td>
                                     @*<td data-label="Pay Mode">{{pur.Paymode}}</td>*@
                                     <td data-label="Invoice"><a ng-click="selectedInvoice(pur)" style="cursor:pointer"><i class="fa fa-print"></i></a></td>
                                     <td data-label="Illustration"><a ng-click="getIllustration(pur)" style="cursor:pointer"><i class="fa fa-calendar"></i></a></td>
@@ -101,7 +101,7 @@
                                         <h3>TOTAL</h3>
                                     </div>
                                     <div class="col-md-12">
-                                        <h1 class="amnt-value">{{invObj.Amount | currency}}</h1>
+                                        <h1 class="amnt-value">{{invObj.Amount | currency:invObj.Currency+' '}}</h1>
                                     </div>
                                 </div>
 
@@ -124,9 +124,9 @@
                                         <h4>Item 1</h4>
                                         <p>{{invObj.Package}}</p>
                                     </td>
-                                    <td class="text-center">{{invObj.MinPay | currency}} - {{invObj.MaxPay | currency}}</td>
+                                    <td class="text-center">{{invObj.MinPay | currency:invObj.Currency+' '}} - {{invObj.MaxPay | currency:invObj.Currency+' '}}</td>
                                     <td class="text-center">{{invObj.Quantity}}</td>
-                                    <td class="text-center">{{invObj.Amount | currency}}</td>
+                                    <td class="text-center">{{invObj.Amount | currency:invObj.Currency+' '}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -140,8 +140,8 @@
                             </div>
                             <div class="col-md-4 col-xs-5 invoice-block pull-right">
                                 <ul class="unstyled amounts">
-                                    <li>Sub - Total amount : {{invObj.Amount | currency}}</li>
-                                    <li class="grand-total">Grand Total : {{invObj.Amount | currency}}</li>
+                                    <li>Sub - Total amount : {{invObj.Amount | currency:invObj.Currency+' '}}</li>
+                                    <li class="grand-total">Grand Total : {{invObj.Amount | currency:invObj.Currency+' '}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -178,9 +178,9 @@
                                     <td data-label="Start On">{{ldgr.sWeekStartDate}}</td>
                                     <td data-label="End Date">{{ldgr.sWeekEndDate}}</td>
                                     <td data-label="Due Date">{{ldgr.sDueDate}}</td>
-                                    <td data-label="Return">{{ldgr.Amount | currency}}</td>
+                                    <td data-label="Return">{{ldgr.Amount | currency:ldgr.Currency+' '}}</td>
                                     <td data-label="Scheme">{{ldgr.Package}}</td>
-                                    <td data-label="Total">{{ldgr.Total | currency}}</td>
+                                    <td data-label="Total">{{ldgr.Total | currency:ldgr.Currency+' '}}</td>
                                     <td data-label="Paid Date">{{ldgr.sPaymentDate}}</td>
                                 </tr>
                             </tbody>

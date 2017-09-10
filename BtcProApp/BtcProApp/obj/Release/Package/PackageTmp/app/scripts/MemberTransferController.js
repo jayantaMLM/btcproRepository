@@ -44,15 +44,7 @@ module.controller('MemberTransfer', function ($scope, $http, $location) {
         if ($scope.pageBoundary == 0) { $scope.pageBoundary = $scope.pageBoundary + 1; }
         $scope.startindex = ($scope.currentPage * $scope.maxSize) - $scope.maxSize;
     }
-    //
-    $scope.calculateTotals = function (arr) {
-        $scope.totalDeposit = 0;
-        $scope.totalWithdraw = 0;
-        angular.forEach(arr, function (value, index) {
-            $scope.totalDeposit = $scope.totalDeposit + value.Deposit;
-            $scope.totalWithdraw = $scope.totalWithdraw + value.Withdraw;
-        })
-    }
+
     $scope.filterChanged = function (arr) {
         if (arr) {
             $scope.Arr = arr;
@@ -68,6 +60,7 @@ module.controller('MemberTransfer', function ($scope, $http, $location) {
     $scope.username = "";
     $scope.wallet = '2';
     $scope.walletBalance = 0;
+    $scope.currency = 'USD';
     $scope.errormessage = "";
     $scope.trnpassword = "";
     $scope.trnpasswordIsOk = false;
@@ -82,11 +75,15 @@ module.controller('MemberTransfer', function ($scope, $http, $location) {
         $http.get("/Home/MyWalletBalance?WalletId=2").then(function (data) {
             $scope.walletBalance = data.data.Balance;
         })
+        $http.get("/Home/MyWalletBalance?WalletId=4").then(function (data) {
+            $scope.ethwalletBalance = data.data.Balance;
+        })
     }
     $scope.Transaction = function () {
         var ans=confirm("Are you sure?");
         if (ans) {
-            $http.post("/Home/LedgerPostingMember?Username=" + $scope.username + "&WalletType=" + $scope.wallet + "&Amount=" + $scope.amount).then(function (response) {
+            debugger;
+            $http.post("/Home/LedgerPostingMember?Username=" + $scope.username + "&WalletType=" + $scope.wallet + "&Amount=" + $scope.amount + "&Currency=" + $scope.currency).then(function (response) {
                 if (response.data.Success) {
                     $http.post("/Home/NotifyAdminAboutBalanceTransfer?ToUsername=" + $scope.username + "&Amount=" + $scope.amount);
                     $scope.username = "";
@@ -165,4 +162,23 @@ module.controller('MemberTransfer', function ($scope, $http, $location) {
             }
         })
     }
+
+    
+    $scope.calculateTotals = function (arr) {
+        $scope.totalDeposit = 0;
+        $scope.totalWithdraw = 0;
+        $scope.totalDeposit_ETH = 0;
+        $scope.totalWithdraw_ETH = 0;
+        angular.forEach(arr, function (value, index) {
+            if (value.Currency == 'USD') {
+                $scope.totalDeposit = $scope.totalDeposit + value.Deposit;
+                $scope.totalWithdraw = $scope.totalWithdraw + value.Withdraw;
+            }
+            if (value.Currency == 'ETH') {
+                $scope.totalDeposit_ETH = $scope.totalDeposit_ETH + value.Deposit;
+                $scope.totalWithdraw_ETH = $scope.totalWithdraw_ETH + value.Withdraw;
+            }
+        })
+    }
+
 })

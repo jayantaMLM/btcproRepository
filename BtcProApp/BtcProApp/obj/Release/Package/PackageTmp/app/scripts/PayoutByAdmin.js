@@ -58,6 +58,8 @@ module.controller('Payout', function ($scope, $http, $window, $uibModal) {
     $scope.w_totalCharge = 0;
     $scope.searchText = "";
     $scope.oldComment = "";
+    $scope.fromDate = new Date();
+    $scope.toDate = new Date();
 
     $scope.getdata = function () {
         $http.get("/api/WithdrawalRequests").then(function (response) {
@@ -104,6 +106,20 @@ module.controller('Payout', function ($scope, $http, $window, $uibModal) {
     }
 
     $scope.getdata();
+
+    $scope.fetch = function () {
+        $http.get("/Home/WithdrawalRequestDetailsInDateRange?FromDate=" + $scope.fromDate.toISOString() + "&ToDate=" + $scope.toDate.toISOString()).then(function (response) {
+            $scope.daterangeReportData = response.data.data;
+            $scope.requestedsum = 0;
+            $scope.paidsum = 0;
+            $scope.balanceamt = 0;
+            angular.forEach($scope.daterangeReportData, function (value, index) {
+                $scope.requestedsum = $scope.requestedsum + value.requestedamount;
+                $scope.paidsum = $scope.paidsum + value.paidamount;
+                $scope.balanceamt = $scope.balanceamt + value.balance;
+            })
+        })
+    }
 
     //---------------------------------------Modal dialog-------------------------------------------------//
     $scope.modalPay = function (RegistrationId, Id, Amount) {

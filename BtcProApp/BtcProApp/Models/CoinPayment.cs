@@ -32,8 +32,16 @@ namespace BtcProApp.Models
             parms["key"] = s_pubkey;
             parms["cmd"] = cmd;
             //parms["txid"] = "CPBF0T9M9AZ3RSADV9V4LGD4DD";
-            parms["amount"] = investmentAmt.ToString(); ;
-            parms["currency1"] = "USD";
+            parms["amount"] = investmentAmt.ToString(); 
+            if (packagename=="Ethereum" || packagename=="Ethereum Plus")
+                {
+                parms["currency1"] = "ETH";
+                }
+            else
+                {
+                parms["currency1"] = "USD";
+                }
+           
             if (cointype == "BTC") { parms["currency2"] = "BTC"; }
             if (cointype == "ETH") { parms["currency2"] = "ETH"; }
             if (cointype == "LTC") { parms["currency2"] = "LTC"; }

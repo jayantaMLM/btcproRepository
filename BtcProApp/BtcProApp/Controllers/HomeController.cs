@@ -16,7 +16,7 @@ namespace BtcProApp.Controllers
         private dbviewDataContext dbView = new dbviewDataContext();
 
         [AllowAnonymous]
-        public ActionResult IndexMain(string id)
+        public ActionResult IndexMain(string id)   //startup page
             {
             ViewBag.Username = id;
 
@@ -41,167 +41,96 @@ namespace BtcProApp.Controllers
                 }
 
             }
-        //public ActionResult IndexMain()
-        //{
-        //    return View();
-        //}
-        public ActionResult Index()
-            {
-
-            return View();
-            }
-
-        public ActionResult Members()
+        
+        public ActionResult Index()    //dashboard page 
             {
             return View();
             }
 
-        public ActionResult MemberWallets()
+        public ActionResult Members()  //members list page for superadmin
             {
             return View();
             }
 
-        public JsonResult MembersList()
+        public ActionResult MemberWallets()  //members wallets balance page for superadmin
             {
-            var members = ( from m in db.Registrations
-                            select new
-                                {
-                                Id = m.Id,
-                                UserId = m.UserName,
-                                UserName = m.FullName,
-                                SponsorId = m.ReferrerName,
-                                EmailId = m.EmailId,
-                                JoiningDate = m.CreatedDate.ToString(),
-                                CountryCode = m.CountryCode,
-                                Status = ( m.Joined == true ? "Joined" : "Free Member" ),
-                                } ).ToList();
-
-            return Json(new { MemberList = members }, JsonRequestBehavior.AllowGet);
-
+            return View();
             }
-
-        public JsonResult MemberAllWallets()
-            {
-            var memberWallets = ( from m in db.Members
-                                  select new vmMemberWallet
-                                      {
-                                      RegistrationId = m.RegistrationId,
-                                      MemberName = m.Username,
-                                      CashWalletAmount = 0,
-                                      ReserveWalletAmount = 0,
-                                      ReturnWalletAmount = 0,
-                                      FrozenWalletAmount = 0
-                                      } ).ToList();
-            try
-                {
-                for (int i = 0; i < memberWallets.Count(); i++)
-                    {
-                    memberWallets[i].CashWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 1);
-                    memberWallets[i].ReserveWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 2);
-                    memberWallets[i].ReturnWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 3);
-                    }
-
-                }
-            catch (Exception e)
-                {
-
-                }
-
-            return Json(new { Wallets = memberWallets }, JsonRequestBehavior.AllowGet);
-            }
-        [HttpPost]
-        public JsonResult ResetCountry(long Id, string CountryCode)
-            {
-            Register reg = db.Registrations.SingleOrDefault(r => r.Id == Id);
-            reg.CountryCode = CountryCode;
-
-            Member mem = db.Members.SingleOrDefault(m => m.RegistrationId == Id);
-            mem.Country = CountryCode;
-
-            db.SaveChanges();
-
-            return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
-            }
-
-        public JsonResult Country()
-            {
-            string user = User.Identity.Name;
-            string homeCountryName = "";
-            string homeCountryCode = db.Registrations.Where(r => r.UserName == user).Select(r => r.CountryCode).Single();
-            if (homeCountryCode == "") { homeCountryName = ""; } else { homeCountryName = db.Countries.Where(c => c.CountryId == homeCountryCode).Select(c => c.Mapimagename).Single(); }
-
-            ViewBag.ImagePath = Url.Content("~/images/flags/" + homeCountryName);
-
-            return Json(new { CountryName = ViewBag.ImagePath }, JsonRequestBehavior.AllowGet);
-            }
-
+               
         [AllowAnonymous]
-        public ActionResult Aboutus()
+        public ActionResult Aboutus() //About Us page
             {
             return View();
             }
 
         [AllowAnonymous]
-        public ActionResult Ethereum()
+        public ActionResult Ethereum() //Ethereum page
             {
             return View();
             }
 
         [AllowAnonymous]
-        public ActionResult BizOpportunity()
+        public ActionResult BizOpportunity() //Business Opportunity page
             {
             return View();
             }
 
         [AllowAnonymous]
-        public ActionResult Faq()
+        public ActionResult Faq() //Faq page
             {
             return View();
             }
 
-        public ActionResult Contactus()
+        public ActionResult Contactus() //Contact us page
             {
             return View();
             }
 
-        [AllowAnonymous]
-        public ActionResult Registration()
-            {
-            return View();
-            }
-
-        [AllowAnonymous]
-        public ActionResult Login()
+        [AllowAnonymous] 
+        public ActionResult Registration() //Registration page
             {
             return View();
             }
 
         [AllowAnonymous]
-        public ActionResult Contact()
+        public ActionResult Login() //Login page
             {
+            return View();
+            }
 
+        [AllowAnonymous]
+        public ActionResult Contact() //redirects to [Contactus View] page
+            {
             return View("ContactUs");
             }
-        public ActionResult TeamMembers()
+
+        public ActionResult TeamMembers() //called from [_Layout View] Team members sub menu option of a member
             {
             ViewBag.Name = User.Identity.Name;
             return View();
             }
 
-        public ActionResult MemberArea()
-            {
-            return View();
-            }
-        public ActionResult MemberBlockUnblock()
-            {
-            return View();
-            }
-        public ActionResult PayoutByAdmin()
+        public ActionResult MemberArea() //redundant
             {
             return View();
             }
 
-        public ActionResult ReferralLink()
+        public ActionResult MemberBlockUnblock() //called from [_Layout View] Member Block/Unblock sub menu option by superadmin
+            {
+            return View();
+            }
+
+        public ActionResult PayoutByAdmin() //called from [_Layout View] Process Withdrawal Request sub menu option by superadmin
+            {
+            return View();
+            }
+
+        public ActionResult BusinessStats() //called from [_Layout View] Business statistics menu option for superadmin
+            {
+            return View();
+            }
+
+        public ActionResult ReferralLink() 
             {
             return View();
             }
@@ -311,7 +240,6 @@ namespace BtcProApp.Controllers
             {
             return View();
             }
-
         public ActionResult MemberPage()
             {
             return View();
@@ -336,21 +264,14 @@ namespace BtcProApp.Controllers
             {
             return View();
             }
-
         public ActionResult ApproveBitcoinTransfers()
             {
             return View();
             }
-        //public ActionResult DirectJoining()
-        //{
-
-        //}
-
         public ActionResult Tickets()
             {
             return View();
             }
-
         public ActionResult FixedPayout()
             {
             return View();
@@ -369,6 +290,83 @@ namespace BtcProApp.Controllers
             }
 
         #region Common Code
+
+        public JsonResult MembersList()  //called from MemberArea controller for [Members View] by superadmin
+            {
+            var members = ( from m in db.Registrations
+                            select new
+                                {
+                                Id = m.Id,
+                                UserId = m.UserName,
+                                UserName = m.FullName,
+                                SponsorId = m.ReferrerName,
+                                EmailId = m.EmailId,
+                                JoiningDate = m.CreatedDate.ToString(),
+                                CountryCode = m.CountryCode,
+                                Status = ( m.Joined == true ? "Joined" : "Free Member" ),
+                                } ).ToList();
+
+            return Json(new { MemberList = members }, JsonRequestBehavior.AllowGet);
+
+            }
+
+        public JsonResult MemberAllWallets() //called from MemberWalletsController for [MemberWallets View] to show all member wallets balances to superadmin
+            {
+            var memberWallets = ( from m in db.Members
+                                  select new vmMemberWallet
+                                      {
+                                      RegistrationId = m.RegistrationId,
+                                      MemberName = m.Username,
+                                      CashWalletAmount = 0,
+                                      ReserveWalletAmount = 0,
+                                      ReturnWalletAmount = 0,
+                                      FrozenWalletAmount = 0
+                                      } ).ToList();
+            try
+                {
+                for (int i = 0; i < memberWallets.Count(); i++)
+                    {
+                    memberWallets[i].CashWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 1);
+                    memberWallets[i].ReserveWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 2);
+                    memberWallets[i].ReturnWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 3);
+                    memberWallets[i].EthereumReserveWalletAccount = MemberWalletBalance(memberWallets[i].MemberName, 4);
+                    memberWallets[i].EthereumCashWalletAmount = MemberWalletBalance(memberWallets[i].MemberName, 5);
+                    }
+
+                }
+            catch (Exception e)
+                {
+
+                }
+
+            return Json(new { Wallets = memberWallets }, JsonRequestBehavior.AllowGet);
+            }
+
+        [HttpPost]
+        public JsonResult ResetCountry(long Id, string CountryCode) //called from MemberArea controller for [Members View] by superadmin to reset country code of a member
+            {
+            Register reg = db.Registrations.SingleOrDefault(r => r.Id == Id);
+            reg.CountryCode = CountryCode;
+
+            Member mem = db.Members.SingleOrDefault(m => m.RegistrationId == Id);
+            mem.Country = CountryCode;
+
+            db.SaveChanges();
+
+            return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
+            }
+
+        public JsonResult Country() //called from [_Layout View] to show country flag of member
+            {
+            string user = User.Identity.Name;
+            string homeCountryName = "";
+            string homeCountryCode = db.Registrations.Where(r => r.UserName == user).Select(r => r.CountryCode).Single();
+            if (homeCountryCode == "") { homeCountryName = ""; } else { homeCountryName = db.Countries.Where(c => c.CountryId == homeCountryCode).Select(c => c.Mapimagename).Single(); }
+
+            ViewBag.ImagePath = Url.Content("~/images/flags/" + homeCountryName);
+
+            return Json(new { CountryName = ViewBag.ImagePath }, JsonRequestBehavior.AllowGet);
+            }
 
         [AllowAnonymous]
         [HttpGet]
@@ -399,19 +397,34 @@ namespace BtcProApp.Controllers
             return Json(new { CurrentUser = user, UserId = reg.Id }, JsonRequestBehavior.AllowGet);
             }
 
-        public JsonResult MyAccountNo(string WalletId)
+        /// <summary>
+        /// called from TicketController.js AccountStatus controller for view [AccountStatus view] called from Account-->My Wallet Accounts
+        /// for updating the member wallets' details
+        /// </summary>
+        /// <param name="WalletId"></param>
+        /// <param name="MyEthereumAccountNo"></param>
+        /// <returns></returns>
+        public JsonResult MyAccountNo(string WalletId, string MyEthereumAccountNo)
             {
             string user = User.Identity.Name;
             var reg = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper() == user.ToUpper());
-            reg.MyWalletAccount = WalletId;
+            if (WalletId != null) { reg.MyWalletAccount = WalletId; }
+            if (MyEthereumAccountNo != null) { reg.MyEthereumWalletAccount = MyEthereumAccountNo; }
+            reg.MyEthereumWalletAccount = MyEthereumAccountNo;
             db.SaveChanges();
             return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
             }
+
+        /// <summary>
+        /// called from TicketController.js AccountStatus controller for view [AccountStatus view] called from Account-->My Wallet Accounts
+        /// for fetching the member enter wallets
+        /// </summary>
+        /// <returns></returns>
         public JsonResult GetMyAccountNo()
             {
             string user = User.Identity.Name;
             var reg = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper() == user.ToUpper());
-            return Json(new { WalletAc = reg.MyWalletAccount }, JsonRequestBehavior.AllowGet);
+            return Json(new { WalletAc = reg.MyWalletAccount, EthereumWalletAc=reg.MyEthereumWalletAccount }, JsonRequestBehavior.AllowGet);
             }
 
         [HttpPost]
@@ -488,9 +501,9 @@ namespace BtcProApp.Controllers
             //return Json(JsonRequestBehavior.AllowGet);
             }
 
-
+        //called from AdminTransferController
         [HttpPost]
-        public JsonResult LedgerPosting(string Username, string DrCr, int WalletType, double Amount, string Comment)
+        public JsonResult LedgerPosting(string Username, string DrCr, int WalletType, double Amount, string Comment, string Currency)
             {
             var currentusr = User.Identity.Name;
             var rec0 = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper().Trim() == currentusr.ToUpper().Trim());
@@ -507,14 +520,15 @@ namespace BtcProApp.Controllers
             ldgr.SubLedgerId = 3;
             ldgr.ToFromUser = rec0.Id;
             ldgr.Comment = Comment;
-
+            ldgr.Currency = Currency;
             db.Ledgers.Add(ldgr);
             db.SaveChanges();
 
             return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
             }
 
-        private bool ledgerposting(string Username, string DrCr, int WalletType, double Amount, string Comment)
+        //called from ipn(ipn IPN) when a payment completion notification is received from API
+        private bool ledgerposting(string Username, string DrCr, int WalletType, double Amount, string Comment, string Currency)
             {
 
             var rec = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper().Trim() == Username.ToUpper().Trim());
@@ -529,6 +543,7 @@ namespace BtcProApp.Controllers
             ldgr.SubLedgerId = 2;
             ldgr.ToFromUser = 1;
             ldgr.Comment = Comment;
+            ldgr.Currency = Currency;
 
             db.Ledgers.Add(ldgr);
             db.SaveChanges();
@@ -536,8 +551,9 @@ namespace BtcProApp.Controllers
             return true;
             }
 
+        //called from MemberTransferController, TeamStructureNewController for member to member transfer
         [HttpPost]
-        public JsonResult LedgerPostingMember(string Username, int WalletType, double Amount)
+        public JsonResult LedgerPostingMember(string Username, int WalletType, double Amount, string Currency)
             {
             var currentusr = User.Identity.Name;
             if (currentusr != null || currentusr != "")
@@ -555,6 +571,7 @@ namespace BtcProApp.Controllers
                 ldgr.TransactionId = 0;
                 ldgr.SubLedgerId = 1;
                 ldgr.ToFromUser = rec.Id;
+                ldgr.Currency = Currency;
 
                 db.Ledgers.Add(ldgr);
                 db.SaveChanges();
@@ -569,6 +586,7 @@ namespace BtcProApp.Controllers
                 ldgrT.TransactionId = 0;
                 ldgrT.SubLedgerId = 1;
                 ldgrT.ToFromUser = rec0.Id;
+                ldgrT.Currency = Currency;
 
                 db.Ledgers.Add(ldgrT);
                 db.SaveChanges();
@@ -616,6 +634,7 @@ namespace BtcProApp.Controllers
                     ldgr.SubLedgerId = 2;
                     ldgr.ToFromUser = 0;
                     ldgr.BatchNo = GuidString;
+                    ldgr.Currency = "USD";
 
                     db.Ledgers.Add(ldgr);
                     db.SaveChanges();
@@ -652,6 +671,7 @@ namespace BtcProApp.Controllers
                 ldgr.SubLedgerId = 2;
                 ldgr.ToFromUser = 0;
                 ldgr.BatchNo = rec0.BatchNo;
+                ldgr.Currency = "USD";
 
                 db.Ledgers.Add(ldgr);
                 db.SaveChanges();
@@ -1843,7 +1863,7 @@ namespace BtcProApp.Controllers
             }
 
         [HttpGet]
-        public JsonResult UserWalletBalance(string username)
+        public JsonResult UserWalletBalance(string username) //called from AdminTransferController from Amdin Transfer sub menu option by superadmin
             {
             var rec = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper().Trim() == username.ToUpper().Trim());
 
@@ -1859,17 +1879,23 @@ namespace BtcProApp.Controllers
             double invreturn_sumwithdrawal = db.Ledgers.Where(i => i.RegistrationId == rec.Id && i.WalletId == 3).Select(bi => bi.Withdraw).DefaultIfEmpty(0).Sum();
             double invreturn_balance = invreturn_sumdeposit - invreturn_sumwithdrawal;
 
-            double frozen_sumdeposit = db.Ledgers.Where(i => i.RegistrationId == rec.Id && i.WalletId == 4).Select(bi => bi.Deposit).DefaultIfEmpty(0).Sum();
-            double frozen_sumwithdrawal = db.Ledgers.Where(i => i.RegistrationId == rec.Id && i.WalletId == 4).Select(bi => bi.Withdraw).DefaultIfEmpty(0).Sum();
-            double frozen_balance = frozen_sumdeposit - frozen_sumwithdrawal;
+            double ethereum_sumdeposit = db.Ledgers.Where(i => i.RegistrationId == rec.Id && i.WalletId == 4).Select(bi => bi.Deposit).DefaultIfEmpty(0).Sum();
+            double ethereum_sumwithdrawal = db.Ledgers.Where(i => i.RegistrationId == rec.Id && i.WalletId == 4).Select(bi => bi.Withdraw).DefaultIfEmpty(0).Sum();
+            double ethereum_balance = ethereum_sumdeposit - ethereum_sumwithdrawal;
 
-            return Json(new { Cash_Balance = cash_balance, Reserve_Balance = reserve_balance, Invreturn_Balance = invreturn_balance, Frozen_Balance = frozen_balance }, JsonRequestBehavior.AllowGet);
+            double cashethereum_sumdeposit = db.Ledgers.Where(i => i.RegistrationId == rec.Id && i.WalletId == 5).Select(bi => bi.Deposit).DefaultIfEmpty(0).Sum();
+            double cashethereum_sumwithdrawal = db.Ledgers.Where(i => i.RegistrationId == rec.Id && i.WalletId == 5).Select(bi => bi.Withdraw).DefaultIfEmpty(0).Sum();
+            double cashethereum_balance = cashethereum_sumdeposit - cashethereum_sumwithdrawal;
+
+            return Json(new { Cash_Balance = cash_balance, Reserve_Balance = reserve_balance, Invreturn_Balance = invreturn_balance, Ethereum_Balance = ethereum_balance, CashEthereum_Balance = cashethereum_balance }, JsonRequestBehavior.AllowGet);
             }
 
         [HttpPost]
         //called from PackageShop when user is self purchasing 
-        public async Task<JsonResult> MyNewPurchase(int packageId, double investmentAmt)
+        public async Task<JsonResult> MyNewPurchase(int packageId, double investmentAmt, string Currency)
             {
+            if (Currency == "(USD$)") { Currency = "USD"; }
+            if (Currency == "(ETH)") { Currency = "ETH"; }
             string username = User.Identity.Name;
             var rec = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper().Trim() == username.ToUpper().Trim());
 
@@ -1893,13 +1919,15 @@ namespace BtcProApp.Controllers
             //1...
             Ledger ldgr = new Ledger();
             ldgr.RegistrationId = rec.Id;
-            ldgr.WalletId = 2;
+            if (Currency == "USD") { ldgr.WalletId = 2; }
+            if (Currency == "ETH") { ldgr.WalletId = 4; }
             ldgr.Date = DateTime.Now;
             ldgr.Deposit = 0;
             ldgr.Withdraw = investmentAmt;
             if (!rec.Joined) { ldgr.TransactionTypeId = 4; } else { ldgr.TransactionTypeId = 9; }
             ldgr.TransactionId = 0;
             ldgr.SubLedgerId = 1;
+            ldgr.Currency = Currency;
             ldgr.BatchNo = GuidString;
 
             db.Ledgers.Add(ldgr);
@@ -1917,6 +1945,7 @@ namespace BtcProApp.Controllers
 
             pur.RegistrationId = rec.Id;
             pur.Amount = investmentAmt;
+            pur.Currency = Currency;
             pur.Payreferenceno = GuidString;
             pur.Isapproved = true;
 
@@ -1933,6 +1962,7 @@ namespace BtcProApp.Controllers
 
             //4...
             long uplineId = 0;
+            #region whether Joined/not Joined
             if (!isJoined)
                 {
                 try
@@ -2013,52 +2043,33 @@ namespace BtcProApp.Controllers
 
                     } while (keepgoing);
                 }
-
+            #endregion
             //6...
 
-            //if repurchase, then % will be default package % (condition changed on 15th Aug 2017)
             double pc = 0;
             try
                 {
                 var pkg = db.Packages.SingleOrDefault(p => p.Id == packageId);
                 if (pkg.Id == 5)
                     {
-                    //#region added on 15/08/2017, default package code to change as per accumulated investment, check on every repurchase
-                    ////----------------what is the total investment so far including today?
-                    //double totalinvestment = db.Purchases.Where(p => p.RegistrationId == rec.Id).Select(p => p.Amount).DefaultIfEmpty(0).Sum();
-                    ////----------------what should be the package code for this amount of investment?-------// 
-                    //var ranges = db.Packages.Where(p => p.Minamount <= totalinvestment && p.Maxamount >= totalinvestment && p.Isactive == true && p.Id!=5).OrderBy(p => p.Id).FirstOrDefault();
-                    //if (ranges != null)
-                    //    {
-                    //    int eligibleDefaultpackageCode = ranges.Id;
-                    //    //----------------update the defaultpackage code and also keep track in PackageCodeHistory field-----//
-                    //    var mmm0 = db.Members.Where(x => x.Username == rec.UserName).Single();
-                    //    if (mmm0.PackageCodeHistory == null || mmm0.PackageCodeHistory == "")
-                    //        {
-                    //        mmm0.PackageCodeHistory = "From " + mmm0.Defaultpackagecode.ToString() + " on " + DateTime.Now.ToShortDateString();
-                    //        }
-                    //    else
-                    //        {
-                    //        mmm0.PackageCodeHistory = mmm0.PackageCodeHistory + "| From " + mmm0.Defaultpackagecode.ToString() + " on " + DateTime.Now.ToShortDateString();
-
-                    //        }
-                    //    mmm0.Defaultpackagecode = eligibleDefaultpackageCode;
-
-                    //    db.SaveChanges();
-                    //    }
-                    ////----------------------------------------------------------------------//
-                    //#endregion
-
                     var mmm = db.Members.Where(x => x.Username == rec.UserName).Single();
                     var pkgg = db.Packages.SingleOrDefault(p => p.Id == mmm.Defaultpackagecode);
                     pc = pkgg.Gauranteedreturn_percent;
                     }
                 else
                     {
-                    var mmm = db.Members.Where(x => x.Username == rec.UserName).Single();
-                    mmm.Defaultpackagecode = packageId;
-                    db.SaveChanges();
-                    pc = pkg.Gauranteedreturn_percent;
+                    if (pkg.Id==2 || pkg.Id==3 || pkg.Id==6 || pkg.Id == 7)
+                        {
+                        var mmm = db.Members.Where(x => x.Username == rec.UserName).Single();
+                        mmm.Defaultpackagecode = packageId;
+                        db.SaveChanges();
+                        pc = pkg.Gauranteedreturn_percent;
+                        }
+                    }
+                    if (pkg.Id==8 || pkg.Id == 9)
+                    {
+                    var pkgg = db.Packages.SingleOrDefault(p => p.Id == packageId);
+                    pc = pkgg.Gauranteedreturn_percent;
                     }
                 }
             catch (Exception ex)
@@ -2066,7 +2077,7 @@ namespace BtcProApp.Controllers
 
                 }
 
-            await FixedIncomeCalculation(rec.Id, pc, investmentAmt, packageId, GuidString);
+            await FixedIncomeCalculation(rec.Id, pc, investmentAmt, packageId, GuidString, Currency);
 
             //7...
             string searchname1 = rec.UserName;
@@ -2080,7 +2091,10 @@ namespace BtcProApp.Controllers
                 var res1 = db.Members.SingleOrDefault(m => m.RegistrationId == uplineId1);
                 if (res1 != null)
                     {
-                    await BinaryIncomeCalculation(uplineId1, res1.Doj, investmentAmt, searchpos1, isJoined, rec.Id, packageId, GuidString);
+                    if (packageId <= 7)
+                        {
+                        await BinaryIncomeCalculation(uplineId1, res1.Doj, investmentAmt, searchpos1, isJoined, rec.Id, packageId, GuidString);
+                        }
                     uplineId1 = (long) res1.UplineRegistrationId;
                     searchpos1 = res1.BinaryPosition;
                     }
@@ -2093,7 +2107,10 @@ namespace BtcProApp.Controllers
 
             //8...
             var res2 = db.Members.SingleOrDefault(m => m.RegistrationId == res.ReferrerRegistrationId);
-            await SponsorIncomeCalculation(res.ReferrerRegistrationId, res2.Doj, investmentAmt, res2.BinaryPosition, isJoined, rec.Id, packageId, GuidString);
+            if (packageId <= 7)
+                {
+                await SponsorIncomeCalculation(res.ReferrerRegistrationId, res2.Doj, investmentAmt, res2.BinaryPosition, isJoined, rec.Id, packageId, GuidString);
+                }
 
             //9..
             string searchname2 = rec.UserName;
@@ -2108,7 +2125,7 @@ namespace BtcProApp.Controllers
                 var res1 = db.Members.SingleOrDefault(m => m.RegistrationId == uplineId2);
                 if (res1 != null)
                     {
-                    await GenerationIncomeCalculation(uplineId2, res1.Doj, investmentAmt, res1.BinaryPosition, isJoined, rec.Id, packageId, (int) res1.Defaultpackagecode, level, GuidString);
+                    await GenerationIncomeCalculation(uplineId2, res1.Doj, investmentAmt, res1.BinaryPosition, isJoined, rec.Id, packageId, (int) res1.Defaultpackagecode, level, GuidString, Currency);
                     uplineId2 = (long) res2.ReferrerRegistrationId;
                     if (level == 4) { keepgoing2 = false; }
                     level = level + 1;
@@ -2127,9 +2144,11 @@ namespace BtcProApp.Controllers
             return Json(new { Success = "TRUE" }, JsonRequestBehavior.AllowGet);
             }
 
-        public async Task<JsonResult> AutoPurchase(string username, long UplineId, int packageId, double investmentAmt)
         //called from tree Binarytree when sponsor is direct joining //called in case of FREE MEMBER JOINING also
+        public async Task<JsonResult> AutoPurchase(string username, long UplineId, int packageId, double investmentAmt, string Currency)
             {
+            if (Currency == "(USD$)") { Currency = "USD"; }
+            if (Currency == "(ETH)") { Currency = "ETH"; }
             var rec = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper().Trim() == username.ToUpper().Trim());
 
             //1...add a withdrawal entry in ledger
@@ -2142,7 +2161,6 @@ namespace BtcProApp.Controllers
             //8...weekly sponsor income calculation
             //9...weekly generation income calculation
             //10..send confirmation email
-
 
             Guid g = Guid.NewGuid();
             string GuidString = Convert.ToBase64String(g.ToByteArray());
@@ -2160,6 +2178,7 @@ namespace BtcProApp.Controllers
             ldgr.TransactionId = 0;
             ldgr.SubLedgerId = 1;
             ldgr.BatchNo = GuidString;
+            ldgr.Currency = Currency;
 
             db.Ledgers.Add(ldgr);
             //await db.SaveChangesAsync();
@@ -2173,6 +2192,7 @@ namespace BtcProApp.Controllers
             pur.Amount = investmentAmt;
             pur.Payreferenceno = GuidString;
             pur.Isapproved = true;
+            pur.Currency = Currency;
 
             db.Purchases.Add(pur);
             //await db.SaveChangesAsync();
@@ -2305,7 +2325,7 @@ namespace BtcProApp.Controllers
 
             if (User.Identity.Name.ToUpper() != "SUPERADMIN")      //i.e. not a FREE JOINING
                 {
-                await FixedIncomeCalculation(rec.Id, pc, investmentAmt, packageId, GuidString);
+                await FixedIncomeCalculation(rec.Id, pc, investmentAmt, packageId, GuidString, Currency);
                 }
 
             //7...
@@ -2350,7 +2370,7 @@ namespace BtcProApp.Controllers
                     {
                     if (User.Identity.Name.ToUpper() != "SUPERADMIN")      //i.e. not a FREE JOINING
                         {
-                        await GenerationIncomeCalculation(uplineId2, res1.Doj, investmentAmt, res1.BinaryPosition, isJoined, rec.Id, packageId, (int) res1.Defaultpackagecode, level, GuidString);
+                        await GenerationIncomeCalculation(uplineId2, res1.Doj, investmentAmt, res1.BinaryPosition, isJoined, rec.Id, packageId, (int) res1.Defaultpackagecode, level, GuidString, Currency);
                         }
                     uplineId2 = (long) res2.ReferrerRegistrationId;
                     if (level == 4) { keepgoing2 = false; }
@@ -2370,8 +2390,11 @@ namespace BtcProApp.Controllers
             return Json(new { Success = "TRUE" }, JsonRequestBehavior.AllowGet);
             }
 
-        private async Task<Boolean> autoPurchase(string username, long UplineId, int packageId, double investmentAmt)
+        //called automatically when a payment is completed through API
+        private async Task<Boolean> autoPurchase(string username, long UplineId, int packageId, double investmentAmt, string Currency)
             {
+            if (Currency == "(USD$)") { Currency = "USD"; }
+            if (Currency == "(ETH)") { Currency = "ETH"; }
             var rec = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper().Trim() == username.ToUpper().Trim());
 
             //1...add a withdrawal entry in ledger
@@ -2394,7 +2417,8 @@ namespace BtcProApp.Controllers
             //1...
             Ledger ldgr = new Ledger();
             ldgr.RegistrationId = rec.Id;
-            ldgr.WalletId = 2;
+            if (Currency == "USD") { ldgr.WalletId = 2; }
+            if (Currency == "ETH") { ldgr.WalletId = 4; }
             ldgr.Date = DateTime.Now;
             ldgr.Deposit = 0;
             ldgr.Withdraw = investmentAmt;
@@ -2402,6 +2426,7 @@ namespace BtcProApp.Controllers
             ldgr.TransactionId = 0;
             ldgr.SubLedgerId = 1;
             ldgr.BatchNo = GuidString;
+            ldgr.Currency = Currency;
 
             db.Ledgers.Add(ldgr);
             //await db.SaveChangesAsync();
@@ -2415,6 +2440,7 @@ namespace BtcProApp.Controllers
             pur.Amount = investmentAmt;
             pur.Payreferenceno = GuidString;
             pur.Isapproved = true;
+            pur.Currency = Currency;
 
             db.Purchases.Add(pur);
             //await db.SaveChangesAsync();
@@ -2529,6 +2555,25 @@ namespace BtcProApp.Controllers
 
             //if repurchase, then % will be default package %
             double pc = 0;
+            //try
+            //    {
+            //    var pkg = db.Packages.SingleOrDefault(p => p.Id == packageId);
+            //    if (pkg.Id == 5)
+            //        {
+            //        var mmm = db.Members.Where(x => x.Username == rec.UserName).Single();
+            //        var pkgg = db.Packages.SingleOrDefault(p => p.Id == mmm.Defaultpackagecode);
+            //        pc = pkgg.Gauranteedreturn_percent;
+            //        }
+            //    else
+            //        {
+            //        pc = pkg.Gauranteedreturn_percent;
+            //        }
+            //    }
+            //catch (Exception ex)
+            //    {
+
+            //    }
+
             try
                 {
                 var pkg = db.Packages.SingleOrDefault(p => p.Id == packageId);
@@ -2540,7 +2585,18 @@ namespace BtcProApp.Controllers
                     }
                 else
                     {
-                    pc = pkg.Gauranteedreturn_percent;
+                    if (pkg.Id == 2 || pkg.Id == 3 || pkg.Id == 6 || pkg.Id == 7)
+                        {
+                        var mmm = db.Members.Where(x => x.Username == rec.UserName).Single();
+                        mmm.Defaultpackagecode = packageId;
+                        db.SaveChanges();
+                        pc = pkg.Gauranteedreturn_percent;
+                        }
+                    }
+                if (pkg.Id == 8 || pkg.Id == 9)
+                    {
+                    var pkgg = db.Packages.SingleOrDefault(p => p.Id == packageId);
+                    pc = pkgg.Gauranteedreturn_percent;
                     }
                 }
             catch (Exception ex)
@@ -2548,9 +2604,10 @@ namespace BtcProApp.Controllers
 
                 }
 
+
             if (User.Identity.Name.ToUpper() != "SUPERADMIN")      //i.e. not a FREE JOINING
                 {
-                await FixedIncomeCalculation(rec.Id, pc, investmentAmt, packageId, GuidString);
+                await FixedIncomeCalculation(rec.Id, pc, investmentAmt, packageId, GuidString, Currency);
                 }
 
             //7...
@@ -2565,7 +2622,10 @@ namespace BtcProApp.Controllers
                 var res1 = db.Members.SingleOrDefault(m => m.RegistrationId == uplineId1);
                 if (res1 != null)
                     {
-                    await BinaryIncomeCalculation(uplineId1, res1.Doj, investmentAmt, searchpos1, isJoined, rec.Id, packageId, GuidString);
+                    if (packageId <= 7)
+                        {
+                        await BinaryIncomeCalculation(uplineId1, res1.Doj, investmentAmt, searchpos1, isJoined, rec.Id, packageId, GuidString);
+                        }
                     uplineId1 = (long) res1.UplineRegistrationId;
                     searchpos1 = res1.BinaryPosition;
                     }
@@ -2578,7 +2638,10 @@ namespace BtcProApp.Controllers
 
             //8...
             var res2 = db.Members.SingleOrDefault(m => m.RegistrationId == res.ReferrerRegistrationId);
-            await SponsorIncomeCalculation(res.ReferrerRegistrationId, res2.Doj, investmentAmt, res2.BinaryPosition, isJoined, rec.Id, packageId, GuidString);
+            if (packageId <= 7)
+                {
+                await SponsorIncomeCalculation(res.ReferrerRegistrationId, res2.Doj, investmentAmt, res2.BinaryPosition, isJoined, rec.Id, packageId, GuidString);
+                }
 
             //9..
             string searchname2 = rec.UserName;
@@ -2595,7 +2658,7 @@ namespace BtcProApp.Controllers
                     {
                     if (User.Identity.Name.ToUpper() != "SUPERADMIN")      //i.e. not a FREE JOINING
                         {
-                        await GenerationIncomeCalculation(uplineId2, res1.Doj, investmentAmt, res1.BinaryPosition, isJoined, rec.Id, packageId, (int) res1.Defaultpackagecode, level, GuidString);
+                        await GenerationIncomeCalculation(uplineId2, res1.Doj, investmentAmt, res1.BinaryPosition, isJoined, rec.Id, packageId, (int) res1.Defaultpackagecode, level, GuidString, Currency);
                         }
                     uplineId2 = (long) res2.ReferrerRegistrationId;
                     if (level == 4) { keepgoing2 = false; }
@@ -2614,6 +2677,7 @@ namespace BtcProApp.Controllers
 
             return true;
             }
+
         [HttpGet]
         public JsonResult MyAddress()
             {
@@ -2622,6 +2686,7 @@ namespace BtcProApp.Controllers
             return Json(new { Address = rec }, JsonRequestBehavior.AllowGet);
             }
 
+        //called from MyPurchaseController from menu MyPurchases/Repurchases 
         [HttpGet]
         public JsonResult MyPurchases()
             {
@@ -2643,6 +2708,7 @@ namespace BtcProApp.Controllers
                                   Paymode = "",
                                   MinPay = s.Minamount,
                                   MaxPay = s.Maxamount,
+                                  Currency=p.Currency,
                                   PackageId=p.Packageid
                                   } ).ToList();
             return Json(new { Purchases = purchases }, JsonRequestBehavior.AllowGet);
@@ -2705,7 +2771,7 @@ namespace BtcProApp.Controllers
             return MemberLevel;
             }
 
-        public async Task<bool> FixedIncomeCalculation(long RegistrationId, double Pc, double Investment, int PackageId, string GuidString)
+        public async Task<bool> FixedIncomeCalculation(long RegistrationId, double Pc, double Investment, int PackageId, string GuidString, string Currency)
             {
             //double bonusamt = 0;
             //##################### Bonus 10th July - 13th August 2017 #####################//
@@ -2742,6 +2808,7 @@ namespace BtcProApp.Controllers
                     wkin.FixedIncomeWallet = ( Pc * Investment ) / 100;
                     wkin.FrozenWallet = 0;
                     wkin.BatchNo = GuidString;
+                    wkin.Currency = Currency;
 
                     weeklys.Add(wkin);
                     }
@@ -2750,7 +2817,41 @@ namespace BtcProApp.Controllers
                 #endregion
                 }
 
-            if (PackageId == 6 || PackageId == 7)
+            if (PackageId == 8 )
+                {
+                #region Monthly payout
+                DateTime duedt = DateTime.Now.AddDays(1);
+                List<WeeklyIncome> monthly = new List<WeeklyIncome>();
+                for (int i = 1; i <= 24; i++)
+                    {
+                    WeeklyIncome mnthin = new WeeklyIncome();
+                    mnthin.RegistrationId = RegistrationId;
+                    mnthin.WeekNo = i;
+                    mnthin.Days = 30;
+                    mnthin.Pc = Pc;
+
+                    mnthin.Income = ( Pc * Investment ) / 100;
+                    mnthin.PackageId = PackageId;
+                    WeekModel wkModel = GetCurrentMonth(DateTime.Now.AddDays(1), duedt);
+                    mnthin.WeekStartDate = wkModel.WeekStartDate;
+                    mnthin.WeekEndDate = wkModel.WeekEndDate;
+                    mnthin.DueDate = duedt.AddDays(30);
+                    duedt = mnthin.DueDate;
+                    mnthin.CashWallet = 0;
+                    mnthin.ReserveWallet = 0;
+                    mnthin.FixedIncomeWallet = ( Pc * Investment ) / 100;
+                    mnthin.FrozenWallet = 0;
+                    mnthin.BatchNo = GuidString;
+                    mnthin.Currency = Currency;
+
+                    monthly.Add(mnthin);
+                    }
+                db.WeeklyIncomes.AddRange(monthly);
+                await db.SaveChangesAsync();
+                #endregion
+                }
+
+            if (PackageId == 6 || PackageId == 7 || PackageId == 9)
                 {
                 #region Monthly payout
                 DateTime duedt = DateTime.Now.AddDays(1);
@@ -2775,6 +2876,7 @@ namespace BtcProApp.Controllers
                     mnthin.FixedIncomeWallet = ( Pc * Investment ) / 100;
                     mnthin.FrozenWallet = 0;
                     mnthin.BatchNo = GuidString;
+                    mnthin.Currency = Currency;
 
                     monthly.Add(mnthin);
                     }
@@ -2884,7 +2986,7 @@ namespace BtcProApp.Controllers
             return true;
             }
 
-        public async Task<bool> GenerationIncomeCalculation(long RegistrationId, DateTime JoiningDate, double Amount, string Position, bool newJoining, long PurchaseRegistrationId, int packageId, int DefaultSchemeId, int Level, string GuidString)
+        public async Task<bool> GenerationIncomeCalculation(long RegistrationId, DateTime JoiningDate, double Amount, string Position, bool newJoining, long PurchaseRegistrationId, int packageId, int DefaultSchemeId, int Level, string GuidString, string Currency)
             {
             if (Level == 1)
                 {
@@ -2900,6 +3002,7 @@ namespace BtcProApp.Controllers
                     wkc = GetCurrentWeekBoundary(DateTime.Now);
                     newBusiness.WeekStartDate = wkc.WeekStartDate;
                     newBusiness.WeekEndDate = wkc.WeekEndDate;
+                    newBusiness.Currency = Currency;
                     if (newJoining)
                         {
                         if (Position == "L") { newBusiness.LeftNewJoining = 1; newBusiness.RightNewJoining = 0; }
@@ -2947,6 +3050,8 @@ namespace BtcProApp.Controllers
                     newBusiness.WeekNo = wk.WeekNo;
                     newBusiness.WeekStartDate = wk.WeekStartDate;
                     newBusiness.WeekEndDate = wk.WeekEndDate;
+                    newBusiness.Currency = Currency;
+
                     if (newJoining)
                         {
                         if (Position == "L") { newBusiness.LeftNewJoining = 1; newBusiness.RightNewJoining = 0; }
@@ -2987,6 +3092,8 @@ namespace BtcProApp.Controllers
                     newBusiness.WeekNo = wk.WeekNo;
                     newBusiness.WeekStartDate = wk.WeekStartDate;
                     newBusiness.WeekEndDate = wk.WeekEndDate;
+                    newBusiness.Currency = Currency;
+
                     if (newJoining)
                         {
                         if (Position == "L") { newBusiness.LeftNewJoining = 1; newBusiness.RightNewJoining = 0; }
@@ -3027,6 +3134,8 @@ namespace BtcProApp.Controllers
                     newBusiness.WeekNo = wk.WeekNo;
                     newBusiness.WeekStartDate = wk.WeekStartDate;
                     newBusiness.WeekEndDate = wk.WeekEndDate;
+                    newBusiness.Currency = Currency;
+
                     if (newJoining)
                         {
                         if (Position == "L") { newBusiness.LeftNewJoining = 1; newBusiness.RightNewJoining = 0; }
@@ -3124,13 +3233,18 @@ namespace BtcProApp.Controllers
             return wkmodel;
             }
 
+        /// <summary>
+        /// called from MemberTransferController for view [Transfers view] called from Money-->transfer menu option in member panel
+        /// to display transfer ledger of a member
+        /// </summary>
+        /// <returns></returns>
         public JsonResult MemberTransferHistory()
             {
             string username = User.Identity.Name;
             var rec = db.Registrations.SingleOrDefault(r => r.UserName.ToUpper().Trim() == username.ToUpper().Trim());
             var transfers = ( from t in db.Ledgers
                               from r in db.Registrations
-                              where t.ToFromUser == r.Id && t.RegistrationId == rec.Id && t.WalletId == 2
+                              where t.ToFromUser == r.Id && t.RegistrationId == rec.Id && (t.WalletId == 2 || t.WalletId==4)
                               select new MemberTransferVM
                                   {
                                   Id = t.Id,
@@ -3139,6 +3253,7 @@ namespace BtcProApp.Controllers
                                   Withdraw = t.Withdraw,
                                   Transfer = r.UserName,
                                   Balance = 0,
+                                  Currency=t.Currency
                                   } ).ToList();
 
             for (int i = 0; i < transfers.Count(); i++)
@@ -3195,6 +3310,7 @@ namespace BtcProApp.Controllers
 
             }
 
+        //called from MyPurchaseController from MyPurchases/Repurchases sub menu
         public JsonResult GetFixedIncomeIllustration(string Guid)
             {
             string username = User.Identity.Name;
@@ -3214,7 +3330,8 @@ namespace BtcProApp.Controllers
                                 DueDate = wk.DueDate,
                                 Amount = wk.Income,
                                 Package = pkg.Name,
-                                PaymentDate = wk.PaidDate
+                                PaymentDate = wk.PaidDate,
+                                Currency=wk.Currency
                                 } ).ToList();
 
             for (int i = 0; i < FIarray.Count(); i++)
@@ -3231,6 +3348,10 @@ namespace BtcProApp.Controllers
             return Json(new { FixedIncomeArray = FIarray }, JsonRequestBehavior.AllowGet);
             }
 
+        /// <summary>
+        /// called from BusinessReportController for [SalesHistory view] in member panel My Business ---> Current Business & Earnings option
+        /// </summary>
+        /// <returns></returns>
         public JsonResult GetMyCurrentFixedIncome()
             {
             string username = User.Identity.Name;
@@ -3238,8 +3359,10 @@ namespace BtcProApp.Controllers
             var weekly = GetCurrentWeek(rec.Doj, DateTime.Now);
             var FIarray = ( from wk in db.WeeklyIncomes
                             from pkg in db.Packages
-                            where wk.PackageId == pkg.Id && wk.RegistrationId == rec.RegistrationId && wk.WeekNo == weekly.WeekNo
-                            orderby wk.WeekNo
+                            where wk.PackageId == pkg.Id && wk.RegistrationId == rec.RegistrationId && 
+                            ( System.Data.Entity.DbFunctions.TruncateTime(wk.DueDate) >= System.Data.Entity.DbFunctions.TruncateTime(weekly.WeekStartDate) &&
+                            System.Data.Entity.DbFunctions.TruncateTime(wk.DueDate) <= System.Data.Entity.DbFunctions.TruncateTime(weekly.WeekEndDate)) 
+                            orderby wk.DueDate
                             select new FixedIncomeLedgerVM
                                 {
                                 WeekNo = wk.WeekNo,
@@ -4111,10 +4234,7 @@ namespace BtcProApp.Controllers
             return Json(new { WeekBoundary = wk }, JsonRequestBehavior.AllowGet);
             }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        //called from DashboardController for [Index View]
         public JsonResult Dashboarddata()
             {
             DashboardModel dashdata = new DashboardModel();
@@ -4133,7 +4253,7 @@ namespace BtcProApp.Controllers
             dashdata.InitialInvestment = db.Purchases.Where(p => p.RegistrationId == rec.RegistrationId && p.Packageid != 0).Select(n => n.Amount).DefaultIfEmpty(0).Sum();
 
             //dashdata.TotalRepurchase = db.Purchases.Where(p => p.RegistrationId == rec.RegistrationId && p.Packageid == 0).Select(n => n.Amount).DefaultIfEmpty(0).Sum();
-            dashdata.TotalRepurchase = db.WithdrawalRequests.Where(w => w.RegistrationId == rec.RegistrationId && w.Approved_Date == null && w.Status == "Under Process").Select(w => w.Amount).DefaultIfEmpty(0).Sum();
+            //dashdata.TotalRepurchase = db.WithdrawalRequests.Where(w => w.RegistrationId == rec.RegistrationId && w.Approved_Date == null && w.Status == "Under Process").Select(w => w.Amount).DefaultIfEmpty(0).Sum();
 
             int plutocount = db.BinaryIncomes.Where(b => b.RegistrationId == rec.RegistrationId && b.PackageId == 1).Select(n => n.PackageId).DefaultIfEmpty(0).Count();
             int jupitercount = db.BinaryIncomes.Where(b => b.RegistrationId == rec.RegistrationId && b.PackageId == 2).Select(n => n.PackageId).DefaultIfEmpty(0).Count();
@@ -4162,12 +4282,48 @@ namespace BtcProApp.Controllers
             double amt6 = (double) ( db.Ledgers.Where(b => b.RegistrationId == rec.RegistrationId && b.WalletId == 3) ).Select(b => b.Withdraw).DefaultIfEmpty(0).Sum();
             dashdata.ReturnWalletBalance = amt5 - amt6;
 
-            dashdata.FrozenWalletBalance = 0;
+            double amt7 = (double) ( db.Ledgers.Where(b => b.RegistrationId == rec.RegistrationId && b.WalletId == 4) ).Select(b => b.Deposit).DefaultIfEmpty(0).Sum();
+            double amt8 = (double) ( db.Ledgers.Where(b => b.RegistrationId == rec.RegistrationId && b.WalletId == 4) ).Select(b => b.Withdraw).DefaultIfEmpty(0).Sum();
+            dashdata.EthereumWalletBalance = amt7 - amt8;
+
+            double amt9 = (double) ( db.Ledgers.Where(b => b.RegistrationId == rec.RegistrationId && b.WalletId == 5) ).Select(b => b.Deposit).DefaultIfEmpty(0).Sum();
+            double amt10 = (double) ( db.Ledgers.Where(b => b.RegistrationId == rec.RegistrationId && b.WalletId == 5) ).Select(b => b.Withdraw).DefaultIfEmpty(0).Sum();
+            dashdata.EthereumCashWalletBalance = amt9 - amt10;
+            
+            double amt11 = (double) ( db.Ledgers.Where(b => b.RegistrationId == rec.RegistrationId && b.WalletId == 6) ).Select(b => b.Deposit).DefaultIfEmpty(0).Sum();
+            double amt12 = (double) ( db.Ledgers.Where(b => b.RegistrationId == rec.RegistrationId && b.WalletId == 6) ).Select(b => b.Withdraw).DefaultIfEmpty(0).Sum();
+            dashdata.EthereumReturnWalletBalance = amt11 - amt12;
+
+            dashdata.total_joining = ( db.Members.Count() * 9 ) + ( db.Registrations.Count() );
+
+            var obj =db.BusinessStats.ToList().OrderByDescending(b => b.id).Take(1);  //take most recent record
+            if (obj != null)
+                {
+                foreach (BusinessStats o in obj)
+                    {
+                    dashdata.total_investment = o.total_investment;
+                    dashdata.total_payout = o.total_payout;
+                    dashdata.current_investment = o.current_investment;
+                    dashdata.current_payout = o.current_payout;
+                    }
+                }
+            else
+                {
+                dashdata.total_investment = 0;
+                dashdata.total_payout = 0;
+                dashdata.current_investment = 0;
+                dashdata.current_payout = 0;
+                }
 
             return Json(new { DashboardDataModel = dashdata }, JsonRequestBehavior.AllowGet);
             }
 
-        public JsonResult MyFixedIncomeWallet()
+        /// <summary>
+        /// called from FixedIncomeWalletController for [ReturnWallet view] from Money-->Return Wallet in member panel to display Return wallet ledger
+        /// common ReturnWallet ledger call for all coin wallets
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult MyFixedIncomeWallet(int WalletId)
             {
             string username = User.Identity.Name;
             var rec = db.Members.SingleOrDefault(r => r.Username.ToUpper().Trim() == username.ToUpper().Trim());
@@ -4179,7 +4335,7 @@ namespace BtcProApp.Controllers
                                 where l.TransactionTypeId == t.Id &&
                                 l.SubLedgerId == s.Id &&
                                 l.RegistrationId == rec.RegistrationId &&
-                                l.WalletId == 3
+                                l.WalletId == WalletId
                                 orderby l.Id
                                 select new LedgerVM
                                     {
@@ -4200,7 +4356,12 @@ namespace BtcProApp.Controllers
             return Json(new { FixedWallet = fixedwallet }, JsonRequestBehavior.AllowGet);
             }
 
-        public JsonResult MyCashIncomeWallet()
+        /// <summary>
+        /// called from CashIncomeWalletController for [CashWallet view] from Money-->Cash Wallet in member panel to display Cash wallet ledger
+        /// common CashWallet ledger call for all coin wallets
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult MyCashIncomeWallet(int WalletId)
             {
             string username = User.Identity.Name;
             var rec = db.Members.SingleOrDefault(r => r.Username.ToUpper().Trim() == username.ToUpper().Trim());
@@ -4212,7 +4373,7 @@ namespace BtcProApp.Controllers
                                where l.TransactionTypeId == t.Id &&
                                l.SubLedgerId == s.Id &&
                                l.RegistrationId == rec.RegistrationId &&
-                               l.WalletId == 1
+                               l.WalletId == WalletId
                                orderby l.Id
                                select new LedgerVM
                                    {
@@ -4255,7 +4416,12 @@ namespace BtcProApp.Controllers
             return Json(new { CashWallet = cashwallet }, JsonRequestBehavior.AllowGet);
             }
 
-        public JsonResult MyReserveIncomeWallet()
+        /// <summary>
+        /// called from ReserveIncomeWalletController for [ReserveWallet view] from Money-->Reserve Wallet in member panel to display Reserve wallet ledger
+        /// common ReserveWallet ledger call for all coin wallets
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult MyReserveIncomeWallet(int WalletId)
             {
             string username = User.Identity.Name;
             var rec = db.Members.SingleOrDefault(r => r.Username.ToUpper().Trim() == username.ToUpper().Trim());
@@ -4267,7 +4433,7 @@ namespace BtcProApp.Controllers
                                   where l.TransactionTypeId == t.Id &&
                                   l.SubLedgerId == s.Id &&
                                   l.RegistrationId == rec.RegistrationId &&
-                                  l.WalletId == 2
+                                  l.WalletId == WalletId
                                   orderby l.Id
                                   select new LedgerVM
                                       {
@@ -4793,7 +4959,7 @@ namespace BtcProApp.Controllers
             return Json(new { Member = mem }, JsonRequestBehavior.AllowGet);
             }
 
-        public JsonResult AdminTransferLedger(string Username)
+        public JsonResult AdminTransferLedger(string Username) //called from AdminTransferController from sub menu Admin Transfers by superadmin
             {
             var admin = db.Registrations.SingleOrDefault(m => m.UserName.ToUpper() == "SUPERADMIN");
             if (Username != "")
@@ -4815,7 +4981,8 @@ namespace BtcProApp.Controllers
                                       Transfer = r.UserName,
                                       Walletname = w.WalletName,
                                       Balance = 0,
-                                      Comment = t.Comment
+                                      Comment = t.Comment,
+                                      Currency=t.Currency
                                       } ).ToList();
 
                 for (int i = 0; i < transfers.Count(); i++)
@@ -4841,7 +5008,8 @@ namespace BtcProApp.Controllers
                                       Transfer = r.UserName,
                                       Walletname = w.WalletName,
                                       Balance = 0,
-                                      Comment = t.Comment
+                                      Comment = t.Comment,
+                                      Currency=t.Currency
                                       } ).ToList();
 
                 for (int i = 0; i < transfers.Count(); i++)
@@ -4909,7 +5077,7 @@ namespace BtcProApp.Controllers
         public ActionResult CalculatePayout()
             {
             //Set the Process Id
-            string processId = "PRC-12";
+            string processId = "PRC-14";
             var PP = db.PayoutProcess.ToList().OrderByDescending(pp => pp.Id).FirstOrDefault();
 
             //post the Fixed Incomes first
@@ -4963,6 +5131,7 @@ namespace BtcProApp.Controllers
                     postBIcash.ProcessId = processId;
                     postBIcash.Leftside_cd = 0;
                     postBIcash.Rightside_cd = 0;
+                    postBIcash.Currency = "USD";
                     postingsBI.Add(postBIcash);
 
                     Ledger postBIreserve = new Ledger();
@@ -4979,6 +5148,7 @@ namespace BtcProApp.Controllers
                     postBIreserve.ProcessId = processId;
                     postBIreserve.Leftside_cd = 0;
                     postBIreserve.Rightside_cd = 0;
+                    postBIreserve.Currency = "USD";
                     postingsBI.Add(postBIreserve);
 
                     db.Ledgers.AddRange(postingsBI);
@@ -5008,6 +5178,7 @@ namespace BtcProApp.Controllers
                         SPpostcash.ProcessId = processId;
                         SPpostcash.Leftside_cd = 0;
                         SPpostcash.Rightside_cd = 0;
+                        SPpostcash.Currency = "USD";
                         SPpostings.Add(SPpostcash);
 
                         Ledger SPpostreserve = new Ledger();
@@ -5024,6 +5195,7 @@ namespace BtcProApp.Controllers
                         SPpostreserve.ProcessId = processId;
                         SPpostreserve.Leftside_cd = 0;
                         SPpostreserve.Rightside_cd = 0;
+                        SPpostreserve.Currency = "USD";
                         SPpostings.Add(SPpostreserve);
 
                         sponsorpostings[k].ProcessId = processId;
@@ -5057,6 +5229,7 @@ namespace BtcProApp.Controllers
                             GPpostcash.ProcessId = processId;
                             GPpostcash.Leftside_cd = 0;
                             GPpostcash.Rightside_cd = 0;
+                            GPpostcash.Currency = "USD";
                             GPpostings.Add(GPpostcash);
 
                             Ledger GPpostreserve = new Ledger();
@@ -5073,6 +5246,7 @@ namespace BtcProApp.Controllers
                             GPpostreserve.ProcessId = processId;
                             GPpostreserve.Leftside_cd = 0;
                             GPpostreserve.Rightside_cd = 0;
+                            GPpostreserve.Currency = "USD";
                             GPpostings.Add(GPpostreserve);
                             }
                         }
@@ -5123,6 +5297,7 @@ namespace BtcProApp.Controllers
 
             return Json(new { ToProcess = records, TotalPayout = totalamount }, JsonRequestBehavior.AllowGet);
             }
+
         [HttpPost]
         public JsonResult CalculateDailyPayout()
             {
@@ -5160,6 +5335,7 @@ namespace BtcProApp.Controllers
                         post.ProcessId = processId;
                         post.Leftside_cd = 0;
                         post.Rightside_cd = 0;
+                        post.Currency = "USD";
                         postings.Add(post);
 
                         fixedpostings[k].ProcessId = processId;
@@ -5254,6 +5430,8 @@ namespace BtcProApp.Controllers
             isMatched = ( rec.TrxPassword == TxPassword ? true : false );
             return Json(new { Success = isMatched }, JsonRequestBehavior.AllowGet);
             }
+
+        //called from PackageShopController from sub menu Package Shop by member
         public ActionResult PayCryptoCurrency(string username, long UplineId, int packageId, double investmentAmt, string cointype)
             {
             if (username == null) { username = User.Identity.Name; }
@@ -5285,7 +5463,14 @@ namespace BtcProApp.Controllers
                 objcurrency.PackageId = packageId;
                 objcurrency.PackageAmt = investmentAmt;
                 objcurrency.UplineId = UplineId;
-                objcurrency.Paying_Currency = "USD";
+                if (packagename == "Ethereum" || packagename == "Ethereum Plus")
+                    {
+                    objcurrency.Paying_Currency = "ETH";
+                    }else
+                    {
+                    objcurrency.Paying_Currency = "USD";
+                    }
+               
                 objcurrency.Target_Currency = cointype;
 
                 db.CryptoCurrencies.Add(objcurrency);
@@ -5316,9 +5501,9 @@ namespace BtcProApp.Controllers
                     cryptoObj.PaymentDate = DateTime.Now;
                     db.SaveChanges();
                     //time for crediting the amount in member ledger first
-                    ledgerposting(cryptoObj.Username, "D", 2, cryptoObj.PackageAmt, "Package purchase with BitCoin");
+                    ledgerposting(cryptoObj.Username, "D", 2, cryptoObj.PackageAmt, "Package purchase with " + cryptoObj.Target_Currency, cryptoObj.Paying_Currency);
                     //yes-- ready for autopurchase now
-                    await autoPurchase(cryptoObj.Username, cryptoObj.UplineId, cryptoObj.PackageId, cryptoObj.PackageAmt);
+                    await autoPurchase(cryptoObj.Username, cryptoObj.UplineId, cryptoObj.PackageId, cryptoObj.PackageAmt,cryptoObj.Paying_Currency);
                     }
                 }
             await db.SaveChangesAsync();
@@ -5687,6 +5872,143 @@ namespace BtcProApp.Controllers
                 return false;
                 }
             }
+
+        //called from BusinessStatsController of [BusinessStats view] called from Business stats menu option by superadmin
+        [HttpGet]
+        public JsonResult GetBusinessStats()
+            {
+            var obj = db.BusinessStats.ToList().OrderByDescending(b=>b.id).Take(1);  //take most recent record
+
+            return Json(new { Stats = obj }, JsonRequestBehavior.AllowGet);
+            }
+       
+        //called from BusinessStatsController of [BusinessStats view] called from Business stats menu option by superadmin
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult PostBusinessStats(BusinessStats obj)
+            {
+            BusinessStats newobj = new BusinessStats();
+            newobj.Date = DateTime.Now;
+            newobj.total_investment = obj.total_investment;
+            newobj.total_payout = obj.total_payout;
+            newobj.current_investment = obj.current_investment;
+            newobj.current_payout = obj.current_payout;
+            db.BusinessStats.Add(newobj);
+            db.SaveChanges();
+
+            return Json(new { Status = true }, JsonRequestBehavior.AllowGet);
+            }
+
+        /// <summary>
+        /// called from PayoutByAdmin controller for [PayoutBuAdmin view] called from Process Withdrawal Requests menu by superadmin
+        /// </summary>
+        /// <param name="FromDate"></param>
+        /// <param name="ToDate"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult WithdrawalRequestDetailsInDateRange(DateTime FromDate, DateTime ToDate)
+            {
+            DateTime startDate = FromDate.Date;
+            DateTime endDate = ToDate.Date;
+
+            var qry = from w in db.WithdrawalRequests
+                      where System.Data.Entity.DbFunctions.TruncateTime(w.Date) >= startDate && System.Data.Entity.DbFunctions.TruncateTime(w.Date) <= endDate
+                      && (w.Status=="Paid" || w.Status=="Under Process")
+                      group w by new
+                          {
+                          DATE= System.Data.Entity.DbFunctions.TruncateTime(w.Date)
+                          } into g
+                      select new
+                          {
+                          date = g.Key.DATE.ToString().Substring(0,10),
+                          requestedamount = g.Sum(r => r.PaidOutAmount),
+                          paidamount = g.Where(r=>r.Status=="Paid").Sum(r => r.PaidOutAmount),
+                          currency = "USD",
+                          balance = g.Sum(r => r.PaidOutAmount) - g.Where(r => r.Status == "Paid").Sum(r => r.PaidOutAmount),
+                          };
+                     
+            return Json(new { data = qry }, JsonRequestBehavior.AllowGet);
+            }
+
+        /// <summary>
+        /// called from AdminTransfer controller for [AdminTransfers view] called from Admin Balance Transfers menu by superadmin
+        /// </summary>
+        /// <param name="FromDate">Starting Date</param>
+        /// <param name="ToDate">Ending Date</param>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult BalanceTransferDetailsInDateRange(DateTime FromDate, DateTime ToDate)
+            {
+            DateTime startDate = FromDate.Date;
+            DateTime endDate = ToDate.Date;
+
+            var qry = from w in db.Ledgers
+                      where System.Data.Entity.DbFunctions.TruncateTime(w.Date) >= startDate && System.Data.Entity.DbFunctions.TruncateTime(w.Date) <= endDate
+                      && ( ( w.TransactionTypeId == 1 && w.SubLedgerId == 3 ) || ( w.TransactionTypeId == 7 && w.SubLedgerId == 1 ) )
+                      && w.ToFromUser==2
+                      group w by new
+                          {
+                          DATE = System.Data.Entity.DbFunctions.TruncateTime(w.Date),
+                          } into g
+                      select new
+                          {
+                          date = g.Key.DATE.ToString().Substring(0, 10),
+                          usdtotaltransferred = g.Where(r => r.Currency == "USD").Sum(r => (double?) r.Deposit) ?? 0,
+                          usdtotalrealised = g.Where(r => r.Currency == "USD").Sum(r => (double?) r.Withdraw) ?? 0,
+                          ethereumtotaltransferred = g.Where(r => r.Currency == "ETH").Sum(r => (double?) r.Deposit) ?? 0,
+                          ethereumtotalrealized = g.Where(r => r.Currency == "ETH").Sum(r => (double?) r.Withdraw) ?? 0,
+                          };
+
+            return Json(new { data = qry }, JsonRequestBehavior.AllowGet);
+            }
+
+        /// <summary>
+        /// called from BusinessStatsController of [BusinessStats view] called from Business stats menu option by superadmin
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult PostWalletAccount(WalletAccount obj)
+            {
+            WalletAccount newobj = new WalletAccount();
+            newobj.Date = DateTime.Now;
+            newobj.BitcoinWallet = obj.BitcoinWallet;
+            newobj.EthereumWallet = obj.EthereumWallet;
+            db.WalletAccounts.Add(newobj);
+            db.SaveChanges();
+
+            return Json(new { Status = true }, JsonRequestBehavior.AllowGet);
+            }
+
+        /// <summary>
+        /// called from Dashboardcontroller at 1 second interval to update manipulated TotalJoining on index page
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult GetCurrentMemberJoiningCount()
+            {
+            int total_joining = ( db.Members.Count() * 9 ) + ( db.Registrations.Count() );
+            return Json(new { Joining = total_joining }, JsonRequestBehavior.AllowGet);
+            }
+
+        /// <summary>
+        /// called from BusinessStatsController of [BusinessStats view] called from Business stats menu option by superadmin
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult GetWalletAccount()
+            {
+            var obj = db.WalletAccounts.ToList().OrderByDescending(b => b.id).Take(1);  //take most recent record
+
+            return Json(new { Stats = obj }, JsonRequestBehavior.AllowGet);
+            }
+
+        
+
         #endregion
         }
     }

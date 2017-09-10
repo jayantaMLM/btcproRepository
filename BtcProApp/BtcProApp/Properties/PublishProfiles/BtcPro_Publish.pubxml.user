@@ -19,7 +19,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/21/2017 08:21:40</publishTime>
     </File>
     <File Include="app/scripts/AdminTransferController.js">
-      <publishTime>06/25/2017 15:18:48</publishTime>
+      <publishTime>09/10/2017 12:02:14</publishTime>
     </File>
     <File Include="app/scripts/BinaryLedgerController.js">
       <publishTime>08/14/2017 08:25:26</publishTime>
@@ -30,8 +30,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="app/scripts/BusinessReportController.js">
       <publishTime>06/11/2017 13:55:52</publishTime>
     </File>
+    <File Include="app/scripts/BusinessStatsController.js">
+      <publishTime>09/07/2017 08:13:24</publishTime>
+    </File>
     <File Include="app/scripts/CashIncomeWalletController.js">
-      <publishTime>07/10/2017 15:57:41</publishTime>
+      <publishTime>09/10/2017 09:41:05</publishTime>
     </File>
     <File Include="app/scripts/ChangeUserIdController.js">
       <publishTime>07/11/2017 08:31:45</publishTime>
@@ -40,13 +43,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/27/2017 19:00:54</publishTime>
     </File>
     <File Include="app/scripts/DashboardController.js">
-      <publishTime>08/19/2017 13:51:10</publishTime>
+      <publishTime>09/08/2017 09:05:20</publishTime>
     </File>
     <File Include="app/scripts/EditProfileController.js">
       <publishTime>08/13/2017 16:30:15</publishTime>
     </File>
     <File Include="app/scripts/FixedIncomeWalletController.js">
-      <publishTime>06/25/2017 17:13:32</publishTime>
+      <publishTime>09/10/2017 12:19:12</publishTime>
     </File>
     <File Include="app/scripts/FixedPayoutController.js">
       <publishTime>06/11/2017 00:59:18</publishTime>
@@ -64,7 +67,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/26/2017 16:49:05</publishTime>
     </File>
     <File Include="app/scripts/MemberTransferController.js">
-      <publishTime>08/23/2017 08:36:44</publishTime>
+      <publishTime>09/10/2017 15:18:04</publishTime>
     </File>
     <File Include="app/scripts/MemberWalletsController.js">
       <publishTime>07/29/2017 00:36:52</publishTime>
@@ -76,16 +79,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/20/2017 23:31:36</publishTime>
     </File>
     <File Include="app/scripts/MyPurchaseController.js">
-      <publishTime>08/14/2017 06:46:42</publishTime>
+      <publishTime>08/28/2017 09:10:03</publishTime>
     </File>
     <File Include="app/scripts/PackageShopController.js">
-      <publishTime>08/23/2017 08:34:01</publishTime>
+      <publishTime>08/27/2017 21:46:57</publishTime>
     </File>
     <File Include="app/scripts/PasswordChangeController.js">
       <publishTime>05/23/2017 14:26:30</publishTime>
     </File>
     <File Include="app/scripts/PayoutByAdmin.js">
-      <publishTime>06/25/2017 09:25:08</publishTime>
+      <publishTime>09/05/2017 09:01:49</publishTime>
     </File>
     <File Include="app/scripts/ReferralLink.js">
       <publishTime>08/14/2017 06:16:15</publishTime>
@@ -94,7 +97,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/16/2017 23:31:43</publishTime>
     </File>
     <File Include="app/scripts/ReserveIncomeWalletController.js">
-      <publishTime>06/25/2017 17:44:48</publishTime>
+      <publishTime>09/10/2017 10:25:46</publishTime>
     </File>
     <File Include="app/scripts/TeamMemberController.js">
       <publishTime>06/11/2017 01:25:49</publishTime>
@@ -103,10 +106,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/20/2017 23:31:21</publishTime>
     </File>
     <File Include="app/scripts/TeamStructureNewController.js">
-      <publishTime>08/01/2017 04:37:48</publishTime>
+      <publishTime>08/28/2017 10:10:05</publishTime>
     </File>
     <File Include="app/scripts/TicketController.js">
-      <publishTime>08/13/2017 17:03:00</publishTime>
+      <publishTime>09/10/2017 17:43:36</publishTime>
     </File>
     <File Include="app/scripts/TreeReportController.js">
       <publishTime>05/20/2017 23:31:18</publishTime>
@@ -115,7 +118,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2017 09:10:35</publishTime>
     </File>
     <File Include="app/scripts/UploadBitCoinController.js">
-      <publishTime>05/24/2017 13:33:01</publishTime>
+      <publishTime>09/07/2017 08:30:49</publishTime>
     </File>
     <File Include="app/scripts/UploadKycController.js">
       <publishTime>08/13/2017 17:05:04</publishTime>
@@ -133,7 +136,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2017 14:56:48</publishTime>
     </File>
     <File Include="bin/BtcProApp.dll">
-      <publishTime>08/23/2017 08:38:18</publishTime>
+      <publishTime>09/10/2017 18:05:17</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/23/2017 14:56:34</publishTime>
@@ -4381,7 +4384,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/23/2017 08:24:08</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>08/14/2017 17:42:07</publishTime>
+      <publishTime>09/03/2017 16:48:52</publishTime>
     </File>
     <File Include="slider.html">
       <publishTime>04/23/2017 15:08:41</publishTime>
@@ -4639,10 +4642,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/19/2017 08:11:57</publishTime>
     </File>
     <File Include="Views/Home/AccountStatus.cshtml">
-      <publishTime>08/13/2017 17:32:10</publishTime>
+      <publishTime>09/10/2017 17:40:35</publishTime>
     </File>
     <File Include="Views/Home/AdminTransfers.cshtml">
-      <publishTime>06/25/2017 12:43:20</publishTime>
+      <publishTime>09/10/2017 11:48:55</publishTime>
     </File>
     <File Include="Views/Home/ApproveBitcoinTransfers.cshtml">
       <publishTime>05/24/2017 13:11:11</publishTime>
@@ -4656,8 +4659,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/BizOpportunity.cshtml">
       <publishTime>08/21/2017 18:28:33</publishTime>
     </File>
+    <File Include="Views/Home/BusinessStats.cshtml">
+      <publishTime>09/07/2017 08:15:38</publishTime>
+    </File>
     <File Include="Views/Home/CashWallet.cshtml">
-      <publishTime>08/14/2017 09:22:22</publishTime>
+      <publishTime>09/10/2017 10:10:51</publishTime>
     </File>
     <File Include="Views/Home/ChangePassword.cshtml">
       <publishTime>08/13/2017 17:38:29</publishTime>
@@ -4705,13 +4711,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2017 18:36:22</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>08/19/2017 14:01:52</publishTime>
+      <publishTime>09/10/2017 13:13:11</publishTime>
     </File>
     <File Include="Views/Home/IndexMain - Copy.cshtml">
       <publishTime>08/02/2017 06:55:48</publishTime>
     </File>
     <File Include="Views/Home/IndexMain.cshtml">
-      <publishTime>08/22/2017 12:27:02</publishTime>
+      <publishTime>08/26/2017 13:09:12</publishTime>
     </File>
     <File Include="Views/Home/Invoices.cshtml">
       <publishTime>04/25/2017 22:22:10</publishTime>
@@ -4738,10 +4744,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/17/2017 01:43:19</publishTime>
     </File>
     <File Include="Views/Home/MemberWallets.cshtml">
-      <publishTime>07/29/2017 01:16:46</publishTime>
+      <publishTime>08/27/2017 13:07:07</publishTime>
     </File>
     <File Include="Views/Home/MyPurchase.cshtml">
-      <publishTime>08/14/2017 06:48:57</publishTime>
+      <publishTime>08/28/2017 09:28:27</publishTime>
     </File>
     <File Include="Views/Home/MyRePurchase.cshtml">
       <publishTime>05/13/2017 12:36:09</publishTime>
@@ -4756,10 +4762,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/25/2017 22:21:56</publishTime>
     </File>
     <File Include="Views/Home/PackagesShop.cshtml">
-      <publishTime>08/19/2017 07:44:45</publishTime>
+      <publishTime>08/27/2017 21:41:59</publishTime>
     </File>
     <File Include="Views/Home/PayoutByAdmin.cshtml">
-      <publishTime>06/25/2017 09:15:36</publishTime>
+      <publishTime>09/05/2017 09:23:28</publishTime>
     </File>
     <File Include="Views/Home/ProcessSupportTickets.cshtml">
       <publishTime>07/07/2017 17:49:41</publishTime>
@@ -4771,10 +4777,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/19/2017 08:08:17</publishTime>
     </File>
     <File Include="Views/Home/ReserveWallet.cshtml">
-      <publishTime>08/06/2017 15:30:27</publishTime>
+      <publishTime>09/10/2017 11:09:07</publishTime>
     </File>
     <File Include="Views/Home/ReturnWallet.cshtml">
-      <publishTime>08/06/2017 15:35:58</publishTime>
+      <publishTime>09/10/2017 12:29:03</publishTime>
     </File>
     <File Include="Views/Home/SalesHistory.cshtml">
       <publishTime>06/04/2017 16:36:39</publishTime>
@@ -4786,7 +4792,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/13/2017 12:26:46</publishTime>
     </File>
     <File Include="Views/Home/TeamStructureNew.cshtml">
-      <publishTime>08/18/2017 19:50:09</publishTime>
+      <publishTime>08/28/2017 16:32:14</publishTime>
     </File>
     <File Include="Views/Home/Tickets.cshtml">
       <publishTime>08/13/2017 16:52:06</publishTime>
@@ -4795,10 +4801,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/25/2017 22:25:15</publishTime>
     </File>
     <File Include="Views/Home/Transfers.cshtml">
-      <publishTime>08/06/2017 20:44:12</publishTime>
+      <publishTime>09/10/2017 15:21:26</publishTime>
     </File>
     <File Include="Views/Home/UploadBalance.cshtml">
-      <publishTime>08/13/2017 17:57:37</publishTime>
+      <publishTime>09/07/2017 08:29:07</publishTime>
     </File>
     <File Include="Views/Home/UploadKYC.cshtml">
       <publishTime>08/13/2017 16:57:13</publishTime>
@@ -4837,7 +4843,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/23/2017 08:01:11</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/21/2017 09:36:39</publishTime>
+      <publishTime>09/10/2017 17:29:26</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>04/23/2017 14:56:34</publishTime>
@@ -4852,7 +4858,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2017 18:37:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/19/2017 01:02:03</publishTime>
+      <publishTime>09/07/2017 08:34:58</publishTime>
     </File>
     <File Include="widget.html">
       <publishTime>04/23/2017 15:08:41</publishTime>

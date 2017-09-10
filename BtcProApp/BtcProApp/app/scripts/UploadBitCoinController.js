@@ -1,6 +1,9 @@
-﻿var module = angular.module('app');
+﻿var module = angular.module('app',[]);
 
-module.controller('UploadBitCoin', function ($scope, $http, $location) {
+module.controller('UploadWallet', function ($scope, $http) {
 
+    $http.get("/Home/GetWalletAccount").then(function (response) {
+        $scope.wallets = response.data.Stats[0];
+    })
 
 })

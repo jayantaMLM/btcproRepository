@@ -43,6 +43,7 @@ namespace BtcProApp.Models
         public string Walletname { get; set; }
         public double Balance { get; set; }
         public string Comment { get; set; }
+        public string Currency { get; set; }
     }
 
     public class MemberWithdrawVM
@@ -74,6 +75,7 @@ namespace BtcProApp.Models
         public string Remarks { get; set; }
         public string BatchNo { get; set; }
     }
+
     public class FixedIncomeLedgerVM
     {
         public int WeekNo { get; set; }
@@ -89,6 +91,7 @@ namespace BtcProApp.Models
         public string PaymentStatus { get; set; }
         public DateTime? PaymentDate { get; set; }
         public string sPaymentDate { get; set; }
+        public string Currency { get; set; }
     }
 
     public class BinaryIncomeLedgerVM
@@ -145,7 +148,14 @@ namespace BtcProApp.Models
         public double CashWalletBalance { get; set; }
         public double ReserveWalletBalance { get; set; }
         public double ReturnWalletBalance { get; set; }
-        public double FrozenWalletBalance { get; set; }
+        public double EthereumWalletBalance { get; set; }
+        public double EthereumCashWalletBalance { get; set; }
+        public double EthereumReturnWalletBalance { get; set; }
+        public int total_joining { get; set; }
+        public double total_investment { get; set; }
+        public double total_payout { get; set; }
+        public double current_investment { get; set; }
+        public double current_payout { get; set; }
     }
 
     public class UploadResult
@@ -242,6 +252,8 @@ namespace BtcProApp.Models
         public double ReserveWalletAmount { get; set; }
         public double ReturnWalletAmount { get; set; }
         public double FrozenWalletAmount { get; set; }
+        public double EthereumCashWalletAmount { get; set; }
+        public double EthereumReserveWalletAccount { get; set; }
         }
 
 }

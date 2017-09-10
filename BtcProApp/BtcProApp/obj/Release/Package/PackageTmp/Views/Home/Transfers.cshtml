@@ -22,6 +22,10 @@
                                     <td>{{walletBalance | currency}}</td>
                                 </tr>
                                 <tr style="line-height:30px">
+                                    <td><label>Ethereum Wallet balance ($) :</label></td>
+                                    <td>{{ethwalletBalance | currency:'ETH '}}</td>
+                                </tr>
+                                <tr style="line-height:30px">
                                     <td style="vertical-align:text-top"><label>Transfer to Username :</label></td>
                                     <td>
                                         <input type="text" ng-model="username" class="form-control" ng-blur="checkUsername()" />
@@ -33,11 +37,12 @@
                                     <td>
                                         <select name="wallet" ng-model="wallet" required class="form-control">
                                             <option value="2">Reserve Wallet</option>
+                                            <option value="4">Ethereum Wallet</option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr style="line-height:30px">
-                                    <td><label>Amount to Transfer ($):</label></td>
+                                    <td><label>Amount to Transfer (<span ng-if="wallet==2">$</span><span ng-if="wallet==4">ETH</span>):</label></td>
                                     <td><input type="number" ng-model="amount" class="form-control" ng-min="1" /></td>
                                 </tr>
                                 <tr style="line-height:30px" ng-hide="username=='' || amount==null || amount<0 || amount==0 || amount > walletBalance">
@@ -129,16 +134,18 @@
                                     <th>Transferred To / From</th>
                                     <th>Deposit</th>
                                     <th>Withdraw</th>
-                                    <th>Balance</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="trf in transfers | orderBy:'-Id'| filter:searchText |myLimitTo:maxSize:startindex">
                                     <td data-label="Trf. Date">{{trf.Date}}</td>
                                     <td data-label="To / From">{{trf.Transfer}}</td>
-                                    <td data-label="Deposit$">{{trf.Deposit | currency}}</td>
-                                    <td data-label="Withdraw$">{{trf.Withdraw | currency}}</td>
-                                    <td data-label="Balance$">{{trf.Amount | currency}}</td>
+                                    <td ng-if="trf.Currency=='USD'" data-label="Deposit$">{{trf.Deposit | currency}}</td>
+                                    <td ng-if="trf.Currency=='USD'" data-label="Withdraw$">{{trf.Withdraw | currency}}</td>
+                                    @*<td ng-if="trf.Currency=='USD'" data-label="Balance$">{{trf.Amount | currency}}</td>*@
+                                    <td ng-if="trf.Currency=='ETH'" data-label="Deposit$">{{trf.Deposit | currency:'ETH '}}</td>
+                                    <td ng-if="trf.Currency=='ETH'" data-label="Withdraw$">{{trf.Withdraw | currency:'ETH '}}</td>
+                                    @*<td ng-if="trf.Currency=='ETH'"data-label="Balance$">{{trf.Amount | currency:'ETH '}}</td>*@
                                 </tr>
                             </tbody>
                             @*<tfoot>
@@ -160,11 +167,15 @@
                                     </tr>
                                 </tfoot>*@
                             <tfoot>
-                                <tr style="font-size:large;color:green" class="hidden-xs">
-                                    <td colspan="3" style="padding-right:25px;text-align:right">Totals:</td>
+                                <tr style="font-size:large;color:green">
+                                    <td colspan="2" style="padding-right:25px;text-align:right">Totals (USD):</td>
                                     <td>{{totalDeposit | currency}}</td>
                                     <td>{{totalWithdraw | currency}}</td>
-                                    <td colspan="2"></td>
+                                </tr>
+                                <tr style="font-size:large;color:green">
+                                    <td colspan="2" style="padding-right:25px;text-align:right">Totals (ETH):</td>
+                                    <td>{{totalDeposit_ETH | currency:'ETH '}}</td>
+                                    <td>{{totalWithdraw_ETH | currency:'ETH '}}</td>
                                 </tr>
 
                                 <tr ng-show="isExists" class="hidden-lg hidden-md hidden-sm visible-xs">

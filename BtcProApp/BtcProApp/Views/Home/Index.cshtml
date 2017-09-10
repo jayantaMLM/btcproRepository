@@ -10,10 +10,16 @@
         max-height: 5.4em;
         line-height: 1.8em;
     }
+
+    .sales-info {
+        background-color: aliceblue;
+        padding: 10px;
+        padding-left: 15%;
+    }
 </style>
 <section class="wrapper">
     <div ng-app="app" ng-controller="Dashboard" ng-cloak>
-        
+
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 <div class="breadcum" ng-if="isMember">
@@ -21,7 +27,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-md-3" ng-click="CashWallet();">
                 <div class="mini-stat clearfix" style="background-color:#ef7755;color:white;cursor:pointer">
@@ -37,7 +43,7 @@
                     <span class="mini-stat-icon tar"><i class="fa fa-money"></i></span>
                     <div class="mini-stat-info">
                         <span>{{data.ReserveWalletBalance | currency}}</span>
-                        <p style="margin-right:-5px !important">Reserve Wallet Balance</p>  
+                        <p style="margin-right:-5px !important">Reserve Wallet Balance</p>
                     </div>
                 </div>
             </div>
@@ -50,21 +56,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="mini-stat clearfix" style="background-color:#98b960;color:white;cursor:not-allowed">
-                    <span class="mini-stat-icon green"><i class="fa fa-money"></i></span>
+
+            <div class="col-md-3" ng-click="TeamMembers();">
+                <div class="mini-stat clearfix" style="background-color:#98b960;color:white;cursor:pointer">
+                    <span class="mini-stat-icon green"><i class="fa fa-gavel"></i></span>
                     <div class="mini-stat-info">
-                        <span>{{data.FrozenWalletBalance | currency}}</span>
-                        <p>Frozen Wallet Balance</p>
+                        <span>{{data.TotalTeamMembers}}</span>
+                        <p>Total Team Members</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-
-            <div class="hidden-lg col-md-3" style="cursor:pointer" ng-click="TeamMembers();">
-                <div class="mini-stat clearfix">
+            @*<div class="hidden-lg col-md-3">
+                <div class="mini-stat clearfix" style="background-color:#98b960;color:white;cursor:pointer" ng-click="TeamMembers();">
                     <div class="col-md-12" style="margin-left:-20px !important">
                         <span class="mini-stat-icon orange"><i class="fa fa-gavel"></i></span>
                     </div>
@@ -78,8 +82,8 @@
 
                     </div>
                 </div>
-            </div>
-            <div class="hidden-md hidden-sm hidden-xs col-md-3" style="cursor:pointer" ng-click="TeamMembers();">
+            </div>*@
+            @*<div class="hidden-md hidden-sm hidden-xs col-md-3" style="background-color:#98b960;color:white;cursor:pointer" ng-click="TeamMembers();">
                 <div class="mini-stat clearfix">
                     <span class="mini-stat-icon orange"><i class="fa fa-gavel"></i></span>
                     <div class="mini-stat-info">
@@ -87,18 +91,58 @@
                         <p style="margin-right:-35px !important">Total Team Members</p>
                     </div>
                 </div>
+                <div class="mini-stat clearfix" style="background-color:#98b960;color:white;cursor:pointer">
+                    <span class="mini-stat-icon green"><i class="fa fa-money"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.TotalTeamMembers}}</span>
+                        <p>Total Team Members</p>
+                    </div>
+                </div>
+            </div>*@
+            
+        </div>
+
+        <div class="row">
+            <div class="col-md-3" style="cursor:pointer" ng-click="MyRepurchase();">
+                <div class="mini-stat clearfix">
+                    <span class="mini-stat-icon orange"><i class="fa fa-money"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.EthereumCashWalletBalance | currency:'ETH '}}</span>
+                        <p style="margin-right:-20px !important">Etheruem Cash Wallet Balance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mini-stat clearfix" style="cursor:pointer">
+                    <span class="mini-stat-icon tar"><i class="fa fa-money"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.EthereumWalletBalance | currency:'ETH '}}</span>
+                        <p>Ethereum Wallet Balance</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="mini-stat clearfix" style="cursor:not-allowed">
+                    <span class="mini-stat-icon pink"><i class="fa fa-money"></i></span>
+                    <div class="mini-stat-info">
+                        <span>{{data.EthereumReturnWalletBalance | currency:'ETH '}}</span>
+                        <p>Ethereum Return Wallet Bal.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-3" style="cursor:pointer">
                 <div class="mini-stat clearfix">
-                    <span class="mini-stat-icon tar"><i class="fa fa-tag"></i></span>
+                    <span class="mini-stat-icon green"><i class="fa fa-tag"></i></span>
                     <div class="mini-stat-info">
                         <span>{{data.TotalTeamBusiness | currency}}</span>
                         <p>Total Team Business</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3" style="cursor:pointer" ng-click="MyPurchase();">
+
+            @*<div class="col-md-3" style="cursor:pointer" ng-click="MyPurchase();">
                 <div class="mini-stat clearfix">
                     <span class="mini-stat-icon pink"><i class="fa fa-money"></i></span>
                     <div class="mini-stat-info">
@@ -106,16 +150,8 @@
                         <p>My Initial Investment</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3" style="cursor:pointer" ng-click="MyRepurchase();">
-                <div class="mini-stat clearfix">
-                    <span class="mini-stat-icon green"><i class="fa fa-eye"></i></span>
-                    <div class="mini-stat-info">
-                        <span>{{data.TotalRepurchase | currency}}</span>
-                        <p style="margin-right:-20px !important">Due Withdrawal Requests</p>
-                    </div>
-                </div>
-            </div>
+            </div>*@
+           
         </div>
 
         <div class="row">
@@ -164,69 +200,37 @@
             </div>
             <div class="col-md-3">
                 <!--widget graph start-->
-                <div>
-                    <section class="panel">
-                        <div class="panel-body">
-                            <div class="top-stats-panel">
-                                <h4 class="widget-h">Team Package Sales</h4>
-                                <div class="bar-stats">
-                                    <ul class="progress-stat-bar clearfix">
-                                        <li data-percent="{{data.plutopkg}}%">
-                                            <span class="progress-stat-percent pink"></span>
-                                        </li>
-                                        <li data-percent="{{data.JupiterPurchasePc}}%">
-                                            <span class="progress-stat-percent"></span>
-                                        </li>
-                                        <li data-percent="{{data.EarthPurchasePc}}%">
-                                            <span class="progress-stat-percent yellow-b"></span>
-                                        </li>
-                                        <li data-percent="{{data.MercuryPurchasePc}}%">
-                                            <span class="progress-stat-percent blue"></span>
-                                        </li>
-                                    </ul>
-                                    <ul class="bar-legend">
-                                        <li>
-                                            <span class="bar-legend-pointer pink"></span> Pluto
-                                        </li>
-                                        <li>
-                                            <span class="bar-legend-pointer green"></span> Jupiter
-                                        </li>
-                                        <li>
-                                            <span class="bar-legend-pointer yellow-b"></span> Earth
-                                        </li>
-                                        <li>
-                                            <span class="bar-legend-pointer blue"></span> Mercury
-                                        </li>
-                                    </ul>
-                                    <div class="daily-sales-info">
-                                        @*<span class="sales-count">{{data.TotalPkgPurchaseCount}}</span>*@
-                                        <span class="sales-label">Products Sold</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!--widget graph end-->
-                <!--widget graph start-->
                 <section class="panel">
+                    <header class="panel-heading">
+                        <span>Sales Overview</span> <span style="float:right"><a style="text-decoration:underline;cursor:pointer" ng-click="listClick()" ng-hide="list">Back to list</a></span>
+                    </header>
                     <div class="panel-body">
-                        @*<ul class="clearfix prospective-spark-bar">
-                            <li class="pull-left spark-bar-label">
-                                <span class="bar-label-value"> $18887</span>
-                                <span>Prospective Earnings</span>
-                            </li>
-                            <li class="pull-right">
-                                <div class="sparkline" data-type="bar" data-resize="true" data-height="40" data-width="90%" data-bar-color="#f6b0ae" data-bar-width="5" data-data="[300,200,500,700,654,987,457,300,876,454,788,300,200,500,700,654,987,457,300,876,454,788]"></div>
-                            </li>
-                        </ul>*@
-
+                        <div class="mini-stat-info sales-info" style="background-color: #64fbc8;">
+                            <span>{{total_joining}}</span>
+                            <p>Total Members</p>
+                        </div>
+                        <div class="mini-stat-info sales-info" style="background-color: #fff6c8;">
+                            <span>{{data.total_investment | currency}}</span>
+                            <p>Total Investment</p>
+                        </div>
+                        <div class="mini-stat-info sales-info" style="background-color: #fbc1f4;">
+                            <span>{{data.total_payout | currency}}</span>
+                            <p>Total Payout</p>
+                        </div>
+                        <div class="mini-stat-info sales-info" style="background-color: cyan;">
+                            <span>{{data.current_investment | currency}}</span>
+                            <p>Current Week Investment</p>
+                        </div>
+                        <div class="mini-stat-info sales-info" style="background-color: #e7c69c;">
+                            <span>{{data.current_payout | currency}}</span>
+                            <p>Current Week Payout</p>
+                        </div>
                     </div>
                 </section>
                 <!--widget graph end-->
                 <!--widget weather start-->
                 <!--widget weather end-->
-                @*</div>*@
+
             </div>
         </div>
 

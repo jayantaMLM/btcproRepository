@@ -390,11 +390,12 @@ module.controller('TeamTreeNew', function ($scope, $http) {
                                 }
                             })
 
-                            $http.post("/Home/LedgerPostingMember?Username=" + $scope.registerModel.UserName + "&WalletType=2&Amount=" + $scope.payamount).then(function (response) {
+                            $scope.currency = 'USD';
+                            $http.post("/Home/LedgerPostingMember?Username=" + $scope.registerModel.UserName + "&WalletType=2&Amount=" + $scope.payamount + "&Currency=" + $scope.currency).then(function (response) {
                                 if (response.data.Success) {
                                 }
                             })
-                            $http.post("AutoPurchase?username=" + $scope.registerModel.UserName + "&UplineId=" + $scope.uplineId + "&packageId=" + $scope.packageId + "&investmentAmt=" + $scope.payamount).then(function (data) {
+                            $http.post("AutoPurchase?username=" + $scope.registerModel.UserName + "&UplineId=" + $scope.uplineId + "&packageId=" + $scope.packageId + "&investmentAmt=" + $scope.payamount + "&Currency=" + $scope.currency).then(function (data) {
                                 debugger;
                                 if (data.data.Success == "TRUE") {
                                     $http.get("MyAddress").then(function (retdata) {

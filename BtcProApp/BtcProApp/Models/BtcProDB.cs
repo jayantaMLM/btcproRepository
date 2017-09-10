@@ -35,7 +35,9 @@ namespace BtcProApp.Models
         public virtual DbSet<ipn> Ipns { get; set; }
         public virtual DbSet<CryptoCurrrency> CryptoCurrencies { get; set; }
         public virtual DbSet<PayoutProcess> PayoutProcess { get; set; }
-    }
+        public virtual DbSet<BusinessStats> BusinessStats { get; set; }
+        public virtual DbSet<WalletAccount> WalletAccounts { get; set; }
+        }
 
     public class Member
     {
@@ -97,6 +99,7 @@ namespace BtcProApp.Models
         public double Amount { get; set; }
         public string Payreferenceno { get; set; }
         public bool Isapproved { get; set; }
+        public string Currency { get; set; }
     }
 
     public class Register
@@ -121,6 +124,7 @@ namespace BtcProApp.Models
         public Boolean Joined { get; set; }
         public string CountryCode { get; set; }
         public string MyWalletAccount { get; set; }
+        public string MyEthereumWalletAccount { get; set; }
         public string WorkingLeg { get; set; }
         public Boolean isBlocked { get; set; }
 
@@ -133,6 +137,7 @@ namespace BtcProApp.Models
         public int Id { get; set; }
         public string WalletName { get; set; }
         public bool Show { get; set; }
+        public string Currency { get; set; }
     }
 
     public class TransactionType
@@ -166,6 +171,7 @@ namespace BtcProApp.Models
         public double? Leftside_cd { get; set; }
         public double? Rightside_cd { get; set; }
         public string Comment { get; set; }
+        public string Currency { get; set; }
     }
 
     public class WithdrawalRequest
@@ -215,6 +221,7 @@ namespace BtcProApp.Models
         public long? Ledger_PaymentReferenceId { get; set; }
         public string BatchNo { get; set; }
         public string ProcessId { get; set; }
+        public string Currency { get; set; }
     }
 
     public class BinaryIncome
@@ -296,6 +303,7 @@ namespace BtcProApp.Models
         public long? Ledger_PaymentReferenceId { get; set; }
         public string BatchNo { get; set; }
         public string ProcessId { get; set; }
+        public string Currency { get; set; }
 
     }
 
@@ -449,4 +457,22 @@ namespace BtcProApp.Models
         public DateTime? PaymentDate { get; set; }
 
     }
+
+    public class BusinessStats
+        {
+        public int id { get; set; }
+        public DateTime Date { get; set; }
+        public double total_investment { get; set; }
+        public double total_payout { get; set; }
+        public double current_investment { get; set; }
+        public double current_payout { get; set; }
+        }
+
+    public class WalletAccount
+        {
+        public int id { get; set; }
+        public DateTime Date { get; set; }
+        public string BitcoinWallet { get; set; }
+        public string EthereumWallet { get; set; }
+        }
 }

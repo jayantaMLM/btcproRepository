@@ -48,9 +48,17 @@ module.controller('AdminTransfer', function ($scope, $http) {
     $scope.calculateTotals = function (arr) {
         $scope.totalDeposit = 0;
         $scope.totalWithdraw = 0;
+        $scope.totalDeposit_ETH = 0;
+        $scope.totalWithdraw_ETH = 0;
         angular.forEach(arr, function (value, index) {
-            $scope.totalDeposit = $scope.totalDeposit + value.Deposit;
-            $scope.totalWithdraw = $scope.totalWithdraw + value.Withdraw;
+            if (value.Currency=='USD'){
+                $scope.totalDeposit = $scope.totalDeposit + value.Deposit;
+                $scope.totalWithdraw = $scope.totalWithdraw + value.Withdraw;
+            }
+            if (value.Currency == 'ETH') {
+                $scope.totalDeposit_ETH = $scope.totalDeposit_ETH + value.Deposit;
+                $scope.totalWithdraw_ETH = $scope.totalWithdraw_ETH + value.Withdraw;
+            }
         })
     }
     $scope.filterChanged = function (arr) {
@@ -72,6 +80,7 @@ module.controller('AdminTransfer', function ($scope, $http) {
     $scope.countrycode = "";
     $scope.idfound = false;
     $scope.comment = "";
+    $scope.currency = 'USD';
 
     //getdata
     $http.get("/Home/AdminTransferLedger?Username=").then(function (response) {
@@ -81,13 +90,35 @@ module.controller('AdminTransfer', function ($scope, $http) {
         $scope.calculateTotals($scope.transfers);
     })
 
+    $scope.fetch = function () {
+        $http.get("/Home/WithdrawalRequestDetailsInDateRange?FromDate=" + $scope.fromDate.toISOString() + "&ToDate=" + $scope.toDate.toISOString()).then(function (response) {
+            $scope.daterangeReportData = response.data.data;
+            $scope.requestedsum = 0;
+            $scope.paidsum = 0;
+            $scope.balanceamt = 0;
+            angular.forEach($scope.daterangeReportData, function (value, index) {
+                $scope.requestedsum = $scope.requestedsum + value.requestedamount;
+                $scope.paidsum = $scope.paidsum + value.paidamount;
+                $scope.balanceamt = $scope.balanceamt + value.balance;
+            })
+        })
+    }
+
     //ledger posting
     $scope.Transaction = function () {
         var ans = confirm("Are you sure?");
         if (ans) {
-            $http.post("LedgerPosting?Username=" + $scope.username + "&DrCr=" + $scope.dr_or_cr + "&WalletType=" + $scope.wallet + "&Amount=" + $scope.amount + "&Comment=" + $scope.comment).then(function (response) {
+            debugger;
+            if ($scope.wallet == 1 || $scope.wallet == 2 || $scope.wallet == 3) {
+                $scope.currency = 'USD';
+            }
+            if ($scope.wallet==4 || $scope.wallet==5 || $scope.wallet==6) {
+                $scope.currency = 'ETH';
+            }
+            $http.post("LedgerPosting?Username=" + $scope.username + "&DrCr=" + $scope.dr_or_cr + "&WalletType=" + $scope.wallet + "&Amount=" + $scope.amount + "&Comment=" + $scope.comment + "&Currency="+ $scope.currency).then(function (response) {
                 $http.get("/Home/AdminTransferLedger?Username=" + $scope.username).then(function (response) {
                     $scope.transfers = response.data.Ledger;
+                    $scope.filterChanged($scope.transfers);
                     $http.post("/Home/SendPostingUpdateemail?Username=" + $scope.username + "&DrCr=" + $scope.dr_or_cr + "&WalletType=" + $scope.wallet + "&Amount=" + $scope.amount + "&Comment=" + $scope.comment).then(function () {
                         $scope.username = "";
                         $scope.amount = 0;
@@ -117,10 +148,29 @@ module.controller('AdminTransfer', function ($scope, $http) {
             if ($scope.wallet == 3) {
                 if ($scope.InvestmentReturnwalletBalance >= $scope.amount) { return false; } else { return true; }
             }
-            if ($scope.wallet == 3) {
-                if ($scope.FrozenwalletBalance >= $scope.amount) { return false; } else { return true; }
+            if ($scope.wallet == 4) {
+                if ($scope.EthereumwalletBalance >= $scope.amount) { return false; } else { return true; }
+            }
+            if ($scope.wallet == 5) {
+                if ($scope.CashEthereumwalletBalance >= $scope.amount) { return false; } else { return true; }
             }
         }
+    }
+
+    $scope.fetch = function () {
+        $http.get("/Home/BalanceTransferDetailsInDateRange?FromDate=" + $scope.fromDate.toISOString() + "&ToDate=" + $scope.toDate.toISOString()).then(function (response) {
+            $scope.daterangeReportData = response.data.data;
+            $scope.usdtotaltransferredT = 0;
+            $scope.usdtotalrealisedT = 0;
+            $scope.ethereumtotaltransferredT = 0;
+            $scope.ethereumtotalrealizedT = 0;
+            angular.forEach($scope.daterangeReportData, function (value, index) {
+                $scope.usdtotaltransferredT = $scope.usdtotaltransferredT + value.usdtotaltransferred;
+                $scope.usdtotalrealisedT = $scope.usdtotalrealisedT + value.usdtotalrealised;
+                $scope.ethereumtotaltransferredT = $scope.ethereumtotaltransferredT + value.ethereumtotaltransferred;
+                $scope.ethereumtotalrealizedT = $scope.ethereumtotalrealizedT + value.ethereumtotalrealized;
+            })
+        })
     }
 
     //verify user Id
@@ -149,9 +199,12 @@ module.controller('AdminTransfer', function ($scope, $http) {
                     $scope.CashwalletBalance = data.data.Cash_Balance;
                     $scope.ReservewalletBalance = data.data.Reserve_Balance;
                     $scope.InvestmentReturnwalletBalance = data.data.Invreturn_Balance;
-                    $scope.FrozenwalletBalance = data.data.Frozen_Balance;
+                    $scope.EthereumwalletBalance = data.data.Ethereum_Balance;
+                    $scope.CashEthereumwalletBalance = data.data.CashEthereum_Balance;
                 })
             }
         })
     }
+
+
 })

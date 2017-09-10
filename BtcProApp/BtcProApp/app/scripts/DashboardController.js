@@ -1,5 +1,5 @@
 ﻿var module = angular.module('app', []);
-module.controller('Dashboard', function ($scope, $http, $location,$sce) {
+module.controller('Dashboard', function ($scope, $http, $location,$sce,$interval) {
     $scope.data = [];
     var dataPie = [{
         label: "Left",
@@ -101,6 +101,13 @@ module.controller('Dashboard', function ($scope, $http, $location,$sce) {
         $scope.selectedreport = report;
         $scope.trustedSelectedReport = $sce.trustAsHtml($scope.selectedreport.NewsItemBody);
     }
+
+    $interval(function () {
+        $http.get("/Home/GetCurrentMemberJoiningCount").then(function (data) {
+            $scope.total_joining = data.data.Joining;
+        })
+    }, 3000);
+
 
     //------------------------------Referral Link-----------------------------------------------------------//
     $scope.isMember = false;
